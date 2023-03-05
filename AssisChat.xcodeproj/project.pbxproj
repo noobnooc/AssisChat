@@ -1,0 +1,638 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9329B497A60083BB31 /* AssisChatApp.swift */; };
+		F5E47E9629B497A60083BB31 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9529B497A60083BB31 /* Persistence.swift */; };
+		F5E47E9929B497A60083BB31 /* AssisChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */; };
+		F5E47E9B29B497A60083BB31 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9A29B497A60083BB31 /* ContentView.swift */; };
+		F5E47E9D29B497A60083BB31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5E47E9C29B497A60083BB31 /* Assets.xcassets */; };
+		F5E47EA129B497A60083BB31 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5E47EA029B497A60083BB31 /* Preview Assets.xcassets */; };
+		F5E47EAB29B497A60083BB31 /* AssisChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EAA29B497A60083BB31 /* AssisChatTests.swift */; };
+		F5E47EB529B497A60083BB31 /* AssisChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EB429B497A60083BB31 /* AssisChatUITests.swift */; };
+		F5E47EB729B497A60083BB31 /* AssisChatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EB629B497A60083BB31 /* AssisChatUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F5E47EA729B497A60083BB31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5E47E8829B497A60083BB31 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5E47E8F29B497A60083BB31;
+			remoteInfo = AssisChat;
+		};
+		F5E47EB129B497A60083BB31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5E47E8829B497A60083BB31 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5E47E8F29B497A60083BB31;
+			remoteInfo = AssisChat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F5E47E9029B497A60083BB31 /* AssisChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssisChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5E47E9329B497A60083BB31 /* AssisChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssisChatApp.swift; sourceTree = "<group>"; };
+		F5E47E9529B497A60083BB31 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		F5E47E9829B497A60083BB31 /* AssisChat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AssisChat.xcdatamodel; sourceTree = "<group>"; };
+		F5E47E9A29B497A60083BB31 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F5E47E9C29B497A60083BB31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F5E47E9E29B497A60083BB31 /* AssisChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AssisChat.entitlements; sourceTree = "<group>"; };
+		F5E47EA029B497A60083BB31 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F5E47EA629B497A60083BB31 /* AssisChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssisChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5E47EAA29B497A60083BB31 /* AssisChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssisChatTests.swift; sourceTree = "<group>"; };
+		F5E47EB029B497A60083BB31 /* AssisChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssisChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5E47EB429B497A60083BB31 /* AssisChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssisChatUITests.swift; sourceTree = "<group>"; };
+		F5E47EB629B497A60083BB31 /* AssisChatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssisChatUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F5E47E8D29B497A60083BB31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5E47EA329B497A60083BB31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5E47EAD29B497A60083BB31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F5E47E8729B497A60083BB31 = {
+			isa = PBXGroup;
+			children = (
+				F5E47E9229B497A60083BB31 /* AssisChat */,
+				F5E47EA929B497A60083BB31 /* AssisChatTests */,
+				F5E47EB329B497A60083BB31 /* AssisChatUITests */,
+				F5E47E9129B497A60083BB31 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F5E47E9129B497A60083BB31 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47E9029B497A60083BB31 /* AssisChat.app */,
+				F5E47EA629B497A60083BB31 /* AssisChatTests.xctest */,
+				F5E47EB029B497A60083BB31 /* AssisChatUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F5E47E9229B497A60083BB31 /* AssisChat */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47E9329B497A60083BB31 /* AssisChatApp.swift */,
+				F5E47E9529B497A60083BB31 /* Persistence.swift */,
+				F5E47E9A29B497A60083BB31 /* ContentView.swift */,
+				F5E47E9C29B497A60083BB31 /* Assets.xcassets */,
+				F5E47E9E29B497A60083BB31 /* AssisChat.entitlements */,
+				F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */,
+				F5E47E9F29B497A60083BB31 /* Preview Content */,
+			);
+			path = AssisChat;
+			sourceTree = "<group>";
+		};
+		F5E47E9F29B497A60083BB31 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47EA029B497A60083BB31 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F5E47EA929B497A60083BB31 /* AssisChatTests */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47EAA29B497A60083BB31 /* AssisChatTests.swift */,
+			);
+			path = AssisChatTests;
+			sourceTree = "<group>";
+		};
+		F5E47EB329B497A60083BB31 /* AssisChatUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47EB429B497A60083BB31 /* AssisChatUITests.swift */,
+				F5E47EB629B497A60083BB31 /* AssisChatUITestsLaunchTests.swift */,
+			);
+			path = AssisChatUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F5E47E8F29B497A60083BB31 /* AssisChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5E47EBA29B497A60083BB31 /* Build configuration list for PBXNativeTarget "AssisChat" */;
+			buildPhases = (
+				F5E47E8C29B497A60083BB31 /* Sources */,
+				F5E47E8D29B497A60083BB31 /* Frameworks */,
+				F5E47E8E29B497A60083BB31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AssisChat;
+			productName = AssisChat;
+			productReference = F5E47E9029B497A60083BB31 /* AssisChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F5E47EA529B497A60083BB31 /* AssisChatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5E47EBD29B497A60083BB31 /* Build configuration list for PBXNativeTarget "AssisChatTests" */;
+			buildPhases = (
+				F5E47EA229B497A60083BB31 /* Sources */,
+				F5E47EA329B497A60083BB31 /* Frameworks */,
+				F5E47EA429B497A60083BB31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F5E47EA829B497A60083BB31 /* PBXTargetDependency */,
+			);
+			name = AssisChatTests;
+			productName = AssisChatTests;
+			productReference = F5E47EA629B497A60083BB31 /* AssisChatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F5E47EAF29B497A60083BB31 /* AssisChatUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5E47EC029B497A60083BB31 /* Build configuration list for PBXNativeTarget "AssisChatUITests" */;
+			buildPhases = (
+				F5E47EAC29B497A60083BB31 /* Sources */,
+				F5E47EAD29B497A60083BB31 /* Frameworks */,
+				F5E47EAE29B497A60083BB31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F5E47EB229B497A60083BB31 /* PBXTargetDependency */,
+			);
+			name = AssisChatUITests;
+			productName = AssisChatUITests;
+			productReference = F5E47EB029B497A60083BB31 /* AssisChatUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F5E47E8829B497A60083BB31 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					F5E47E8F29B497A60083BB31 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					F5E47EA529B497A60083BB31 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = F5E47E8F29B497A60083BB31;
+					};
+					F5E47EAF29B497A60083BB31 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = F5E47E8F29B497A60083BB31;
+					};
+				};
+			};
+			buildConfigurationList = F5E47E8B29B497A60083BB31 /* Build configuration list for PBXProject "AssisChat" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F5E47E8729B497A60083BB31;
+			productRefGroup = F5E47E9129B497A60083BB31 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F5E47E8F29B497A60083BB31 /* AssisChat */,
+				F5E47EA529B497A60083BB31 /* AssisChatTests */,
+				F5E47EAF29B497A60083BB31 /* AssisChatUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F5E47E8E29B497A60083BB31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5E47EA129B497A60083BB31 /* Preview Assets.xcassets in Resources */,
+				F5E47E9D29B497A60083BB31 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5E47EA429B497A60083BB31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5E47EAE29B497A60083BB31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F5E47E8C29B497A60083BB31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */,
+				F5E47E9929B497A60083BB31 /* AssisChat.xcdatamodeld in Sources */,
+				F5E47E9B29B497A60083BB31 /* ContentView.swift in Sources */,
+				F5E47E9629B497A60083BB31 /* Persistence.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5E47EA229B497A60083BB31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5E47EAB29B497A60083BB31 /* AssisChatTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5E47EAC29B497A60083BB31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5E47EB729B497A60083BB31 /* AssisChatUITestsLaunchTests.swift in Sources */,
+				F5E47EB529B497A60083BB31 /* AssisChatUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F5E47EA829B497A60083BB31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F5E47E8F29B497A60083BB31 /* AssisChat */;
+			targetProxy = F5E47EA729B497A60083BB31 /* PBXContainerItemProxy */;
+		};
+		F5E47EB229B497A60083BB31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F5E47E8F29B497A60083BB31 /* AssisChat */;
+			targetProxy = F5E47EB129B497A60083BB31 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F5E47EB829B497A60083BB31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F5E47EB929B497A60083BB31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		F5E47EBB29B497A60083BB31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AssisChat/AssisChat.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AssisChat/Preview Content\"";
+				DEVELOPMENT_TEAM = WFH889Q789;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.nooc.AssisChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F5E47EBC29B497A60083BB31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AssisChat/AssisChat.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AssisChat/Preview Content\"";
+				DEVELOPMENT_TEAM = WFH889Q789;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.nooc.AssisChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F5E47EBE29B497A60083BB31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WFH889Q789;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.nooc.AssisChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AssisChat.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AssisChat";
+			};
+			name = Debug;
+		};
+		F5E47EBF29B497A60083BB31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WFH889Q789;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.nooc.AssisChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AssisChat.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AssisChat";
+			};
+			name = Release;
+		};
+		F5E47EC129B497A60083BB31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WFH889Q789;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.nooc.AssisChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AssisChat;
+			};
+			name = Debug;
+		};
+		F5E47EC229B497A60083BB31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WFH889Q789;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.nooc.AssisChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AssisChat;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F5E47E8B29B497A60083BB31 /* Build configuration list for PBXProject "AssisChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5E47EB829B497A60083BB31 /* Debug */,
+				F5E47EB929B497A60083BB31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5E47EBA29B497A60083BB31 /* Build configuration list for PBXNativeTarget "AssisChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5E47EBB29B497A60083BB31 /* Debug */,
+				F5E47EBC29B497A60083BB31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5E47EBD29B497A60083BB31 /* Build configuration list for PBXNativeTarget "AssisChatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5E47EBE29B497A60083BB31 /* Debug */,
+				F5E47EBF29B497A60083BB31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5E47EC029B497A60083BB31 /* Build configuration list for PBXNativeTarget "AssisChatUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5E47EC129B497A60083BB31 /* Debug */,
+				F5E47EC229B497A60083BB31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F5E47E9829B497A60083BB31 /* AssisChat.xcdatamodel */,
+			);
+			currentVersion = F5E47E9829B497A60083BB31 /* AssisChat.xcdatamodel */;
+			path = AssisChat.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F5E47E8829B497A60083BB31 /* Project object */;
+}
