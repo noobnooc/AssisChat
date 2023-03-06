@@ -12,37 +12,54 @@ struct ChatsView: View {
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            List {
-                ForEach(chatFeature.orderedChats) { chat in
-                    NavigationLink {
-                        ChattingView(chat: chat)
-                    } label: {
-                        ChatItem(chat: chat)
+            if !chatFeature.orderedChats.isEmpty {
+                List {
+                    ForEach(chatFeature.orderedChats) { chat in
+                        NavigationLink {
+                            ChattingView(chat: chat)
+                        } label: {
+                            ChatItem(chat: chat)
+                        }
+                        .swipeActions(edge: .leading, content: {
+                            Button {
+                                chatFeature.clearMessages(for: chat)
+                            } label: {
+                                Text("Clear")
+                            }
+                        })
+                        .contextMenu {
+                            Button {
+                                chatFeature.clearMessages(for: chat)
+                            } label: {
+                                Text("Clear Messages")
+                            }
+                            Button(role: .destructive) {
+                                chatFeature.deleteChats([chat])
+                            } label: {
+                                Text("Delete Chat")
+                            }
+                        }
                     }
-                    .swipeActions(edge: .leading, content: {
-                        Button {
-                            chatFeature.clearMessages(for: chat)
-                        } label: {
-                            Text("Clear")
-                        }
-                    })
-                    .contextMenu {
-                        Button {
-                            chatFeature.clearMessages(for: chat)
-                        } label: {
-                            Text("Clear Messages")
-                        }
-                        Button(role: .destructive) {
-                            chatFeature.deleteChats([chat])
-                        } label: {
-                            Text("Delete Chat")
-                        }
-                    }
+                    .onDelete(perform: onDelete)
                 }
-                .onDelete(perform: onDelete)
+                .listStyle(.plain)
+                .animation(.easeOut, value: chatFeature.orderedChats)
+            } else {
+                VStack {
+                    Image(systemName: "eyeglasses")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80)
+                        .symbolVariant(.square)
+                        .foregroundColor(.secondary)
+
+                    Text("Click the plus button to create a new chat.")
+                        .foregroundColor(.secondary)
+                        .font(.subheadline)
+                        .padding(.top)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .listStyle(.plain)
-            .animation(.easeOut, value: chatFeature.orderedChats)
 
             ChatCreatingButton()
         }
@@ -60,7 +77,7 @@ struct ChatsView: View {
 
     func onDelete(_ indices: IndexSet) {
         chatFeature.deleteChats(indices.map({ index in
-            chatFeature.chats[index]
+            chatFeature.orderedChats[index]
         }))
     }
 }
@@ -105,7 +122,6 @@ private struct ChatCreatingButton: View {
                 .colorScheme(.dark)
                 .padding()
         }
-        .padding(10)
         .sheet(isPresented: $creating) {
             NavigationView {
                 NewChatView()

@@ -23,6 +23,10 @@ public class Message: NSManagedObject {
         return rawContent ?? ""
     }
 
+    var processedContent: String? {
+        return rawProcessedContent
+    }
+
     var timestamp: Date {
         return rawTimestamp ?? Date()
     }

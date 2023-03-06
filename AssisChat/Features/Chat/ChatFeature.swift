@@ -13,6 +13,8 @@ struct PlainChat {
     let name: String
     let temperature: Chat.Temperature
     let systemMessage: String?
+    let isolated: Bool
+    let messagePrefix: String?
     let icon: Chat.Icon
     let color: Chat.Color?
 
@@ -85,6 +87,8 @@ extension ChatFeature {
         chat.color = plainChat.color
         chat.rawTemperature = plainChat.temperature.rawValue
         chat.rawSystemMessage = plainChat.systemMessage
+        chat.rawIsolated = plainChat.isolated
+        chat.rawMessagePrefix = plainChat.messagePrefix
 
         essentialFeature.persistData()
     }
@@ -97,6 +101,8 @@ extension ChatFeature {
         chat.color = plainChat.color
         chat.rawTemperature = plainChat.temperature.rawValue
         chat.rawSystemMessage = plainChat.systemMessage
+        chat.rawIsolated = plainChat.isolated
+        chat.rawMessagePrefix = plainChat.messagePrefix
 
         essentialFeature.persistData()
     }

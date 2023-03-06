@@ -5,6 +5,8 @@
         <attribute name="rawColor" optional="YES" attributeType="String"/>
         <attribute name="rawCreatedAt" attributeType="Date" defaultDateTimeInterval="699676500" usesScalarValueType="NO"/>
         <attribute name="rawIcon" optional="YES" attributeType="String"/>
+        <attribute name="rawIsolated" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="rawMessagePrefix" optional="YES" attributeType="String"/>
         <attribute name="rawName" attributeType="String" defaultValueString=""/>
         <attribute name="rawSystemMessage" optional="YES" attributeType="String"/>
         <attribute name="rawTemperature" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
@@ -12,6 +14,7 @@
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="rawContent" attributeType="String" defaultValueString=""/>
+        <attribute name="rawProcessedContent" optional="YES" attributeType="String"/>
         <attribute name="rawRole" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="rawTimestamp" attributeType="Date" defaultDateTimeInterval="699675840" usesScalarValueType="NO"/>
         <relationship name="rChat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Chat" inverseName="rMessages" inverseEntity="Chat"/>

@@ -43,6 +43,7 @@
 		F5E47EFF29B5D8B80083BB31 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EFE29B5D8B80083BB31 /* View+Extensions.swift */; };
 		F5E47F0229B6178F0083BB31 /* CopyrightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0129B6178F0083BB31 /* CopyrightView.swift */; };
 		F5E47F0429B617AF0083BB31 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0329B617AF0083BB31 /* Bundle+Extensions.swift */; };
+		F5E47F0729B62BFD0083BB31 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0629B62BFD0083BB31 /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		F5E47EFE29B5D8B80083BB31 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		F5E47F0129B6178F0083BB31 /* CopyrightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyrightView.swift; sourceTree = "<group>"; };
 		F5E47F0329B617AF0083BB31 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
+		F5E47F0629B62BFD0083BB31 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 		F5E47EC429B497BF0083BB31 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				F5E47F0529B62BEC0083BB31 /* Welcome */,
 				F5E47EF029B5A6840083BB31 /* Settings */,
 				F5E47EEA29B4E9F90083BB31 /* Message */,
 				F5E47EE529B4E8C80083BB31 /* Chating */,
@@ -304,6 +307,14 @@
 				F5E47F0129B6178F0083BB31 /* CopyrightView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		F5E47F0529B62BEC0083BB31 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47F0629B62BFD0083BB31 /* WelcomeView.swift */,
+			);
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,6 +453,7 @@
 				F5E47EEC29B4EA0A0083BB31 /* MessageFeature.swift in Sources */,
 				F5E47EFA29B5B6470083BB31 /* ChatSourceConfigView.swift in Sources */,
 				F5E47EE729B4E8FB0083BB31 /* ChattingFeature.swift in Sources */,
+				F5E47F0729B62BFD0083BB31 /* WelcomeView.swift in Sources */,
 				F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */,
 				F5E47EE229B49D0E0083BB31 /* Haptics.swift in Sources */,
 				F5E47E9929B497A60083BB31 /* AssisChat.xcdatamodeld in Sources */,
@@ -633,17 +645,19 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.nooc.AssisChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noobnooc.AssisChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -671,17 +685,19 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.nooc.AssisChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noobnooc.AssisChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

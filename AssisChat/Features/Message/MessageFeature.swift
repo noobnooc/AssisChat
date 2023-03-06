@@ -11,6 +11,7 @@ struct PlainMessage {
     let chat: Chat
     let role: Message.Role
     let content: String
+    let processedContent: String?
 
     var available: Bool {
         content.count > 0
@@ -49,6 +50,7 @@ extension MessageFeature {
             message.rChat = plainMessage.chat
             message.rawRole = plainMessage.role.rawValue
             message.rawContent = plainMessage.content
+            message.rawProcessedContent = plainMessage.processedContent
 
             messages.append(message)
         }
@@ -63,6 +65,7 @@ extension MessageFeature {
 
         message.rawRole = plainMessage.role.rawValue
         message.rawContent = plainMessage.content
+        message.rawProcessedContent = plainMessage.processedContent
 
         essentialFeature.persistData()
     }

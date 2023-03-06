@@ -117,7 +117,12 @@ private struct MessageInput: View {
 
                         sending = true
 
-                        await chattingFeature.sendMessage(plainMessage: .init(chat: chat, role: .user, content: messageContent))
+                        await chattingFeature.sendMessage(
+                            plainMessage: .init(
+                                chat: chat,
+                                role: .user,
+                                content: messageContent,
+                                processedContent: (chat.messagePrefix != nil ? "\(chat.messagePrefix!)\n\n" : "") + messageContent))
 
                         sending = false
                     }

@@ -26,9 +26,17 @@ extension ChatGPTAdapter: ChattingAdapter {
     func sendMessage(message: Message) async throws -> [PlainMessage] {
         guard let chat = message.chat else { return [] }
 
-        let gptMessages = (chat.systemMessage != nil ? [ChatGPTMessage(role: .system, content: chat.systemMessage!)] : []) + (chat.messages + [message]).map({ message in
-            ChatGPTMessage.fromMessage(message: message)
-        })
+        let systemMessages = chat.systemMessage != nil ? [ChatGPTMessage(role: .system, content: chat.systemMessage!)] : []
+
+        var gptMessages: [ChatGPTMessage]
+
+        if chat.isolated {
+            gptMessages = systemMessages + [ChatGPTMessage.fromMessage(message: message)]
+        } else {
+            gptMessages = systemMessages + (chat.messages + [message]).map({ message in
+                ChatGPTMessage.fromMessage(message: message)
+            })
+        }
 
         return try await request(messages: gptMessages, temperature: chat.temperature.rawValue).map { gptMessage in
             gptMessage.toPlainMessage(for: chat)
@@ -123,7 +131,7 @@ extension ChatGPTAdapter: ChattingAdapter {
             case .assistant: role = .assistant
             }
 
-            return PlainMessage(chat: chat, role: role, content: content)
+            return PlainMessage(chat: chat, role: role, content: content, processedContent: nil)
         }
 
         static func fromMessage(message: Message) -> ChatGPTMessage {
@@ -135,7 +143,7 @@ extension ChatGPTAdapter: ChattingAdapter {
             case .assistant: role = .assistant
             }
 
-            return ChatGPTMessage(role: role, content: message.content)
+            return ChatGPTMessage(role: role, content: message.processedContent ?? message.content)
         }
     }
 }

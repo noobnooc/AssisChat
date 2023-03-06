@@ -24,6 +24,14 @@ public class Chat: NSManagedObject {
         return rawSystemMessage
     }
 
+    var messagePrefix: String? {
+        return rawMessagePrefix
+    }
+
+    var isolated: Bool {
+        return rawIsolated
+    }
+
     var messageCount: Int {
         return messages.count
     }

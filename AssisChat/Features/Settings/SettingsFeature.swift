@@ -21,7 +21,11 @@ class SettingsFeature: ObservableObject {
 
     let essentialFeature: EssentialFeature
 
-    private(set) var chattingAdapter: ChattingAdapter?
+    @Published private(set) var chattingAdapter: ChattingAdapter?
+
+    var adapterReady: Bool {
+        return chattingAdapter != nil
+    }
 
     init(essentialFeature: EssentialFeature) {
         self.essentialFeature = essentialFeature

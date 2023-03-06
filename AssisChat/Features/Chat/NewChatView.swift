@@ -11,19 +11,31 @@ class NewChatViewModel: ObservableObject {
     @Published var name: String
     @Published var temperature: Chat.Temperature
     @Published var systemMessage: String
+    @Published var isolated: Bool
+    @Published var messagePrefix: String
     @Published var icon: Chat.Icon
     @Published var color: Chat.Color?
 
-    init(name: String, temperature: Chat.Temperature, systemMessage: String, icon: Chat.Icon, color: Chat.Color?) {
+    init(name: String, temperature: Chat.Temperature, systemMessage: String, isolated: Bool, messagePrefix: String, icon: Chat.Icon, color: Chat.Color?) {
         self.name = name
         self.temperature = temperature
         self.systemMessage = systemMessage
+        self.isolated = isolated
+        self.messagePrefix = messagePrefix
         self.icon = icon
         self.color = color
     }
 
     var plain: PlainChat {
-        PlainChat(name: name.isEmpty ? "New Chat" : name, temperature: temperature, systemMessage: systemMessage.count > 0 ? systemMessage : nil, icon: icon, color: color)
+        PlainChat(
+            name: name.isEmpty ? "New Chat" : name,
+            temperature: temperature,
+            systemMessage: systemMessage.count > 0 ? systemMessage : nil,
+            isolated: isolated,
+            messagePrefix: messagePrefix.count > 0 ? messagePrefix : nil,
+            icon: icon,
+            color: color
+        )
     }
 
     var available: Bool {
@@ -36,7 +48,15 @@ struct NewChatView: View {
 
     @EnvironmentObject var chatFeature: ChatFeature
 
-    @StateObject var model: NewChatViewModel = NewChatViewModel(name: "", temperature: .balanced, systemMessage: "", icon: .default, color: .default)
+    @StateObject var model: NewChatViewModel = NewChatViewModel(
+        name: "",
+        temperature: .balanced,
+        systemMessage: "",
+        isolated: false,
+        messagePrefix: "",
+        icon: .default,
+        color: .default
+    )
 
     var body: some View {
         List {
@@ -75,11 +95,34 @@ struct NewChatView: View {
                         .foregroundColor(Color.secondary)
 
                     if #available(iOS 16, *) {
-                        TextField("Role Prompt", text: $model.systemMessage, axis: .vertical)
+                        TextField("Set the behavior of the assistant", text: $model.systemMessage, axis: .vertical)
                             .lineLimit(1...3)
                     } else {
-                        TextField("Role Prompt", text: $model.systemMessage)
+                        TextField("Set the behavior of the assistant", text: $model.systemMessage)
                     }
+                }
+
+                VStack(alignment: .leading) {
+                    Text("Message Prefix")
+                        .font(.footnote)
+                        .foregroundColor(Color.secondary)
+
+                    if #available(iOS 16, *) {
+                        TextField("Will be added before each message", text: $model.messagePrefix, axis: .vertical)
+                            .lineLimit(1...3)
+                    } else {
+                        TextField("Will be added before each message", text: $model.messagePrefix)
+                    }
+                }
+
+                VStack(alignment: .trailing) {
+                    Toggle(isOn: $model.isolated) {
+                        Text("Isolated")
+                    }
+
+                    Text("Isolated chat will not send history messages")
+                        .font(.footnote)
+                        .foregroundColor(Color.secondary)
                 }
             }
 

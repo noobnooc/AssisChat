@@ -9,11 +9,21 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    @EnvironmentObject private var settingsFeature: SettingsFeature
+
     var body: some View {
         NavigationView {
             ChatsView()
                 .navigationTitle("AssisChat")
                 .navigationBarTitleDisplayMode(.inline)
+        }
+
+        // Welcome
+        .sheet(isPresented: Binding(get: {
+            !settingsFeature.adapterReady
+        }, set: { _ in })) {
+            WelcomeView()
+                .interactiveDismissDisabled()
         }
     }
 }
