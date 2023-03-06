@@ -39,6 +39,7 @@
 		F5E47EF629B5B1B10083BB31 /* ColorSchemeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EF529B5B1B10083BB31 /* ColorSchemeSelector.swift */; };
 		F5E47EF829B5B2320083BB31 /* TintSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EF729B5B2320083BB31 /* TintSelector.swift */; };
 		F5E47EFA29B5B6470083BB31 /* ChatSourceConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EF929B5B6470083BB31 /* ChatSourceConfigView.swift */; };
+		F5E47EFC29B5D2870083BB31 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F5E47EFB29B5D2870083BB31 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,8 @@
 		F5E47EF529B5B1B10083BB31 /* ColorSchemeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeSelector.swift; sourceTree = "<group>"; };
 		F5E47EF729B5B2320083BB31 /* TintSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintSelector.swift; sourceTree = "<group>"; };
 		F5E47EF929B5B6470083BB31 /* ChatSourceConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSourceConfigView.swift; sourceTree = "<group>"; };
+		F5E47EFB29B5D2870083BB31 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		F5E47EFD29B5D29A0083BB31 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,8 @@
 		F5E47E8729B497A60083BB31 = {
 			isa = PBXGroup;
 			children = (
+				F5E47EFD29B5D29A0083BB31 /* README.md */,
+				F5E47EFB29B5D2870083BB31 /* .gitignore */,
 				F5E47E9229B497A60083BB31 /* AssisChat */,
 				F5E47EA929B497A60083BB31 /* AssisChatTests */,
 				F5E47EB329B497A60083BB31 /* AssisChatUITests */,
@@ -389,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5E47EA129B497A60083BB31 /* Preview Assets.xcassets in Resources */,
+				F5E47EFC29B5D2870083BB31 /* .gitignore in Resources */,
 				F5E47E9D29B497A60083BB31 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
