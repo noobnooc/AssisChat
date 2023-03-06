@@ -13,7 +13,7 @@ struct ChatsView: View {
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             List {
-                ForEach(chatFeature.chats) { chat in
+                ForEach(chatFeature.orderedChats) { chat in
                     NavigationLink {
                         ChattingView(chat: chat)
                     } label: {
@@ -88,6 +88,7 @@ private struct ChatCreatingButton: View {
             NavigationView {
                 NewChatView()
                     .navigationTitle("New Chat")
+                    .navigationBarTitleDisplayMode(.inline)
             }
         }
     }

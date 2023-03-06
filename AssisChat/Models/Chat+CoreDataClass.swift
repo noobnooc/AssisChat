@@ -37,7 +37,7 @@ public class Chat: NSManagedObject {
     }
 
     var orderTimestamp: Date {
-        return  rawCreatedAt ?? Date()
+        return derivedUpdatedAt ?? rawCreatedAt ?? Date()
     }
 
     public override func awakeFromInsert() {
@@ -74,11 +74,13 @@ extension Chat {
         typealias RawValue = String
 
         init?(rawValue: String) {
-            guard let icon = Self.symbols.first(where: { rawValue == $0.rawValue }) else {
+            if rawValue.starts(with: Self.SYMBOL_PREFIX) {
+                let symbolString = String(rawValue.dropFirst(Self.SYMBOL_PREFIX.count))
+
+                self = .symbol(symbolString)
+            } else {
                 return nil
             }
-
-            self = icon
         }
 
         var rawValue: String {
@@ -101,36 +103,120 @@ extension Chat {
         }
 
         static let symbols: [Icon] = [
+            .symbol("bubble.left"),
+            .symbol("book"),
+            .symbol("book.closed"),
+            .symbol("books.vertical"),
+            .symbol("character.book.closed"),
             .symbol("text.book.closed"),
-            .symbol("house"),
-            .symbol("flag"),
-            .symbol("tv"),
-            .symbol("car"),
-            .symbol("person.2"),
-            .symbol("baseball"),
+            .symbol("menucard"),
+            .symbol("magazine"),
             .symbol("newspaper"),
-            .symbol("bell"),
+            .symbol("bookmark"),
             .symbol("graduationcap"),
-            .symbol("cart"),
-            .symbol("creditcard"),
-            .symbol("paintbrush"),
-            .symbol("lightbulb"),
-            .symbol("briefcase"),
-            .symbol("die.face.5"),
-            .symbol("gift"),
-            .symbol("hammer"),
-            .symbol("gamecontroller"),
-            .symbol("tent"),
-            .symbol("light.beacon.max"),
-            .symbol("party.popper"),
-            .symbol("tshirt"),
-            .symbol("headphones"),
-            .symbol("facemask"),
-            .symbol("teddybear"),
-            .symbol("fork.knife"),
+            .symbol("pencil.and.ruler"),
+            .symbol("backpack"),
+            .symbol("paperclip"),
+            .symbol("link"),
+            .symbol("dumbbell"),
+            .symbol("soccerball"),
+            .symbol("baseball"),
+            .symbol("basketball"),
+            .symbol("football"),
+            .symbol("tennis.racket"),
+            .symbol("tennisball"),
+            .symbol("trophy"),
+            .symbol("medal"),
+            .symbol("umbrella"),
+            .symbol("megaphone"),
+            .symbol("shield"),
+            .symbol("flag"),
+            .symbol("flag.2.crossed"),
+            .symbol("bell"),
+            .symbol("tag"),
             .symbol("camera"),
+            .symbol("gearshape"),
+            .symbol("bag"),
+            .symbol("cart"),
+            .symbol("basket"),
+            .symbol("creditcard"),
+            .symbol("wallet.pass"),
+            .symbol("wand.and.rays"),
+            .symbol("die.face.2"),
+            .symbol("pianokeys"),
+            .symbol("paintbrush.pointed"),
+            .symbol("wrench.adjustable"),
+            .symbol("hammer"),
+            .symbol("eyedropper.halffull"),
+            .symbol("scroll"),
+            .symbol("printer"),
+            .symbol("scanner"),
+            .symbol("handbag"),
+            .symbol("briefcase"),
+            .symbol("cross.case"),
+            .symbol("theatermasks"),
+            .symbol("puzzlepiece"),
+            .symbol("lightbulb"),
+            .symbol("fanblades"),
+            .symbol("party.popper"),
+            .symbol("balloon"),
+            .symbol("popcorn"),
+            .symbol("bed.double"),
+            .symbol("chair.lounge"),
+            .symbol("refrigerator"),
+            .symbol("tent"),
+            .symbol("house.lodge"),
+            .symbol("house.and.flag"),
+            .symbol("signpost.left"),
+            .symbol("signpost.right"),
+            .symbol("signpost.right.and.left"),
+            .symbol("lock"),
+            .symbol("lock.open"),
+            .symbol("key"),
+            .symbol("pin"),
+            .symbol("powerplug"),
+            .symbol("headphones"),
+            .symbol("radio"),
             .symbol("guitars"),
-            .symbol("sailboat")
+            .symbol("stroller"),
+            .symbol("sailboat"),
+            .symbol("fuelpump"),
+            .symbol("medical.thermometer"),
+            .symbol("bandage"),
+            .symbol("syringe"),
+            .symbol("facemask"),
+            .symbol("cross.vial"),
+            .symbol("teddybear"),
+            .symbol("tree"),
+            .symbol("tshirt"),
+            .symbol("ticket"),
+            .symbol("crown"),
+            .symbol("gamecontroller"),
+            .symbol("paintpalette"),
+            .symbol("cup.and.saucer"),
+            .symbol("wineglass"),
+            .symbol("birthday.cake"),
+            .symbol("carrot"),
+            .symbol("globe.desk"),
+            .symbol("gift"),
+            .symbol("binoculars"),
+            .symbol("seal"),
+            .symbol("hand.raised"),
+            .symbol("sun.min"),
+            .symbol("moon"),
+            .symbol("sun.max"),
+            .symbol("cloud"),
+            .symbol("drop"),
+            .symbol("mountain.2"),
+            .symbol("hare"),
+            .symbol("tortoise"),
+            .symbol("lizard"),
+            .symbol("bird"),
+            .symbol("ant"),
+            .symbol("fish"),
+            .symbol("pawprint"),
+            .symbol("leaf"),
+            .symbol("heart")
         ]
     }
 }
@@ -168,21 +254,17 @@ extension Chat {
             .brown,
             .red,
             .pink,
-            .purple,
             .indigo,
             .blue,
-            .cyan,
         ]
 
         // 配置一些默认颜色，方便后期与主题同步调整对应颜色而不是固定的颜色值
         case blue
         case brown
-        case cyan
         case green
         case indigo
         case orange
         case pink
-        case purple
         case red
         case yellow
         case custom(color: SwiftUI.Color)
@@ -206,12 +288,10 @@ extension Chat {
             switch self {
             case .blue: return "blue"
             case .brown: return "brown"
-            case .cyan: return "cyan"
             case .green: return "green"
             case .indigo: return "indigo"
             case .orange: return "orange"
             case .pink: return "pink"
-            case .purple: return "purple"
             case .red: return "red"
             case .yellow: return "yellow"
             case .custom(color: let color): return Self.customPrefix + color.hex
@@ -222,12 +302,10 @@ extension Chat {
             switch self {
             case .blue: return .appBlue
             case .brown: return .appBrown
-            case .cyan: return .appCyan
             case .green: return .appGreen
             case .indigo: return .appIndigo
             case .orange: return .appOrange
             case .pink: return .appPink
-            case .purple: return .appPurple
             case .red: return .appRed
             case .yellow: return .appYellow
             case .custom(color: let color): return color

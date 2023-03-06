@@ -24,7 +24,18 @@ struct PlainChat {
 class ChatFeature: ObservableObject {
     let essentialFeature: EssentialFeature
 
+    /**
+    Uses to notify `orderedChats` change.
+     */
+    @Published var tick = 0
+
     @Published var chats: [Chat] = []
+
+    var orderedChats: [Chat] {
+        chats.sorted { c1, c2 in
+            c1.orderTimestamp > c2.orderTimestamp
+        }
+    }
 
     var objectsSavedCancelable: AnyCancellable?
 
@@ -56,6 +67,8 @@ class ChatFeature: ObservableObject {
                 deletedAccountIdSet.contains(account.objectID)
             }
         }
+
+        tick += 1
     }
 }
 

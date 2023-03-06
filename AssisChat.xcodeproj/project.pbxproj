@@ -40,6 +40,7 @@
 		F5E47EF829B5B2320083BB31 /* TintSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EF729B5B2320083BB31 /* TintSelector.swift */; };
 		F5E47EFA29B5B6470083BB31 /* ChatSourceConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EF929B5B6470083BB31 /* ChatSourceConfigView.swift */; };
 		F5E47EFC29B5D2870083BB31 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F5E47EFB29B5D2870083BB31 /* .gitignore */; };
+		F5E47EFF29B5D8B80083BB31 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EFE29B5D8B80083BB31 /* View+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		F5E47EF929B5B6470083BB31 /* ChatSourceConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSourceConfigView.swift; sourceTree = "<group>"; };
 		F5E47EFB29B5D2870083BB31 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F5E47EFD29B5D29A0083BB31 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F5E47EFE29B5D8B80083BB31 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				F5E47ECE29B498290083BB31 /* Color+Extensions.swift */,
 				F5E47ED029B4983D0083BB31 /* Dictionary+Extensions.swift */,
 				F5E47ED229B498550083BB31 /* Notification+Extensions.swift */,
+				F5E47EFE29B5D8B80083BB31 /* View+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				F5E47ECF29B498290083BB31 /* Color+Extensions.swift in Sources */,
 				F5E47EEF29B4F5A80083BB31 /* ChatGPTAdapter.swift in Sources */,
 				F5E47EE929B4E9090083BB31 /* ChattingView.swift in Sources */,
+				F5E47EFF29B5D8B80083BB31 /* View+Extensions.swift in Sources */,
 				F5E47EF429B5AC380083BB31 /* SettingsView.swift in Sources */,
 				F5E47EE429B49DF90083BB31 /* ChatIconSelector.swift in Sources */,
 				F5E47ECB29B497FB0083BB31 /* Message+CoreDataProperties.swift in Sources */,

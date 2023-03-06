@@ -23,7 +23,7 @@ class NewChatViewModel: ObservableObject {
     }
 
     var plain: PlainChat {
-        PlainChat(name: name, temperature: temperature, systemMessage: systemMessage.count > 0 ? systemMessage : nil, icon: icon, color: color)
+        PlainChat(name: name.isEmpty ? "New Chat" : name, temperature: temperature, systemMessage: systemMessage.count > 0 ? systemMessage : nil, icon: icon, color: color)
     }
 
     var available: Bool {
@@ -36,7 +36,7 @@ struct NewChatView: View {
 
     @EnvironmentObject var chatFeature: ChatFeature
 
-    @StateObject var model: NewChatViewModel = NewChatViewModel(name: "New Chat", temperature: .balanced, systemMessage: "", icon: .default, color: .default)
+    @StateObject var model: NewChatViewModel = NewChatViewModel(name: "", temperature: .balanced, systemMessage: "", icon: .default, color: .default)
 
     var body: some View {
         List {
@@ -48,15 +48,16 @@ struct NewChatView: View {
                         .foregroundColor(Color.secondaryGroupedBackground)
                         .cornerRadius(10)
 
-                    TextField("Name", text: $model.name)
+                    TextField("New Chat", text: $model.name)
                         .font(.title3)
                         .padding()
                 }
 
                 ColorSelector(selection: $model.color)
+                    .padding(.vertical, 5)
             }
 
-            Section("Settings") {
+            Section("Config") {
                 Picker("Temperature", selection: $model.temperature) {
                     Text("Creative")
                         .tag(Chat.Temperature.creative)
@@ -68,7 +69,18 @@ struct NewChatView: View {
                         .tag(Chat.Temperature.precise)
                 }
 
-                TextField("Role Prompt", text: $model.systemMessage)
+                VStack(alignment: .leading) {
+                    Text("Role Prompt")
+                        .font(.footnote)
+                        .foregroundColor(Color.secondary)
+
+                    if #available(iOS 16, *) {
+                        TextField("Role Prompt", text: $model.systemMessage, axis: .vertical)
+                            .lineLimit(1...3)
+                    } else {
+                        TextField("Role Prompt", text: $model.systemMessage)
+                    }
+                }
             }
 
             Section {
@@ -146,6 +158,7 @@ struct NewChatView: View {
                 NavigationView {
                     ChatIconSelector(selection: $selection)
                         .navigationTitle("Select an icon")
+                        .navigationBarTitleDisplayMode(.inline)
                         .navigationBarItems(trailing: Button("Done", action: {
                             sheetPresented = false
                         }))

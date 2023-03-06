@@ -25,6 +25,8 @@ class SettingsFeature: ObservableObject {
 
     init(essentialFeature: EssentialFeature) {
         self.essentialFeature = essentialFeature
+
+        initiateAdapter()
     }
 
     func adjustColorScheme(_ colorScheme: ColorScheme) {

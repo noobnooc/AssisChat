@@ -22,12 +22,10 @@ extension Color {
     // - MARK: App Colors
     static let appBlue = Color("ColorBlue")
     static let appBrown = Color("ColorBrown")
-    static let appCyan = Color("ColorCyan")
     static let appGreen = Color("ColorGreen")
     static let appIndigo = Color("ColorIndigo")
     static let appOrange = Color("ColorOrange")
     static let appPink = Color("ColorPink")
-    static let appPurple = Color("ColorPurple")
     static let appRed = Color("ColorRed")
     static let appYellow = Color("ColorYellow")
 

@@ -28,11 +28,16 @@ private struct Content: View {
     var body: some View {
         List {
             Section("OpenAI API Key") {
-                TextField("API Key", text: $openAIAPIKey)
+                if #available(iOS 16.0, *) {
+                    TextField("sk-XXXXXXX", text: $openAIAPIKey, axis: .vertical)
+                        .lineLimit(1...2)
+                } else {
+                    TextField("sk-XXXXXXX", text: $openAIAPIKey)
+                }
             }
 
-            Section("OpenAI base domain") {
-                TextField("Domain", text: $openAIDomain)
+            Section("OpenAI API domain") {
+                TextField("api.openai.com", text: $openAIDomain)
             }
 
             Section {
