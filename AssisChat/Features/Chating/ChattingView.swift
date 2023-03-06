@@ -66,7 +66,7 @@ private struct MessageItem: View {
     var body: some View {
         HStack {
             if message.role == .assistant {
-                Text(message.content)
+                Text(LocalizedStringKey(message.content.trimmingCharacters(in: .whitespacesAndNewlines)))
                     .padding(.vertical, 8)
                     .padding(.horizontal, 15)
                     .background(Color.secondaryBackground)
@@ -74,7 +74,7 @@ private struct MessageItem: View {
                 Spacer(minLength: 50)
             } else {
                 Spacer(minLength: 50)
-                Text(message.content)
+                Text(LocalizedStringKey(message.content.trimmingCharacters(in: .whitespacesAndNewlines)))
                     .padding(.vertical, 8)
                     .padding(.horizontal, 15)
                     .background(Color.accentColor)
@@ -100,13 +100,13 @@ private struct MessageInput: View {
                 if #available(iOS 16.0, *) {
                     TextField("New Message", text: $text, axis: .vertical)
                         .padding(8)
-                        .background(Color.background)
+                        .background(.thinMaterial)
                         .cornerRadius(8)
                         .lineLimit(1...3)
                 } else {
                     TextField("New Message", text: $text)
                         .padding(8)
-                        .background(Color.background)
+                        .background(.thickMaterial)
                         .cornerRadius(8)
                 }
 

@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Environment(\.openURL) private var openURL
+
     var body: some View {
         List {
             Section {
-                Text("AssisChat")
-                    .font(.title)
+                VStack {
+                    Image("Icon")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80, height: 80)
+                        .cornerRadius(20)
+                    Text("AssisChat")
+                        .padding(.top)
+                    Text("Assistant chatting.")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                .frame(maxWidth: .infinity)
             }
             .listRowBackground(Color.clear)
 
@@ -30,37 +43,57 @@ struct SettingsView: View {
                     ColorSchemeSelector()
                         .navigationTitle("Color Scheme")
                 } label: {
-                    Label("Color Scheme", systemImage: "die.face.5")
+                    Label {
+                        Text("Color Scheme")
+                            .foregroundColor(.primary)
+                    } icon: {
+                        Image(systemName: "die.face.5")
+                            .foregroundColor(.appOrange)
+                    }
                 }
 
                 NavigationLink {
                     TintSelector()
                         .navigationTitle("Tint")
                 } label: {
-                    Label("Tint", systemImage: "paintbrush.pointed")
+                    Label {
+                        Text("Tint")
+                            .foregroundColor(.primary)
+                    } icon: {
+                        Image(systemName: "paintbrush.pointed")
+                            .foregroundColor(.appIndigo)
+                    }
                 }
             }
 
             Section("About") {
                 Button {
-
+                    openURL(URL(string: "https://twitter.com/noobnooc")!)
                 } label: {
-                    Label("Share", systemImage: "arrowshape.turn.up.right")
+                    Label {
+                        Text("Twitter")
+                            .foregroundColor(.primary)
+                    } icon: {
+                        Image(systemName: "bird")
+                            .foregroundColor(.appBlue)
+                    }
                 }
 
-                NavigationLink {
-                    Text("Feedback")
+                Button {
+                    openURL(URL(string: "mailto:app@nooc.ink")!)
                 } label: {
-                    Label("Feedback", systemImage: "envelope")
+                    Label {
+                        Text("Feedback")
+                            .foregroundColor(.primary)
+                    } icon: {
+                        Image(systemName: "envelope")
+                            .foregroundColor(.appRed)
+                    }
                 }
-
-                NavigationLink {
-                    Text("About")
-                } label: {
-                    Label("About", systemImage: "info.bubble")
-                }
-
             }
+
+            CopyrightView(detailed: true)
+                .listRowBackground(Color.clear)
         }
         .listStyle(.insetGrouped)
     }

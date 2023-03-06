@@ -8,12 +8,12 @@
         <attribute name="rawName" attributeType="String" defaultValueString=""/>
         <attribute name="rawSystemMessage" optional="YES" attributeType="String"/>
         <attribute name="rawTemperature" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
-        <relationship name="rMessages" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Message" inverseName="rChat" inverseEntity="Message"/>
+        <relationship name="rMessages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Message" inverseName="rChat" inverseEntity="Message"/>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="rawContent" attributeType="String" defaultValueString=""/>
         <attribute name="rawRole" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="rawTimestamp" attributeType="Date" defaultDateTimeInterval="699675840" usesScalarValueType="NO"/>
-        <relationship name="rChat" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Chat" inverseName="rMessages" inverseEntity="Chat"/>
+        <relationship name="rChat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Chat" inverseName="rMessages" inverseEntity="Chat"/>
     </entity>
 </model>

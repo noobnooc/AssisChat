@@ -41,6 +41,8 @@
 		F5E47EFA29B5B6470083BB31 /* ChatSourceConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EF929B5B6470083BB31 /* ChatSourceConfigView.swift */; };
 		F5E47EFC29B5D2870083BB31 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F5E47EFB29B5D2870083BB31 /* .gitignore */; };
 		F5E47EFF29B5D8B80083BB31 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EFE29B5D8B80083BB31 /* View+Extensions.swift */; };
+		F5E47F0229B6178F0083BB31 /* CopyrightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0129B6178F0083BB31 /* CopyrightView.swift */; };
+		F5E47F0429B617AF0083BB31 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0329B617AF0083BB31 /* Bundle+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,8 @@
 		F5E47EFB29B5D2870083BB31 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F5E47EFD29B5D29A0083BB31 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F5E47EFE29B5D8B80083BB31 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		F5E47F0129B6178F0083BB31 /* CopyrightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyrightView.swift; sourceTree = "<group>"; };
+		F5E47F0329B617AF0083BB31 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,7 @@
 		F5E47E9229B497A60083BB31 /* AssisChat */ = {
 			isa = PBXGroup;
 			children = (
+				F5E47F0029B6176E0083BB31 /* Components */,
 				F5E47EE029B49CFD0083BB31 /* Helpers */,
 				F5E47EC529B497C80083BB31 /* Models */,
 				F5E47EC429B497BF0083BB31 /* Features */,
@@ -199,6 +204,7 @@
 				F5E47ED029B4983D0083BB31 /* Dictionary+Extensions.swift */,
 				F5E47ED229B498550083BB31 /* Notification+Extensions.swift */,
 				F5E47EFE29B5D8B80083BB31 /* View+Extensions.swift */,
+				F5E47F0329B617AF0083BB31 /* Bundle+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -290,6 +296,14 @@
 				F5E47EF329B5AC380083BB31 /* SettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		F5E47F0029B6176E0083BB31 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47F0129B6178F0083BB31 /* CopyrightView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5E47EDB29B49B880083BB31 /* ChatsView.swift in Sources */,
+				F5E47F0229B6178F0083BB31 /* CopyrightView.swift in Sources */,
 				F5E47EEC29B4EA0A0083BB31 /* MessageFeature.swift in Sources */,
 				F5E47EFA29B5B6470083BB31 /* ChatSourceConfigView.swift in Sources */,
 				F5E47EE729B4E8FB0083BB31 /* ChattingFeature.swift in Sources */,
@@ -443,6 +458,7 @@
 				F5E47ECC29B497FB0083BB31 /* Chat+CoreDataClass.swift in Sources */,
 				F5E47EF229B5A6AB0083BB31 /* SettingsFeature.swift in Sources */,
 				F5E47ED929B4990A0083BB31 /* ChatFeature.swift in Sources */,
+				F5E47F0429B617AF0083BB31 /* Bundle+Extensions.swift in Sources */,
 				F5E47ED129B4983D0083BB31 /* Dictionary+Extensions.swift in Sources */,
 				F5E47ED629B498E20083BB31 /* EssentialFeature.swift in Sources */,
 				F5E47E9629B497A60083BB31 /* Persistence.swift in Sources */,

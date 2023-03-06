@@ -101,6 +101,12 @@ extension ChatFeature {
         essentialFeature.persistData()
     }
 
+    func clearMessages(for chat: Chat) {
+        chat.rMessages = []
+
+        essentialFeature.persistData()
+    }
+
     func deleteChats(_ chats: [Chat]) {
         chats.forEach(essentialFeature.context.delete)
 
