@@ -16,6 +16,29 @@
 		F5E47EAB29B497A60083BB31 /* AssisChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EAA29B497A60083BB31 /* AssisChatTests.swift */; };
 		F5E47EB529B497A60083BB31 /* AssisChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EB429B497A60083BB31 /* AssisChatUITests.swift */; };
 		F5E47EB729B497A60083BB31 /* AssisChatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EB629B497A60083BB31 /* AssisChatUITestsLaunchTests.swift */; };
+		F5E47ECA29B497FB0083BB31 /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EC629B497FB0083BB31 /* Message+CoreDataClass.swift */; };
+		F5E47ECB29B497FB0083BB31 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EC729B497FB0083BB31 /* Message+CoreDataProperties.swift */; };
+		F5E47ECC29B497FB0083BB31 /* Chat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EC829B497FB0083BB31 /* Chat+CoreDataClass.swift */; };
+		F5E47ECD29B497FB0083BB31 /* Chat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EC929B497FB0083BB31 /* Chat+CoreDataProperties.swift */; };
+		F5E47ECF29B498290083BB31 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ECE29B498290083BB31 /* Color+Extensions.swift */; };
+		F5E47ED129B4983D0083BB31 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ED029B4983D0083BB31 /* Dictionary+Extensions.swift */; };
+		F5E47ED329B498550083BB31 /* Notification+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ED229B498550083BB31 /* Notification+Extensions.swift */; };
+		F5E47ED629B498E20083BB31 /* EssentialFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ED529B498E20083BB31 /* EssentialFeature.swift */; };
+		F5E47ED929B4990A0083BB31 /* ChatFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ED829B4990A0083BB31 /* ChatFeature.swift */; };
+		F5E47EDB29B49B880083BB31 /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EDA29B49B880083BB31 /* ChatsView.swift */; };
+		F5E47EDD29B49B9C0083BB31 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EDC29B49B9C0083BB31 /* NewChatView.swift */; };
+		F5E47EDF29B49CCA0083BB31 /* ColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EDE29B49CCA0083BB31 /* ColorSelector.swift */; };
+		F5E47EE229B49D0E0083BB31 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EE129B49D0E0083BB31 /* Haptics.swift */; };
+		F5E47EE429B49DF90083BB31 /* ChatIconSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EE329B49DF90083BB31 /* ChatIconSelector.swift */; };
+		F5E47EE729B4E8FB0083BB31 /* ChattingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EE629B4E8FB0083BB31 /* ChattingFeature.swift */; };
+		F5E47EE929B4E9090083BB31 /* ChattingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EE829B4E9090083BB31 /* ChattingView.swift */; };
+		F5E47EEC29B4EA0A0083BB31 /* MessageFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EEB29B4EA0A0083BB31 /* MessageFeature.swift */; };
+		F5E47EEF29B4F5A80083BB31 /* ChatGPTAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EEE29B4F5A80083BB31 /* ChatGPTAdapter.swift */; };
+		F5E47EF229B5A6AB0083BB31 /* SettingsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EF129B5A6AB0083BB31 /* SettingsFeature.swift */; };
+		F5E47EF429B5AC380083BB31 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EF329B5AC380083BB31 /* SettingsView.swift */; };
+		F5E47EF629B5B1B10083BB31 /* ColorSchemeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EF529B5B1B10083BB31 /* ColorSchemeSelector.swift */; };
+		F5E47EF829B5B2320083BB31 /* TintSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EF729B5B2320083BB31 /* TintSelector.swift */; };
+		F5E47EFA29B5B6470083BB31 /* ChatSourceConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EF929B5B6470083BB31 /* ChatSourceConfigView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +72,29 @@
 		F5E47EB029B497A60083BB31 /* AssisChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssisChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E47EB429B497A60083BB31 /* AssisChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssisChatUITests.swift; sourceTree = "<group>"; };
 		F5E47EB629B497A60083BB31 /* AssisChatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssisChatUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F5E47EC629B497FB0083BB31 /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F5E47EC729B497FB0083BB31 /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F5E47EC829B497FB0083BB31 /* Chat+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F5E47EC929B497FB0083BB31 /* Chat+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F5E47ECE29B498290083BB31 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		F5E47ED029B4983D0083BB31 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
+		F5E47ED229B498550083BB31 /* Notification+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extensions.swift"; sourceTree = "<group>"; };
+		F5E47ED529B498E20083BB31 /* EssentialFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeature.swift; sourceTree = "<group>"; };
+		F5E47ED829B4990A0083BB31 /* ChatFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFeature.swift; sourceTree = "<group>"; };
+		F5E47EDA29B49B880083BB31 /* ChatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsView.swift; sourceTree = "<group>"; };
+		F5E47EDC29B49B9C0083BB31 /* NewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatView.swift; sourceTree = "<group>"; };
+		F5E47EDE29B49CCA0083BB31 /* ColorSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelector.swift; sourceTree = "<group>"; };
+		F5E47EE129B49D0E0083BB31 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		F5E47EE329B49DF90083BB31 /* ChatIconSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatIconSelector.swift; sourceTree = "<group>"; };
+		F5E47EE629B4E8FB0083BB31 /* ChattingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingFeature.swift; sourceTree = "<group>"; };
+		F5E47EE829B4E9090083BB31 /* ChattingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingView.swift; sourceTree = "<group>"; };
+		F5E47EEB29B4EA0A0083BB31 /* MessageFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFeature.swift; sourceTree = "<group>"; };
+		F5E47EEE29B4F5A80083BB31 /* ChatGPTAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTAdapter.swift; sourceTree = "<group>"; };
+		F5E47EF129B5A6AB0083BB31 /* SettingsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFeature.swift; sourceTree = "<group>"; };
+		F5E47EF329B5AC380083BB31 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F5E47EF529B5B1B10083BB31 /* ColorSchemeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeSelector.swift; sourceTree = "<group>"; };
+		F5E47EF729B5B2320083BB31 /* TintSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintSelector.swift; sourceTree = "<group>"; };
+		F5E47EF929B5B6470083BB31 /* ChatSourceConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSourceConfigView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +145,10 @@
 		F5E47E9229B497A60083BB31 /* AssisChat */ = {
 			isa = PBXGroup;
 			children = (
+				F5E47EE029B49CFD0083BB31 /* Helpers */,
+				F5E47EC529B497C80083BB31 /* Models */,
+				F5E47EC429B497BF0083BB31 /* Features */,
+				F5E47EC329B497B00083BB31 /* Extensions */,
 				F5E47E9329B497A60083BB31 /* AssisChatApp.swift */,
 				F5E47E9529B497A60083BB31 /* Persistence.swift */,
 				F5E47E9A29B497A60083BB31 /* ContentView.swift */,
@@ -133,6 +183,105 @@
 				F5E47EB629B497A60083BB31 /* AssisChatUITestsLaunchTests.swift */,
 			);
 			path = AssisChatUITests;
+			sourceTree = "<group>";
+		};
+		F5E47EC329B497B00083BB31 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47ECE29B498290083BB31 /* Color+Extensions.swift */,
+				F5E47ED029B4983D0083BB31 /* Dictionary+Extensions.swift */,
+				F5E47ED229B498550083BB31 /* Notification+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F5E47EC429B497BF0083BB31 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47EF029B5A6840083BB31 /* Settings */,
+				F5E47EEA29B4E9F90083BB31 /* Message */,
+				F5E47EE529B4E8C80083BB31 /* Chating */,
+				F5E47ED729B498FB0083BB31 /* Chat */,
+				F5E47ED429B498C90083BB31 /* Essential */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		F5E47EC529B497C80083BB31 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47EC629B497FB0083BB31 /* Message+CoreDataClass.swift */,
+				F5E47EC729B497FB0083BB31 /* Message+CoreDataProperties.swift */,
+				F5E47EC829B497FB0083BB31 /* Chat+CoreDataClass.swift */,
+				F5E47EC929B497FB0083BB31 /* Chat+CoreDataProperties.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F5E47ED429B498C90083BB31 /* Essential */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47ED529B498E20083BB31 /* EssentialFeature.swift */,
+			);
+			path = Essential;
+			sourceTree = "<group>";
+		};
+		F5E47ED729B498FB0083BB31 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47ED829B4990A0083BB31 /* ChatFeature.swift */,
+				F5E47EDA29B49B880083BB31 /* ChatsView.swift */,
+				F5E47EDC29B49B9C0083BB31 /* NewChatView.swift */,
+				F5E47EE329B49DF90083BB31 /* ChatIconSelector.swift */,
+				F5E47EDE29B49CCA0083BB31 /* ColorSelector.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		F5E47EE029B49CFD0083BB31 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47EE129B49D0E0083BB31 /* Haptics.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F5E47EE529B4E8C80083BB31 /* Chating */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47EE629B4E8FB0083BB31 /* ChattingFeature.swift */,
+				F5E47EE829B4E9090083BB31 /* ChattingView.swift */,
+			);
+			path = Chating;
+			sourceTree = "<group>";
+		};
+		F5E47EEA29B4E9F90083BB31 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47EEB29B4EA0A0083BB31 /* MessageFeature.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		F5E47EED29B4F5850083BB31 /* ChattingAdapters */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47EEE29B4F5A80083BB31 /* ChatGPTAdapter.swift */,
+			);
+			path = ChattingAdapters;
+			sourceTree = "<group>";
+		};
+		F5E47EF029B5A6840083BB31 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F5E47EED29B4F5850083BB31 /* ChattingAdapters */,
+				F5E47EF129B5A6AB0083BB31 /* SettingsFeature.swift */,
+				F5E47EF929B5B6470083BB31 /* ChatSourceConfigView.swift */,
+				F5E47EF529B5B1B10083BB31 /* ColorSchemeSelector.swift */,
+				F5E47EF729B5B2320083BB31 /* TintSelector.swift */,
+				F5E47EF329B5AC380083BB31 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,10 +414,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5E47EDB29B49B880083BB31 /* ChatsView.swift in Sources */,
+				F5E47EEC29B4EA0A0083BB31 /* MessageFeature.swift in Sources */,
+				F5E47EFA29B5B6470083BB31 /* ChatSourceConfigView.swift in Sources */,
+				F5E47EE729B4E8FB0083BB31 /* ChattingFeature.swift in Sources */,
 				F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */,
+				F5E47EE229B49D0E0083BB31 /* Haptics.swift in Sources */,
 				F5E47E9929B497A60083BB31 /* AssisChat.xcdatamodeld in Sources */,
+				F5E47ECF29B498290083BB31 /* Color+Extensions.swift in Sources */,
+				F5E47EEF29B4F5A80083BB31 /* ChatGPTAdapter.swift in Sources */,
+				F5E47EE929B4E9090083BB31 /* ChattingView.swift in Sources */,
+				F5E47EF429B5AC380083BB31 /* SettingsView.swift in Sources */,
+				F5E47EE429B49DF90083BB31 /* ChatIconSelector.swift in Sources */,
+				F5E47ECB29B497FB0083BB31 /* Message+CoreDataProperties.swift in Sources */,
+				F5E47ECD29B497FB0083BB31 /* Chat+CoreDataProperties.swift in Sources */,
 				F5E47E9B29B497A60083BB31 /* ContentView.swift in Sources */,
+				F5E47ED329B498550083BB31 /* Notification+Extensions.swift in Sources */,
+				F5E47ECC29B497FB0083BB31 /* Chat+CoreDataClass.swift in Sources */,
+				F5E47EF229B5A6AB0083BB31 /* SettingsFeature.swift in Sources */,
+				F5E47ED929B4990A0083BB31 /* ChatFeature.swift in Sources */,
+				F5E47ED129B4983D0083BB31 /* Dictionary+Extensions.swift in Sources */,
+				F5E47ED629B498E20083BB31 /* EssentialFeature.swift in Sources */,
 				F5E47E9629B497A60083BB31 /* Persistence.swift in Sources */,
+				F5E47EF829B5B2320083BB31 /* TintSelector.swift in Sources */,
+				F5E47EDD29B49B9C0083BB31 /* NewChatView.swift in Sources */,
+				F5E47EDF29B49CCA0083BB31 /* ColorSelector.swift in Sources */,
+				F5E47EF629B5B1B10083BB31 /* ColorSchemeSelector.swift in Sources */,
+				F5E47ECA29B497FB0083BB31 /* Message+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +609,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
@@ -475,7 +647,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;

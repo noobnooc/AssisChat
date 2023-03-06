@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="true" userDefinedModelVersionIdentifier="">
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Chat" representedClassName="Chat" syncable="YES">
+        <attribute name="rawColor" optional="YES" attributeType="String"/>
+        <attribute name="rawCreatedAt" attributeType="Date" defaultDateTimeInterval="699676500" usesScalarValueType="NO"/>
+        <attribute name="rawIcon" optional="YES" attributeType="String"/>
+        <attribute name="rawName" attributeType="String" defaultValueString=""/>
+        <attribute name="rawSystemMessage" optional="YES" attributeType="String"/>
+        <attribute name="rawTemperature" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
+        <relationship name="rMessages" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Message" inverseName="rChat" inverseEntity="Message"/>
     </entity>
-    <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
-    </elements>
+    <entity name="Message" representedClassName="Message" syncable="YES">
+        <attribute name="rawContent" attributeType="String" defaultValueString=""/>
+        <attribute name="rawRole" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rawTimestamp" attributeType="Date" defaultDateTimeInterval="699675840" usesScalarValueType="NO"/>
+        <relationship name="rChat" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Chat" inverseName="rMessages" inverseEntity="Chat"/>
+    </entity>
 </model>
