@@ -94,9 +94,15 @@ extension EssentialFeature {
         let headers: Dictionary<String, String>?
     }
 
-    func requestURL<Response: Decodable>(urlString: String, init requestInit: RequestInit) async throws -> Response {
+    struct Response<ResponseData: Decodable, ResponseError: Decodable> {
+        let response: URLResponse
+        let data: ResponseData?
+        let error: ResponseError?
+    }
+
+    func requestURL<ResponseData: Decodable, ResponseError: Decodable>(urlString: String, init requestInit: RequestInit) async throws -> Response<ResponseData, ResponseError> {
         guard let url = URL(string: urlString) else {
-            throw NetworkError(errorDescription: "URL not valid")
+            throw GeneralError.badURL
         }
 
         var request = URLRequest(url: url)
@@ -115,19 +121,13 @@ extension EssentialFeature {
 
         let (data, response) = try await URLSession.shared.data(for: request)
 
-        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
-            throw NetworkError(errorDescription: "Request Failed")
-        }
+        let decodedResponseData = try? JSONDecoder().decode(ResponseData.self, from: data)
+        let decodedResponseError = try? JSONDecoder().decode(ResponseError.self, from: data)
 
-        let decodedResponse = try JSONDecoder().decode(Response.self, from: data)
-
-        return decodedResponse
-    }
-
-    struct NetworkError: LocalizedError {
-        var errorDescription: String?
+        return Response(response: response, data: decodedResponseData, error: decodedResponseError)
     }
 }
 
-
-
+enum GeneralError: Error {
+    case badURL
+}

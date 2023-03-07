@@ -6,6 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
+
+enum ChattingError: Error {
+    case invalidConfig
+    case sending(message: String)
+}
 
 protocol ChattingAdapter {
     func sendMessage(message: Message) async throws -> [PlainMessage]
@@ -34,8 +40,14 @@ class ChattingFeature: ObservableObject {
             let plainMessages = try await chattingAdapter.sendMessage(message: message)
 
             _ = messageFeature.createMessages(plainMessages)
+        } catch ChattingError.invalidConfig {
+            essentialFeature.appendAlert(alert: ErrorAlert(message: "Please config the chat source."))
+        } catch ChattingError.sending(message: let message) {
+            essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(message)))
+        } catch GeneralError.badURL {
+            essentialFeature.appendAlert(alert: ErrorAlert(message: "Please config the URL correctly."))
         } catch {
-            // TODO: Handle error
+            essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(error.localizedDescription)))
         }
     }
 }

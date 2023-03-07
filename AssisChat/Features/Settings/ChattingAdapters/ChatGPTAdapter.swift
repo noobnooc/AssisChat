@@ -54,7 +54,7 @@ extension ChatGPTAdapter: ChattingAdapter {
     }
 
     func request(messages: [ChatGPTMessage], temperature: Float) async throws -> [ChatGPTMessage] {
-        let response: ResponseBody = try await essentialFeature.requestURL(
+        let response: EssentialFeature.Response<ResponseBody, ResponseError> = try await essentialFeature.requestURL(
             urlString: "https://\(config.domain ?? "api.openai.com")/v1/chat/completions",
             init: .init(
                 method: .POST,
@@ -67,7 +67,13 @@ extension ChatGPTAdapter: ChattingAdapter {
                     "Authorization": "Bearer \(config.apiKey)"
                 ]))
 
-        return response.choices.map { choice in
+        guard let responseData = response.data else {
+            let errorMessage = response.error?.error.message ?? "Unknown Error"
+
+            throw ChattingError.sending(message: errorMessage)
+        }
+
+        return responseData.choices.map { choice in
             choice.message
         }
     }
@@ -93,7 +99,7 @@ extension ChatGPTAdapter: ChattingAdapter {
         struct Choice: Decodable {
             let index: Int
             let message: ChatGPTMessage
-            let finish_reason: String
+            let finish_reason: String?
         }
 
         struct Usage: Decodable {
