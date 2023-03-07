@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MarkdownUI
 
 struct ChattingView: View {
     @EnvironmentObject private var chattingFeature: ChattingFeature
@@ -48,9 +49,9 @@ struct ChattingView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
                     ChatDetailView(chat: chat)
-                        .navigationTitle("Chat Detail")
+                        .navigationTitle("CHAT_DETAIL")
                 } label: {
-                    Label("Chat Detail", systemImage: "info.circle")
+                    Label("CHAT_DETAIL", systemImage: "info.circle")
                 }
             }
         }
@@ -102,11 +103,11 @@ private struct AssistantMessage: View {
             HStack {
                 VStack(alignment: .trailing) {
                     if let content = message.content {
-                        Text(LocalizedStringKey(content.trimmingCharacters(in: .whitespacesAndNewlines)))
+                        Markdown(content.trimmingCharacters(in: .whitespacesAndNewlines))
                     } else if message.receiving {
                         ProgressView()
                     } else if message.failed {
-                        Label("Error", systemImage: "info.circle")
+                        Label("ERROR", systemImage: "info.circle")
                     }
                 }
                 .padding(.vertical, 8)
@@ -157,7 +158,7 @@ private struct UserMessage: View {
         VStack(alignment: .trailing, spacing: 2) {
             HStack {
                 Spacer(minLength: 50)
-                Text(LocalizedStringKey((message.content ?? "").trimmingCharacters(in: .whitespacesAndNewlines)))
+                Markdown((message.content ?? "").trimmingCharacters(in: .whitespacesAndNewlines))
                     .padding(.vertical, 8)
                     .padding(.horizontal, 15)
                     .background(Color.accentColor)
@@ -204,14 +205,14 @@ private struct MessageInput: View {
             Divider()
             HStack(alignment: .bottom) {
                 if #available(iOS 16.0, *) {
-                    TextField("New Message", text: $text, axis: .vertical)
+                    TextField("NEW_MESSAGE_HINT", text: $text, axis: .vertical)
                         .padding(8)
                         .background(.thinMaterial)
                         .cornerRadius(8)
                         .frame(minHeight: 45)
                         .lineLimit(1...3)
                 } else {
-                    TextField("New Message", text: $text)
+                    TextField("NEW_MESSAGE_HINT", text: $text)
                         .padding(8)
                         .background(.thickMaterial)
                         .frame(minHeight: 45)

@@ -10,7 +10,7 @@ import SwiftUI
 struct TintSelector: View {
     var body: some View {
         List {
-            Section("Tint") {
+            Section("SETTINGS_TINT") {
                 Selector()
             }
         }

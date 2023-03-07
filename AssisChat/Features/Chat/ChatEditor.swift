@@ -38,7 +38,7 @@ class ChatEditorModel: ObservableObject {
 
     var plain: PlainChat {
         PlainChat(
-            name: name.isEmpty ? "New Chat" : name,
+            name: name.isEmpty ? String(localized: "NEW_CHAT_NAME") : name,
             temperature: temperature,
             systemMessage: systemMessage.count > 0 ? systemMessage : nil,
             isolated: isolated,
@@ -65,7 +65,7 @@ struct ChatEditor<Actions: View>: View {
 
     var body: some View {
         List {
-            Section("Chat") {
+            Section("CHAT_EDITOR_CHAT_SECTION") {
                 HStack(spacing: 0) {
                     IconSelectorButton(selection: $model.icon)
                         .padding()
@@ -73,7 +73,7 @@ struct ChatEditor<Actions: View>: View {
                         .foregroundColor(Color.secondaryGroupedBackground)
                         .cornerRadius(10)
 
-                    TextField("New Chat", text: $model.name)
+                    TextField("NEW_CHAT_NAME", text: $model.name)
                         .font(.title3)
                         .padding()
                 }
@@ -82,50 +82,50 @@ struct ChatEditor<Actions: View>: View {
                     .padding(.vertical, 5)
             }
 
-            Section("Config") {
-                Picker("Temperature", selection: $model.temperature) {
-                    Text("Creative")
+            Section("CHAT_EDITOR_CONFIG_SECTION") {
+                Picker("CHAT_TEMPERATURE", selection: $model.temperature) {
+                    Text("CHAT_TEMPERATURE_CREATIVE")
                         .tag(Chat.Temperature.creative)
 
-                    Text("Balanced")
+                    Text("CHAT_TEMPERATURE_BALANCED")
                         .tag(Chat.Temperature.balanced)
 
-                    Text("Precise")
+                    Text("CHAT_TEMPERATURE_PRECISE")
                         .tag(Chat.Temperature.precise)
                 }
 
                 VStack(alignment: .leading) {
-                    Text("Role Prompt")
+                    Text("CHAT_ROLE_PROMPT")
                         .font(.footnote)
                         .foregroundColor(Color.secondary)
 
                     if #available(iOS 16, *) {
-                        TextField("Set the behavior of the assistant", text: $model.systemMessage, axis: .vertical)
+                        TextField("CHAT_ROLE_PROMPT_HINT", text: $model.systemMessage, axis: .vertical)
                             .lineLimit(1...3)
                     } else {
-                        TextField("Set the behavior of the assistant", text: $model.systemMessage)
+                        TextField("CHAT_ROLE_PROMPT_HINT", text: $model.systemMessage)
                     }
                 }
 
                 VStack(alignment: .leading) {
-                    Text("Message Prefix")
+                    Text("CHAT_MESSAGE_PREFIX")
                         .font(.footnote)
                         .foregroundColor(Color.secondary)
 
                     if #available(iOS 16, *) {
-                        TextField("Will be added before each message", text: $model.messagePrefix, axis: .vertical)
+                        TextField("CHAT_MESSAGE_PREFIX_HINT", text: $model.messagePrefix, axis: .vertical)
                             .lineLimit(1...3)
                     } else {
-                        TextField("Will be added before each message", text: $model.messagePrefix)
+                        TextField("CHAT_MESSAGE_PREFIX_HINT", text: $model.messagePrefix)
                     }
                 }
 
                 VStack(alignment: .trailing) {
                     Toggle(isOn: $model.isolated) {
-                        Text("Isolated")
+                        Text("CHAT_ISOLATED")
                     }
 
-                    Text("Isolated chat will not send history messages")
+                    Text("CHAT_ISOLATED_HINT")
                         .font(.footnote)
                         .foregroundColor(Color.secondary)
                 }
@@ -152,9 +152,9 @@ struct ChatEditor<Actions: View>: View {
             .sheet(isPresented: $sheetPresented) {
                 NavigationView {
                     ChatIconSelector(selection: $selection)
-                        .navigationTitle("Select an icon")
+                        .navigationTitle("CHAT_EDITOR_ICON_SELECTOR_TITLE")
                         .navigationBarTitleDisplayMode(.inline)
-                        .navigationBarItems(trailing: Button("Done", action: {
+                        .navigationBarItems(trailing: Button("DONE", action: {
                             sheetPresented = false
                         }))
                         .foregroundColor(.primary)
@@ -167,7 +167,7 @@ struct ChatEditor<Actions: View>: View {
 
 struct ChatEditor_Previews: PreviewProvider {
     static var previews: some View {
-        ChatEditor(model: .init(name: "Hello", temperature: .balanced, systemMessage: "", isolated: false, messagePrefix: "", icon: .default, color: .default)) {
+        ChatEditor(model: .init(name: "", temperature: .balanced, systemMessage: "", isolated: false, messagePrefix: "", icon: .default, color: .default)) {
 
         }
     }

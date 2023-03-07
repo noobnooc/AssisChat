@@ -35,7 +35,7 @@ private struct Content: View {
                         .cornerRadius(20)
                     Text("AssisChat")
                         .padding(.top)
-                    Text("Assistant chatting.")
+                    Text("APP_SLOGAN")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
@@ -44,7 +44,7 @@ private struct Content: View {
             .listRowBackground(Color.clear)
 
             Section {
-                Text("Config Your OpenAI API")
+                Text("SETTINGS_CHAT_SOURCE_OPENAI_SUMMARY")
                     .frame(maxWidth: .infinity)
             }
             .listRowBackground(Color.clear)
@@ -52,17 +52,17 @@ private struct Content: View {
             Section {
                 TextField("sk-XXXXXXX", text: $openAIAPIKey)
             } header: {
-                Text("OpenAI API Key")
+                Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY")
             } footer: {
-                Text("Get an API key from https://platform.openai.com/account/api-keys")
+                Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY_HINT")
             }
 
             Section {
                 TextField("api.openai.com", text: $openAIDomain)
             } header: {
-                Text("OpenAI API domain (Optional)")
+                Text("SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN")
             } footer: {
-                Text("We recommend leaving it blank to use the default value. Please use a domain that you completely trust, otherwise your API key will be leaked.")
+                Text("SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN_HINT")
             }
 
             Section {
@@ -74,7 +74,7 @@ private struct Content: View {
                             ProgressView()
                         }
 
-                        Text("Validate and Save")
+                        Text("SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE")
                             .bold()
                     }
                     .frame(maxWidth: .infinity)
@@ -92,7 +92,7 @@ private struct Content: View {
     func validateAndSave() -> Void {
         Task {
             if openAIAPIKey.isEmpty {
-                essentialFeature.appendAlert(alert: ErrorAlert(message: "Please input API key"))
+                essentialFeature.appendAlert(alert: ErrorAlert(message: "SETTINGS_CHAT_SOURCE_NO_API_KEY"))
                 return
             }
 
@@ -100,7 +100,7 @@ private struct Content: View {
 
             validating = true
 
-            let saved = await settingsFeature.validateAndConfigOpenAI(apiKey: openAIAPIKey, for: domain)
+            _ = await settingsFeature.validateAndConfigOpenAI(apiKey: openAIAPIKey, for: domain)
 
             validating = false
         }

@@ -27,7 +27,7 @@ struct EditChatView: View {
                     update()
                     dismiss()
                 } label: {
-                    Text("Save Chat")
+                    Text("CHAT_UPDATE")
                         .bold()
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -43,7 +43,7 @@ struct EditChatView: View {
                 Button {
                     dismiss()
                 } label: {
-                    Text("Cancel")
+                    Text("CANCEL")
                         .frame(maxWidth: .infinity)
                         .padding()
                 }
@@ -52,13 +52,13 @@ struct EditChatView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button("Cancel") {
+                Button("CANCEL") {
                     dismiss()
                 }
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Save") {
+                Button("CHAT_UPDATE_SHORT") {
                     update()
                     dismiss()
                 }

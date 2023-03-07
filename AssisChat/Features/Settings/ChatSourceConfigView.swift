@@ -30,17 +30,17 @@ private struct Content: View {
             Section {
                 TextField("sk-XXXXXXX", text: $openAIAPIKey)
             } header: {
-                Text("OpenAI API Key")
+                Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY")
             } footer: {
-                Text("Get an API key from https://platform.openai.com/account/api-keys")
+                Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY_HINT")
             }
 
             Section {
                 TextField("api.openai.com", text: $openAIDomain)
             } header: {
-                Text("OpenAI API domain")
+                Text("SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN")
             } footer: {
-                Text("Use proxy domain. We recommend leaving it blank to use the default value. Please use a domain that you completely trust, otherwise your API key will be leaked.")
+                Text("SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN_HINT")
             }
 
             Section {
@@ -52,7 +52,7 @@ private struct Content: View {
                             ProgressView()
                         }
 
-                        Text("Validate and Save")
+                        Text("SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE")
                             .bold()
                     }
                     .frame(maxWidth: .infinity)
@@ -70,7 +70,7 @@ private struct Content: View {
     func validateAndSave() -> Void {
         Task {
             if openAIAPIKey.isEmpty {
-                essentialFeature.appendAlert(alert: ErrorAlert(message: "Please input API key"))
+                essentialFeature.appendAlert(alert: ErrorAlert(message: "SETTINGS_CHAT_SOURCE_NO_API_KEY"))
                 return
             }
 
@@ -83,9 +83,9 @@ private struct Content: View {
             validating = false
 
             if saved {
-                essentialFeature.appendAlert(alert: GeneralAlert(title: "Success", message: "Success validated the config and saved."))
+                essentialFeature.appendAlert(alert: GeneralAlert(title: "SUCCESS", message: "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_SUCCESS"))
             } else {
-                essentialFeature.appendAlert(alert: ErrorAlert(message: "Failed to validate"))
+                essentialFeature.appendAlert(alert: ErrorAlert(message: "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_FAILED"))
             }
 
         }

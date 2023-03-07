@@ -29,22 +29,22 @@ struct SettingsView: View {
             }
             .listRowBackground(Color.clear)
 
-            Section("Chat") {
+            Section("SETTINGS_CHAT") {
                 NavigationLink {
                     ChatSourceConfigView()
-                        .navigationTitle("Chat Source")
+                        .navigationTitle("SETTINGS_CHAT_SOURCE")
                 } label: {
-                    Label("Source", systemImage: "globe.asia.australia")
+                    Label("SETTINGS_CHAT_SOURCE", systemImage: "globe.asia.australia")
                 }
             }
 
-            Section("Theme") {
+            Section("SETTINGS_THEME") {
                 NavigationLink {
                     ColorSchemeSelector()
-                        .navigationTitle("Color Scheme")
+                        .navigationTitle("SETTINGS_COLOR_SCHEME")
                 } label: {
                     Label {
-                        Text("Color Scheme")
+                        Text("SETTINGS_COLOR_SCHEME")
                             .foregroundColor(.primary)
                     } icon: {
                         Image(systemName: "die.face.5")
@@ -54,10 +54,10 @@ struct SettingsView: View {
 
                 NavigationLink {
                     TintSelector()
-                        .navigationTitle("Tint")
+                        .navigationTitle("SETTINGS_TINT")
                 } label: {
                     Label {
-                        Text("Tint")
+                        Text("SETTINGS_TINT")
                             .foregroundColor(.primary)
                     } icon: {
                         Image(systemName: "paintbrush.pointed")
@@ -66,7 +66,7 @@ struct SettingsView: View {
                 }
             }
 
-            Section("About") {
+            Section("SETTINGS_ABOUT") {
                 Button {
                     openURL(URL(string: "https://twitter.com/noobnooc")!)
                 } label: {
@@ -83,7 +83,7 @@ struct SettingsView: View {
                     openURL(URL(string: "mailto:app@nooc.ink")!)
                 } label: {
                     Label {
-                        Text("Feedback")
+                        Text("SETTINGS_FEEDBACK")
                             .foregroundColor(.primary)
                     } icon: {
                         Image(systemName: "envelope")

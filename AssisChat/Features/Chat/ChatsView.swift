@@ -24,19 +24,19 @@ struct ChatsView: View {
                             Button {
                                 chatFeature.clearMessages(for: chat)
                             } label: {
-                                Label("Clear", systemImage: "eraser.line.dashed")
+                                Label("CHAT_CLEAR_MESSAGE", systemImage: "eraser.line.dashed")
                             }
                         })
                         .contextMenu {
                             Button {
                                 chatFeature.clearMessages(for: chat)
                             } label: {
-                                Label("Clear", systemImage: "eraser.line.dashed")
+                                Label("CHAT_CLEAR_MESSAGE", systemImage: "eraser.line.dashed")
                             }
                             Button(role: .destructive) {
                                 chatFeature.deleteChats([chat])
                             } label: {
-                                Label("Delete Chat", systemImage: "trash")
+                                Label("CHAT_DELETE", systemImage: "trash")
                             }
                         }
                     }
@@ -53,7 +53,7 @@ struct ChatsView: View {
                         .symbolVariant(.square)
                         .foregroundColor(.secondary)
 
-                    Text("Click the plus button to create a new chat.")
+                    Text("CHATS_EMPTY_HINT")
                         .foregroundColor(.secondary)
                         .font(.subheadline)
                         .padding(.top)
@@ -67,9 +67,9 @@ struct ChatsView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
                     SettingsView()
-                        .navigationTitle("Settings")
+                        .navigationTitle("SETTINGS")
                 } label: {
-                    Label("Settings", systemImage: "gearshape")
+                    Label("SETTINGS", systemImage: "gearshape")
                 }
             }
         }
@@ -97,7 +97,7 @@ private struct ChatItem: View {
 
             VStack(alignment: .leading, spacing: 5) {
                 Text(chat.name)
-                Text(chat.systemMessage ?? "General Chat")
+                Text(chat.systemMessage ?? String(localized: "CHAT_ROLE_PROMPT_BLANK_HINT"))
                     .font(.footnote)
                     .foregroundColor(.secondary)
                     .lineLimit(2)
@@ -125,7 +125,7 @@ private struct ChatCreatingButton: View {
         .sheet(isPresented: $creating) {
             NavigationView {
                 NewChatView()
-                    .navigationTitle("New Chat")
+                    .navigationTitle("NEW_CHAT_NAME")
                     .navigationBarTitleDisplayMode(.inline)
             }
         }

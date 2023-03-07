@@ -45,7 +45,7 @@ struct GeneralAlert: Alert {
 }
 
 struct ErrorAlert: Alert {
-    let title = LocalizedStringKey("Error")
+    let title = LocalizedStringKey("ERROR")
     let message: LocalizedStringKey
 }
 

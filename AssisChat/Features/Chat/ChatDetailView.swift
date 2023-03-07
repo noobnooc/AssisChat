@@ -35,7 +35,7 @@ struct ChatDetailView: View {
                             .cornerRadius(.infinity)
 
                         if chat.isolated {
-                            Text("Isolated")
+                            Text("CHAT_ISOLATED")
                                 .padding(.vertical, 5)
                                 .padding(.horizontal, 10)
                                 .background(Color.appRed)
@@ -51,17 +51,17 @@ struct ChatDetailView: View {
             .listRowBackground(Color.clear)
 
             if let systemMessage = chat.systemMessage {
-                Section("Role Prompt") {
+                Section("CHAT_ROLE_PROMPT") {
                     Text(systemMessage)
                         .foregroundColor(Color.secondary)
                 }
             }
 
             if chat.messagePrefix != nil {
-                Section("Config") {
+                Section("CHAT_EDITOR_CONFIG_SECTION") {
                     if let messagePrefix = chat.messagePrefix {
                         VStack(alignment: .leading) {
-                            Text("Message Prefix")
+                            Text("CHAT_MESSAGE_PREFIX")
                                 .font(.footnote)
                                 .foregroundColor(Color.secondary)
                             
@@ -77,22 +77,22 @@ struct ChatDetailView: View {
                 Button {
                     editing = true
                 } label: {
-                    Label("Edit", systemImage: "pencil")
+                    Label("EDIT", systemImage: "pencil")
                 }
 
                 Button {
                     chatFeature.clearMessages(for: chat)
                 } label: {
-                    Label("Clear Messages", systemImage: "eraser.line.dashed")
+                    Label("CHAT_CLEAR_MESSAGE", systemImage: "eraser.line.dashed")
                 }
             } label: {
-                Label("Actions", systemImage: "ellipsis")
+                Label("CHAT_ACTIONS", systemImage: "ellipsis")
             }
         }
         .sheet(isPresented: $editing) {
             NavigationView {
                 EditChatView(chat: chat)
-                    .navigationTitle("Edit Chat")
+                    .navigationTitle("CHAT_EDIT")
                     .navigationBarTitleDisplayMode(.inline)
             }
         }

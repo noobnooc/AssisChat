@@ -10,7 +10,7 @@ import SwiftUI
 struct ColorSchemeSelector: View {
     var body: some View {
         List {
-            Section("Color Scheme") {
+            Section("SETTINGS_COLOR_SCHEME") {
                 Selector()
             }
         }

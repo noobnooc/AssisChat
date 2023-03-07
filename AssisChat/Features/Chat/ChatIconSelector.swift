@@ -22,7 +22,7 @@ struct ChatIconSelector: View {
     var body: some View {
         VStack(alignment: .leading) {
             List {
-                Section("Icons") {
+                Section("CHAT_EDITOR_ICON_SELECTOR_ICON") {
                     LazyVGrid(columns: Self.selectorGridLayout) {
                         ForEach(Chat.Icon.symbols) { symbol in
                             let selected = symbol == selection

@@ -1,0 +1,143 @@
+/* 
+  Localizable.strings
+  AssisChat
+
+  Created by Nooc on 2023-03-07.
+  
+*/
+
+// MARK: - Common
+
+// Done
+"DONE" = "Done";
+// Cancel
+"CANCEL" = "Cancel";
+// Edit
+"EDIT" = "Edit";
+// Error
+"ERROR" = "Error";
+// Success
+"SUCCESS" = "Success";
+
+// MARK: - App
+
+// App slogan
+"APP_SLOGAN" = "Assistant chatting.";
+
+
+// MARK: - Chat
+
+// The name of new chat
+"NEW_CHAT_NAME" = "New Chat";
+// The action to create a chat
+"CHAT_CREATE" = "Start Chat";
+// The short form of the action to create a chat
+"CHAT_CREATE_SHORT" = "Start";
+// The action to update a chat
+"CHAT_UPDATE" = "Save Chat";
+// The short form of the action to update a chat
+"CHAT_UPDATE_SHORT" = "Save";
+// The action to edit a chat
+"CHAT_EDIT" = "Edit Chat";
+
+// Chat temperature
+"CHAT_TEMPERATURE" = "Temperature";
+// Chat temperature creative
+"CHAT_TEMPERATURE_CREATIVE" = "Creative";
+// Chat temperature balanced
+"CHAT_TEMPERATURE_BALANCED" = "Balanced";
+// Chat temperature precise
+"CHAT_TEMPERATURE_PRECISE" = "Precise";
+
+// Chat role prompt
+"CHAT_ROLE_PROMPT" = "Role Prompt";
+// Chat role prompt hint
+"CHAT_ROLE_PROMPT_HINT" = "Set the behavior of the assistant";
+// Chat role rompt blank hint
+"CHAT_ROLE_PROMPT_BLANK_HINT" = "General chat.";
+
+// Chat message prefix
+"CHAT_MESSAGE_PREFIX" = "Message Prefix";
+// Chat message prefix hint
+"CHAT_MESSAGE_PREFIX_HINT" = "Will be added before each message";
+
+// Chat isolated
+"CHAT_ISOLATED" = "Isolated";
+// Chat isolated hint
+"CHAT_ISOLATED_HINT" = "Isolated chat will not send history messages";
+
+
+// Chat actions
+"CHAT_ACTIONS" = "Actions";
+// Chat clear message
+"CHAT_CLEAR_MESSAGE" = "Clear Messages";
+// Chat delete
+"CHAT_DELETE" = "Delete Chat";
+
+// MARK: Chat detail
+
+// Chat detail
+"CHAT_DETAIL" = "Chat Detail";
+
+
+// MARK: Chat editor
+
+// Chat editor chat section
+"CHAT_EDITOR_CHAT_SECTION" = "Chat";
+// Chat editor config section
+"CHAT_EDITOR_CONFIG_SECTION" = "Config";
+// Chat editor icon selector title
+"CHAT_EDITOR_ICON_SELECTOR_TITLE" = "Select an icon";
+// Chat editor icon selector icon section
+"CHAT_EDITOR_ICON_SELECTOR_ICON" = "Icon";
+
+// MARK: Chats
+
+// Chats empty hint
+"CHATS_EMPTY_HINT" = "Click the plus button to create a new chat.";
+
+
+// MARK: - Messages
+// New message hint
+"NEW_MESSAGE_HINT" = "New Message";
+
+
+// MARK: - Settings
+
+// Settings
+"SETTINGS" = "Settings";
+// Settings chat section title
+"SETTINGS_CHAT" = "Chat";
+// Settings theme section title
+"SETTINGS_THEME" = "Theme";
+// Settings color scheme
+"SETTINGS_COLOR_SCHEME" = "Color Scheme";
+// Settings tin
+"SETTINGS_TINT" = "Tint";
+// Settings about
+"SETTINGS_ABOUT" = "About";
+// Settings Feedback
+"SETTINGS_FEEDBACK" = "Feedback";
+
+// MARK: Data source
+
+// Settings chat source
+"SETTINGS_CHAT_SOURCE" = "Chat Source";
+// Settings chat source summary
+"SETTINGS_CHAT_SOURCE_OPENAI_SUMMARY" = "Config Your OpenAI API";
+// Settings chat source OpenAI API Key
+"SETTINGS_CHAT_SOURCE_OPENAI_KEY" = "OpenAI API Key";
+// Settings chat source OpenAI API key hint
+"SETTINGS_CHAT_SOURCE_OPENAI_KEY_HINT" = "Get an API key from https://platform.openai.com/account/api-keys";
+// Settings chat source OpenAI API domain
+"SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN" = "OpenAI API domain (optional)";
+// Settings chat source OpenAI API domain hint
+"SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN_HINT" = "Use proxy domain. We recommend leaving it blank to use the default value. Please use a domain that you completely trust, otherwise your API key will be leaked.";
+// Settings chat source validate and save button
+"SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE" = "Validate and Save";
+// Settings chat source validate and save success
+"SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_SUCCESS" = "Success validated the config and saved.";
+// Settings chat source validate and save failed
+"SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_FAILED" = "Failed to validate";
+// Settings chat source api key empty error message
+"SETTINGS_CHAT_SOURCE_NO_API_KEY" = "Please input API key";
