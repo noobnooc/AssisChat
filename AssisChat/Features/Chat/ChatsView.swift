@@ -24,19 +24,19 @@ struct ChatsView: View {
                             Button {
                                 chatFeature.clearMessages(for: chat)
                             } label: {
-                                Text("Clear")
+                                Label("Clear", systemImage: "eraser.line.dashed")
                             }
                         })
                         .contextMenu {
                             Button {
                                 chatFeature.clearMessages(for: chat)
                             } label: {
-                                Text("Clear Messages")
+                                Label("Clear", systemImage: "eraser.line.dashed")
                             }
                             Button(role: .destructive) {
                                 chatFeature.deleteChats([chat])
                             } label: {
-                                Text("Delete Chat")
+                                Label("Delete Chat", systemImage: "trash")
                             }
                         }
                     }

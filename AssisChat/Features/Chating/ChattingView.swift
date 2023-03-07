@@ -12,8 +12,6 @@ struct ChattingView: View {
 
     @ObservedObject var chat: Chat
 
-    @State var sending = false
-
     var body: some View {
         VStack(spacing: 0) {
             let scrollView = ScrollView {
@@ -21,13 +19,28 @@ struct ChattingView: View {
                     .fill(.clear)
                     .frame(height: 10)
 
-                if sending {
+                if chat.sending || chat.failed {
                     HStack {
-                        ProgressView()
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 15)
-                            .background(Color.secondaryBackground)
-                            .cornerRadius(15, corners: [.bottomRight, .topRight, .topLeft])
+                        ZStack {
+                            if chat.sending {
+                                ProgressView()
+                            } else {
+                                Label("Retry", systemImage: "arrow.triangle.2.circlepath")
+                            }
+                        }
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 15)
+                        .background(chat.failed ? Color.appRed : Color.secondaryBackground)
+                        .cornerRadius(15, corners: [.bottomRight, .topRight, .topLeft])
+                        .foregroundColor(chat.failed ? Color.white : Color.primary)
+                        .onTapGesture {
+                            if chat.failed {
+                                Task {
+                                    await chattingFeature.retry(chat: chat)
+                                }
+                            }
+                        }
+
                         Spacer(minLength: 50)
                     }
                     .padding(.horizontal, 10)
@@ -44,10 +57,11 @@ struct ChattingView: View {
                     .fill(.clear)
                     .frame(height: 20)
             }
-            .scaleEffect(x: 1, y: -1, anchor: .center)
-            .safeAreaInset(edge: .bottom, spacing: 0) {
-                MessageInput(chat: chat, sending: $sending)
-            }
+                .scaleEffect(x: 1, y: -1, anchor: .center)
+                .safeAreaInset(edge: .bottom, spacing: 0) {
+                    MessageInput(chat: chat)
+                }
+                .animation(.easeOut, value: chat)
 
             if #available(iOS 16, *) {
                 scrollView
@@ -61,6 +75,8 @@ struct ChattingView: View {
 }
 
 private struct MessageItem: View {
+    @EnvironmentObject private var messageFeature: MessageFeature
+
     @ObservedObject var message: Message
 
     var body: some View {
@@ -89,7 +105,6 @@ private struct MessageInput: View {
     @EnvironmentObject private var chattingFeature: ChattingFeature
 
     @ObservedObject var chat: Chat
-    @Binding var sending: Bool
     @State private var text = ""
 
 
@@ -115,23 +130,19 @@ private struct MessageInput: View {
                         let messageContent = text
                         text = ""
 
-                        sending = true
-
-                        await chattingFeature.sendMessage(
+                        await chattingFeature.send(
                             plainMessage: .init(
                                 chat: chat,
                                 role: .user,
                                 content: messageContent,
                                 processedContent: (chat.messagePrefix != nil ? "\(chat.messagePrefix!)\n\n" : "") + messageContent))
-
-                        sending = false
                     }
 
                 } label: {
                     Image(systemName: "paperplane")
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(text.isEmpty || sending)
+                .disabled(text.isEmpty || chat.sending)
             }
             .padding(10)
             .background(.regularMaterial)

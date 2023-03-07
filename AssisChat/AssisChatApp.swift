@@ -25,7 +25,11 @@ struct AssisChatApp: App {
         _settingsFeature = StateObject(wrappedValue: settingsFeature)
         chatFeature = ChatFeature(essentialFeature: essentialFeature)
         messageFeature = MessageFeature(essentialFeature: essentialFeature)
-        chattingFeature = ChattingFeature(essentialFeature: essentialFeature, settingsFeature: settingsFeature, messageFeature: messageFeature)
+        chattingFeature = ChattingFeature(
+            essentialFeature: essentialFeature,
+            settingsFeature: settingsFeature,
+            chatFeature: chatFeature,
+            messageFeature: messageFeature)
 
         UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBarAppearance()
     }

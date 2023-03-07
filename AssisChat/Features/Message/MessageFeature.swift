@@ -16,6 +16,12 @@ struct PlainMessage {
     var available: Bool {
         content.count > 0
     }
+
+    static func from(message: Message) -> PlainMessage? {
+        guard let chat = message.chat else { return nil }
+
+        return PlainMessage(chat: chat, role: message.role, content: message.content, processedContent: message.processedContent)
+    }
 }
 
 class MessageFeature: ObservableObject {

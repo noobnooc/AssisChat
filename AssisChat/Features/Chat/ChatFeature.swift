@@ -118,4 +118,16 @@ extension ChatFeature {
 
         essentialFeature.persistData()
     }
+
+    func markFailed(for chat: Chat) {
+        chat.rawFailed = true
+
+        essentialFeature.persistData()
+    }
+
+    func unmarkFailed(for chat: Chat) {
+        chat.rawFailed = false
+
+        essentialFeature.persistData()
+    }
 }

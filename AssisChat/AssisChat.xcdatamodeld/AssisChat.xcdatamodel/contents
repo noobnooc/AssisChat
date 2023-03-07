@@ -4,12 +4,14 @@
         <attribute name="derivedUpdatedAt" optional="YES" attributeType="Date" derived="YES" derivationExpression="now()" usesScalarValueType="NO"/>
         <attribute name="rawColor" optional="YES" attributeType="String"/>
         <attribute name="rawCreatedAt" attributeType="Date" defaultDateTimeInterval="699676500" usesScalarValueType="NO"/>
+        <attribute name="rawFailed" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="rawIcon" optional="YES" attributeType="String"/>
         <attribute name="rawIsolated" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="rawMessagePrefix" optional="YES" attributeType="String"/>
         <attribute name="rawName" attributeType="String" defaultValueString=""/>
         <attribute name="rawSystemMessage" optional="YES" attributeType="String"/>
         <attribute name="rawTemperature" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="tSending" transient="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <relationship name="rMessages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Message" inverseName="rChat" inverseEntity="Message"/>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">

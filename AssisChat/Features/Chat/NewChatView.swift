@@ -131,7 +131,7 @@ struct NewChatView: View {
                     create()
                     dismiss()
                 } label: {
-                    Text("Create Chat")
+                    Text("Start Chat")
                         .bold()
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -164,7 +164,7 @@ struct NewChatView: View {
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Create") {
+                Button("Start") {
                     create()
                     dismiss()
                 }
