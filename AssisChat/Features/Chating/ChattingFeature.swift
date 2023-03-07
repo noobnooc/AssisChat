@@ -14,6 +14,7 @@ enum ChattingError: Error {
 }
 
 protocol ChattingAdapter {
+    func sendMessageWithStream(message: Message, receivingMessage: Message) async throws
     func sendMessage(message: Message) async throws -> [PlainMessage]
     func validateConfig() async -> Bool
 }
@@ -39,21 +40,42 @@ class ChattingFeature: ObservableObject {
         await send(message: message)
     }
 
+    func sendWithStream(plainMessage: PlainMessage) async {
+        let message = messageFeature.createMessage(plainMessage)
+        let receivingMessage = messageFeature.createReceivingMessage(for: plainMessage.chat)
+
+        guard let message = message, let receivingMessage = receivingMessage else { return }
+
+        await sendWithStream(message: message, receivingMessage: receivingMessage)
+    }
+
     func retry(chat: Chat) async {
         guard let lastMessage = chat.messages.last, lastMessage.role == .user else { return }
 
         await send(message: lastMessage)
     }
 
-    private func send(message: Message) async {
-        guard let chat = message.chat else { return }
+    private func sendWithStream(message: Message, receivingMessage: Message) async {
+        receivingMessage.markReceiving()
 
-        chat.markSending(sending: true)
+        do {
+            guard let chattingAdapter = settingsFeature.chattingAdapter else { return }
 
-        if chat.failed {
-            chatFeature.unmarkFailed(for: chat)
+            try await chattingAdapter.sendMessageWithStream(message: message, receivingMessage: receivingMessage)
+        } catch ChattingError.invalidConfig {
+            essentialFeature.appendAlert(alert: ErrorAlert(message: "Please config the chat source."))
+        } catch ChattingError.sending(message: let message) {
+            essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(message)))
+        } catch GeneralError.badURL {
+            essentialFeature.appendAlert(alert: ErrorAlert(message: "Please config the URL correctly."))
+        } catch {
+            essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(error.localizedDescription)))
         }
 
+        receivingMessage.unmarkReceiving()
+    }
+
+    private func send(message: Message) async {
         do {
             guard let chattingAdapter = settingsFeature.chattingAdapter else { return }
 
@@ -61,19 +83,13 @@ class ChattingFeature: ObservableObject {
 
             _ = messageFeature.createMessages(plainMessages)
         } catch ChattingError.invalidConfig {
-            chatFeature.markFailed(for: chat)
             essentialFeature.appendAlert(alert: ErrorAlert(message: "Please config the chat source."))
         } catch ChattingError.sending(message: let message) {
-            chatFeature.markFailed(for: chat)
             essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(message)))
         } catch GeneralError.badURL {
-            chatFeature.markFailed(for: chat)
             essentialFeature.appendAlert(alert: ErrorAlert(message: "Please config the URL correctly."))
         } catch {
-            chatFeature.markFailed(for: chat)
             essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(error.localizedDescription)))
         }
-
-        chat.markSending(sending: false)
     }
 }

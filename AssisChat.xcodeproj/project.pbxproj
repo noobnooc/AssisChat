@@ -47,6 +47,7 @@
 		F5E47F0B29B7002D0083BB31 /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0A29B7002D0083BB31 /* ChatDetailView.swift */; };
 		F5E47F0D29B706FF0083BB31 /* ChatEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0C29B706FF0083BB31 /* ChatEditor.swift */; };
 		F5E47F0F29B708D00083BB31 /* EditChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0E29B708D00083BB31 /* EditChatView.swift */; };
+		F5E47F1C29B721AA0083BB31 /* LDSwiftEventSource in Frameworks */ = {isa = PBXBuildFile; productRef = F5E47F1B29B721AA0083BB31 /* LDSwiftEventSource */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5E47F1C29B721AA0083BB31 /* LDSwiftEventSource in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +344,9 @@
 			dependencies = (
 			);
 			name = AssisChat;
+			packageProductDependencies = (
+				F5E47F1B29B721AA0083BB31 /* LDSwiftEventSource */,
+			);
 			productName = AssisChat;
 			productReference = F5E47E9029B497A60083BB31 /* AssisChat.app */;
 			productType = "com.apple.product-type.application";
@@ -414,6 +419,9 @@
 				Base,
 			);
 			mainGroup = F5E47E8729B497A60083BB31;
+			packageReferences = (
+				F5E47F1A29B721AA0083BB31 /* XCRemoteSwiftPackageReference "swift-eventsource" */,
+			);
 			productRefGroup = F5E47E9129B497A60083BB31 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -846,6 +854,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F5E47F1A29B721AA0083BB31 /* XCRemoteSwiftPackageReference "swift-eventsource" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LaunchDarkly/swift-eventsource";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F5E47F1B29B721AA0083BB31 /* LDSwiftEventSource */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5E47F1A29B721AA0083BB31 /* XCRemoteSwiftPackageReference "swift-eventsource" */;
+			productName = LDSwiftEventSource;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */ = {

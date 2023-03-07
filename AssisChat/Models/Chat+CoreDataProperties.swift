@@ -25,8 +25,6 @@ extension Chat {
     @NSManaged public var derivedUpdatedAt: Date?
     @NSManaged public var rawIsolated: Bool
     @NSManaged public var rawMessagePrefix: String?
-    @NSManaged public var rawFailed: Bool
-    @NSManaged public var tSending: Bool
     @NSManaged public var rMessages: NSSet?
 
 }

@@ -10,17 +10,17 @@ import Foundation
 struct PlainMessage {
     let chat: Chat
     let role: Message.Role
-    let content: String
+    let content: String?
     let processedContent: String?
 
     var available: Bool {
-        content.count > 0
+        content != nil && content!.count > 0
     }
 
     static func from(message: Message) -> PlainMessage? {
         guard let chat = message.chat else { return nil }
 
-        return PlainMessage(chat: chat, role: message.role, content: message.content, processedContent: message.processedContent)
+        return PlainMessage(chat: chat, role: message.role, content: message.content ?? "", processedContent: message.processedContent)
     }
 }
 
@@ -41,8 +41,14 @@ extension MessageFeature {
         return messages.first
     }
 
-    func createMessages(_ plainMessages: [PlainMessage]) -> [Message] {
-        guard plainMessages.allSatisfy({ message in
+    func createReceivingMessage(for chat: Chat) -> Message? {
+        let plainMessage = PlainMessage(chat: chat, role: .assistant, content: nil, processedContent: nil)
+
+        return createMessages([plainMessage], receiving: true).first
+    }
+
+    func createMessages(_ plainMessages: [PlainMessage], receiving: Bool = false) -> [Message] {
+        guard receiving || plainMessages.allSatisfy({ message in
             message.available
         }) else {
             return []
@@ -57,6 +63,10 @@ extension MessageFeature {
             message.rawRole = plainMessage.role.rawValue
             message.rawContent = plainMessage.content
             message.rawProcessedContent = plainMessage.processedContent
+
+            if receiving {
+                message.tReceiving = true
+            }
 
             messages.append(message)
         }
@@ -79,6 +89,10 @@ extension MessageFeature {
     func deleteMessages(_ messages: [Message]) {
         messages.forEach(essentialFeature.context.delete)
 
+        essentialFeature.persistData()
+    }
+
+    func completeMessage(for message: Message) {
         essentialFeature.persistData()
     }
 }

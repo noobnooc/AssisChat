@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import LDSwiftEventSource
+import Combine
 
 class ChatGPTAdapter {
     struct Config {
@@ -23,22 +25,14 @@ class ChatGPTAdapter {
 }
 
 extension ChatGPTAdapter: ChattingAdapter {
+    func sendMessageWithStream(message: Message, receivingMessage: Message) async throws {
+        try await requestStream(messages: retrieveGPTMessages(message: message), for: receivingMessage)
+    }
+
     func sendMessage(message: Message) async throws -> [PlainMessage] {
         guard let chat = message.chat else { return [] }
 
-        let systemMessages = chat.systemMessage != nil ? [ChatGPTMessage(role: .system, content: chat.systemMessage!)] : []
-
-        var gptMessages: [ChatGPTMessage]
-
-        if chat.isolated {
-            gptMessages = systemMessages + [ChatGPTMessage.fromMessage(message: message)]
-        } else {
-            gptMessages = systemMessages + (chat.messages + [message]).map({ message in
-                ChatGPTMessage.fromMessage(message: message)
-            })
-        }
-
-        return try await request(messages: gptMessages, temperature: chat.temperature.rawValue).map { gptMessage in
+        return try await request(messages: retrieveGPTMessages(message: message), temperature: chat.temperature.rawValue).map { gptMessage in
             gptMessage.toPlainMessage(for: chat)
         }
     }
@@ -53,6 +47,45 @@ extension ChatGPTAdapter: ChattingAdapter {
         }
     }
 
+    func requestStream(messages: [ChatGPTMessage], for message: Message) async throws {
+        guard let chat = message.chat else { return }
+
+        let handler = Handler()
+        var config = EventSource.Config(handler: handler, url: URL(string: "https://\(config.domain ?? "api.openai.com")/v1/chat/completions")!)
+
+        config.method = "POST"
+        config.headers = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(self.config.apiKey)"
+        ]
+        config.body = try? JSONEncoder().encode(RequestBody(
+            model: .gpt35turbo,
+            messages: messages,
+            temperature: chat.temperature.rawValue,
+            stream: true)
+        )
+
+        var cancelable: AnyCancellable?
+        let eventSource = EventSource(config: config)
+
+        try await withCheckedThrowingContinuation { continuation in
+            cancelable = handler.publisher.sink { completion in
+                eventSource.stop()
+
+                switch completion {
+                case .finished: continuation.resume()
+                case .failure(let error):
+                    continuation.resume(with: .failure(error))
+                }
+            } receiveValue: { value in
+                message.appendReceivingSlice(slice: value)
+                self.essentialFeature.persistData()
+            }
+
+            eventSource.start()
+        }
+    }
+
     func request(messages: [ChatGPTMessage], temperature: Float) async throws -> [ChatGPTMessage] {
         let response: EssentialFeature.Response<ResponseBody, ResponseError> = try await essentialFeature.requestURL(
             urlString: "https://\(config.domain ?? "api.openai.com")/v1/chat/completions",
@@ -61,7 +94,8 @@ extension ChatGPTAdapter: ChattingAdapter {
                 body: .json(data: RequestBody(
                     model: .gpt35turbo,
                     messages: messages,
-                    temperature: temperature)),
+                    temperature: temperature,
+                    stream: false)),
                 headers: [
                     "Content-Type": "application/json",
                     "Authorization": "Bearer \(config.apiKey)"
@@ -78,10 +112,29 @@ extension ChatGPTAdapter: ChattingAdapter {
         }
     }
 
+    private func retrieveGPTMessages(message: Message) -> [ChatGPTMessage] {
+        guard let chat = message.chat else { return [] }
+
+        let systemMessages = chat.systemMessage != nil ? [ChatGPTMessage(role: .system, content: chat.systemMessage!)] : []
+
+        var gptMessages: [ChatGPTMessage]
+
+        if chat.isolated {
+            gptMessages = systemMessages + [ChatGPTMessage.fromMessage(message: message)]
+        } else {
+            gptMessages = systemMessages + (chat.messages + [message]).map({ message in
+                ChatGPTMessage.fromMessage(message: message)
+            })
+        }
+
+        return gptMessages
+    }
+
     struct RequestBody: Encodable {
         let model: Model
         let messages: [ChatGPTMessage]
         let temperature: Float
+        let stream: Bool
 
         enum Model: String, Encodable {
             case gpt35turbo = "gpt-3.5-turbo"
@@ -149,7 +202,54 @@ extension ChatGPTAdapter: ChattingAdapter {
             case .assistant: role = .assistant
             }
 
-            return ChatGPTMessage(role: role, content: message.processedContent ?? message.content)
+            return ChatGPTMessage(role: role, content: message.processedContent ?? message.content ?? "")
         }
+    }
+}
+
+private struct Handler: EventHandler {
+    struct MessageData: Decodable {
+        let choices: [Choice]
+
+        struct Choice: Decodable {
+            let delta: Delta
+
+            struct Delta: Decodable {
+                let content: String
+            }
+        }
+    }
+
+    let publisher = PassthroughSubject<String, Error>()
+
+    func onOpened() {
+    }
+
+    func onClosed() {
+        publisher.send(completion: .finished)
+    }
+
+    func onComment(comment: String) {
+    }
+
+    func onError(error: Error) {
+        publisher.send(completion: .failure(error))
+    }
+
+    func onMessage(eventType: String, messageEvent: MessageEvent) {
+        guard messageEvent.data != "[DONE]" else {
+            publisher.send(completion: .finished)
+            return
+        }
+
+        guard
+            let data = messageEvent.data.data(using: .utf8),
+            let decodedData = try? JSONDecoder().decode(MessageData.self, from: data),
+            let content = decodedData.choices.first?.delta.content
+        else {
+            return
+        }
+
+        publisher.send(content)
     }
 }

@@ -32,16 +32,8 @@ public class Chat: NSManagedObject {
         return rawIsolated
     }
 
-    var messageCount: Int {
-        return messages.count
-    }
-
-    var failed: Bool {
-        return rawFailed
-    }
-
-    var sending: Bool {
-        return tSending
+    var receiving: Bool {
+        return messages.last?.receiving ?? false
     }
 
     var messages: [Message] {
@@ -54,10 +46,6 @@ public class Chat: NSManagedObject {
 
     var orderTimestamp: Date {
         return derivedUpdatedAt ?? rawCreatedAt ?? Date()
-    }
-
-    func markSending(sending: Bool) {
-        tSending = sending
     }
 
     public override func awakeFromInsert() {

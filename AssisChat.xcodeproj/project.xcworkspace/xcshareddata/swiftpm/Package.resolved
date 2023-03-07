@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swift-eventsource",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LaunchDarkly/swift-eventsource",
+      "state" : {
+        "revision" : "aa03131eb30bbc35513153609ed65209853603a7",
+        "version" : "3.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}

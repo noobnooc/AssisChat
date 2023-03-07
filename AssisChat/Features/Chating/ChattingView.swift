@@ -20,34 +20,6 @@ struct ChattingView: View {
                     .fill(.clear)
                     .frame(height: 10)
 
-                if chat.sending || chat.failed {
-                    HStack {
-                        ZStack {
-                            if chat.sending {
-                                ProgressView()
-                            } else {
-                                Label("Retry", systemImage: "arrow.triangle.2.circlepath")
-                            }
-                        }
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 15)
-                        .background(chat.failed ? Color.appRed : Color.secondaryBackground)
-                        .cornerRadius(15, corners: [.bottomRight, .topRight, .topLeft])
-                        .foregroundColor(chat.failed ? Color.white : Color.primary)
-                        .onTapGesture {
-                            if chat.failed {
-                                Task {
-                                    await chattingFeature.retry(chat: chat)
-                                }
-                            }
-                        }
-
-                        Spacer(minLength: 50)
-                    }
-                    .padding(.horizontal, 10)
-                    .scaleEffect(x: 1, y: -1, anchor: .center)
-                }
-
                 ForEach(chat.messages.reversed()) { message in
                     MessageItem(message: message, activation: $activeMessageId)
                 }
@@ -97,76 +69,12 @@ private struct MessageItem: View {
 
     var body: some View {
         if message.role == .assistant {
-            VStack(alignment: .leading, spacing: 2) {
-                HStack {
-                    Text(LocalizedStringKey(message.content.trimmingCharacters(in: .whitespacesAndNewlines)))
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 15)
-                        .background(Color.secondaryBackground)
-                        .cornerRadius(15, corners: [.bottomRight, .topRight, .topLeft])
-                        .textSelection(.enabled)
-                        .onTapGesture {
-                            toggleActive()
-                        }
-
-                    Spacer(minLength: 50)
-                }
-
-                if (active) {
-                    HStack {
-                        Button(role: .destructive) {
-                            withAnimation {
-                                messageFeature.deleteMessages([message])
-                            }
-                        } label: {
-                            Image(systemName: "trash")
-                        }
-                        .padding(5)
-                        .background(Color.tertiaryBackground)
-                        .cornerRadius(.infinity)
-                    }
-                    .padding(5)
-                    .background(Color.secondaryBackground)
-                    .cornerRadius(15, corners: [.topRight, .bottomRight, .bottomLeft])
-                    .animation(.easeOut(duration: 0.1), value: active)
-                    .transition(.scale(scale: 0, anchor: .top))
-                }
+            AssistantMessage(message: message, active: active) {
+                toggleActive()
             }
         } else {
-            VStack(alignment: .trailing, spacing: 2) {
-                HStack {
-                    Spacer(minLength: 50)
-                    Text(LocalizedStringKey(message.content.trimmingCharacters(in: .whitespacesAndNewlines)))
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 15)
-                        .background(Color.accentColor)
-                        .cornerRadius(15, corners: [.bottomLeft, .topLeft, .topRight])
-                        .colorScheme(.dark)
-                        .textSelection(.enabled)
-                        .onTapGesture {
-                            toggleActive()
-                        }
-                }
-
-                if (active) {
-                    HStack {
-                        Button(role: .destructive) {
-                            withAnimation {
-                                messageFeature.deleteMessages([message])
-                            }
-                        } label: {
-                            Image(systemName: "trash")
-                        }
-                        .padding(5)
-                        .background(Color.tertiaryBackground)
-                        .cornerRadius(.infinity)
-                    }
-                    .padding(5)
-                    .background(Color.secondaryBackground)
-                    .cornerRadius(15, corners: [.topLeft, .bottomLeft, .bottomRight])
-                    .animation(.easeOut(duration: 0.1), value: active)
-                    .transition(.scale(scale: 0, anchor: .top))
-                }
+            UserMessage(message: message, active: active) {
+                toggleActive()
             }
         }
     }
@@ -177,6 +85,108 @@ private struct MessageItem: View {
                 activation = nil
             } else {
                 activation = message.id
+            }
+        }
+    }
+}
+
+private struct AssistantMessage: View {
+    @EnvironmentObject private var messageFeature: MessageFeature
+
+    let message: Message
+    let active: Bool
+    let toggleActive: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            HStack {
+                VStack(alignment: .trailing) {
+                    if let content = message.content {
+                        Text(LocalizedStringKey(content.trimmingCharacters(in: .whitespacesAndNewlines)))
+                    } else if message.receiving {
+                        ProgressView()
+                    } else if message.failed {
+                        Label("Error", systemImage: "info.circle")
+                    }
+                }
+                .padding(.vertical, 8)
+                .padding(.horizontal, 15)
+                .background(message.failed ? Color.appRed : Color.secondaryBackground)
+                .foregroundColor(message.failed ? Color.white : Color.primary)
+                .cornerRadius(15, corners: [.bottomRight, .topRight, .topLeft])
+                .textSelection(.enabled)
+                .onTapGesture {
+                    toggleActive()
+                }
+
+                Spacer(minLength: 50)
+            }
+
+            if active && !message.receiving {
+                HStack {
+                    Button(role: .destructive) {
+                        withAnimation {
+                            messageFeature.deleteMessages([message])
+                        }
+                    } label: {
+                        Image(systemName: "trash")
+                    }
+                    .padding(5)
+                    .background(Color.tertiaryBackground)
+                    .cornerRadius(.infinity)
+                }
+                .padding(5)
+                .background(Color.secondaryBackground)
+                .cornerRadius(15, corners: [.topRight, .bottomRight, .bottomLeft])
+                .animation(.easeOut(duration: 0.1), value: active)
+                .transition(.scale(scale: 0, anchor: .top))
+            }
+        }
+    }
+}
+
+
+private struct UserMessage: View {
+    @EnvironmentObject private var messageFeature: MessageFeature
+
+    let message: Message
+    let active: Bool
+    let toggleActive: () -> Void
+
+    var body: some View {
+        VStack(alignment: .trailing, spacing: 2) {
+            HStack {
+                Spacer(minLength: 50)
+                Text(LocalizedStringKey((message.content ?? "").trimmingCharacters(in: .whitespacesAndNewlines)))
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 15)
+                    .background(Color.accentColor)
+                    .cornerRadius(15, corners: [.bottomLeft, .topLeft, .topRight])
+                    .colorScheme(.dark)
+                    .textSelection(.enabled)
+                    .onTapGesture {
+                        toggleActive()
+                    }
+            }
+
+            if (active) {
+                HStack {
+                    Button(role: .destructive) {
+                        withAnimation {
+                            messageFeature.deleteMessages([message])
+                        }
+                    } label: {
+                        Image(systemName: "trash")
+                    }
+                    .padding(5)
+                    .background(Color.tertiaryBackground)
+                    .cornerRadius(.infinity)
+                }
+                .padding(5)
+                .background(Color.secondaryBackground)
+                .cornerRadius(15, corners: [.topLeft, .bottomLeft, .bottomRight])
+                .animation(.easeOut(duration: 0.1), value: active)
+                .transition(.scale(scale: 0, anchor: .top))
             }
         }
     }
@@ -213,7 +223,7 @@ private struct MessageInput: View {
                         let messageContent = text
                         text = ""
 
-                        await chattingFeature.send(
+                        await chattingFeature.sendWithStream(
                             plainMessage: .init(
                                 chat: chat,
                                 role: .user,
@@ -226,7 +236,7 @@ private struct MessageInput: View {
                 }
                 .frame(height: 45)
                 .buttonStyle(.borderedProminent)
-                .disabled(text.isEmpty || chat.sending)
+                .disabled(text.isEmpty || chat.receiving)
             }
             .padding(10)
             .background(.regularMaterial)

@@ -19,8 +19,8 @@ public class Message: NSManagedObject {
         return Role(rawValue: rawRole) ?? .system
     }
 
-    var content: String {
-        return rawContent ?? ""
+    var content: String? {
+        return rawContent
     }
 
     var processedContent: String? {
@@ -29,6 +29,30 @@ public class Message: NSManagedObject {
 
     var timestamp: Date {
         return rawTimestamp ?? Date()
+    }
+
+    var receiving: Bool {
+        tReceiving
+    }
+
+    var failed: Bool {
+        content == nil && !receiving
+    }
+
+    var normal: Bool {
+        !receiving && !failed
+    }
+
+    func markReceiving() {
+        tReceiving = true
+    }
+
+    func unmarkReceiving() {
+        tReceiving = false
+    }
+
+    func appendReceivingSlice(slice: String) {
+        rawContent = (rawContent ?? "") + slice
     }
 
     public override func awakeFromInsert() {
