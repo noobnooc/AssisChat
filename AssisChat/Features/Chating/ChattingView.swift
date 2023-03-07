@@ -11,6 +11,7 @@ struct ChattingView: View {
     @EnvironmentObject private var chattingFeature: ChattingFeature
 
     @ObservedObject var chat: Chat
+    @State var activeMessageId: ObjectIdentifier?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -48,7 +49,7 @@ struct ChattingView: View {
                 }
 
                 ForEach(chat.messages.reversed()) { message in
-                    MessageItem(message: message)
+                    MessageItem(message: message, activation: $activeMessageId)
                 }
                 .padding(.horizontal, 10)
                 .scaleEffect(x: 1, y: -1, anchor: .center)
@@ -78,24 +79,94 @@ private struct MessageItem: View {
     @EnvironmentObject private var messageFeature: MessageFeature
 
     @ObservedObject var message: Message
+    @Binding var activation: ObjectIdentifier?
+
+    var active: Bool {
+        activation == message.id
+    }
 
     var body: some View {
-        HStack {
-            if message.role == .assistant {
-                Text(LocalizedStringKey(message.content.trimmingCharacters(in: .whitespacesAndNewlines)))
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 15)
+        if message.role == .assistant {
+            VStack(alignment: .leading, spacing: 2) {
+                HStack {
+                    Text(LocalizedStringKey(message.content.trimmingCharacters(in: .whitespacesAndNewlines)))
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 15)
+                        .background(Color.secondaryBackground)
+                        .cornerRadius(15, corners: [.bottomRight, .topRight, .topLeft])
+                        .textSelection(.enabled)
+                        .onTapGesture {
+                            toggleActive()
+                        }
+
+                    Spacer(minLength: 50)
+                }
+
+                if (active) {
+                    HStack {
+                        Button(role: .destructive) {
+                            withAnimation {
+                                messageFeature.deleteMessages([message])
+                            }
+                        } label: {
+                            Image(systemName: "trash")
+                        }
+                        .padding(5)
+                        .background(Color.tertiaryBackground)
+                        .cornerRadius(.infinity)
+                    }
+                    .padding(5)
                     .background(Color.secondaryBackground)
-                    .cornerRadius(15, corners: [.bottomRight, .topRight, .topLeft])
-                Spacer(minLength: 50)
+                    .cornerRadius(15, corners: [.topRight, .bottomRight, .bottomLeft])
+                    .animation(.easeOut(duration: 0.1), value: active)
+                    .transition(.scale(scale: 0, anchor: .top))
+                }
+            }
+        } else {
+            VStack(alignment: .trailing, spacing: 2) {
+                HStack {
+                    Spacer(minLength: 50)
+                    Text(LocalizedStringKey(message.content.trimmingCharacters(in: .whitespacesAndNewlines)))
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 15)
+                        .background(Color.accentColor)
+                        .cornerRadius(15, corners: [.bottomLeft, .topLeft, .topRight])
+                        .colorScheme(.dark)
+                        .textSelection(.enabled)
+                        .onTapGesture {
+                            toggleActive()
+                        }
+                }
+
+                if (active) {
+                    HStack {
+                        Button(role: .destructive) {
+                            withAnimation {
+                                messageFeature.deleteMessages([message])
+                            }
+                        } label: {
+                            Image(systemName: "trash")
+                        }
+                        .padding(5)
+                        .background(Color.tertiaryBackground)
+                        .cornerRadius(.infinity)
+                    }
+                    .padding(5)
+                    .background(Color.secondaryBackground)
+                    .cornerRadius(15, corners: [.topLeft, .bottomLeft, .bottomRight])
+                    .animation(.easeOut(duration: 0.1), value: active)
+                    .transition(.scale(scale: 0, anchor: .top))
+                }
+            }
+        }
+    }
+
+    func toggleActive() {
+        withAnimation {
+            if (active) {
+                activation = nil
             } else {
-                Spacer(minLength: 50)
-                Text(LocalizedStringKey(message.content.trimmingCharacters(in: .whitespacesAndNewlines)))
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 15)
-                    .background(Color.accentColor)
-                    .cornerRadius(15, corners: [.bottomLeft, .topLeft, .topRight])
-                    .colorScheme(.dark)
+                activation = message.id
             }
         }
     }
