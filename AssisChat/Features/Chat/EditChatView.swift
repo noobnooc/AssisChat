@@ -1,36 +1,33 @@
 //
-//  NewChatView.swift
+//  EditChatView.swift
 //  AssisChat
 //
-//  Created by Nooc on 2023-03-05.
+//  Created by Nooc on 2023-03-07.
 //
 
 import SwiftUI
 
+struct EditChatView: View {
+    @Environment(\.dismiss) private var dismiss
 
-struct NewChatView: View {
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject private var chatFeature: ChatFeature
 
-    @EnvironmentObject var chatFeature: ChatFeature
+    @ObservedObject var chat: Chat
+    @StateObject private var model: ChatEditorModel
 
-    @StateObject var model: ChatEditorModel = ChatEditorModel(
-        name: "",
-        temperature: .balanced,
-        systemMessage: "",
-        isolated: false,
-        messagePrefix: "",
-        icon: .default,
-        color: .default
-    )
+    init(chat: Chat) {
+        self.chat = chat
+        self._model = StateObject(wrappedValue: ChatEditorModel(chat: chat))
+    }
 
     var body: some View {
         ChatEditor(model: model) {
             Section {
                 Button {
-                    create()
+                    update()
                     dismiss()
                 } label: {
-                    Text("Start Chat")
+                    Text("Save Chat")
                         .bold()
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -61,8 +58,8 @@ struct NewChatView: View {
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Start") {
-                    create()
+                Button("Save") {
+                    update()
                     dismiss()
                 }
                 .disabled(!model.available)
@@ -71,18 +68,17 @@ struct NewChatView: View {
         }
     }
 
-    func create() {
+    func update() {
         let plainChat = model.plain
 
         guard plainChat.available else { return }
 
-        chatFeature.createChat(plainChat)
+        chatFeature.updateChat(plainChat, for: chat)
     }
-
 }
 
-struct NewChatView_Previews: PreviewProvider {
+struct EditChatView_Previews: PreviewProvider {
     static var previews: some View {
-        NewChatView()
+        EditChatView(chat: .init())
     }
 }

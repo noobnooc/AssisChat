@@ -72,6 +72,22 @@ extension Chat {
         case creative = 2
         case balanced = 1
         case precise = 0
+
+        var display: LocalizedStringKey {
+            switch self {
+            case .creative: return LocalizedStringKey("Creative")
+            case .balanced: return LocalizedStringKey("Balanced")
+            case .precise: return LocalizedStringKey("Precise")
+            }
+        }
+
+        var color: SwiftUI.Color {
+            switch self {
+            case .creative: return .appOrange
+            case .balanced: return .appBlue
+            case .precise: return .appGreen
+            }
+        }
     }
 }
 

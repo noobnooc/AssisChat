@@ -44,6 +44,9 @@
 		F5E47F0229B6178F0083BB31 /* CopyrightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0129B6178F0083BB31 /* CopyrightView.swift */; };
 		F5E47F0429B617AF0083BB31 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0329B617AF0083BB31 /* Bundle+Extensions.swift */; };
 		F5E47F0729B62BFD0083BB31 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0629B62BFD0083BB31 /* WelcomeView.swift */; };
+		F5E47F0B29B7002D0083BB31 /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0A29B7002D0083BB31 /* ChatDetailView.swift */; };
+		F5E47F0D29B706FF0083BB31 /* ChatEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0C29B706FF0083BB31 /* ChatEditor.swift */; };
+		F5E47F0F29B708D00083BB31 /* EditChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0E29B708D00083BB31 /* EditChatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +109,9 @@
 		F5E47F0129B6178F0083BB31 /* CopyrightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyrightView.swift; sourceTree = "<group>"; };
 		F5E47F0329B617AF0083BB31 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		F5E47F0629B62BFD0083BB31 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		F5E47F0A29B7002D0083BB31 /* ChatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
+		F5E47F0C29B706FF0083BB31 /* ChatEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEditor.swift; sourceTree = "<group>"; };
+		F5E47F0E29B708D00083BB31 /* EditChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,10 +253,13 @@
 			isa = PBXGroup;
 			children = (
 				F5E47ED829B4990A0083BB31 /* ChatFeature.swift */,
+				F5E47F0C29B706FF0083BB31 /* ChatEditor.swift */,
 				F5E47EDA29B49B880083BB31 /* ChatsView.swift */,
 				F5E47EDC29B49B9C0083BB31 /* NewChatView.swift */,
+				F5E47F0E29B708D00083BB31 /* EditChatView.swift */,
 				F5E47EE329B49DF90083BB31 /* ChatIconSelector.swift */,
 				F5E47EDE29B49CCA0083BB31 /* ColorSelector.swift */,
+				F5E47F0A29B7002D0083BB31 /* ChatDetailView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -455,6 +464,7 @@
 				F5E47EE729B4E8FB0083BB31 /* ChattingFeature.swift in Sources */,
 				F5E47F0729B62BFD0083BB31 /* WelcomeView.swift in Sources */,
 				F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */,
+				F5E47F0D29B706FF0083BB31 /* ChatEditor.swift in Sources */,
 				F5E47EE229B49D0E0083BB31 /* Haptics.swift in Sources */,
 				F5E47E9929B497A60083BB31 /* AssisChat.xcdatamodeld in Sources */,
 				F5E47ECF29B498290083BB31 /* Color+Extensions.swift in Sources */,
@@ -463,6 +473,7 @@
 				F5E47EFF29B5D8B80083BB31 /* View+Extensions.swift in Sources */,
 				F5E47EF429B5AC380083BB31 /* SettingsView.swift in Sources */,
 				F5E47EE429B49DF90083BB31 /* ChatIconSelector.swift in Sources */,
+				F5E47F0F29B708D00083BB31 /* EditChatView.swift in Sources */,
 				F5E47ECB29B497FB0083BB31 /* Message+CoreDataProperties.swift in Sources */,
 				F5E47ECD29B497FB0083BB31 /* Chat+CoreDataProperties.swift in Sources */,
 				F5E47E9B29B497A60083BB31 /* ContentView.swift in Sources */,
@@ -477,6 +488,7 @@
 				F5E47EF829B5B2320083BB31 /* TintSelector.swift in Sources */,
 				F5E47EDD29B49B9C0083BB31 /* NewChatView.swift in Sources */,
 				F5E47EDF29B49CCA0083BB31 /* ColorSelector.swift in Sources */,
+				F5E47F0B29B7002D0083BB31 /* ChatDetailView.swift in Sources */,
 				F5E47EF629B5B1B10083BB31 /* ColorSchemeSelector.swift in Sources */,
 				F5E47ECA29B497FB0083BB31 /* Message+CoreDataClass.swift in Sources */,
 			);

@@ -72,6 +72,16 @@ struct ChattingView: View {
             }
         }
         .navigationTitle(chat.name)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    ChatDetailView(chat: chat)
+                        .navigationTitle("Chat Detail")
+                } label: {
+                    Label("Chat Detail", systemImage: "info.circle")
+                }
+            }
+        }
     }
 }
 
@@ -188,11 +198,13 @@ private struct MessageInput: View {
                         .padding(8)
                         .background(.thinMaterial)
                         .cornerRadius(8)
+                        .frame(minHeight: 45)
                         .lineLimit(1...3)
                 } else {
                     TextField("New Message", text: $text)
                         .padding(8)
                         .background(.thickMaterial)
+                        .frame(minHeight: 45)
                         .cornerRadius(8)
                 }
 
@@ -212,6 +224,7 @@ private struct MessageInput: View {
                 } label: {
                     Image(systemName: "paperplane")
                 }
+                .frame(height: 45)
                 .buttonStyle(.borderedProminent)
                 .disabled(text.isEmpty || chat.sending)
             }
