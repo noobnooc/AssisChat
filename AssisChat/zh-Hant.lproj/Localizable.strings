@@ -1,7 +1,159 @@
-/* 
-  Localizable.strings
-  AssisChat
+/* App slogan */
+"APP_SLOGAN" = "一個聊天助理";
 
-  Created by Nooc on 2023-03-07.
-  
-*/
+/* Cancel */
+"CANCEL" = "取消";
+
+/* Chat actions */
+"CHAT_ACTIONS" = "操作";
+
+/* Chat clear message */
+"CHAT_CLEAR_MESSAGE" = "清除消息";
+
+/* The action to create a chat */
+"CHAT_CREATE" = "開始會話";
+
+/* The short form of the action to create a chat */
+"CHAT_CREATE_SHORT" = "開始";
+
+/* Chat delete */
+"CHAT_DELETE" = "刪除會話";
+
+/* Chat detail */
+"CHAT_DETAIL" = "會話詳情";
+
+/* The action to edit a chat */
+"CHAT_EDIT" = "編輯會話";
+
+/* Chat editor chat section */
+"CHAT_EDITOR_CHAT_SECTION" = "會話";
+
+/* Chat editor config section */
+"CHAT_EDITOR_CONFIG_SECTION" = "設置";
+
+/* Chat editor icon selector icon section */
+"CHAT_EDITOR_ICON_SELECTOR_ICON" = "圖標";
+
+/* Chat editor icon selector title */
+"CHAT_EDITOR_ICON_SELECTOR_TITLE" = "選擇一個圖標";
+
+/* Chat isolated */
+"CHAT_ISOLATED" = "孤立的";
+
+/* Chat isolated hint */
+"CHAT_ISOLATED_HINT" = "孤立的會話不會發送歷史消息";
+
+/* Chat message prefix */
+"CHAT_MESSAGE_PREFIX" = "消息前綴";
+
+/* Chat message prefix hint */
+"CHAT_MESSAGE_PREFIX_HINT" = "將會在添加到每一條消息之前";
+
+/* Chat role prompt */
+"CHAT_ROLE_PROMPT" = "角色提示";
+
+/* Chat role rompt blank hint */
+"CHAT_ROLE_PROMPT_BLANK_HINT" = "普通會話";
+
+/* Chat role prompt hint */
+"CHAT_ROLE_PROMPT_HINT" = "設置聊天助理的行為";
+
+/* Chat temperature */
+"CHAT_TEMPERATURE" = "溫度";
+
+/* Chat temperature balanced */
+"CHAT_TEMPERATURE_BALANCED" = "平衡";
+
+/* Chat temperature creative */
+"CHAT_TEMPERATURE_CREATIVE" = "創意";
+
+/* Chat temperature precise */
+"CHAT_TEMPERATURE_PRECISE" = "嚴肅";
+
+/* The action to update a chat */
+"CHAT_UPDATE" = "保存會話";
+
+/* The short form of the action to update a chat */
+"CHAT_UPDATE_SHORT" = "保存";
+
+/* Chats empty hint */
+"CHATS_EMPTY_HINT" = "點擊右下角的 + 按鈕開始會話";
+
+/* Done */
+"DONE" = "完成";
+
+/* Edit */
+"EDIT" = "編輯";
+
+/* Error */
+"ERROR" = "錯誤";
+
+/* The name of new chat */
+"NEW_CHAT_NAME" = "新會話";
+
+/* New message hint */
+"NEW_MESSAGE_HINT" = "新消息";
+
+/* Settings */
+"SETTINGS" = "設置";
+
+/* Settings about */
+"SETTINGS_ABOUT" = "關於";
+
+/* Settings chat section title */
+"SETTINGS_CHAT" = "會話";
+
+/* Settings chat source */
+"SETTINGS_CHAT_SOURCE" = "會話源";
+
+/* Settings chat source api key empty error message */
+"SETTINGS_CHAT_SOURCE_NO_API_KEY" = "請輸入 API Key";
+
+/* Settings chat source OpenAI API domain */
+"SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN" = "OpenAI API 域名（可選）";
+
+/* Settings chat source OpenAI API domain hint */
+"SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN_HINT" = "使用代理域名，通常推薦留空使用默認值。請不要使用不受信任的域名，這樣可能會使你的 API Key 洩露。";
+
+/* Settings chat source OpenAI API Key */
+"SETTINGS_CHAT_SOURCE_OPENAI_KEY" = "OpenAI API Key";
+
+/* Settings chat source OpenAI API key hint */
+"SETTINGS_CHAT_SOURCE_OPENAI_KEY_HINT" = "從 https://platform.openai.com/account/api-keys 獲取 API Key";
+
+/* Settings chat source summary */
+"SETTINGS_CHAT_SOURCE_OPENAI_SUMMARY" = "配置 OpenAI API";
+
+/* Settings chat source validate and save button */
+"SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE" = "驗證並保存";
+
+/* Settings chat source validate and save failed */
+"SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_FAILED" = "驗證失敗";
+
+/* Settings chat source validate and save success */
+"SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_SUCCESS" = "已成功驗證並保存";
+
+/* Settings color scheme */
+"SETTINGS_COLOR_SCHEME" = "深色模式";
+
+/* Settings color scheme automatic */
+"SETTINGS_COLOR_SCHEME_AUTOMATIC" = "自動";
+
+/* Settings color scheme dark */
+"SETTINGS_COLOR_SCHEME_DARK" = "深色模式";
+
+/* Settings color scheme light */
+"SETTINGS_COLOR_SCHEME_LIGHT" = "淺色模式";
+
+/* Settings Feedback */
+"SETTINGS_FEEDBACK" = "反饋";
+
+/* Settings theme section title */
+"SETTINGS_THEME" = "主題";
+
+/* Settings tin */
+"SETTINGS_TINT" = "主題色";
+
+/* Success */
+"SUCCESS" = "成功";
+

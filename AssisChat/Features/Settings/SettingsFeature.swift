@@ -92,6 +92,14 @@ extension SettingsFeature {
             case .dark: return .dark
             }
         }
+
+        var localizedKey: LocalizedStringKey {
+            switch self {
+            case .automatic: return LocalizedStringKey("SETTINGS_COLOR_SCHEME_AUTOMATIC")
+            case .light: return LocalizedStringKey("SETTINGS_COLOR_SCHEME_LIGHT")
+            case .dark: return LocalizedStringKey("SETTINGS_COLOR_SCHEME_DARK")
+            }
+        }
     }
 
     enum Tint: String, Hashable {

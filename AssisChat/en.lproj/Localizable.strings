@@ -112,6 +112,12 @@
 "SETTINGS_THEME" = "Theme";
 // Settings color scheme
 "SETTINGS_COLOR_SCHEME" = "Color Scheme";
+// Settings color scheme automatic
+"SETTINGS_COLOR_SCHEME_AUTOMATIC" = "Automatic";
+// Settings color scheme light
+"SETTINGS_COLOR_SCHEME_LIGHT" = "Light";
+// Settings color scheme dark
+"SETTINGS_COLOR_SCHEME_DARK" = "Dark";
 // Settings tin
 "SETTINGS_TINT" = "Tint";
 // Settings about

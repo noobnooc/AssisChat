@@ -23,7 +23,7 @@ private struct Selector: View {
     var body: some View {
         ForEach(SettingsFeature.colorSchemes, id: \.self) { colorScheme in
             Label {
-                Text(colorScheme.rawValue.localizedCapitalized)
+                Text(colorScheme.localizedKey)
             } icon: {
                 if colorScheme == settingsFeature.selectedColorScheme {
                     Image(systemName: "checkmark.circle.fill")
