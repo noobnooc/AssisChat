@@ -7,6 +7,12 @@
 /* Chat actions */
 "CHAT_ACTIONS" = "操作";
 
+/* Chat auto copy */
+"CHAT_AUTO_COPY" = "自动复制";
+
+/* Chat auto copy hint */
+"CHAT_AUTO_COPY_HINT" = "收到消息后自动将消息复制到剪切板";
+
 /* Chat clear message */
 "CHAT_CLEAR_MESSAGE" = "清除消息";
 

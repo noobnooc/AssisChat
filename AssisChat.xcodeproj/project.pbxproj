@@ -429,9 +429,9 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				"zh-Hans",
 				"zh-Hant",
+				Base,
 			);
 			mainGroup = F5E47E8729B497A60083BB31;
 			packageReferences = (

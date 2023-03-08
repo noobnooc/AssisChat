@@ -66,6 +66,11 @@
 // Chat isolated hint
 "CHAT_ISOLATED_HINT" = "Isolated chat will not send history messages";
 
+// Chat auto copy
+"CHAT_AUTO_COPY" = "Auto Copy";
+// Chat auto copy hint
+"CHAT_AUTO_COPY_HINT" = "The message will be automatically copied to the clipboard";
+
 
 // Chat actions
 "CHAT_ACTIONS" = "Actions";

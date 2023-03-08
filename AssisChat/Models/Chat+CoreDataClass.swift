@@ -44,8 +44,17 @@ public class Chat: NSManagedObject {
         }
     }
 
+    var autoCopy: Bool {
+        rawAutoCopy
+    }
+
     var orderTimestamp: Date {
         return derivedUpdatedAt ?? rawCreatedAt ?? Date()
+    }
+
+    /// To notify chat change manually
+    func tick() {
+        tTick += 1
     }
 
     public override func awakeFromInsert() {

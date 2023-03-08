@@ -41,6 +41,15 @@ struct ChatDetailView: View {
                                 .background(Color.appRed)
                                 .cornerRadius(.infinity)
                         }
+
+                        if chat.autoCopy {
+                            Text("CHAT_AUTO_COPY")
+                                .padding(.vertical, 5)
+                                .padding(.horizontal, 10)
+                                .background(Color.appBlue)
+                                .cornerRadius(.infinity)
+                        }
+
                     }
                     .font(.subheadline)
                     .colorScheme(.dark)

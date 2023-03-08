@@ -15,6 +15,7 @@ struct PlainChat {
     let systemMessage: String?
     let isolated: Bool
     let messagePrefix: String?
+    let autoCopy: Bool
     let icon: Chat.Icon
     let color: Chat.Color?
 
@@ -89,6 +90,7 @@ extension ChatFeature {
         chat.rawSystemMessage = plainChat.systemMessage
         chat.rawIsolated = plainChat.isolated
         chat.rawMessagePrefix = plainChat.messagePrefix
+        chat.rawAutoCopy = plainChat.autoCopy
 
         essentialFeature.persistData()
     }
@@ -103,6 +105,7 @@ extension ChatFeature {
         chat.rawSystemMessage = plainChat.systemMessage
         chat.rawIsolated = plainChat.isolated
         chat.rawMessagePrefix = plainChat.messagePrefix
+        chat.rawAutoCopy = plainChat.autoCopy
 
         essentialFeature.persistData()
     }

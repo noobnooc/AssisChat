@@ -13,15 +13,17 @@ class ChatEditorModel: ObservableObject {
     @Published var systemMessage: String
     @Published var isolated: Bool
     @Published var messagePrefix: String
+    @Published var autoCopy: Bool
     @Published var icon: Chat.Icon
     @Published var color: Chat.Color?
 
-    init(name: String, temperature: Chat.Temperature, systemMessage: String, isolated: Bool, messagePrefix: String, icon: Chat.Icon, color: Chat.Color?) {
+    init(name: String, temperature: Chat.Temperature, systemMessage: String, isolated: Bool, messagePrefix: String, autoCopy: Bool, icon: Chat.Icon, color: Chat.Color?) {
         self.name = name
         self.temperature = temperature
         self.systemMessage = systemMessage
         self.isolated = isolated
         self.messagePrefix = messagePrefix
+        self.autoCopy = autoCopy
         self.icon = icon
         self.color = color
     }
@@ -32,6 +34,7 @@ class ChatEditorModel: ObservableObject {
         self.systemMessage = chat.systemMessage ?? ""
         self.isolated = chat.isolated
         self.messagePrefix = chat.messagePrefix ?? ""
+        self.autoCopy = chat.autoCopy
         self.icon = chat.icon
         self.color = chat.color
     }
@@ -43,6 +46,7 @@ class ChatEditorModel: ObservableObject {
             systemMessage: systemMessage.count > 0 ? systemMessage : nil,
             isolated: isolated,
             messagePrefix: messagePrefix.count > 0 ? messagePrefix : nil,
+            autoCopy: autoCopy,
             icon: icon,
             color: color
         )
@@ -129,6 +133,16 @@ struct ChatEditor<Actions: View>: View {
                         .font(.footnote)
                         .foregroundColor(Color.secondary)
                 }
+
+                VStack(alignment: .trailing) {
+                    Toggle(isOn: $model.autoCopy) {
+                        Text("CHAT_AUTO_COPY")
+                    }
+
+                    Text("CHAT_AUTO_COPY_HINT")
+                        .font(.footnote)
+                        .foregroundColor(Color.secondary)
+                }
             }
 
             actions
@@ -167,7 +181,7 @@ struct ChatEditor<Actions: View>: View {
 
 struct ChatEditor_Previews: PreviewProvider {
     static var previews: some View {
-        ChatEditor(model: .init(name: "", temperature: .balanced, systemMessage: "", isolated: false, messagePrefix: "", icon: .default, color: .default)) {
+        ChatEditor(model: .init(name: "", temperature: .balanced, systemMessage: "", isolated: false, messagePrefix: "", autoCopy: false, icon: .default, color: .default)) {
 
         }
     }

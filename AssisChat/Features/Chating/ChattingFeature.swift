@@ -56,12 +56,18 @@ class ChattingFeature: ObservableObject {
     }
 
     private func sendWithStream(message: Message, receivingMessage: Message) async {
+        guard let chat = message.chat else { return }
+
         receivingMessage.markReceiving()
 
         do {
             guard let chattingAdapter = settingsFeature.chattingAdapter else { return }
 
             try await chattingAdapter.sendMessageWithStream(message: message, receivingMessage: receivingMessage)
+
+            if chat.autoCopy {
+                receivingMessage.copyToPasteboard()
+            }
         } catch ChattingError.invalidConfig {
             essentialFeature.appendAlert(alert: ErrorAlert(message: "Please config the chat source."))
         } catch ChattingError.sending(message: let message) {
@@ -76,12 +82,18 @@ class ChattingFeature: ObservableObject {
     }
 
     private func send(message: Message) async {
+        guard let chat = message.chat else { return }
+
         do {
             guard let chattingAdapter = settingsFeature.chattingAdapter else { return }
 
             let plainMessages = try await chattingAdapter.sendMessage(message: message)
 
-            _ = messageFeature.createMessages(plainMessages)
+            let receivedMessages = messageFeature.createMessages(plainMessages)
+
+            if let receivedMessage = receivedMessages.first, chat.autoCopy {
+                receivedMessage.copyToPasteboard()
+            }
         } catch ChattingError.invalidConfig {
             essentialFeature.appendAlert(alert: ErrorAlert(message: "Please config the chat source."))
         } catch ChattingError.sending(message: let message) {

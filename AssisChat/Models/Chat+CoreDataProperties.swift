@@ -2,7 +2,7 @@
 //  Chat+CoreDataProperties.swift
 //  AssisChat
 //
-//  Created by Nooc on 2023-03-07.
+//  Created by Nooc on 2023-03-08.
 //
 //
 
@@ -16,15 +16,17 @@ extension Chat {
         return NSFetchRequest<Chat>(entityName: "Chat")
     }
 
+    @NSManaged public var derivedUpdatedAt: Date?
     @NSManaged public var rawColor: String?
     @NSManaged public var rawCreatedAt: Date?
     @NSManaged public var rawIcon: String?
+    @NSManaged public var rawIsolated: Bool
+    @NSManaged public var rawMessagePrefix: String?
     @NSManaged public var rawName: String?
     @NSManaged public var rawSystemMessage: String?
     @NSManaged public var rawTemperature: Float
-    @NSManaged public var derivedUpdatedAt: Date?
-    @NSManaged public var rawIsolated: Bool
-    @NSManaged public var rawMessagePrefix: String?
+    @NSManaged public var rawAutoCopy: Bool
+    @NSManaged public var tTick: Int64
     @NSManaged public var rMessages: NSSet?
 
 }

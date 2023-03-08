@@ -19,6 +19,7 @@ struct NewChatView: View {
         systemMessage: "",
         isolated: false,
         messagePrefix: "",
+        autoCopy: false,
         icon: .default,
         color: .default
     )

@@ -135,6 +135,22 @@ private struct AssistantMessage: View {
                     .padding(5)
                     .background(Color.tertiaryBackground)
                     .cornerRadius(.infinity)
+
+                    Divider()
+                        .padding(.vertical)
+
+                    Button {
+                        withAnimation {
+                            message.copyToPasteboard()
+                            toggleActive()
+                        }
+                    } label: {
+                        Image(systemName: "doc.on.doc")
+                    }
+                    .padding(5)
+                    .foregroundColor(.appBlue)
+                    .background(Color.tertiaryBackground)
+                    .cornerRadius(.infinity)
                 }
                 .padding(5)
                 .background(Color.secondaryBackground)
@@ -171,6 +187,22 @@ private struct UserMessage: View {
 
             if (active) {
                 HStack {
+                    Button {
+                        withAnimation {
+                            message.copyToPasteboard()
+                            toggleActive()
+                        }
+                    } label: {
+                        Image(systemName: "doc.on.doc")
+                    }
+                    .padding(5)
+                    .foregroundColor(.appBlue)
+                    .background(Color.tertiaryBackground)
+                    .cornerRadius(.infinity)
+
+                    Divider()
+                        .padding(.vertical)
+
                     Button(role: .destructive) {
                         withAnimation {
                             messageFeature.deleteMessages([message])

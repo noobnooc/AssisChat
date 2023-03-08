@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 @objc(Message)
 public class Message: NSManagedObject {
@@ -45,14 +46,23 @@ public class Message: NSManagedObject {
 
     func markReceiving() {
         tReceiving = true
+        chat?.tick()
     }
 
     func unmarkReceiving() {
         tReceiving = false
+        chat?.tick()
     }
 
     func appendReceivingSlice(slice: String) {
         rawContent = (rawContent ?? "") + slice
+    }
+
+    func copyToPasteboard() {
+        guard let content = content else { return }
+
+        UIPasteboard.general.string = content
+        Haptics.veryLight()
     }
 
     public override func awakeFromInsert() {
