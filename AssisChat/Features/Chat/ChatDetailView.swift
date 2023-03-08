@@ -99,11 +99,16 @@ struct ChatDetailView: View {
             }
         }
         .sheet(isPresented: $editing) {
+#if os(iOS)
             NavigationView {
                 EditChatView(chat: chat)
                     .navigationTitle("CHAT_EDIT")
-                    .navigationBarTitleDisplayMode(.inline)
+                    .inlineNavigationBar()
             }
+            #else
+            EditChatView(chat: chat)
+                .frame(width: 300, height: 500)
+            #endif
         }
     }
 }

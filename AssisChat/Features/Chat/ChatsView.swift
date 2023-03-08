@@ -63,8 +63,9 @@ struct ChatsView: View {
 
             ChatCreatingButton()
         }
+        #if os(iOS)
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItem {
                 NavigationLink {
                     SettingsView()
                         .navigationTitle("SETTINGS")
@@ -73,6 +74,7 @@ struct ChatsView: View {
                 }
             }
         }
+        #endif
     }
 
     func onDelete(_ indices: IndexSet) {
@@ -90,7 +92,11 @@ private struct ChatItem: View {
             chat.icon.image
                 .font(.title2)
                 .frame(width: 24, height: 24)
+            #if os(iOS)
                 .padding()
+            #else
+                .padding(10)
+            #endif
                 .background(chat.uiColor)
                 .cornerRadius(10)
                 .colorScheme(.dark)
@@ -122,12 +128,20 @@ private struct ChatCreatingButton: View {
                 .colorScheme(.dark)
                 .padding()
         }
+        .buttonStyle(.plain)
         .sheet(isPresented: $creating) {
+#if os(iOS)
             NavigationView {
                 NewChatView()
                     .navigationTitle("NEW_CHAT_NAME")
-                    .navigationBarTitleDisplayMode(.inline)
+                    .inlineNavigationBar()
             }
+#else
+            NewChatView()
+                .navigationTitle("NEW_CHAT_NAME")
+                .inlineNavigationBar()
+                .frame(width: 300, height: 500)
+#endif
         }
     }
 }

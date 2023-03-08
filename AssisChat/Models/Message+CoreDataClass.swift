@@ -8,7 +8,10 @@
 
 import Foundation
 import CoreData
+
+#if os(iOS)
 import UIKit
+#endif
 
 @objc(Message)
 public class Message: NSManagedObject {
@@ -61,7 +64,10 @@ public class Message: NSManagedObject {
     func copyToPasteboard() {
         guard let content = content else { return }
 
+        #if os(iOS)
         UIPasteboard.general.string = content
+        #endif
+
         Haptics.veryLight()
     }
 

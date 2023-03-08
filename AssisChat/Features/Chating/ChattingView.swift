@@ -38,7 +38,7 @@ struct ChattingView: View {
                 }
                 .animation(.easeOut, value: chat)
 
-            if #available(iOS 16, *) {
+            if #available(iOS 16, macOS 13, *) {
                 scrollView
                     .scrollDismissesKeyboard(.interactively)
             } else {
@@ -46,9 +46,9 @@ struct ChattingView: View {
             }
         }
         .navigationTitle(chat.name)
-        .navigationBarTitleDisplayMode(.inline)
+        .inlineNavigationBar()
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItem() {
                 NavigationLink {
                     ChatDetailView(chat: chat)
                         .navigationTitle("CHAT_DETAIL")
@@ -116,7 +116,11 @@ private struct AssistantMessage: View {
                 .padding(.horizontal, 15)
                 .background(message.failed ? Color.appRed : Color.secondaryBackground)
                 .foregroundColor(message.failed ? Color.white : Color.primary)
+                #if os(iOS)
                 .cornerRadius(15, corners: [.bottomRight, .topRight, .topLeft])
+                #else
+                .cornerRadius(15)
+                #endif
                 .onTapGesture {
                     toggleActive()
                 }
@@ -136,6 +140,8 @@ private struct AssistantMessage: View {
                     .padding(5)
                     .background(Color.tertiaryBackground)
                     .cornerRadius(.infinity)
+                    .buttonStyle(.plain)
+                    .foregroundColor(.appRed)
 
                     Divider()
                         .padding(.vertical)
@@ -152,10 +158,15 @@ private struct AssistantMessage: View {
                     .foregroundColor(.appBlue)
                     .background(Color.tertiaryBackground)
                     .cornerRadius(.infinity)
+                    .buttonStyle(.plain)
                 }
                 .padding(5)
                 .background(Color.secondaryBackground)
+                #if os(iOS)
                 .cornerRadius(15, corners: [.topRight, .bottomRight, .bottomLeft])
+                #else
+                .cornerRadius(15)
+                #endif
                 .animation(.spring(), value: active)
                 .transition(.scale(scale: 0, anchor: .topLeading))
             }
@@ -179,7 +190,11 @@ private struct UserMessage: View {
                     .padding(.vertical, 8)
                     .padding(.horizontal, 15)
                     .background(Color.accentColor)
+                #if os(iOS)
                     .cornerRadius(15, corners: [.bottomLeft, .topLeft, .topRight])
+                #else
+                    .cornerRadius(15)
+                #endif
                     .colorScheme(.dark)
                     .onTapGesture {
                         toggleActive()
@@ -200,6 +215,7 @@ private struct UserMessage: View {
                     .foregroundColor(.appBlue)
                     .background(Color.tertiaryBackground)
                     .cornerRadius(.infinity)
+                    .buttonStyle(.plain)
 
                     Divider()
                         .padding(.vertical)
@@ -214,10 +230,16 @@ private struct UserMessage: View {
                     .padding(5)
                     .background(Color.tertiaryBackground)
                     .cornerRadius(.infinity)
+                    .buttonStyle(.plain)
+                    .foregroundColor(.appRed)
                 }
                 .padding(5)
                 .background(Color.secondaryBackground)
+                #if os(iOS)
                 .cornerRadius(15, corners: [.topLeft, .bottomLeft, .bottomRight])
+                #else
+                .cornerRadius(15)
+                #endif
                 .animation(.spring(), value: active)
                 .transition(.scale(scale: 0, anchor: .topTrailing))
             }
@@ -273,19 +295,21 @@ private struct MessageInput: View {
         VStack(spacing: 0) {
             Divider()
             HStack(alignment: .bottom) {
-                if #available(iOS 16.0, *) {
+                if #available(iOS 16.0, macOS 13.0, *) {
                     TextField("NEW_MESSAGE_HINT", text: $text, axis: .vertical)
                         .padding(8)
                         .background(Color.primary.opacity(0.05))
                         .cornerRadius(8)
                         .frame(minHeight: 45)
                         .lineLimit(1...3)
+                        .textFieldStyle(.plain)
                 } else {
                     TextField("NEW_MESSAGE_HINT", text: $text)
                         .padding(8)
                         .background(Color.primary.opacity(0.05))
                         .frame(minHeight: 45)
                         .cornerRadius(8)
+                        .textFieldStyle(.plain)
                 }
 
                 Button {
@@ -306,15 +330,20 @@ private struct MessageInput: View {
                     if chat.receiving {
                         ProgressView()
                             .tint(.accentColor)
+                        #if os(macOS)
+                            .frame(width: 20, height: 20)
+                        #endif
                     } else {
                         Image(systemName: "paperplane")
                             .foregroundColor(sendButtonAvailable ? Color.white : Color.primary.opacity(0.2))
                     }
                 }
+                .buttonStyle(.plain)
                 .frame(width: 41, height: 41)
                 .background(sendButtonAvailable ? Color.accentColor : Color.primary.opacity(0.05))
                 .cornerRadius(.infinity)
                 .padding(2)
+                .clipShape(Rectangle())
             }
             .padding(10)
             .background(.regularMaterial)

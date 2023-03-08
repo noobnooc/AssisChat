@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+#if os(iOS)
 extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCornerRectangle(radius: radius, corners: corners) )
@@ -23,4 +24,14 @@ struct RoundedCornerRectangle: Shape {
         return Path(path.cgPath)
     }
 }
+#endif
 
+extension View {
+    func inlineNavigationBar() -> some View {
+        #if os(iOS)
+        self.navigationBarTitleDisplayMode(.inline)
+        #else
+        self
+        #endif
+    }
+}

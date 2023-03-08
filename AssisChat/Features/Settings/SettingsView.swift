@@ -95,7 +95,9 @@ struct SettingsView: View {
             CopyrightView(detailed: true)
                 .listRowBackground(Color.clear)
         }
+        #if os(iOS)
         .listStyle(.insetGrouped)
+        #endif
     }
 }
 

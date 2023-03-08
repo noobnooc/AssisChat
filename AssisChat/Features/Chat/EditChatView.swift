@@ -37,6 +37,10 @@ struct EditChatView: View {
                 }
                 .disabled(!model.available)
                 .listRowInsets(EdgeInsets())
+#if os(macOS)
+                .buttonStyle(.plain)
+                .cornerRadius(15)
+#endif
             }
 
             Section {
@@ -51,6 +55,7 @@ struct EditChatView: View {
             }
         }
         .toolbar {
+#if os(iOS)
             ToolbarItem(placement: .navigationBarLeading) {
                 Button("CANCEL") {
                     dismiss()
@@ -65,6 +70,22 @@ struct EditChatView: View {
                 .disabled(!model.available)
                 .buttonStyle(.borderedProminent)
             }
+#else
+            ToolbarItem {
+                Button("CHAT_UPDATE_SHORT") {
+                    update()
+                    dismiss()
+                }
+                .disabled(!model.available)
+                .buttonStyle(.borderedProminent)
+            }
+            ToolbarItem {
+                Button("CANCEL") {
+                    dismiss()
+                }
+            }
+#endif
+
         }
     }
 

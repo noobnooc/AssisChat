@@ -8,16 +8,15 @@
 import Foundation
 import SwiftUI
 
-
 // MARK: - Color assets
 extension Color {
     // - MARK: Backgrounds
-    static let background = Color(uiColor: .systemBackground)
-    static let secondaryBackground = Color(uiColor: .secondarySystemBackground)
-    static let tertiaryBackground = Color(uiColor: .tertiarySystemBackground)
-    static let groupedBackground = Color(uiColor: .systemGroupedBackground)
-    static let secondaryGroupedBackground = Color(uiColor: .secondarySystemGroupedBackground)
-    static let tertiaryGroupedBackground = Color(uiColor: .tertiarySystemGroupedBackground)
+    static let background = Color("BackgroundColor")
+    static let secondaryBackground = Color("SecondaryBackgroundColor")
+    static let tertiaryBackground = Color("TertiaryBackgroundColor")
+    static let groupedBackground = Color("GroupedBackgroundColor")
+    static let secondaryGroupedBackground = Color("SecondaryGroupedBackgroundColor")
+    static let tertiaryGroupedBackground = Color("TertiaryGroupedBackgroundColor")
 
     // - MARK: App Colors
     static let appBlue = Color("ColorBlue")
@@ -63,7 +62,12 @@ extension Color {
 
     // Copy from https://blog.eidinger.info/from-hex-to-color-and-back-in-swiftui#heading-from-color-to-hex-in-swiftui
     var hex: String {
+        #if os(iOS)
         let uic = UIColor(self)
+        #else
+        let uic = NSColor(self)
+        #endif
+
         guard let components = uic.cgColor.components, components.count >= 3 else {
             return "000000"
         }

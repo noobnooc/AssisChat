@@ -68,12 +68,10 @@ class ChattingFeature: ObservableObject {
             if chat.autoCopy {
                 receivingMessage.copyToPasteboard()
             }
-        } catch ChattingError.invalidConfig {
-            essentialFeature.appendAlert(alert: ErrorAlert(message: "Please config the chat source."))
+        } catch ChattingError.invalidConfig, GeneralError.badURL {
+            essentialFeature.appendAlert(alert: ErrorAlert(message: "SETTINGS_CHAT_SOURCE_INCORRECT_HINT"))
         } catch ChattingError.sending(message: let message) {
             essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(message)))
-        } catch GeneralError.badURL {
-            essentialFeature.appendAlert(alert: ErrorAlert(message: "Please config the URL correctly."))
         } catch {
             essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(error.localizedDescription)))
         }
@@ -94,12 +92,10 @@ class ChattingFeature: ObservableObject {
             if let receivedMessage = receivedMessages.first, chat.autoCopy {
                 receivedMessage.copyToPasteboard()
             }
-        } catch ChattingError.invalidConfig {
-            essentialFeature.appendAlert(alert: ErrorAlert(message: "Please config the chat source."))
+        } catch ChattingError.invalidConfig, GeneralError.badURL {
+            essentialFeature.appendAlert(alert: ErrorAlert(message: "SETTINGS_CHAT_SOURCE_INCORRECT_HINT"))
         } catch ChattingError.sending(message: let message) {
             essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(message)))
-        } catch GeneralError.badURL {
-            essentialFeature.appendAlert(alert: ErrorAlert(message: "Please config the URL correctly."))
         } catch {
             essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(error.localizedDescription)))
         }

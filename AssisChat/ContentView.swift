@@ -12,11 +12,11 @@ struct ContentView: View {
     @EnvironmentObject private var settingsFeature: SettingsFeature
 
     var body: some View {
+#if os(iOS)
         NavigationView {
             ChatsView()
                 .navigationTitle("AssisChat")
-                .navigationBarTitleDisplayMode(.inline)
-
+                .inlineNavigationBar()
             SelectChatHintView()
         }
 
@@ -27,6 +27,28 @@ struct ContentView: View {
             WelcomeView()
                 .interactiveDismissDisabled()
         }
+        #else
+        NavigationSplitView(sidebar: {
+            ChatsView()
+                .frame(width: 280)
+                .navigationTitle("AssisChat")
+                .navigationSplitViewColumnWidth(280)
+        }, detail: {
+            SelectChatHintView()
+        })
+
+        // Welcome
+        .sheet(isPresented: Binding(get: {
+            !settingsFeature.adapterReady
+        }, set: { _ in })) {
+            WelcomeView()
+                .frame(width: 300)
+                .frame(minHeight: 500)
+                .padding()
+                .padding(.vertical, 20)
+                .interactiveDismissDisabled()
+        }
+        #endif
     }
 }
 

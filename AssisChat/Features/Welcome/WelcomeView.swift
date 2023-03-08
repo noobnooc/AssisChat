@@ -25,7 +25,7 @@ private struct Content: View {
     @State private var validating = false
 
     var body: some View {
-        List {
+        Form {
             Section {
                 VStack {
                     Image("Icon")
@@ -48,19 +48,38 @@ private struct Content: View {
                     .frame(maxWidth: .infinity)
             }
             .listRowBackground(Color.clear)
+#if os(macOS)
+            .padding(.top)
+#endif
 
             Section {
+                #if os(iOS)
                 TextField("sk-XXXXXXX", text: $openAIAPIKey)
+                #else
+                TextField("", text: $openAIAPIKey)
+                    .textFieldStyle(.roundedBorder)
+                #endif
             } header: {
                 Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY")
+#if os(macOS)
+                    .padding(.top)
+#endif
+
             } footer: {
                 Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY_HINT")
             }
-
             Section {
+                #if os(iOS)
                 TextField("api.openai.com", text: $openAIDomain)
+                #else
+                TextField("", text: $openAIDomain)
+                    .textFieldStyle(.roundedBorder)
+                #endif
             } header: {
                 Text("SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN")
+#if os(macOS)
+                    .padding(.top)
+#endif
             } footer: {
                 Text("SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN_HINT")
             }
@@ -72,6 +91,9 @@ private struct Content: View {
                     HStack {
                         if validating {
                             ProgressView()
+                            #if os(macOS)
+                                .frame(width: 12, height: 12)
+                            #endif
                         }
 
                         Text("SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE")
@@ -79,13 +101,18 @@ private struct Content: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
+                    #if os(iOS)
                     .background(Color.accentColor)
                     .foregroundColor(.primary)
                     .colorScheme(.dark)
+                    #endif
                 }
                 .disabled(validating || openAIAPIKey.isEmpty)
                 .listRowInsets(EdgeInsets())
             }
+#if os(macOS)
+            .padding(.top)
+#endif
         }
     }
 

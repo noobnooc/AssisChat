@@ -136,6 +136,8 @@
 
 // Settings chat source
 "SETTINGS_CHAT_SOURCE" = "Chat Source";
+// Chat source incorrect hint
+"SETTINGS_CHAT_SOURCE_INCORRECT_HINT" = "Please config the chat source.";
 // Settings chat source summary
 "SETTINGS_CHAT_SOURCE_OPENAI_SUMMARY" = "Config Your OpenAI API";
 // Settings chat source OpenAI API Key

@@ -85,6 +85,9 @@
 /* Chats empty hint */
 "CHATS_EMPTY_HINT" = "點擊右下角的 + 按鈕開始會話";
 
+/* The hint that select a chat to start */
+"CHATTING_SELECT_CHAT_HINT" = "選擇一個會話以開始";
+
 /* Done */
 "DONE" = "完成";
 
@@ -111,6 +114,9 @@
 
 /* Settings chat source */
 "SETTINGS_CHAT_SOURCE" = "會話源";
+
+/* Chat source incorrect hint */
+"SETTINGS_CHAT_SOURCE_INCORRECT_HINT" = "請正確配置會話源";
 
 /* Settings chat source api key empty error message */
 "SETTINGS_CHAT_SOURCE_NO_API_KEY" = "請輸入 API Key";

@@ -20,30 +20,32 @@ struct ChatIconSelector: View {
     ]
 
     var body: some View {
-        VStack(alignment: .leading) {
-            List {
-                Section("CHAT_EDITOR_ICON_SELECTOR_ICON") {
-                    LazyVGrid(columns: Self.selectorGridLayout) {
-                        ForEach(Chat.Icon.symbols) { symbol in
-                            let selected = symbol == selection
+        List {
+            Section("CHAT_EDITOR_ICON_SELECTOR_ICON") {
+                LazyVGrid(columns: Self.selectorGridLayout) {
+                    ForEach(Chat.Icon.symbols) { symbol in
+                        let selected = symbol == selection
 
-                            symbol.image
-                                .frame(width: 22, height: 22)
-                                .padding(10)
-                                .foregroundColor(selected ? .secondaryGroupedBackground : .primary)
-                                .background(selected ? Color.primary : Color.secondaryGroupedBackground)
-                                .cornerRadius(10)
-                                .onTapGesture {
-                                    selection = symbol
-                                    Haptics.veryLight()
-                                }
-                        }
+                        symbol.image
+                            .frame(width: 22, height: 22)
+                            .padding(10)
+                            .foregroundColor(selected ? .secondaryGroupedBackground : .primary)
+                            .background(selected ? Color.primary : Color.secondaryGroupedBackground)
+                            .cornerRadius(10)
+                        // To ensure whole icon clickable
+                            .clipShape(Rectangle())
+                            .onTapGesture {
+                                selection = symbol
+                                Haptics.veryLight()
+                            }
                     }
-                    .frame(maxWidth: .infinity)
                 }
+                .frame(maxWidth: .infinity)
             }
-            .listStyle(.insetGrouped)
         }
+#if os(iOS)
+        .listStyle(.insetGrouped)
+#endif
     }
 }
 

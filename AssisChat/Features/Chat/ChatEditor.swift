@@ -80,10 +80,16 @@ struct ChatEditor<Actions: View>: View {
                     TextField("NEW_CHAT_NAME", text: $model.name)
                         .font(.title3)
                         .padding()
+                    #if os(macOS)
+                        .textFieldStyle(.roundedBorder)
+                    #endif
                 }
 
                 ColorSelector(selection: $model.color)
                     .padding(.vertical, 5)
+                #if os(macOS)
+                    .padding(.horizontal, 5)
+                #endif
             }
 
             Section("CHAT_EDITOR_CONFIG_SECTION") {
@@ -103,26 +109,40 @@ struct ChatEditor<Actions: View>: View {
                         .font(.footnote)
                         .foregroundColor(Color.secondary)
 
-                    if #available(iOS 16, *) {
+                    if #available(iOS 16, macOS 13, *) {
                         TextField("CHAT_ROLE_PROMPT_HINT", text: $model.systemMessage, axis: .vertical)
                             .lineLimit(1...3)
+#if os(macOS)
+                            .textFieldStyle(.roundedBorder)
+#endif
                     } else {
                         TextField("CHAT_ROLE_PROMPT_HINT", text: $model.systemMessage)
+#if os(macOS)
+                            .textFieldStyle(.roundedBorder)
+#endif
                     }
                 }
+                .frame(maxWidth: .infinity)
 
                 VStack(alignment: .leading) {
                     Text("CHAT_MESSAGE_PREFIX")
                         .font(.footnote)
                         .foregroundColor(Color.secondary)
 
-                    if #available(iOS 16, *) {
+                    if #available(iOS 16, macOS 13, *) {
                         TextField("CHAT_MESSAGE_PREFIX_HINT", text: $model.messagePrefix, axis: .vertical)
                             .lineLimit(1...3)
+#if os(macOS)
+                            .textFieldStyle(.roundedBorder)
+#endif
                     } else {
                         TextField("CHAT_MESSAGE_PREFIX_HINT", text: $model.messagePrefix)
+#if os(macOS)
+                            .textFieldStyle(.roundedBorder)
+#endif
                     }
                 }
+                .frame(maxWidth: .infinity)
 
                 VStack(alignment: .trailing) {
                     Toggle(isOn: $model.isolated) {
@@ -133,6 +153,7 @@ struct ChatEditor<Actions: View>: View {
                         .font(.footnote)
                         .foregroundColor(Color.secondary)
                 }
+                .frame(maxWidth: .infinity, alignment: .trailing)
 
                 VStack(alignment: .trailing) {
                     Toggle(isOn: $model.autoCopy) {
@@ -143,11 +164,16 @@ struct ChatEditor<Actions: View>: View {
                         .font(.footnote)
                         .foregroundColor(Color.secondary)
                 }
+                .frame(maxWidth: .infinity, alignment: .trailing)
             }
 
             actions
         }
+#if os(macOS)
+        .listStyle(.inset)
+#endif
     }
+
     // MARK: - IconSelectorButton
     private struct IconSelectorButton: View {
         @Binding var selection: Chat.Icon
@@ -163,17 +189,33 @@ struct ChatEditor<Actions: View>: View {
                     .scaledToFit()
                     .frame(width: 24, height: 24)
             }
+            .buttonStyle(.plain)
             .sheet(isPresented: $sheetPresented) {
+#if os(iOS)
                 NavigationView {
                     ChatIconSelector(selection: $selection)
                         .navigationTitle("CHAT_EDITOR_ICON_SELECTOR_TITLE")
-                        .navigationBarTitleDisplayMode(.inline)
+                        .inlineNavigationBar()
                         .navigationBarItems(trailing: Button("DONE", action: {
                             sheetPresented = false
                         }))
                         .foregroundColor(.primary)
                 }
                 .navigationViewStyle(.stack)
+#else
+                ChatIconSelector(selection: $selection)
+                    .navigationTitle("CHAT_EDITOR_ICON_SELECTOR_TITLE")
+                    .frame(width: 500, height: 500)
+                    .inlineNavigationBar()
+                    .foregroundColor(.primary)
+                    .toolbar {
+                        Button {
+                            sheetPresented = false
+                        } label: {
+                            Text("DONE")
+                        }
+                    }
+#endif
             }
         }
     }
