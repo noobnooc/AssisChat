@@ -173,6 +173,7 @@ struct ChatEditor<Actions: View>: View {
                         }))
                         .foregroundColor(.primary)
                 }
+                .navigationViewStyle(.stack)
             }
         }
     }

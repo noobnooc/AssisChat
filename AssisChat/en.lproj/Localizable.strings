@@ -102,9 +102,11 @@
 "CHATS_EMPTY_HINT" = "Click the plus button to create a new chat.";
 
 
-// MARK: - Messages
+// MARK: - Chatting
 // New message hint
 "NEW_MESSAGE_HINT" = "New Message";
+// The hint that select a chat to start
+"CHATTING_SELECT_CHAT_HINT" = "Select a chat to start";
 
 
 // MARK: - Settings

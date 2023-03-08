@@ -16,6 +16,8 @@ struct ContentView: View {
             ChatsView()
                 .navigationTitle("AssisChat")
                 .navigationBarTitleDisplayMode(.inline)
+
+            SelectChatHintView()
         }
 
         // Welcome

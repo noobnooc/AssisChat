@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F5779EE529B8246800CC70B0 /* Splash in Frameworks */ = {isa = PBXBuildFile; productRef = F5779EE429B8246800CC70B0 /* Splash */; };
+		F5B2554D29B8A56D0008DAA3 /* SelectChatHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */; };
 		F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9329B497A60083BB31 /* AssisChatApp.swift */; };
 		F5E47E9629B497A60083BB31 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9529B497A60083BB31 /* Persistence.swift */; };
 		F5E47E9929B497A60083BB31 /* AssisChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */; };
@@ -71,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChatHintView.swift; sourceTree = "<group>"; };
 		F5E47E9029B497A60083BB31 /* AssisChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssisChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E47E9329B497A60083BB31 /* AssisChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssisChatApp.swift; sourceTree = "<group>"; };
 		F5E47E9529B497A60083BB31 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				F5E47EE629B4E8FB0083BB31 /* ChattingFeature.swift */,
+				F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */,
 				F5E47EE829B4E9090083BB31 /* ChattingView.swift */,
 			);
 			path = Chating;
@@ -495,6 +498,7 @@
 				F5E47E9929B497A60083BB31 /* AssisChat.xcdatamodeld in Sources */,
 				F5E47ECF29B498290083BB31 /* Color+Extensions.swift in Sources */,
 				F5E47EEF29B4F5A80083BB31 /* ChatGPTAdapter.swift in Sources */,
+				F5B2554D29B8A56D0008DAA3 /* SelectChatHintView.swift in Sources */,
 				F5E47EE929B4E9090083BB31 /* ChattingView.swift in Sources */,
 				F5E47EFF29B5D8B80083BB31 /* View+Extensions.swift in Sources */,
 				F5E47EF429B5AC380083BB31 /* SettingsView.swift in Sources */,

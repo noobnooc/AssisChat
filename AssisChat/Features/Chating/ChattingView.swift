@@ -46,6 +46,7 @@ struct ChattingView: View {
             }
         }
         .navigationTitle(chat.name)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
