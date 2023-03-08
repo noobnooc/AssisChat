@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Splash
 import MarkdownUI
 
 struct ChattingView: View {
@@ -103,7 +104,7 @@ private struct AssistantMessage: View {
             HStack {
                 VStack(alignment: .trailing) {
                     if let content = message.content {
-                        Markdown(content.trimmingCharacters(in: .whitespacesAndNewlines))
+                        MessageContent(content: content)
                     } else if message.receiving {
                         ProgressView()
                     } else if message.failed {
@@ -115,7 +116,6 @@ private struct AssistantMessage: View {
                 .background(message.failed ? Color.appRed : Color.secondaryBackground)
                 .foregroundColor(message.failed ? Color.white : Color.primary)
                 .cornerRadius(15, corners: [.bottomRight, .topRight, .topLeft])
-                .textSelection(.enabled)
                 .onTapGesture {
                     toggleActive()
                 }
@@ -139,8 +139,8 @@ private struct AssistantMessage: View {
                 .padding(5)
                 .background(Color.secondaryBackground)
                 .cornerRadius(15, corners: [.topRight, .bottomRight, .bottomLeft])
-                .animation(.easeOut(duration: 0.1), value: active)
-                .transition(.scale(scale: 0, anchor: .top))
+                .animation(.spring(), value: active)
+                .transition(.scale(scale: 0, anchor: .topLeading))
             }
         }
     }
@@ -158,13 +158,12 @@ private struct UserMessage: View {
         VStack(alignment: .trailing, spacing: 2) {
             HStack {
                 Spacer(minLength: 50)
-                Markdown((message.content ?? "").trimmingCharacters(in: .whitespacesAndNewlines))
+                MessageContent(content: message.content ?? "")
                     .padding(.vertical, 8)
                     .padding(.horizontal, 15)
                     .background(Color.accentColor)
                     .cornerRadius(15, corners: [.bottomLeft, .topLeft, .topRight])
                     .colorScheme(.dark)
-                    .textSelection(.enabled)
                     .onTapGesture {
                         toggleActive()
                     }
@@ -186,10 +185,44 @@ private struct UserMessage: View {
                 .padding(5)
                 .background(Color.secondaryBackground)
                 .cornerRadius(15, corners: [.topLeft, .bottomLeft, .bottomRight])
-                .animation(.easeOut(duration: 0.1), value: active)
-                .transition(.scale(scale: 0, anchor: .top))
+                .animation(.spring(), value: active)
+                .transition(.scale(scale: 0, anchor: .topTrailing))
             }
         }
+    }
+}
+
+private struct MessageContent: View {
+    let content: String
+
+    var body: some View {
+        Markdown(content.trimmingCharacters(in: .whitespacesAndNewlines))
+            .markdownBlockStyle(\.codeBlock) { configuration in
+                ScrollView(.horizontal) {
+                    configuration.label
+                        .padding(10)
+                }
+                .markdownTextStyle(textStyle: {
+                    FontFamilyVariant(.monospaced)
+                    FontSize(.em(0.85))
+                })
+                .background(Color.background)
+                .cornerRadius(8)
+                .padding(.bottom)
+                .textSelection(.enabled)
+                //                                TODO: - Get the content
+                //                                .overlay(alignment: .bottomTrailing) {
+                //                                    Button {
+                //
+                //                                    } label: {
+                //                                        Image(systemName: "doc.on.doc")
+                //                                    }
+                //                                    .tint(.secondary)
+                //                                    .frame(height: 25)
+                //                                    .buttonStyle(.borderedProminent)
+                //                                    .padding(10)
+                //                                }
+            }
     }
 }
 
@@ -199,6 +232,9 @@ private struct MessageInput: View {
     @ObservedObject var chat: Chat
     @State private var text = ""
 
+    var sendButtonAvailable: Bool {
+        !text.isEmpty && !chat.receiving
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -207,19 +243,20 @@ private struct MessageInput: View {
                 if #available(iOS 16.0, *) {
                     TextField("NEW_MESSAGE_HINT", text: $text, axis: .vertical)
                         .padding(8)
-                        .background(.thinMaterial)
+                        .background(Color.primary.opacity(0.05))
                         .cornerRadius(8)
                         .frame(minHeight: 45)
                         .lineLimit(1...3)
                 } else {
                     TextField("NEW_MESSAGE_HINT", text: $text)
                         .padding(8)
-                        .background(.thickMaterial)
+                        .background(Color.primary.opacity(0.05))
                         .frame(minHeight: 45)
                         .cornerRadius(8)
                 }
 
                 Button {
+                    guard sendButtonAvailable else { return }
                     Task {
                         let messageContent = text
                         text = ""
@@ -233,11 +270,18 @@ private struct MessageInput: View {
                     }
 
                 } label: {
-                    Image(systemName: "paperplane")
+                    if chat.receiving {
+                        ProgressView()
+                            .tint(.accentColor)
+                    } else {
+                        Image(systemName: "paperplane")
+                            .foregroundColor(sendButtonAvailable ? Color.white : Color.primary.opacity(0.2))
+                    }
                 }
-                .frame(height: 45)
-                .buttonStyle(.borderedProminent)
-                .disabled(text.isEmpty || chat.receiving)
+                .frame(width: 41, height: 41)
+                .background(sendButtonAvailable ? Color.accentColor : Color.primary.opacity(0.05))
+                .cornerRadius(.infinity)
+                .padding(2)
             }
             .padding(10)
             .background(.regularMaterial)

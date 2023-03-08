@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F5779EE529B8246800CC70B0 /* Splash in Frameworks */ = {isa = PBXBuildFile; productRef = F5779EE429B8246800CC70B0 /* Splash */; };
 		F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9329B497A60083BB31 /* AssisChatApp.swift */; };
 		F5E47E9629B497A60083BB31 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9529B497A60083BB31 /* Persistence.swift */; };
 		F5E47E9929B497A60083BB31 /* AssisChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */; };
@@ -118,6 +119,7 @@
 		F5E47F2029B7562B0083BB31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F5E47F2229B756300083BB31 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F5E47F2329B756310083BB31 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F5E47F2729B7736C0083BB31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			files = (
 				F5E47F1C29B721AA0083BB31 /* LDSwiftEventSource in Frameworks */,
 				F5E47F2629B76BFD0083BB31 /* MarkdownUI in Frameworks */,
+				F5779EE529B8246800CC70B0 /* Splash in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +175,7 @@
 		F5E47E9229B497A60083BB31 /* AssisChat */ = {
 			isa = PBXGroup;
 			children = (
+				F5E47F2729B7736C0083BB31 /* Info.plist */,
 				F5E47F0029B6176E0083BB31 /* Components */,
 				F5E47EE029B49CFD0083BB31 /* Helpers */,
 				F5E47EC529B497C80083BB31 /* Models */,
@@ -354,6 +358,7 @@
 			packageProductDependencies = (
 				F5E47F1B29B721AA0083BB31 /* LDSwiftEventSource */,
 				F5E47F2529B76BFD0083BB31 /* MarkdownUI */,
+				F5779EE429B8246800CC70B0 /* Splash */,
 			);
 			productName = AssisChat;
 			productReference = F5E47E9029B497A60083BB31 /* AssisChat.app */;
@@ -432,6 +437,7 @@
 			packageReferences = (
 				F5E47F1A29B721AA0083BB31 /* XCRemoteSwiftPackageReference "swift-eventsource" */,
 				F5E47F2429B76BFD0083BB31 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
+				F5779EE329B8246800CC70B0 /* XCRemoteSwiftPackageReference "Splash" */,
 			);
 			productRefGroup = F5E47E9129B497A60083BB31 /* Products */;
 			projectDirPath = "";
@@ -684,6 +690,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AssisChat/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -724,6 +731,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AssisChat/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -883,6 +891,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F5779EE329B8246800CC70B0 /* XCRemoteSwiftPackageReference "Splash" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Splash";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
 		F5E47F1A29B721AA0083BB31 /* XCRemoteSwiftPackageReference "swift-eventsource" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/LaunchDarkly/swift-eventsource";
@@ -902,6 +918,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F5779EE429B8246800CC70B0 /* Splash */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5779EE329B8246800CC70B0 /* XCRemoteSwiftPackageReference "Splash" */;
+			productName = Splash;
+		};
 		F5E47F1B29B721AA0083BB31 /* LDSwiftEventSource */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F5E47F1A29B721AA0083BB31 /* XCRemoteSwiftPackageReference "swift-eventsource" */;

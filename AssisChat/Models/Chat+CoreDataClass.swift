@@ -63,9 +63,9 @@ extension Chat {
 
         var display: LocalizedStringKey {
             switch self {
-            case .creative: return LocalizedStringKey("Creative")
-            case .balanced: return LocalizedStringKey("Balanced")
-            case .precise: return LocalizedStringKey("Precise")
+            case .creative: return LocalizedStringKey("CHAT_TEMPERATURE_CREATIVE")
+            case .balanced: return LocalizedStringKey("CHAT_TEMPERATURE_BALANCED")
+            case .precise: return LocalizedStringKey("CHAT_TEMPERATURE_PRECISE")
             }
         }
 

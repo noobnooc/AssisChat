@@ -21,7 +21,7 @@ struct SettingsView: View {
                         .cornerRadius(20)
                     Text("AssisChat")
                         .padding(.top)
-                    Text("Assistant chatting.")
+                    Text("APP_SLOGAN")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }

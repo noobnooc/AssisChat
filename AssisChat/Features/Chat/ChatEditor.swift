@@ -84,13 +84,13 @@ struct ChatEditor<Actions: View>: View {
 
             Section("CHAT_EDITOR_CONFIG_SECTION") {
                 Picker("CHAT_TEMPERATURE", selection: $model.temperature) {
-                    Text("CHAT_TEMPERATURE_CREATIVE")
+                    Text(Chat.Temperature.creative.display)
                         .tag(Chat.Temperature.creative)
 
-                    Text("CHAT_TEMPERATURE_BALANCED")
+                    Text(Chat.Temperature.balanced.display)
                         .tag(Chat.Temperature.balanced)
 
-                    Text("CHAT_TEMPERATURE_PRECISE")
+                    Text(Chat.Temperature.precise.display)
                         .tag(Chat.Temperature.precise)
                 }
 
