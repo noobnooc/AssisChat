@@ -62,10 +62,12 @@ extension EssentialFeature {
     func persistData() {
         guard context.hasChanges else { return }
 
-        do {
-            try context.save()
-        } catch {
-            appendAlert(alert: ErrorAlert(message: LocalizedStringKey(error.localizedDescription)))
+        context.performAndWait {
+            do {
+                try context.save()
+            } catch {
+                appendAlert(alert: ErrorAlert(message: LocalizedStringKey(error.localizedDescription)))
+            }
         }
     }
 }
