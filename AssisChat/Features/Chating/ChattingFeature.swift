@@ -10,7 +10,7 @@ import SwiftUI
 
 enum ChattingError: Error {
     case invalidConfig
-    case sending(message: String)
+    case sending(message: LocalizedStringKey)
 }
 
 protocol ChattingAdapter {
@@ -71,7 +71,7 @@ class ChattingFeature: ObservableObject {
         } catch ChattingError.invalidConfig, GeneralError.badURL {
             essentialFeature.appendAlert(alert: ErrorAlert(message: "SETTINGS_CHAT_SOURCE_INCORRECT_HINT"))
         } catch ChattingError.sending(message: let message) {
-            essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(message)))
+            essentialFeature.appendAlert(alert: ErrorAlert(message: message))
         } catch {
             essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(error.localizedDescription)))
         }
@@ -95,7 +95,7 @@ class ChattingFeature: ObservableObject {
         } catch ChattingError.invalidConfig, GeneralError.badURL {
             essentialFeature.appendAlert(alert: ErrorAlert(message: "SETTINGS_CHAT_SOURCE_INCORRECT_HINT"))
         } catch ChattingError.sending(message: let message) {
-            essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(message)))
+            essentialFeature.appendAlert(alert: ErrorAlert(message: message))
         } catch {
             essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(error.localizedDescription)))
         }

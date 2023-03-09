@@ -8,6 +8,7 @@
 import Foundation
 import LDSwiftEventSource
 import Combine
+import SwiftUI
 
 class ChatGPTAdapter {
     struct Config {
@@ -104,7 +105,7 @@ extension ChatGPTAdapter: ChattingAdapter {
         guard let responseData = response.data else {
             let errorMessage = response.error?.error.message ?? "Unknown Error"
 
-            throw ChattingError.sending(message: errorMessage)
+            throw ChattingError.sending(message: LocalizedStringKey(errorMessage))
         }
 
         return responseData.choices.map { choice in
@@ -228,7 +229,11 @@ private struct Handler: EventHandler {
     }
 
     func onError(error: Error) {
-        publisher.send(completion: .failure(error))
+        if let uError = error as? UnsuccessfulResponseError {
+            publisher.send(completion: .failure(ChattingError.sending(message: "Server response with error status: \(uError.responseCode)")))
+        } else {
+            publisher.send(completion: .failure(ChattingError.sending(message: "Unknown error")))
+        }
     }
 
     func onMessage(eventType: String, messageEvent: MessageEvent) {

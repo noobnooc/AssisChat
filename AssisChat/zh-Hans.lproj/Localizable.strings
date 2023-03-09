@@ -109,6 +109,9 @@
 /* New message hint */
 "NEW_MESSAGE_HINT" = "新消息";
 
+/* No comment provided by engineer. */
+"Server response with error status: %lld" = "服务器返回了错误的状态码: %lld";
+
 /* Settings */
 "SETTINGS" = "设置";
 
@@ -174,4 +177,7 @@
 
 /* Success */
 "SUCCESS" = "成功";
+
+/* No comment provided by engineer. */
+"Unknown error" = "未知错误";
 
