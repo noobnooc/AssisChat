@@ -19,14 +19,14 @@ extension Color {
     static let tertiaryGroupedBackground = Color("TertiaryGroupedBackgroundColor")
 
     // - MARK: App Colors
-    static let appBlue = Color("ColorBlue")
-    static let appBrown = Color("ColorBrown")
-    static let appGreen = Color("ColorGreen")
-    static let appIndigo = Color("ColorIndigo")
-    static let appOrange = Color("ColorOrange")
-    static let appPink = Color("ColorPink")
-    static let appRed = Color("ColorRed")
-    static let appYellow = Color("ColorYellow")
+    static let appBlue = Color.blue.opacity(0.9)
+    static let appBrown = Color.brown.opacity(0.9)
+    static let appGreen = Color.green.opacity(0.9)
+    static let appIndigo = Color.indigo.opacity(0.9)
+    static let appOrange = Color.orange.opacity(0.9)
+    static let appPink = Color.pink.opacity(0.9)
+    static let appRed = Color.red.opacity(0.9)
+    static let appYellow = Color.yellow.opacity(0.9)
 
     // - MARK: Accent
     static let originAccent = Color("AccentColor")

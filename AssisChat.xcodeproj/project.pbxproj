@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F5779EE529B8246800CC70B0 /* Splash in Frameworks */ = {isa = PBXBuildFile; productRef = F5779EE429B8246800CC70B0 /* Splash */; };
 		F5B2554D29B8A56D0008DAA3 /* SelectChatHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */; };
+		F5B2554F29B98E950008DAA3 /* ChatTemplateSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B2554E29B98E950008DAA3 /* ChatTemplateSelectView.swift */; };
 		F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9329B497A60083BB31 /* AssisChatApp.swift */; };
 		F5E47E9629B497A60083BB31 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9529B497A60083BB31 /* Persistence.swift */; };
 		F5E47E9929B497A60083BB31 /* AssisChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */; };
@@ -73,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChatHintView.swift; sourceTree = "<group>"; };
+		F5B2554E29B98E950008DAA3 /* ChatTemplateSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTemplateSelectView.swift; sourceTree = "<group>"; };
 		F5E47E9029B497A60083BB31 /* AssisChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssisChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E47E9329B497A60083BB31 /* AssisChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssisChatApp.swift; sourceTree = "<group>"; };
 		F5E47E9529B497A60083BB31 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				F5E47EE329B49DF90083BB31 /* ChatIconSelector.swift */,
 				F5E47EDE29B49CCA0083BB31 /* ColorSelector.swift */,
 				F5E47F0A29B7002D0083BB31 /* ChatDetailView.swift */,
+				F5B2554E29B98E950008DAA3 /* ChatTemplateSelectView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			files = (
 				F5E47EDB29B49B880083BB31 /* ChatsView.swift in Sources */,
 				F5E47F0229B6178F0083BB31 /* CopyrightView.swift in Sources */,
+				F5B2554F29B98E950008DAA3 /* ChatTemplateSelectView.swift in Sources */,
 				F5E47EEC29B4EA0A0083BB31 /* MessageFeature.swift in Sources */,
 				F5E47EFA29B5B6470083BB31 /* ChatSourceConfigView.swift in Sources */,
 				F5E47EE729B4E8FB0083BB31 /* ChattingFeature.swift in Sources */,
@@ -695,6 +699,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AssisChat/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -736,6 +741,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AssisChat/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
