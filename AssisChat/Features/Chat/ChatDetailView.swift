@@ -37,6 +37,7 @@ struct ChatDetailView: View {
                         HStack {
                             Text("CHAT_HISTORY_LENGTH_TO_SEND")
                             Text(chat.storedHistoryLengthToSend.historyLengthToSendDisplay)
+                                .opacity(0.8)
                         }
                         .padding(.vertical, 5)
                         .padding(.horizontal, 10)

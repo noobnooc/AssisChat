@@ -252,6 +252,10 @@ private struct MessageContent: View {
 
     var body: some View {
         Markdown(content.trimmingCharacters(in: .whitespacesAndNewlines))
+            .markdownTextStyle(\.link, textStyle: {
+                UnderlineStyle(.single)
+                ForegroundColor(.primary.opacity(0.8))
+            })
             .markdownBlockStyle(\.codeBlock) { configuration in
                 ScrollView(.horizontal) {
                     configuration.label
@@ -261,7 +265,7 @@ private struct MessageContent: View {
                     FontFamilyVariant(.monospaced)
                     FontSize(.em(0.85))
                 })
-                .background(Color.background)
+                .background(Color.primary.opacity(0.1))
                 .cornerRadius(8)
                 .padding(.bottom)
                 .textSelection(.enabled)

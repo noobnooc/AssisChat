@@ -93,12 +93,12 @@ private struct ChatItem: View {
                 .font(.title2)
                 .frame(width: 24, height: 24)
             #if os(iOS)
-                .padding()
+                .padding(13)
             #else
                 .padding(10)
             #endif
                 .background(chat.uiColor)
-                .cornerRadius(10)
+                .cornerRadius(8)
                 .colorScheme(.dark)
 
             VStack(alignment: .leading, spacing: 5) {
@@ -106,7 +106,7 @@ private struct ChatItem: View {
                 Text(chat.systemMessage ?? String(localized: "CHAT_ROLE_PROMPT_BLANK_HINT"))
                     .font(.footnote)
                     .foregroundColor(.secondary)
-                    .lineLimit(2)
+                    .lineLimit(1)
             }
         }
     }
