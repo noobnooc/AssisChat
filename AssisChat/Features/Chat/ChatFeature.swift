@@ -13,7 +13,7 @@ struct PlainChat {
     let name: String
     let temperature: Chat.Temperature
     let systemMessage: String?
-    let isolated: Bool
+    let historyLengthToSend: Int16
     let messagePrefix: String?
     let autoCopy: Bool
     let icon: Chat.Icon
@@ -88,7 +88,7 @@ extension ChatFeature {
         chat.color = plainChat.color
         chat.rawTemperature = plainChat.temperature.rawValue
         chat.rawSystemMessage = plainChat.systemMessage
-        chat.rawIsolated = plainChat.isolated
+        chat.rawHistoryLengthToSend = plainChat.historyLengthToSend
         chat.rawMessagePrefix = plainChat.messagePrefix
         chat.rawAutoCopy = plainChat.autoCopy
 
@@ -103,7 +103,7 @@ extension ChatFeature {
         chat.color = plainChat.color
         chat.rawTemperature = plainChat.temperature.rawValue
         chat.rawSystemMessage = plainChat.systemMessage
-        chat.rawIsolated = plainChat.isolated
+        chat.rawHistoryLengthToSend = plainChat.historyLengthToSend
         chat.rawMessagePrefix = plainChat.messagePrefix
         chat.rawAutoCopy = plainChat.autoCopy
 

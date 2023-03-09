@@ -61,10 +61,14 @@
 // Chat message prefix hint
 "CHAT_MESSAGE_PREFIX_HINT" = "Will be added before each message";
 
-// Chat isolated
-"CHAT_ISOLATED" = "Isolated";
-// Chat isolated hint
-"CHAT_ISOLATED_HINT" = "Isolated chat will not send history messages";
+// Chat history length to send
+"CHAT_HISTORY_LENGTH_TO_SEND" = "History Length";
+// Chat history length to send hint
+"CHAT_HISTORY_LENGTH_TO_SEND_HINT" = "The chat will only send the set number of history messages.";
+// Chat history length to send max
+"CHAT_HISTORY_LENGTH_TO_SEND_MAX" = "All";
+// Chat history length to send none
+"CAHT_HISTORY_LENGTH_TO_SEND_NONE" = "None";
 
 // Chat auto copy
 "CHAT_AUTO_COPY" = "Auto Copy";

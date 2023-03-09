@@ -1,6 +1,9 @@
 /* App slogan */
 "APP_SLOGAN" = "一个聊天助理";
 
+/* Chat history length to send none */
+"CAHT_HISTORY_LENGTH_TO_SEND_NONE" = "不发送";
+
 /* Cancel */
 "CANCEL" = "取消";
 
@@ -43,11 +46,14 @@
 /* Chat editor icon selector title */
 "CHAT_EDITOR_ICON_SELECTOR_TITLE" = "选择一个图标";
 
-/* Chat isolated */
-"CHAT_ISOLATED" = "孤立的";
+/* Chat history length to send */
+"CHAT_HISTORY_LENGTH_TO_SEND" = "历史消息数";
 
-/* Chat isolated hint */
-"CHAT_ISOLATED_HINT" = "孤立的会话不会发送历史消息";
+/* Chat history length to send hint */
+"CHAT_HISTORY_LENGTH_TO_SEND_HINT" = "设置该会话最多会发送的历史消息数量";
+
+/* Chat history length to send max */
+"CHAT_HISTORY_LENGTH_TO_SEND_MAX" = "全部";
 
 /* Chat message prefix */
 "CHAT_MESSAGE_PREFIX" = "消息前缀";

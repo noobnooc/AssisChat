@@ -117,17 +117,12 @@ extension ChatGPTAdapter: ChattingAdapter {
 
         let systemMessages = chat.systemMessage != nil ? [ChatGPTMessage(role: .system, content: chat.systemMessage!)] : []
 
-        var gptMessages: [ChatGPTMessage]
-
-        if chat.isolated {
-            gptMessages = systemMessages + [ChatGPTMessage.fromMessage(message: message)]
-        } else {
-            gptMessages = systemMessages + (chat.messages + [message]).map({ message in
-                ChatGPTMessage.fromMessage(message: message)
-            })
+        let historyMessages = Array(chat.messages.suffix(Int(chat.historyLengthToSend)))
+        let gptMessagesToSend = systemMessages + (historyMessages + [message]).map { message in
+            ChatGPTMessage.fromMessage(message: message)
         }
 
-        return gptMessages
+        return gptMessagesToSend
     }
 
     struct RequestBody: Encodable {

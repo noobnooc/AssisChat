@@ -11,17 +11,26 @@ class ChatEditorModel: ObservableObject {
     @Published var name: String
     @Published var temperature: Chat.Temperature
     @Published var systemMessage: String
-    @Published var isolated: Bool
+    @Published var historyLengthToSend: Int16
     @Published var messagePrefix: String
     @Published var autoCopy: Bool
     @Published var icon: Chat.Icon
     @Published var color: Chat.Color?
 
-    init(name: String, temperature: Chat.Temperature, systemMessage: String, isolated: Bool, messagePrefix: String, autoCopy: Bool, icon: Chat.Icon, color: Chat.Color?) {
+    init(
+        name: String,
+        temperature: Chat.Temperature,
+        systemMessage: String,
+        historyLengthToSend: Int16,
+        messagePrefix: String,
+        autoCopy: Bool,
+        icon: Chat.Icon,
+        color: Chat.Color?
+    ) {
         self.name = name
         self.temperature = temperature
         self.systemMessage = systemMessage
-        self.isolated = isolated
+        self.historyLengthToSend = historyLengthToSend
         self.messagePrefix = messagePrefix
         self.autoCopy = autoCopy
         self.icon = icon
@@ -32,7 +41,7 @@ class ChatEditorModel: ObservableObject {
         self.name = chat.name
         self.temperature = chat.temperature
         self.systemMessage = chat.systemMessage ?? ""
-        self.isolated = chat.isolated
+        self.historyLengthToSend = chat.storedHistoryLengthToSend
         self.messagePrefix = chat.messagePrefix ?? ""
         self.autoCopy = chat.autoCopy
         self.icon = chat.icon
@@ -44,7 +53,7 @@ class ChatEditorModel: ObservableObject {
             name: name.isEmpty ? String(localized: "NEW_CHAT_NAME") : name,
             temperature: temperature,
             systemMessage: systemMessage.count > 0 ? systemMessage : nil,
-            isolated: isolated,
+            historyLengthToSend: historyLengthToSend,
             messagePrefix: messagePrefix.count > 0 ? messagePrefix : nil,
             autoCopy: autoCopy,
             icon: icon,
@@ -145,11 +154,20 @@ struct ChatEditor<Actions: View>: View {
                 .frame(maxWidth: .infinity)
 
                 VStack(alignment: .trailing) {
-                    Toggle(isOn: $model.isolated) {
-                        Text("CHAT_ISOLATED")
+                    Picker("CHAT_HISTORY_LENGTH_TO_SEND", selection: $model.historyLengthToSend) {
+                        Text("CHAT_HISTORY_LENGTH_TO_SEND_MAX")
+                            .tag(Int16.historyLengthToSendMax)
+                        Text("50")
+                            .tag(Int16(50))
+                        Text("20")
+                            .tag(Int16(20))
+                        Text("10")
+                            .tag(Int16(10))
+                        Text("CAHT_HISTORY_LENGTH_TO_SEND_NONE")
+                            .tag(Int16.zero)
                     }
 
-                    Text("CHAT_ISOLATED_HINT")
+                    Text("CHAT_HISTORY_LENGTH_TO_SEND_HINT")
                         .font(.footnote)
                         .foregroundColor(Color.secondary)
                 }
@@ -168,6 +186,9 @@ struct ChatEditor<Actions: View>: View {
             }
 
             actions
+        }
+        .onAppear() {
+            print("###### \(model.historyLengthToSend)") 
         }
 #if os(macOS)
         .listStyle(.inset)
@@ -224,7 +245,7 @@ struct ChatEditor<Actions: View>: View {
 
 struct ChatEditor_Previews: PreviewProvider {
     static var previews: some View {
-        ChatEditor(model: .init(name: "", temperature: .balanced, systemMessage: "", isolated: false, messagePrefix: "", autoCopy: false, icon: .default, color: .default)) {
+        ChatEditor(model: .init(name: "", temperature: .balanced, systemMessage: "", historyLengthToSend: 0, messagePrefix: "", autoCopy: false, icon: .default, color: .default)) {
 
         }
     }

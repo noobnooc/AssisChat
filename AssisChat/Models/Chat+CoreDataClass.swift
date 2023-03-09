@@ -28,8 +28,14 @@ public class Chat: NSManagedObject {
         return rawMessagePrefix
     }
 
-    var isolated: Bool {
-        return rawIsolated
+    /// The actual number of history length to send
+    var historyLengthToSend: Int16 {
+        return rawHistoryLengthToSend == .historyLengthToSendMax ? .max : rawHistoryLengthToSend
+    }
+
+    /// The actual number of history length to send, `-1` for max
+    var storedHistoryLengthToSend: Int16 {
+        return rawHistoryLengthToSend
     }
 
     var receiving: Bool {
@@ -362,5 +368,19 @@ extension Chat {
             case .custom(color: let color): return color
             }
         }
+    }
+}
+
+// Extensions
+extension Int16 {
+    static let defaultHistoryLengthToSend: Int16 = 20
+    static let historyLengthToSendMax: Int16 = -1
+
+    var historyLengthToSendDisplay: String {
+        return self == .historyLengthToSendMax
+            ? String(localized: "CHAT_HISTORY_LENGTH_TO_SEND_MAX")
+            : self == .zero
+                ? String(localized: "CAHT_HISTORY_LENGTH_TO_SEND_NONE")
+                : String(self)
     }
 }

@@ -17,7 +17,7 @@ struct NewChatView: View {
         name: "",
         temperature: .balanced,
         systemMessage: "",
-        isolated: false,
+        historyLengthToSend: .defaultHistoryLengthToSend,
         messagePrefix: "",
         autoCopy: false,
         icon: .default,

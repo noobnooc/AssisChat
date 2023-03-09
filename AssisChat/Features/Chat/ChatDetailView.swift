@@ -34,13 +34,14 @@ struct ChatDetailView: View {
                             .background(chat.temperature.color)
                             .cornerRadius(.infinity)
 
-                        if chat.isolated {
-                            Text("CHAT_ISOLATED")
-                                .padding(.vertical, 5)
-                                .padding(.horizontal, 10)
-                                .background(Color.appRed)
-                                .cornerRadius(.infinity)
+                        HStack {
+                            Text("CHAT_HISTORY_LENGTH_TO_SEND")
+                            Text(chat.storedHistoryLengthToSend.historyLengthToSendDisplay)
                         }
+                        .padding(.vertical, 5)
+                        .padding(.horizontal, 10)
+                        .background(Color.appOrange)
+                        .cornerRadius(.infinity)
 
                         if chat.autoCopy {
                             Text("CHAT_AUTO_COPY")
@@ -105,10 +106,10 @@ struct ChatDetailView: View {
                     .navigationTitle("CHAT_EDIT")
                     .inlineNavigationBar()
             }
-            #else
+#else
             EditChatView(chat: chat)
                 .frame(width: 300, height: 500)
-            #endif
+#endif
         }
     }
 }

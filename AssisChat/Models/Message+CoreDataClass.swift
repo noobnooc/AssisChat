@@ -79,7 +79,7 @@ public class Message: NSManagedObject {
 // MARK: - Role
 
 extension Message {
-    enum Role: Int64 {
+    enum Role: Int16 {
         case system = 0
         case user = 1
         case assistant = 2
