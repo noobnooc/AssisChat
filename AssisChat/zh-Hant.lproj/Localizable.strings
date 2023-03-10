@@ -1,3 +1,6 @@
+/* The message prefix of the Programer Helper chat template */
+"Analyzes and optimizes the following code: " = "分析並優化以下代碼：";
+
 /* App slogan */
 "APP_SLOGAN" = "一個聊天助理";
 
@@ -24,6 +27,9 @@
 
 /* The short form of the action to create a chat */
 "CHAT_CREATE_SHORT" = "開始";
+
+/* The custom action of chat */
+"CHAT_CUSTOM" = "自定義會話";
 
 /* Chat delete */
 "CHAT_DELETE" = "刪除會話";
@@ -61,6 +67,9 @@
 /* Chat message prefix hint */
 "CHAT_MESSAGE_PREFIX_HINT" = "將會在添加到每一條消息之前";
 
+/* The presets of chat */
+"CHAT_PRESETS" = "會話預設";
+
 /* Chat role prompt */
 "CHAT_ROLE_PROMPT" = "角色提示";
 
@@ -94,6 +103,9 @@
 /* The hint that select a chat to start */
 "CHATTING_SELECT_CHAT_HINT" = "選擇一個會話以開始";
 
+/* The message prefix of the Language Polisher chat template */
+"Corrects and polishes the following content:" = "糾正及潤色以下內容：";
+
 /* Done */
 "DONE" = "完成";
 
@@ -103,11 +115,29 @@
 /* Error */
 "ERROR" = "錯誤";
 
+/* The message prefix of the Recipe chat template */
+"How to make the following dish: " = "如何烹飪下面這道菜：";
+
+/* The name of the Just Chatting chat template */
+"Just Chatting" = "隨便聊聊";
+
+/* The system message of the Just Chatting chat template */
+"Just chatting." = "隨便聊聊";
+
+/* The name of the Language Polisher chat template */
+"Language Polisher" = "語言潤色";
+
 /* The name of new chat */
 "NEW_CHAT_NAME" = "新會話";
 
 /* New message hint */
 "NEW_MESSAGE_HINT" = "新消息";
+
+/* The name of the Programer Helper chat template */
+"Programer Helper" = "程序幫手";
+
+/* The name of the Language Recipe chat template */
+"Recipe" = "菜譜";
 
 /* No comment provided by engineer. */
 "Server response with error status: %lld" = "服務器返回了錯誤的狀態碼: %lld";
@@ -178,6 +208,24 @@
 /* Success */
 "SUCCESS" = "成功";
 
+/* The message prefix of the Translator chat template */
+"Translate the following content:" = "翻譯以下內容";
+
+/* The name of the Translator chat template */
+"Translator" = "翻譯小助手";
+
 /* No comment provided by engineer. */
 "Unknown error" = "未知錯誤";
+
+/* The system message of the Recipe chat template */
+"You are a kitchen helper who responds with the recipe for a given dish." = "你是一個廚房幫手，回復給定菜名的菜譜。";
+
+/* The system message of the Language Polisher chat template */
+"You are a language polisher who corrects language errors and polishes the given content." = "你是一個語言潤色助手，糾正並潤色給定的內容。";
+
+/* The system message of the Programer Helper chat template */
+"You are a programmer's assistant who analyzes and optimizes given code." = "你是一個程序幫手，分析並優化給定的代碼。";
+
+/* The system message of the Translator chat template */
+"You are a translator who translates between English and Spanish." = "你是一個翻譯助手，在中文和英文之間翻譯。";
 

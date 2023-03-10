@@ -187,9 +187,6 @@ struct ChatEditor<Actions: View>: View {
 
             actions
         }
-        .onAppear() {
-            print("###### \(model.historyLengthToSend)") 
-        }
 #if os(macOS)
         .listStyle(.inset)
 #endif

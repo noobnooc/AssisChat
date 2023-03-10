@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F5779EE529B8246800CC70B0 /* Splash in Frameworks */ = {isa = PBXBuildFile; productRef = F5779EE429B8246800CC70B0 /* Splash */; };
 		F5B2554D29B8A56D0008DAA3 /* SelectChatHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */; };
+		F5C6094529BA366D00862071 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6094429BA366D00862071 /* NewChatView.swift */; };
 		F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9329B497A60083BB31 /* AssisChatApp.swift */; };
 		F5E47E9629B497A60083BB31 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9529B497A60083BB31 /* Persistence.swift */; };
 		F5E47E9929B497A60083BB31 /* AssisChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */; };
@@ -28,7 +29,7 @@
 		F5E47ED629B498E20083BB31 /* EssentialFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ED529B498E20083BB31 /* EssentialFeature.swift */; };
 		F5E47ED929B4990A0083BB31 /* ChatFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ED829B4990A0083BB31 /* ChatFeature.swift */; };
 		F5E47EDB29B49B880083BB31 /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EDA29B49B880083BB31 /* ChatsView.swift */; };
-		F5E47EDD29B49B9C0083BB31 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EDC29B49B9C0083BB31 /* NewChatView.swift */; };
+		F5E47EDD29B49B9C0083BB31 /* CustomNewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EDC29B49B9C0083BB31 /* CustomNewChatView.swift */; };
 		F5E47EDF29B49CCA0083BB31 /* ColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EDE29B49CCA0083BB31 /* ColorSelector.swift */; };
 		F5E47EE229B49D0E0083BB31 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EE129B49D0E0083BB31 /* Haptics.swift */; };
 		F5E47EE429B49DF90083BB31 /* ChatIconSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EE329B49DF90083BB31 /* ChatIconSelector.swift */; };
@@ -73,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChatHintView.swift; sourceTree = "<group>"; };
+		F5C6094429BA366D00862071 /* NewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatView.swift; sourceTree = "<group>"; };
 		F5E47E9029B497A60083BB31 /* AssisChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssisChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E47E9329B497A60083BB31 /* AssisChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssisChatApp.swift; sourceTree = "<group>"; };
 		F5E47E9529B497A60083BB31 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -96,7 +98,7 @@
 		F5E47ED529B498E20083BB31 /* EssentialFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeature.swift; sourceTree = "<group>"; };
 		F5E47ED829B4990A0083BB31 /* ChatFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFeature.swift; sourceTree = "<group>"; };
 		F5E47EDA29B49B880083BB31 /* ChatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsView.swift; sourceTree = "<group>"; };
-		F5E47EDC29B49B9C0083BB31 /* NewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatView.swift; sourceTree = "<group>"; };
+		F5E47EDC29B49B9C0083BB31 /* CustomNewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNewChatView.swift; sourceTree = "<group>"; };
 		F5E47EDE29B49CCA0083BB31 /* ColorSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelector.swift; sourceTree = "<group>"; };
 		F5E47EE129B49D0E0083BB31 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		F5E47EE329B49DF90083BB31 /* ChatIconSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatIconSelector.swift; sourceTree = "<group>"; };
@@ -270,11 +272,12 @@
 				F5E47ED829B4990A0083BB31 /* ChatFeature.swift */,
 				F5E47F0C29B706FF0083BB31 /* ChatEditor.swift */,
 				F5E47EDA29B49B880083BB31 /* ChatsView.swift */,
-				F5E47EDC29B49B9C0083BB31 /* NewChatView.swift */,
+				F5E47EDC29B49B9C0083BB31 /* CustomNewChatView.swift */,
 				F5E47F0E29B708D00083BB31 /* EditChatView.swift */,
 				F5E47EE329B49DF90083BB31 /* ChatIconSelector.swift */,
 				F5E47EDE29B49CCA0083BB31 /* ColorSelector.swift */,
 				F5E47F0A29B7002D0083BB31 /* ChatDetailView.swift */,
+				F5C6094429BA366D00862071 /* NewChatView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			files = (
 				F5E47EDB29B49B880083BB31 /* ChatsView.swift in Sources */,
 				F5E47F0229B6178F0083BB31 /* CopyrightView.swift in Sources */,
+				F5C6094529BA366D00862071 /* NewChatView.swift in Sources */,
 				F5E47EEC29B4EA0A0083BB31 /* MessageFeature.swift in Sources */,
 				F5E47EFA29B5B6470083BB31 /* ChatSourceConfigView.swift in Sources */,
 				F5E47EE729B4E8FB0083BB31 /* ChattingFeature.swift in Sources */,
@@ -516,7 +520,7 @@
 				F5E47ED629B498E20083BB31 /* EssentialFeature.swift in Sources */,
 				F5E47E9629B497A60083BB31 /* Persistence.swift in Sources */,
 				F5E47EF829B5B2320083BB31 /* TintSelector.swift in Sources */,
-				F5E47EDD29B49B9C0083BB31 /* NewChatView.swift in Sources */,
+				F5E47EDD29B49B9C0083BB31 /* CustomNewChatView.swift in Sources */,
 				F5E47EDF29B49CCA0083BB31 /* ColorSelector.swift in Sources */,
 				F5E47F0B29B7002D0083BB31 /* ChatDetailView.swift in Sources */,
 				F5E47EF629B5B1B10083BB31 /* ColorSchemeSelector.swift in Sources */,

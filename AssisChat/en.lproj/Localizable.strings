@@ -39,6 +39,10 @@
 "CHAT_UPDATE_SHORT" = "Save";
 // The action to edit a chat
 "CHAT_EDIT" = "Edit Chat";
+// The presets of chat
+"CHAT_PRESETS" = "Presets";
+// The custom action of chat
+"CHAT_CUSTOM" = "Custom";
 
 // Chat temperature
 "CHAT_TEMPERATURE" = "Temperature";

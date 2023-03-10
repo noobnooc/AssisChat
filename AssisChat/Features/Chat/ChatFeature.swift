@@ -122,3 +122,67 @@ extension ChatFeature {
         essentialFeature.persistData()
     }
 }
+
+
+// MARK: - Templates
+extension ChatFeature {
+    func createAllPresets() {
+        // Reversed for correct order
+        for template in Self.presets.reversed() {
+            createChat(template)
+        }
+    }
+
+    static let presets: [PlainChat] = [
+        PlainChat(
+            name: String(localized: "Just Chatting", comment: "The name of the Just Chatting chat template"),
+            temperature: .balanced,
+            systemMessage: String(localized: "Just chatting.", comment: "The system message of the Just Chatting chat template"),
+            historyLengthToSend: .defaultHistoryLengthToSend,
+            messagePrefix: nil,
+            autoCopy: false,
+            icon: .symbol("bubble.left"),
+            color: .green
+        ),
+        PlainChat(
+            name: String(localized: "Translator", comment: "The name of the Translator chat template"),
+            temperature: .balanced,
+            systemMessage: String(localized: "You are a translator who translates between English and Spanish.", comment: "The system message of the Translator chat template"),
+            historyLengthToSend: .zero,
+            messagePrefix: String(localized: "Translate the following content:", comment: "The message prefix of the Translator chat template"),
+            autoCopy: true,
+            icon: .symbol("character.bubble"),
+            color: .blue
+        ),
+        PlainChat(
+            name: String(localized: "Language Polisher", comment: "The name of the Language Polisher chat template"),
+            temperature: .balanced,
+            systemMessage: String(localized: "You are a language polisher who corrects language errors and polishes the given content.", comment: "The system message of the Language Polisher chat template"),
+            historyLengthToSend: .zero,
+            messagePrefix: String(localized: "Corrects and polishes the following content:", comment: "The message prefix of the Language Polisher chat template"),
+            autoCopy: true,
+            icon: .symbol("text.bubble"),
+            color: .orange
+        ),
+        PlainChat(
+            name: String(localized: "Recipe", comment: "The name of the Language Recipe chat template"),
+            temperature: .balanced,
+            systemMessage: String(localized: "You are a kitchen helper who responds with the recipe for a given dish.", comment: "The system message of the Recipe chat template"),
+            historyLengthToSend: .zero,
+            messagePrefix: String(localized: "How to make the following dish: ", comment: "The message prefix of the Recipe chat template"),
+            autoCopy: false,
+            icon: .symbol("carrot"),
+            color: .red
+        ),
+        PlainChat(
+            name: String(localized: "Programer Helper", comment: "The name of the Programer Helper chat template"),
+            temperature: .balanced,
+            systemMessage: String(localized: "You are a programmer's assistant who analyzes and optimizes given code.", comment: "The system message of the Programer Helper chat template"),
+            historyLengthToSend: .zero,
+            messagePrefix: String(localized: "Analyzes and optimizes the following code: ", comment: "The message prefix of the Programer Helper chat template"),
+            autoCopy: true,
+            icon: .symbol("laptopcomputer"),
+            color: .indigo
+        ),
+    ]
+}

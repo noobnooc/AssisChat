@@ -1,109 +1,71 @@
 //
-//  NewChatView.swift
+//  ChatTemplateSelectView.swift
 //  AssisChat
 //
-//  Created by Nooc on 2023-03-05.
+//  Created by Nooc on 2023-03-09.
 //
 
 import SwiftUI
 
-
 struct NewChatView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
 
-    @EnvironmentObject var chatFeature: ChatFeature
-
-    @StateObject var model: ChatEditorModel = ChatEditorModel(
-        name: "",
-        temperature: .balanced,
-        systemMessage: "",
-        historyLengthToSend: .defaultHistoryLengthToSend,
-        messagePrefix: "",
-        autoCopy: false,
-        icon: .default,
-        color: .default
-    )
+    @EnvironmentObject private var chatFeature: ChatFeature
 
     var body: some View {
-        ChatEditor(model: model) {
-            Section {
-                Button {
-                    create()
-                    dismiss()
-                } label: {
-                    Text("CHAT_CREATE")
-                        .bold()
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.accentColor)
-                        .foregroundColor(.primary)
-                        .colorScheme(.dark)
+        List {
+            Section("CHAT_PRESETS") {
+                ForEach(ChatFeature.presets, id: \.name) { preset in
+                    PresetItem(preset: preset)
+                        .onTapGesture {
+                            dismiss()
+                            chatFeature.createChat(preset)
+                        }
                 }
-                .disabled(!model.available)
-                .listRowInsets(EdgeInsets())
-                #if os(macOS)
-                .buttonStyle(.plain)
-                .cornerRadius(15)
-                #endif
             }
 
-            Section {
-                Button {
-                    dismiss()
+            Section("CHAT_CUSTOM") {
+                NavigationLink {
+                    CustomNewChatView() {
+                        dismiss()
+                    }
                 } label: {
-                    Text("CANCEL")
-                        .frame(maxWidth: .infinity)
-                        .padding()
+                    PresetItem(preset: PlainChat(name: String(localized: "NEW_CHAT_NAME"), temperature: .balanced, systemMessage: String(localized: "NEW_CHAT_NAME"), historyLengthToSend: .defaultHistoryLengthToSend, messagePrefix: nil, autoCopy: false, icon: .default, color: .default))
                 }
-                .listRowInsets(EdgeInsets())
             }
         }
-        .toolbar {
-            #if os(iOS)
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button("CANCEL") {
-                    dismiss()
-                }
-            }
-
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("CHAT_CREATE_SHORT") {
-                    create()
-                    dismiss()
-                }
-                .disabled(!model.available)
-                .buttonStyle(.borderedProminent)
-            }
-            #else
-            ToolbarItem {
-                Button("CHAT_CREATE_SHORT") {
-                    create()
-                    dismiss()
-                }
-                .disabled(!model.available)
-                .buttonStyle(.borderedProminent)
-            }
-
-            ToolbarItem {
-                Button("CANCEL") {
-                    dismiss()
-                }
-            }
-            #endif
-        }
     }
-
-    func create() {
-        let plainChat = model.plain
-
-        guard plainChat.available else { return }
-
-        chatFeature.createChat(plainChat)
-    }
-
 }
 
-struct NewChatView_Previews: PreviewProvider {
+private struct PresetItem: View {
+    let preset: PlainChat
+
+    var body: some View {
+        HStack {
+            preset.icon.image
+                .font(.title2)
+                .frame(width: 24, height: 24)
+#if os(iOS)
+                .padding(13)
+#else
+                .padding(10)
+#endif
+                .background(preset.color?.color)
+                .cornerRadius(8)
+                .colorScheme(.dark)
+
+            VStack(alignment: .leading, spacing: 5) {
+                Text(preset.name)
+                Text(preset.systemMessage ?? "")
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .lineLimit(1)
+            }
+        }
+    }
+}
+
+struct ChatTemplateSelectView_Previews: PreviewProvider {
     static var previews: some View {
         NewChatView()
     }

@@ -18,6 +18,7 @@ struct WelcomeView: View {
 private struct Content: View {
     @EnvironmentObject private var essentialFeature: EssentialFeature
     @EnvironmentObject private var settingsFeature: SettingsFeature
+    @EnvironmentObject private var chatFeature: ChatFeature
 
     @State var openAIAPIKey: String
     @State var openAIDomain: String
@@ -130,6 +131,8 @@ private struct Content: View {
             _ = await settingsFeature.validateAndConfigOpenAI(apiKey: openAIAPIKey, for: domain)
 
             validating = false
+
+            chatFeature.createAllPresets()
         }
     }
 }
