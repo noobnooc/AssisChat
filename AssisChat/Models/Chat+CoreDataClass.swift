@@ -72,15 +72,27 @@ public class Chat: NSManagedObject {
 
 extension Chat {
     enum Temperature: Float {
-        case creative = 2
+        // The high value will cause garbled characters
+        case creative = 1.2
         case balanced = 1
-        case precise = 0
+        case precise = 0.8
 
         var display: LocalizedStringKey {
             switch self {
             case .creative: return LocalizedStringKey("CHAT_TEMPERATURE_CREATIVE")
             case .balanced: return LocalizedStringKey("CHAT_TEMPERATURE_BALANCED")
             case .precise: return LocalizedStringKey("CHAT_TEMPERATURE_PRECISE")
+            }
+        }
+
+        init?(rawValue: Float) {
+            // To adapt legancy data
+            if rawValue >= 1.1 {
+                self = .creative
+            } else if rawValue > 0.9 {
+                self = .balanced
+            } else {
+                self = .precise
             }
         }
 
