@@ -60,7 +60,7 @@ struct AssisChatApp: App {
                 .alert(
                     essentialFeature.currentAlert?.title ?? "",
                     isPresented: Binding(get: {
-                        essentialFeature.currentAlert != nil
+                        return essentialFeature.currentAlert != nil
                     }, set: { value in
                         if !value {
                             essentialFeature.dismissCurrentAlert()

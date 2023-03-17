@@ -160,7 +160,5 @@
 "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE" = "Validate and Save";
 // Settings chat source validate and save success
 "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_SUCCESS" = "Success validated the config and saved.";
-// Settings chat source validate and save failed
-"SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_FAILED" = "Failed to validate";
 // Settings chat source api key empty error message
 "SETTINGS_CHAT_SOURCE_NO_API_KEY" = "Please input API key";

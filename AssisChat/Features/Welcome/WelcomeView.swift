@@ -22,8 +22,8 @@ private struct Content: View {
 
     @State var openAIAPIKey: String
     @State var openAIDomain: String
-
     @State private var validating = false
+    @State private var errorMessage: LocalizedStringKey?
 
     var body: some View {
         Form {
@@ -54,12 +54,12 @@ private struct Content: View {
 #endif
 
             Section {
-                #if os(iOS)
+#if os(iOS)
                 TextField("sk-XXXXXXX", text: $openAIAPIKey)
-                #else
+#else
                 TextField("", text: $openAIAPIKey)
                     .textFieldStyle(.roundedBorder)
-                #endif
+#endif
             } header: {
                 Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY")
 #if os(macOS)
@@ -70,12 +70,12 @@ private struct Content: View {
                 Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY_HINT")
             }
             Section {
-                #if os(iOS)
+#if os(iOS)
                 TextField("api.openai.com", text: $openAIDomain)
-                #else
+#else
                 TextField("", text: $openAIDomain)
                     .textFieldStyle(.roundedBorder)
-                #endif
+#endif
             } header: {
                 Text("SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN")
 #if os(macOS)
@@ -92,9 +92,9 @@ private struct Content: View {
                     HStack {
                         if validating {
                             ProgressView()
-                            #if os(macOS)
+#if os(macOS)
                                 .frame(width: 12, height: 12)
-                            #endif
+#endif
                         }
 
                         Text("SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE")
@@ -102,11 +102,11 @@ private struct Content: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    #if os(iOS)
+#if os(iOS)
                     .background(Color.accentColor)
                     .foregroundColor(.primary)
                     .colorScheme(.dark)
-                    #endif
+#endif
                 }
                 .disabled(validating || openAIAPIKey.isEmpty)
                 .listRowInsets(EdgeInsets())
@@ -115,6 +115,15 @@ private struct Content: View {
             .padding(.top)
 #endif
         }
+        .alert("ERROR", isPresented: Binding(get: {
+            errorMessage != nil
+        }, set: { _ in
+            errorMessage = nil
+        }), actions: {
+
+        }, message: {
+            Text(errorMessage ?? "Unknown error")
+        })
     }
 
     func validateAndSave() -> Void {
@@ -126,13 +135,19 @@ private struct Content: View {
 
             let domain = openAIDomain.isEmpty ? nil : openAIDomain
 
-            validating = true
+            do {
+                validating = true
 
-            _ = await settingsFeature.validateAndConfigOpenAI(apiKey: openAIAPIKey, for: domain)
+                try await settingsFeature.validateAndConfigOpenAI(apiKey: openAIAPIKey, for: domain)
+
+                chatFeature.createAllPresets()
+            } catch ChattingError.validating(message: let message) {
+                errorMessage = message
+            } catch {
+                errorMessage = LocalizedStringKey(error.localizedDescription)
+            }
 
             validating = false
-
-            chatFeature.createAllPresets()
         }
     }
 }

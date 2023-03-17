@@ -11,12 +11,13 @@ import SwiftUI
 enum ChattingError: Error {
     case invalidConfig
     case sending(message: LocalizedStringKey)
+    case validating(message: LocalizedStringKey)
 }
 
 protocol ChattingAdapter {
     func sendMessageWithStream(message: Message, receivingMessage: Message) async throws
     func sendMessage(message: Message) async throws -> [PlainMessage]
-    func validateConfig() async -> Bool
+    func validateConfig() async throws
 }
 
 class ChattingFeature: ObservableObject {

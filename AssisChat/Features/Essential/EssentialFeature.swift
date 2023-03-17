@@ -103,7 +103,10 @@ extension EssentialFeature {
     }
 
     func requestURL<ResponseData: Decodable, ResponseError: Decodable>(urlString: String, init requestInit: RequestInit) async throws -> Response<ResponseData, ResponseError> {
-        guard let url = URL(string: urlString) else {
+        guard
+            let url = URL(string: urlString),
+            await UIApplication.shared.canOpenURL(url)
+        else {
             throw GeneralError.badURL
         }
 

@@ -178,9 +178,6 @@
 /* Settings chat source validate and save button */
 "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE" = "验证并保存";
 
-/* Settings chat source validate and save failed */
-"SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_FAILED" = "验证失败";
-
 /* Settings chat source validate and save success */
 "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_SUCCESS" = "已成功验证并保存";
 

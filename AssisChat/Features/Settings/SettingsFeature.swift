@@ -49,18 +49,14 @@ class SettingsFeature: ObservableObject {
         chattingAdapter = ChatGPTAdapter(essentialFeature: essentialFeature, config: .init(domain: configuredOpenAIDomain, apiKey: apiKey))
     }
 
-    func validateAndConfigOpenAI(apiKey: String, for domain: String?) async -> Bool {
+    func validateAndConfigOpenAI(apiKey: String, for domain: String?) async throws {
         let adapter = ChatGPTAdapter(essentialFeature: essentialFeature, config: .init(domain: domain, apiKey: apiKey))
 
-        let validated = await adapter.validateConfig()
+        try await adapter.validateConfig()
 
-        if validated {
-            chattingAdapter = adapter
-            configuredOpenAIAPIKey = apiKey
-            configuredOpenAIDomain = domain
-        }
-
-        return validated
+        chattingAdapter = adapter
+        configuredOpenAIAPIKey = apiKey
+        configuredOpenAIDomain = domain
     }
 }
 

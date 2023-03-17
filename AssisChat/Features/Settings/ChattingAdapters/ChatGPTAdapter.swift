@@ -38,13 +38,19 @@ extension ChatGPTAdapter: ChattingAdapter {
         }
     }
 
-    func validateConfig() async -> Bool {
+    func validateConfig() async throws {
         do {
             let result = try await request(messages: [.init(role: .user, content: "Test")], temperature: 1)
 
-            return !result.isEmpty
+            if result.isEmpty {
+                throw ChattingError.validating(message: "Unknown error")
+            }
+        } catch ChattingError.sending(message: let message) {
+            throw ChattingError.validating(message: message)
+        } catch GeneralError.badURL {
+            throw ChattingError.validating(message: "Invalid URL")
         } catch {
-            return false
+            throw error
         }
     }
 
@@ -103,7 +109,7 @@ extension ChatGPTAdapter: ChattingAdapter {
                 ]))
 
         guard let responseData = response.data else {
-            let errorMessage = response.error?.error.message ?? "Unknown Error"
+            let errorMessage = response.error?.error.message ?? "Unknown error"
 
             throw ChattingError.sending(message: LocalizedStringKey(errorMessage))
         }

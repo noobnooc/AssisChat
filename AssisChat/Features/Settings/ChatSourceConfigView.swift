@@ -76,18 +76,19 @@ private struct Content: View {
 
             let domain = openAIDomain.isEmpty ? nil : openAIDomain
 
-            validating = true
+            do {
+                validating = true
 
-            let saved = await settingsFeature.validateAndConfigOpenAI(apiKey: openAIAPIKey, for: domain)
+                try await settingsFeature.validateAndConfigOpenAI(apiKey: openAIAPIKey, for: domain)
 
-            validating = false
-
-            if saved {
                 essentialFeature.appendAlert(alert: GeneralAlert(title: "SUCCESS", message: "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_SUCCESS"))
-            } else {
-                essentialFeature.appendAlert(alert: ErrorAlert(message: "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_FAILED"))
+            } catch ChattingError.validating(message: let message) {
+                essentialFeature.appendAlert(alert: ErrorAlert(message: message))
+            } catch {
+                essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(error.localizedDescription)))
             }
 
+            validating = false
         }
     }
 }
