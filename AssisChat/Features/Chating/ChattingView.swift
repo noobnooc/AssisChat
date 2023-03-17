@@ -248,6 +248,8 @@ private struct UserMessage: View {
 }
 
 private struct MessageContent: View {
+    @Environment(\.colorScheme) private var colorScheme
+
     let content: String
 
     var body: some View {
@@ -265,7 +267,7 @@ private struct MessageContent: View {
                     FontFamilyVariant(.monospaced)
                     FontSize(.em(0.85))
                 })
-                .background(Color.primary.opacity(0.1))
+                .background(Color.primary.opacity(0.05))
                 .cornerRadius(8)
                 .padding(.bottom)
                 .textSelection(.enabled)
@@ -282,6 +284,9 @@ private struct MessageContent: View {
                 //                                    .padding(10)
                 //                                }
             }
+            .markdownCodeSyntaxHighlighter(
+                .splash(theme: colorScheme == .dark ? .wwdc17(withFont: .init(size: 16)) : .sunset(withFont: .init(size: 16)))
+            )
     }
 }
 
