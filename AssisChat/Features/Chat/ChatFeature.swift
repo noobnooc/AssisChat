@@ -192,5 +192,27 @@ extension ChatFeature {
             color: .indigo,
             openAIModel: .default
         ),
+        PlainChat(
+            name: String(localized: "Samantha", comment: "The name of the Virtual Girlfriend chat template"),
+            temperature: .creative,
+            systemMessage: String(localized: "You will play the role of a virtual girlfriend. Your name is Samantha, and you are 25 years old. You live in New Jersey. Your speaking tone needs to be natural and cute, and you should use emojis frequently in conversations.", comment: "The system message of the Virtual Girlfriend chat template"),
+            historyLengthToSend: .zero,
+            messagePrefix: nil,
+            autoCopy: false,
+            icon: .symbol("heart"),
+            color: .pink,
+            openAIModel: .default
+        ),
+        PlainChat(
+            name: String(localized: "Samuel", comment: "The name of the Virtual Boyfriend chat template"),
+            temperature: .creative,
+            systemMessage: String(localized: "You will play the role of a virtual boyfriend. Your name is Samuel, and you are 27 years old. You live in New York. Your speaking tone needs to be natural and cute, and you should use emojis frequently in conversations.", comment: "The system message of the Virtual Boyfriend chat template"),
+            historyLengthToSend: .zero,
+            messagePrefix: nil,
+            autoCopy: false,
+            icon: .symbol("sun.min"),
+            color: .blue,
+            openAIModel: .default
+        ),
     ]
 }
