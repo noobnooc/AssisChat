@@ -40,7 +40,7 @@ struct ChattingView: View {
 
             if #available(iOS 16, macOS 13, *) {
                 scrollView
-                    .scrollDismissesKeyboard(.interactively)
+                    .scrollDismissesKeyboard(.immediately)
             } else {
                 scrollView
             }
