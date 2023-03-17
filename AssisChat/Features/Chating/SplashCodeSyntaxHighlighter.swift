@@ -55,12 +55,12 @@ extension TextOutputFormat {
 
         mutating func addToken(_ token: String, ofType type: TokenType) {
             let color = self.theme.tokenColors[type] ?? self.theme.plainTextColor
-            self.accumulatedText.append(Text(token).foregroundColor(.init(uiColor: color)))
+            self.accumulatedText.append(Text(token).foregroundColor(.init(color)))
         }
 
         mutating func addPlainText(_ text: String) {
             self.accumulatedText.append(
-                Text(text).foregroundColor(.init(uiColor: self.theme.plainTextColor))
+                Text(text).foregroundColor(.init(self.theme.plainTextColor))
             )
         }
 

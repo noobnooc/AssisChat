@@ -139,6 +139,8 @@
 "SETTINGS_ABOUT" = "About";
 // Settings Feedback
 "SETTINGS_FEEDBACK" = "Feedback";
+// Settings acknowledgments
+"SETTINGS_ACKNOWLEDGMENTS" = "Acknowledgments";
 
 // MARK: Data source
 

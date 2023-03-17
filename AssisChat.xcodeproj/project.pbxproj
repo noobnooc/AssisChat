@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F543A92529C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92429C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift */; };
+		F543A92729C444AC000C61B5 /* AcknowledgmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92629C444AC000C61B5 /* AcknowledgmentView.swift */; };
 		F5779EE529B8246800CC70B0 /* Splash in Frameworks */ = {isa = PBXBuildFile; productRef = F5779EE429B8246800CC70B0 /* Splash */; };
 		F5B2554D29B8A56D0008DAA3 /* SelectChatHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */; };
 		F5C6094529BA366D00862071 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6094429BA366D00862071 /* NewChatView.swift */; };
@@ -75,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		F543A92429C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCodeSyntaxHighlighter.swift; sourceTree = "<group>"; };
+		F543A92629C444AC000C61B5 /* AcknowledgmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgmentView.swift; sourceTree = "<group>"; };
 		F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChatHintView.swift; sourceTree = "<group>"; };
 		F5C6094429BA366D00862071 /* NewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatView.swift; sourceTree = "<group>"; };
 		F5E47E9029B497A60083BB31 /* AssisChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssisChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -328,6 +330,7 @@
 				F5E47EF529B5B1B10083BB31 /* ColorSchemeSelector.swift */,
 				F5E47EF729B5B2320083BB31 /* TintSelector.swift */,
 				F5E47EF329B5AC380083BB31 /* SettingsView.swift */,
+				F543A92629C444AC000C61B5 /* AcknowledgmentView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				F5C6094529BA366D00862071 /* NewChatView.swift in Sources */,
 				F5E47EEC29B4EA0A0083BB31 /* MessageFeature.swift in Sources */,
 				F5E47EFA29B5B6470083BB31 /* ChatSourceConfigView.swift in Sources */,
+				F543A92729C444AC000C61B5 /* AcknowledgmentView.swift in Sources */,
 				F5E47EE729B4E8FB0083BB31 /* ChattingFeature.swift in Sources */,
 				F5E47F0729B62BFD0083BB31 /* WelcomeView.swift in Sources */,
 				F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */,

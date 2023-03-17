@@ -87,6 +87,18 @@ struct SettingsView: View {
                             .foregroundColor(.primary)
                     } icon: {
                         Image(systemName: "envelope")
+                            .foregroundColor(.appGreen)
+                    }
+                }
+
+                NavigationLink {
+                    AcknowledgmentView()
+                } label: {
+                    Label {
+                        Text("SETTINGS_ACKNOWLEDGMENTS")
+                            .foregroundColor(.primary)
+                    } icon: {
+                        Image(systemName: "heart")
                             .foregroundColor(.appRed)
                     }
                 }

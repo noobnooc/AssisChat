@@ -118,6 +118,9 @@
 /* The message prefix of the Recipe chat template */
 "How to make the following dish: " = "如何烹饪下面这道菜：";
 
+/* No comment provided by engineer. */
+"Invalid URL" = "不可用的 URL";
+
 /* The name of the Just Chatting chat template */
 "Just Chatting" = "随便聊聊";
 
@@ -147,6 +150,9 @@
 
 /* Settings about */
 "SETTINGS_ABOUT" = "关于";
+
+/* Settings acknowledgments */
+"SETTINGS_ACKNOWLEDGMENTS" = "感谢条款";
 
 /* Settings chat section title */
 "SETTINGS_CHAT" = "会话";
