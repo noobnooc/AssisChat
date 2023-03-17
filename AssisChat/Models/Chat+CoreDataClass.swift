@@ -68,6 +68,22 @@ public class Chat: NSManagedObject {
     }
 }
 
+// MARK: - OpenAI model
+
+extension Chat {
+    var openAIModel: OpenAIModel {
+        OpenAIModel(rawValue: rawOpenAIModel ?? "") ?? .default
+    }
+
+    enum OpenAIModel: String, CaseIterable {
+        case gpt35turbo = "gpt-3.5-turbo"
+        case gpt4 = "gpt-4"
+        case gpt432k = "gpt-4-32k"
+
+        static let `default` = Self.gpt35turbo
+    }
+}
+
 // MARK: - Temperature
 
 extension Chat {

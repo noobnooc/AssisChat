@@ -67,6 +67,9 @@
 /* Chat message prefix hint */
 "CHAT_MESSAGE_PREFIX_HINT" = "將會在添加到每一條消息之前";
 
+/* Chat OpenAI model */
+"CHAT_OPENAI_MODEL" = "模型";
+
 /* The presets of chat */
 "CHAT_PRESETS" = "會話預設";
 

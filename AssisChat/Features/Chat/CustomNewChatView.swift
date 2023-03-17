@@ -21,7 +21,8 @@ struct CustomNewChatView: View {
         messagePrefix: "",
         autoCopy: false,
         icon: .default,
-        color: .default
+        color: .default,
+        openAIModel: .default
     )
 
     var body: some View {

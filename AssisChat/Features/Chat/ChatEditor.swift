@@ -16,6 +16,7 @@ class ChatEditorModel: ObservableObject {
     @Published var autoCopy: Bool
     @Published var icon: Chat.Icon
     @Published var color: Chat.Color?
+    @Published var openAIModel: Chat.OpenAIModel
 
     init(
         name: String,
@@ -25,7 +26,8 @@ class ChatEditorModel: ObservableObject {
         messagePrefix: String,
         autoCopy: Bool,
         icon: Chat.Icon,
-        color: Chat.Color?
+        color: Chat.Color?,
+        openAIModel: Chat.OpenAIModel
     ) {
         self.name = name
         self.temperature = temperature
@@ -35,6 +37,7 @@ class ChatEditorModel: ObservableObject {
         self.autoCopy = autoCopy
         self.icon = icon
         self.color = color
+        self.openAIModel = openAIModel
     }
 
     init(chat: Chat) {
@@ -46,6 +49,7 @@ class ChatEditorModel: ObservableObject {
         self.autoCopy = chat.autoCopy
         self.icon = chat.icon
         self.color = chat.color
+        self.openAIModel = chat.openAIModel
     }
 
     var plain: PlainChat {
@@ -57,7 +61,8 @@ class ChatEditorModel: ObservableObject {
             messagePrefix: messagePrefix.count > 0 ? messagePrefix : nil,
             autoCopy: autoCopy,
             icon: icon,
-            color: color
+            color: color,
+            openAIModel: openAIModel
         )
     }
 
@@ -111,6 +116,13 @@ struct ChatEditor<Actions: View>: View {
 
                     Text(Chat.Temperature.precise.display)
                         .tag(Chat.Temperature.precise)
+                }
+
+                Picker("CHAT_OPENAI_MODEL", selection: $model.openAIModel) {
+                    ForEach(Chat.OpenAIModel.allCases, id: \.rawValue) { openAIModel in
+                        Text(openAIModel.rawValue)
+                            .tag(openAIModel)
+                    }
                 }
 
                 VStack(alignment: .leading) {
@@ -242,7 +254,7 @@ struct ChatEditor<Actions: View>: View {
 
 struct ChatEditor_Previews: PreviewProvider {
     static var previews: some View {
-        ChatEditor(model: .init(name: "", temperature: .balanced, systemMessage: "", historyLengthToSend: 0, messagePrefix: "", autoCopy: false, icon: .default, color: .default)) {
+        ChatEditor(model: .init(name: "", temperature: .balanced, systemMessage: "", historyLengthToSend: 0, messagePrefix: "", autoCopy: false, icon: .default, color: .default, openAIModel: .default)) {
 
         }
     }

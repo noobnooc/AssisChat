@@ -33,14 +33,14 @@ extension ChatGPTAdapter: ChattingAdapter {
     func sendMessage(message: Message) async throws -> [PlainMessage] {
         guard let chat = message.chat else { return [] }
 
-        return try await request(messages: retrieveGPTMessages(message: message), temperature: chat.temperature.rawValue).map { gptMessage in
+        return try await request(messages: retrieveGPTMessages(message: message), model: Chat.OpenAIModel.default.rawValue, temperature: chat.temperature.rawValue).map { gptMessage in
             gptMessage.toPlainMessage(for: chat)
         }
     }
 
     func validateConfig() async throws {
         do {
-            let result = try await request(messages: [.init(role: .user, content: "Test")], temperature: 1)
+            let result = try await request(messages: [.init(role: .user, content: "Test")], model: Chat.OpenAIModel.default.rawValue, temperature: 1)
 
             if result.isEmpty {
                 throw ChattingError.validating(message: "Unknown error")
@@ -66,7 +66,7 @@ extension ChatGPTAdapter: ChattingAdapter {
             "Authorization": "Bearer \(self.config.apiKey)"
         ]
         config.body = try? JSONEncoder().encode(RequestBody(
-            model: .gpt35turbo,
+            model: chat.openAIModel.rawValue,
             messages: messages,
             temperature: chat.temperature.rawValue,
             stream: true)
@@ -93,13 +93,13 @@ extension ChatGPTAdapter: ChattingAdapter {
         }
     }
 
-    func request(messages: [ChatGPTMessage], temperature: Float) async throws -> [ChatGPTMessage] {
+    func request(messages: [ChatGPTMessage], model: String, temperature: Float) async throws -> [ChatGPTMessage] {
         let response: EssentialFeature.Response<ResponseBody, ResponseError> = try await essentialFeature.requestURL(
             urlString: "https://\(config.domain ?? "api.openai.com")/v1/chat/completions",
             init: .init(
                 method: .POST,
                 body: .json(data: RequestBody(
-                    model: .gpt35turbo,
+                    model: model,
                     messages: messages,
                     temperature: temperature,
                     stream: false)),
@@ -133,15 +133,10 @@ extension ChatGPTAdapter: ChattingAdapter {
     }
 
     struct RequestBody: Encodable {
-        let model: Model
+        let model: String
         let messages: [ChatGPTMessage]
         let temperature: Float
         let stream: Bool
-
-        enum Model: String, Encodable {
-            case gpt35turbo = "gpt-3.5-turbo"
-        }
-
     }
 
     struct ResponseBody: Decodable {

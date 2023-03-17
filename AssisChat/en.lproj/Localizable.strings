@@ -53,6 +53,9 @@
 // Chat temperature precise
 "CHAT_TEMPERATURE_PRECISE" = "Precise";
 
+// Chat OpenAI model
+"CHAT_OPENAI_MODEL" = "Model";
+
 // Chat role prompt
 "CHAT_ROLE_PROMPT" = "Role Prompt";
 // Chat role prompt hint

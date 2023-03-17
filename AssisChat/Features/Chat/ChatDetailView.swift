@@ -52,6 +52,13 @@ struct ChatDetailView: View {
                                 .cornerRadius(.infinity)
                         }
 
+                        if chat.openAIModel != .default {
+                            Text(chat.openAIModel.rawValue.uppercased())
+                                .padding(.vertical, 5)
+                                .padding(.horizontal, 10)
+                                .background(Color.appBlue)
+                                .cornerRadius(.infinity)
+                        }
                     }
                     .font(.subheadline)
                     .colorScheme(.dark)

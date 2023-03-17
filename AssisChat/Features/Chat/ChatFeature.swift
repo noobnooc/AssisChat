@@ -18,6 +18,7 @@ struct PlainChat {
     let autoCopy: Bool
     let icon: Chat.Icon
     let color: Chat.Color?
+    let openAIModel: Chat.OpenAIModel
 
     var available: Bool {
         name.count > 0
@@ -91,6 +92,7 @@ extension ChatFeature {
         chat.rawHistoryLengthToSend = plainChat.historyLengthToSend
         chat.rawMessagePrefix = plainChat.messagePrefix
         chat.rawAutoCopy = plainChat.autoCopy
+        chat.rawOpenAIModel = plainChat.openAIModel.rawValue
 
         essentialFeature.persistData()
     }
@@ -106,6 +108,7 @@ extension ChatFeature {
         chat.rawHistoryLengthToSend = plainChat.historyLengthToSend
         chat.rawMessagePrefix = plainChat.messagePrefix
         chat.rawAutoCopy = plainChat.autoCopy
+        chat.rawOpenAIModel = plainChat.openAIModel.rawValue
 
         essentialFeature.persistData()
     }
@@ -142,7 +145,8 @@ extension ChatFeature {
             messagePrefix: nil,
             autoCopy: false,
             icon: .symbol("bubble.left"),
-            color: .green
+            color: .green,
+            openAIModel: .default
         ),
         PlainChat(
             name: String(localized: "Translator", comment: "The name of the Translator chat template"),
@@ -152,7 +156,8 @@ extension ChatFeature {
             messagePrefix: String(localized: "Translate the following content:", comment: "The message prefix of the Translator chat template"),
             autoCopy: true,
             icon: .symbol("character.bubble"),
-            color: .blue
+            color: .blue,
+            openAIModel: .default
         ),
         PlainChat(
             name: String(localized: "Language Polisher", comment: "The name of the Language Polisher chat template"),
@@ -162,7 +167,8 @@ extension ChatFeature {
             messagePrefix: String(localized: "Corrects and polishes the following content:", comment: "The message prefix of the Language Polisher chat template"),
             autoCopy: true,
             icon: .symbol("text.bubble"),
-            color: .orange
+            color: .orange,
+            openAIModel: .default
         ),
         PlainChat(
             name: String(localized: "Recipe", comment: "The name of the Language Recipe chat template"),
@@ -172,7 +178,8 @@ extension ChatFeature {
             messagePrefix: String(localized: "How to make the following dish: ", comment: "The message prefix of the Recipe chat template"),
             autoCopy: false,
             icon: .symbol("carrot"),
-            color: .red
+            color: .red,
+            openAIModel: .default
         ),
         PlainChat(
             name: String(localized: "Programer Helper", comment: "The name of the Programer Helper chat template"),
@@ -182,7 +189,8 @@ extension ChatFeature {
             messagePrefix: String(localized: "Analyzes and optimizes the following code: ", comment: "The message prefix of the Programer Helper chat template"),
             autoCopy: true,
             icon: .symbol("laptopcomputer"),
-            color: .indigo
+            color: .indigo,
+            openAIModel: .default
         ),
     ]
 }
