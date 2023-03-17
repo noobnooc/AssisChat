@@ -205,6 +205,15 @@
 /* Settings Feedback */
 "SETTINGS_FEEDBACK" = "反饋";
 
+/* Settings symbol variant */
+"SETTINGS_SYMBOL_VARIANT" = "圖標變體";
+
+/* Settings symbol variant fill */
+"SETTINGS_SYMBOL_VARIANT_FILL" = "填充";
+
+/* Settings symbol variant outline */
+"SETTINGS_SYMBOL_VARIANT_OUTLINE" = "線框";
+
 /* Settings theme section title */
 "SETTINGS_THEME" = "主題";
 

@@ -54,7 +54,7 @@ struct AssisChatApp: App {
                 // Initiations
                 .preferredColorScheme(settingsFeature.selectedColorScheme.systemColorScheme)
                 .tint(settingsFeature.selectedTint?.color)
-                .symbolVariant(.fill)
+                .symbolVariant(settingsFeature.selectedSymbolVariant.system)
 
                 // Error showing
                 .alert(

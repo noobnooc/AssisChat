@@ -64,6 +64,19 @@ struct SettingsView: View {
                             .foregroundColor(.appIndigo)
                     }
                 }
+
+                NavigationLink {
+                    SymbolVariantSelector()
+                        .navigationTitle("SETTINGS_SYMBOL_VARIANT")
+                } label: {
+                    Label {
+                        Text("SETTINGS_SYMBOL_VARIANT")
+                            .foregroundColor(.primary)
+                    } icon: {
+                        Image(systemName: "star")
+                            .foregroundColor(.appOrange)
+                    }
+                }
             }
 
             Section("SETTINGS_ABOUT") {

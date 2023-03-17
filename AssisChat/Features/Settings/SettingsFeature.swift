@@ -11,11 +11,13 @@ import SwiftUI
 class SettingsFeature: ObservableObject {
     static let colorSchemeKey = "settings:colorScheme"
     static let tintKey = "settings:tint"
+    static let symbolVariant = "settings:symbolVariant"
     static let openAIDomain = "settings:openAI:domain"
     static let openAIAPIKey = "settings:openAI:apiKey"
 
     @AppStorage(colorSchemeKey) private(set) var selectedColorScheme: ColorScheme = .automatic
     @AppStorage(tintKey) private(set) var selectedTint: Tint?
+    @AppStorage(symbolVariant) private(set) var selectedSymbolVariant: SymbolVariant = .fill
     @AppStorage(openAIDomain) private(set) var configuredOpenAIDomain: String?
     @AppStorage(openAIAPIKey) private(set) var configuredOpenAIAPIKey: String?
 
@@ -39,6 +41,10 @@ class SettingsFeature: ObservableObject {
 
     func adjustTint(_ tint: Tint?) {
         selectedTint = tint
+    }
+
+    func adjustSymbolVariant(_ variant: SymbolVariant) {
+        selectedSymbolVariant = variant
     }
 
     func initiateAdapter() {
@@ -76,6 +82,11 @@ extension SettingsFeature {
         .pink,
         .indigo,
         .blue,
+    ]
+
+    static let symbolVariants: [SymbolVariant] = [
+        .fill,
+        .outline,
     ]
 
     enum ColorScheme: String, Hashable {
@@ -118,6 +129,25 @@ extension SettingsFeature {
             case .brown: return .appBrown
             case .red: return .appRed
             case .pink: return .appPink
+            }
+        }
+    }
+
+    enum SymbolVariant: String, Hashable {
+        case fill = "fill"
+        case outline = "outline"
+
+        var system: SymbolVariants {
+            switch self {
+            case .fill: return .fill
+            case .outline: return .none
+            }
+        }
+
+        var localizedKey: LocalizedStringKey {
+            switch self {
+            case .fill: return LocalizedStringKey("SETTINGS_SYMBOL_VARIANT_FILL")
+            case .outline: return LocalizedStringKey("SETTINGS_SYMBOL_VARIANT_OUTLINE")
             }
         }
     }
