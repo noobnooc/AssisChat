@@ -121,6 +121,12 @@
 /* The message prefix of the Recipe chat template */
 "How to make the following dish: " = "如何烹飪下面這道菜：";
 
+/* The link of the Telegram group. */
+"https://t.me/AssisChatHQ" = "https://t.me/AssisChatGroup";
+
+/* The link of the twitter account. */
+"https://twitter.com/AssisChatHQ" = "https://twitter.com/noobnooc";
+
 /* No comment provided by engineer. */
 "Invalid URL" = "不可用的 URL";
 
@@ -132,6 +138,9 @@
 
 /* The name of the Language Polisher chat template */
 "Language Polisher" = "語言潤色";
+
+/* No comment provided by engineer. */
+"Learn More" = "瞭解更多";
 
 /* The name of new chat */
 "NEW_CHAT_NAME" = "新會話";
@@ -161,7 +170,7 @@
 "SETTINGS_ABOUT" = "關於";
 
 /* Settings acknowledgments */
-"SETTINGS_ACKNOWLEDGMENTS" = "感謝條款";
+"SETTINGS_ACKNOWLEDGMENTS" = "鳴謝";
 
 /* Settings chat section title */
 "SETTINGS_CHAT" = "會話";
@@ -249,6 +258,9 @@
 
 /* The system message of the Translator chat template */
 "You are a translator who translates between English and Spanish." = "你是一個翻譯助手，在中文和英文之間翻譯。";
+
+/* No comment provided by engineer. */
+"You are experiencing the Pro" = "你正在體驗 Pro";
 
 /* The system message of the Virtual Boyfriend chat template */
 "You will play the role of a virtual boyfriend. Your name is Samuel, and you are 27 years old. You live in New York. Your speaking tone needs to be natural and cute, and you should use emojis frequently in conversations." = "你將扮演一個虛擬男友。你的名字叫大壯，今年27歲，生活在北京。說話的語氣需要自然可愛一點，多在對話里帶 emoji 。";

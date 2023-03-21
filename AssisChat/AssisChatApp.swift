@@ -12,6 +12,7 @@ struct AssisChatApp: App {
     let persistenceController = PersistenceController.shared
 
     @StateObject var essentialFeature: EssentialFeature
+    @StateObject var proFeature: ProFeature
     @StateObject var settingsFeature: SettingsFeature
     let chatFeature: ChatFeature
     let messageFeature: MessageFeature
@@ -19,9 +20,11 @@ struct AssisChatApp: App {
 
     init() {
         let essentialFeature = EssentialFeature(context: persistenceController.container.viewContext)
+        let proFeature = ProFeature()
         let settingsFeature = SettingsFeature(essentialFeature: essentialFeature)
 
         _essentialFeature = StateObject(wrappedValue: essentialFeature)
+        _proFeature = StateObject(wrappedValue: ProFeature())
         _settingsFeature = StateObject(wrappedValue: settingsFeature)
         chatFeature = ChatFeature(essentialFeature: essentialFeature)
         messageFeature = MessageFeature(essentialFeature: essentialFeature)
@@ -46,6 +49,7 @@ struct AssisChatApp: App {
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
 
                 .environmentObject(essentialFeature)
+                .environmentObject(proFeature)
                 .environmentObject(settingsFeature)
                 .environmentObject(chatFeature)
                 .environmentObject(messageFeature)

@@ -120,6 +120,7 @@ private struct ChatCreatingButton: View {
             creating = true
         } label: {
             Image(systemName: "plus")
+                .aspectRatio(1, contentMode: .fit)
                 .font(.title2)
                 .padding()
                 .foregroundColor(.primary)

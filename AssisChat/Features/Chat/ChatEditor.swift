@@ -146,9 +146,12 @@ struct ChatEditor<Actions: View>: View {
                 .frame(maxWidth: .infinity)
 
                 VStack(alignment: .leading) {
-                    Text("CHAT_MESSAGE_PREFIX")
-                        .font(.footnote)
-                        .foregroundColor(Color.secondary)
+                    HStack {
+                        Text("CHAT_MESSAGE_PREFIX")
+                            .font(.footnote)
+                            .foregroundColor(Color.secondary)
+                        ProBadge()
+                    }
 
                     if #available(iOS 16, macOS 13, *) {
                         TextField("CHAT_MESSAGE_PREFIX_HINT", text: $model.messagePrefix, axis: .vertical)
@@ -187,7 +190,10 @@ struct ChatEditor<Actions: View>: View {
 
                 VStack(alignment: .trailing) {
                     Toggle(isOn: $model.autoCopy) {
-                        Text("CHAT_AUTO_COPY")
+                        HStack {
+                            Text("CHAT_AUTO_COPY")
+                            ProBadge()
+                        }
                     }
 
                     Text("CHAT_AUTO_COPY_HINT")

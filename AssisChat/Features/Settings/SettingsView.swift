@@ -13,20 +13,9 @@ struct SettingsView: View {
     var body: some View {
         List {
             Section {
-                VStack {
-                    Image("Icon")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 80)
-                        .cornerRadius(20)
-                    Text("AssisChat")
-                        .padding(.top)
-                    Text("APP_SLOGAN")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                .frame(maxWidth: .infinity)
+                ProBanner()
             }
+            .listRowInsets(EdgeInsets())
             .listRowBackground(Color.clear)
 
             Section("SETTINGS_CHAT") {
@@ -46,6 +35,7 @@ struct SettingsView: View {
                     Label {
                         Text("SETTINGS_COLOR_SCHEME")
                             .foregroundColor(.primary)
+                        ProBadge()
                     } icon: {
                         Image(systemName: "die.face.5")
                             .foregroundColor(.appOrange)
@@ -59,6 +49,7 @@ struct SettingsView: View {
                     Label {
                         Text("SETTINGS_TINT")
                             .foregroundColor(.primary)
+                        ProBadge()
                     } icon: {
                         Image(systemName: "paintbrush.pointed")
                             .foregroundColor(.appIndigo)
@@ -72,6 +63,7 @@ struct SettingsView: View {
                     Label {
                         Text("SETTINGS_SYMBOL_VARIANT")
                             .foregroundColor(.primary)
+                        ProBadge()
                     } icon: {
                         Image(systemName: "star")
                             .foregroundColor(.appOrange)
@@ -81,13 +73,25 @@ struct SettingsView: View {
 
             Section("SETTINGS_ABOUT") {
                 Button {
-                    openURL(URL(string: "https://twitter.com/noobnooc")!)
+                    openURL(URL(string: String(localized: "https://twitter.com/AssisChatHQ", comment: "The link of the twitter account."))!)
                 } label: {
                     Label {
                         Text("Twitter")
                             .foregroundColor(.primary)
                     } icon: {
                         Image(systemName: "bird")
+                            .foregroundColor(.appBlue)
+                    }
+                }
+
+                Button {
+                    openURL(URL(string: String(localized: "https://t.me/AssisChatHQ", comment: "The link of the Telegram group."))!)
+                } label: {
+                    Label {
+                        Text("Telegram")
+                            .foregroundColor(.primary)
+                    } icon: {
+                        Image(systemName: "paperplane")
                             .foregroundColor(.appBlue)
                     }
                 }

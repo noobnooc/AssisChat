@@ -14,16 +14,6 @@ struct NewChatView: View {
 
     var body: some View {
         List {
-            Section("CHAT_PRESETS") {
-                ForEach(ChatFeature.presets, id: \.name) { preset in
-                    PresetItem(preset: preset)
-                        .onTapGesture {
-                            dismiss()
-                            chatFeature.createChat(preset)
-                        }
-                }
-            }
-
             Section("CHAT_CUSTOM") {
                 NavigationLink {
                     CustomNewChatView() {
@@ -31,6 +21,16 @@ struct NewChatView: View {
                     }
                 } label: {
                     PresetItem(preset: PlainChat(name: String(localized: "NEW_CHAT_NAME"), temperature: .balanced, systemMessage: String(localized: "NEW_CHAT_NAME"), historyLengthToSend: .defaultHistoryLengthToSend, messagePrefix: nil, autoCopy: false, icon: .default, color: .default, openAIModel: .default))
+                }
+            }
+
+            Section("CHAT_PRESETS") {
+                ForEach(ChatFeature.presets, id: \.name) { preset in
+                    PresetItem(preset: preset)
+                        .onTapGesture {
+                            dismiss()
+                            chatFeature.createChat(preset)
+                        }
                 }
             }
         }
