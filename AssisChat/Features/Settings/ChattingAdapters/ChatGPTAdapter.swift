@@ -9,6 +9,7 @@ import Foundation
 import LDSwiftEventSource
 import Combine
 import SwiftUI
+import GPT3_Tokenizer
 
 class ChatGPTAdapter {
     struct Config {
@@ -27,13 +28,15 @@ class ChatGPTAdapter {
 
 extension ChatGPTAdapter: ChattingAdapter {
     func sendMessageWithStream(message: Message, receivingMessage: Message) async throws {
-        try await requestStream(messages: retrieveGPTMessages(message: message), for: receivingMessage)
+        guard let chat = message.chat else { return }
+
+        try await requestStream(messages: retrieveGPTMessages(chat: chat), for: receivingMessage)
     }
 
     func sendMessage(message: Message) async throws -> [PlainMessage] {
         guard let chat = message.chat else { return [] }
 
-        return try await request(messages: retrieveGPTMessages(message: message), model: Chat.OpenAIModel.default.rawValue, temperature: chat.temperature.rawValue).map { gptMessage in
+        return try await request(messages: retrieveGPTMessages(chat: chat), model: Chat.OpenAIModel.default.rawValue, temperature: chat.temperature.rawValue).map { gptMessage in
             gptMessage.toPlainMessage(for: chat)
         }
     }
@@ -119,17 +122,42 @@ extension ChatGPTAdapter: ChattingAdapter {
         }
     }
 
-    private func retrieveGPTMessages(message: Message) -> [ChatGPTMessage] {
-        guard let chat = message.chat else { return [] }
+    private func retrieveGPTMessages(chat: Chat) -> [ChatGPTMessage] {
+        let maxTokens = chat.openAIModel.maxTokens
 
-        let systemMessages = chat.systemMessage != nil ? [ChatGPTMessage(role: .system, content: chat.systemMessage!)] : []
+        let systemMessages: [ChatGPTMessage]
+        var currentTokens: Int
 
-        let historyMessages = Array(chat.messages.suffix(Int(chat.historyLengthToSend)))
-        let gptMessagesToSend = systemMessages + (historyMessages + [message]).map { message in
-            ChatGPTMessage.fromMessage(message: message)
+        if let chatSystemMessage = chat.systemMessage {
+            systemMessages = [ChatGPTMessage(role: .system, content: chat.systemMessage!)]
+            currentTokens = calculateTokens(text: chatSystemMessage)
+        } else {
+            systemMessages = []
+            currentTokens = 0
         }
 
-        return gptMessagesToSend
+        var historyMessagesReadyToSend = Array(chat.messages.suffix(Int(chat.historyLengthToSend)))
+
+        // If the last is an assistant message, the message is the receiving message, so ignore it.
+        if let lastMessage = historyMessagesReadyToSend.last, lastMessage.role == .assistant {
+            historyMessagesReadyToSend = historyMessagesReadyToSend.dropLast()
+        }
+
+        var historyMessagesToSend: [ChatGPTMessage] = []
+
+        for message in historyMessagesReadyToSend.reversed() {
+            currentTokens += calculateTokens(text: message.rawProcessedContent ?? message.content ?? "")
+
+            guard currentTokens < maxTokens else {
+                break
+            }
+
+            historyMessagesToSend.append(ChatGPTMessage.fromMessage(message: message))
+        }
+
+        historyMessagesToSend = historyMessagesToSend.reversed()
+
+        return systemMessages + historyMessagesToSend
     }
 
     struct RequestBody: Encodable {
@@ -253,4 +281,11 @@ private struct Handler: EventHandler {
 
         publisher.send(content)
     }
+}
+
+private func calculateTokens(text: String) -> Int {
+    let gpt3Tokenizer = GPT3Tokenizer()
+    let encoded = gpt3Tokenizer.encoder.enconde(text: text)
+
+    return encoded.count
 }

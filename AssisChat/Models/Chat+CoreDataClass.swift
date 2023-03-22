@@ -80,6 +80,15 @@ extension Chat {
         case gpt4 = "gpt-4"
         case gpt432k = "gpt-4-32k"
 
+        // Copied from https://platform.openai.com/docs/models/gpt-4
+        var maxTokens: Int {
+            switch self {
+            case .gpt35turbo: return 4096
+            case .gpt4: return 8192
+            case .gpt432k: return 32768
+            }
+        }
+
         static let `default` = Self.gpt35turbo
     }
 }

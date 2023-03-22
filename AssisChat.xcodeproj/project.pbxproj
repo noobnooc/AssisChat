@@ -56,10 +56,11 @@
 		F5E47F0F29B708D00083BB31 /* EditChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0E29B708D00083BB31 /* EditChatView.swift */; };
 		F5E47F1C29B721AA0083BB31 /* LDSwiftEventSource in Frameworks */ = {isa = PBXBuildFile; productRef = F5E47F1B29B721AA0083BB31 /* LDSwiftEventSource */; };
 		F5E47F1F29B7562B0083BB31 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5E47F2129B7562B0083BB31 /* Localizable.strings */; };
-		F5E47F2629B76BFD0083BB31 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = F5E47F2529B76BFD0083BB31 /* MarkdownUI */; };
 		F5F2947B29C74400005D63CB /* ProBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2947A29C74400005D63CB /* ProBanner.swift */; };
 		F5F2947D29C757C8005D63CB /* ProIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2947C29C757C8005D63CB /* ProIntroductionView.swift */; };
 		F5F2947F29C859BC005D63CB /* ProBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2947E29C859BC005D63CB /* ProBadge.swift */; };
+		F5F2948329CB3CEC005D63CB /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = F5F2948229CB3CEC005D63CB /* MarkdownUI */; };
+		F5F2948629CB3D02005D63CB /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = F5F2948529CB3D02005D63CB /* GPT3 Tokenizer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,9 +146,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5F2948329CB3CEC005D63CB /* MarkdownUI in Frameworks */,
 				F5E47F1C29B721AA0083BB31 /* LDSwiftEventSource in Frameworks */,
-				F5E47F2629B76BFD0083BB31 /* MarkdownUI in Frameworks */,
 				F5779EE529B8246800CC70B0 /* Splash in Frameworks */,
+				F5F2948629CB3D02005D63CB /* GPT3 Tokenizer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,8 +394,9 @@
 			name = AssisChat;
 			packageProductDependencies = (
 				F5E47F1B29B721AA0083BB31 /* LDSwiftEventSource */,
-				F5E47F2529B76BFD0083BB31 /* MarkdownUI */,
 				F5779EE429B8246800CC70B0 /* Splash */,
+				F5F2948229CB3CEC005D63CB /* MarkdownUI */,
+				F5F2948529CB3D02005D63CB /* GPT3 Tokenizer */,
 			);
 			productName = AssisChat;
 			productReference = F5E47E9029B497A60083BB31 /* AssisChat.app */;
@@ -471,8 +474,9 @@
 			mainGroup = F5E47E8729B497A60083BB31;
 			packageReferences = (
 				F5E47F1A29B721AA0083BB31 /* XCRemoteSwiftPackageReference "swift-eventsource" */,
-				F5E47F2429B76BFD0083BB31 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				F5779EE329B8246800CC70B0 /* XCRemoteSwiftPackageReference "Splash" */,
+				F5F2948129CB3CEC005D63CB /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
+				F5F2948429CB3D02005D63CB /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */,
 			);
 			productRefGroup = F5E47E9129B497A60083BB31 /* Products */;
 			projectDirPath = "";
@@ -953,12 +957,20 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		F5E47F2429B76BFD0083BB31 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+		F5F2948129CB3CEC005D63CB /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui#getting-started";
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
+			};
+		};
+		F5F2948429CB3D02005D63CB /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aespinilla/GPT3-Tokenizer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -974,10 +986,15 @@
 			package = F5E47F1A29B721AA0083BB31 /* XCRemoteSwiftPackageReference "swift-eventsource" */;
 			productName = LDSwiftEventSource;
 		};
-		F5E47F2529B76BFD0083BB31 /* MarkdownUI */ = {
+		F5F2948229CB3CEC005D63CB /* MarkdownUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F5E47F2429B76BFD0083BB31 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			package = F5F2948129CB3CEC005D63CB /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
 			productName = MarkdownUI;
+		};
+		F5F2948529CB3D02005D63CB /* GPT3 Tokenizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5F2948429CB3D02005D63CB /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */;
+			productName = "GPT3 Tokenizer";
 		};
 /* End XCSwiftPackageProductDependency section */
 

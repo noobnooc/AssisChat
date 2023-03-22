@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "gpt3-tokenizer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aespinilla/GPT3-Tokenizer.git",
+      "state" : {
+        "revision" : "cadab0d19a1602cc505493990a9fc4810d8e3070",
+        "version" : "0.1.2"
+      }
+    },
+    {
       "identity" : "splash",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JohnSundell/Splash",
@@ -19,12 +28,12 @@
       }
     },
     {
-      "identity" : "swift-markdown-ui#getting-started",
+      "identity" : "swift-markdown-ui",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/gonzalezreal/swift-markdown-ui#getting-started",
+      "location" : "https://github.com/gonzalezreal/swift-markdown-ui.git",
       "state" : {
-        "revision" : "5e15c0d75e42b9840301503e0df681027d4bea05",
-        "version" : "2.0.1"
+        "revision" : "4392c3cefd08db10f13ffb019d7c7a4a622824f5",
+        "version" : "2.0.2"
       }
     }
   ],
