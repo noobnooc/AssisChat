@@ -15,7 +15,7 @@ enum ChattingError: Error {
 }
 
 protocol ChattingAdapter {
-    func sendMessageWithStream(message: Message, receivingMessage: Message) async throws
+    func sendMessageWithStream(chat: Chat, receivingMessage: Message) async throws
     func sendMessage(message: Message) async throws -> [PlainMessage]
     func validateConfig() async throws
 }
@@ -45,26 +45,25 @@ class ChattingFeature: ObservableObject {
         let message = messageFeature.createMessage(plainMessage)
         let receivingMessage = messageFeature.createReceivingMessage(for: plainMessage.chat)
 
-        guard let message = message, let receivingMessage = receivingMessage else { return }
+        guard let receivingMessage = receivingMessage else { return }
 
-        await sendWithStream(message: message, receivingMessage: receivingMessage)
+        await sendWithStream(chat: plainMessage.chat, receivingMessage: receivingMessage)
     }
 
-    func retry(chat: Chat) async {
-        guard let lastMessage = chat.messages.last, lastMessage.role == .user else { return }
+    func resendWithStream(receivingMessage: Message) async {
+        guard let chat = receivingMessage.chat else { return }
 
-        await send(message: lastMessage)
+        messageFeature.clearReceivingMessage(for: receivingMessage)
+        await sendWithStream(chat: chat, receivingMessage: receivingMessage)
     }
 
-    private func sendWithStream(message: Message, receivingMessage: Message) async {
-        guard let chat = message.chat else { return }
-
+    private func sendWithStream(chat: Chat, receivingMessage: Message) async {
         receivingMessage.markReceiving()
 
         do {
             guard let chattingAdapter = settingsFeature.chattingAdapter else { return }
 
-            try await chattingAdapter.sendMessageWithStream(message: message, receivingMessage: receivingMessage)
+            try await chattingAdapter.sendMessageWithStream(chat: chat, receivingMessage: receivingMessage)
 
             if chat.autoCopy {
                 receivingMessage.copyToPasteboard()

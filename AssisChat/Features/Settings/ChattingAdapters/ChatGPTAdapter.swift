@@ -27,11 +27,9 @@ class ChatGPTAdapter {
 }
 
 extension ChatGPTAdapter: ChattingAdapter {
-    func sendMessageWithStream(message: Message, receivingMessage: Message) async throws {
-        guard let chat = message.chat else { return }
-
+    func sendMessageWithStream(chat: Chat, receivingMessage: Message) async throws {
         do {
-            try await requestStream(messages: retrieveGPTMessages(chat: chat), for: receivingMessage)
+            try await requestStream(messages: retrieveGPTMessages(chat: chat, receivingMessage: receivingMessage), for: receivingMessage)
         } catch {
             if let error = error as? UnsuccessfulResponseError {
                 let reason = convertStatusCodeToFailedReason(statusCode: error.responseCode)
@@ -52,7 +50,8 @@ extension ChatGPTAdapter: ChattingAdapter {
     func sendMessage(message: Message) async throws -> [PlainMessage] {
         guard let chat = message.chat else { return [] }
 
-        return try await request(messages: retrieveGPTMessages(chat: chat), model: Chat.OpenAIModel.default.rawValue, temperature: chat.temperature.rawValue).map { gptMessage in
+        // TODO: - The `receivingMessage: message` parament is for avoid error, it is not work
+        return try await request(messages: retrieveGPTMessages(chat: chat, receivingMessage: message), model: Chat.OpenAIModel.default.rawValue, temperature: chat.temperature.rawValue).map { gptMessage in
             gptMessage.toPlainMessage(for: chat)
         }
     }
@@ -148,7 +147,7 @@ extension ChatGPTAdapter: ChattingAdapter {
         }
     }
 
-    private func retrieveGPTMessages(chat: Chat) -> [ChatGPTMessage] {
+    private func retrieveGPTMessages(chat: Chat, receivingMessage: Message) -> [ChatGPTMessage] {
         let maxTokens = chat.openAIModel.maxTokens
 
         let systemMessages: [ChatGPTMessage]
@@ -162,12 +161,8 @@ extension ChatGPTAdapter: ChattingAdapter {
             currentTokens = 0
         }
 
-        var historyMessagesReadyToSend = Array(chat.messages.suffix(Int(chat.historyLengthToSend)))
-
-        // If the last is an assistant message, the message is the receiving message, so ignore it.
-        if let lastMessage = historyMessagesReadyToSend.last, lastMessage.role == .assistant {
-            historyMessagesReadyToSend = historyMessagesReadyToSend.dropLast()
-        }
+        let receivingMessageIndex = chat.messages.lastIndex(of: receivingMessage) ?? chat.messages.count
+        var historyMessagesReadyToSend = Array(chat.messages.prefix(receivingMessageIndex).suffix(Int(chat.historyLengthToSend)))
 
         var historyMessagesToSend: [ChatGPTMessage] = []
 

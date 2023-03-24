@@ -98,7 +98,11 @@ extension MessageFeature {
         essentialFeature.persistData()
     }
 
-    func completeMessage(for message: Message) {
+    /// Clear data for message resending: such as empty content, clear failed reason
+    func clearReceivingMessage(for message: Message) {
+        message.rawContent = nil
+        message.failedReason = nil
+
         essentialFeature.persistData()
     }
 }

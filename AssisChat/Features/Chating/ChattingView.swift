@@ -95,6 +95,7 @@ private struct MessageItem: View {
 
 private struct AssistantMessage: View {
     @EnvironmentObject private var messageFeature: MessageFeature
+    @EnvironmentObject private var chattingFeature: ChattingFeature
 
     let message: Message
     let active: Bool
@@ -159,8 +160,26 @@ private struct AssistantMessage: View {
                     .background(Color.tertiaryBackground)
                     .cornerRadius(.infinity)
                     .buttonStyle(.plain)
+
+                    Button {
+                        withAnimation {
+                            toggleActive()
+
+                            Task {
+                                await chattingFeature.resendWithStream(receivingMessage: message)
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
+                    }
+                    .padding(5)
+                    .foregroundColor(.appOrange)
+                    .background(Color.tertiaryBackground)
+                    .cornerRadius(.infinity)
+                    .buttonStyle(.plain)
                 }
-                .padding(5)
+                .padding(.horizontal, 5)
+                .padding(.vertical, 3)
                 .background(Color.secondaryBackground)
                 #if os(iOS)
                 .cornerRadius(15, corners: [.topRight, .bottomRight, .bottomLeft])
@@ -233,7 +252,8 @@ private struct UserMessage: View {
                     .buttonStyle(.plain)
                     .foregroundColor(.appRed)
                 }
-                .padding(5)
+                .padding(.horizontal, 5)
+                .padding(.vertical, 3)
                 .background(Color.secondaryBackground)
                 #if os(iOS)
                 .cornerRadius(15, corners: [.topLeft, .bottomLeft, .bottomRight])
