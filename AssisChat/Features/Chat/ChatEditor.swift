@@ -178,6 +178,8 @@ struct ChatEditor<Actions: View>: View {
                             .tag(Int16(20))
                         Text("10")
                             .tag(Int16(10))
+                        Text("4")
+                            .tag(Int16(4))
                         Text("CAHT_HISTORY_LENGTH_TO_SEND_NONE")
                             .tag(Int16.zero)
                     }

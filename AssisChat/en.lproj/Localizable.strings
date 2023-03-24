@@ -73,7 +73,7 @@
 // Chat history length to send hint
 "CHAT_HISTORY_LENGTH_TO_SEND_HINT" = "The chat will only send the set number of history messages.";
 // Chat history length to send max
-"CHAT_HISTORY_LENGTH_TO_SEND_MAX" = "All";
+"CHAT_HISTORY_LENGTH_TO_SEND_MAX" = "Max";
 // Chat history length to send none
 "CAHT_HISTORY_LENGTH_TO_SEND_NONE" = "None";
 

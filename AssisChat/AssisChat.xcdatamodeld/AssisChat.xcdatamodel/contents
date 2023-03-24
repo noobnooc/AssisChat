@@ -17,6 +17,7 @@
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="rawContent" optional="YES" attributeType="String"/>
+        <attribute name="rawFailedReason" optional="YES" attributeType="String"/>
         <attribute name="rawProcessedContent" optional="YES" attributeType="String"/>
         <attribute name="rawRole" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="rawTimestamp" attributeType="Date" defaultDateTimeInterval="699675840" usesScalarValueType="NO"/>

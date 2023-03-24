@@ -2,7 +2,7 @@
 //  Message+CoreDataProperties.swift
 //  AssisChat
 //
-//  Created by Nooc on 2023-03-09.
+//  Created by Nooc on 2023-03-23.
 //
 //
 
@@ -21,6 +21,7 @@ extension Message {
     @NSManaged public var rawRole: Int16
     @NSManaged public var rawTimestamp: Date?
     @NSManaged public var tReceiving: Bool
+    @NSManaged public var rawFailedReason: String?
     @NSManaged public var rChat: Chat?
 
 }

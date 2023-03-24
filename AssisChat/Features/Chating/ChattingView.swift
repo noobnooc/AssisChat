@@ -108,8 +108,8 @@ private struct AssistantMessage: View {
                         MessageContent(content: content)
                     } else if message.receiving {
                         ProgressView()
-                    } else if message.failed {
-                        Label("ERROR", systemImage: "info.circle")
+                    } else if let reason = message.failedReason {
+                        Label(reason.localized, systemImage: "info.circle")
                     }
                 }
                 .padding(.vertical, 8)

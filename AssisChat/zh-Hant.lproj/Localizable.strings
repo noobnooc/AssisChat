@@ -4,6 +4,12 @@
 /* App slogan */
 "APP_SLOGAN" = "一個聊天助理";
 
+/* The authentication error of message failed reason */
+"Authentication Failed" = "認證失敗";
+
+/* No comment provided by engineer. */
+"By purchasing Pro, you will:" = "購買 Pro 後，你將：";
+
 /* Chat history length to send none */
 "CAHT_HISTORY_LENGTH_TO_SEND_NONE" = "不發送";
 
@@ -59,7 +65,7 @@
 "CHAT_HISTORY_LENGTH_TO_SEND_HINT" = "設置該會話最多會發送的歷史消息數量";
 
 /* Chat history length to send max */
-"CHAT_HISTORY_LENGTH_TO_SEND_MAX" = "全部";
+"CHAT_HISTORY_LENGTH_TO_SEND_MAX" = "最大";
 
 /* Chat message prefix */
 "CHAT_MESSAGE_PREFIX" = "消息前綴";
@@ -142,6 +148,9 @@
 /* No comment provided by engineer. */
 "Learn More" = "瞭解更多";
 
+/* The network error of message failed reason */
+"Network Error" = "網絡錯誤";
+
 /* The name of new chat */
 "NEW_CHAT_NAME" = "新會話";
 
@@ -150,6 +159,9 @@
 
 /* The name of the Programer Helper chat template */
 "Programer Helper" = "程序幫手";
+
+/* The rate limited error of message failed reason */
+"Rate Limited" = "超出頻率限制";
 
 /* The name of the Language Recipe chat template */
 "Recipe" = "菜譜";
@@ -160,8 +172,8 @@
 /* The name of the Virtual Boyfriend chat template */
 "Samuel" = "大壯";
 
-/* No comment provided by engineer. */
-"Server response with error status: %lld" = "服務器返回了錯誤的狀態碼: %lld";
+/* The server error of message failed reason */
+"Server Error" = "服務器開小差了";
 
 /* Settings */
 "SETTINGS" = "設置";
@@ -238,14 +250,29 @@
 /* Success */
 "SUCCESS" = "成功";
 
+/* No comment provided by engineer. */
+"Support Us" = "支持我們";
+
 /* The message prefix of the Translator chat template */
 "Translate the following content:" = "翻譯以下內容";
 
 /* The name of the Translator chat template */
 "Translator" = "翻譯小助手";
 
+/* The unknown client error of message failed reason */
+"Unknown Client Error" = "未知客戶端錯誤";
+
 /* No comment provided by engineer. */
 "Unknown error" = "未知錯誤";
+
+/* The unknown error of message failed reason */
+"Unknown Error" = "未知錯誤";
+
+/* No comment provided by engineer. */
+"Unlock All Features" = "解鎖所有功能";
+
+/* No comment provided by engineer. */
+"Unlock all the local features of the app." = "解鎖 App 的所有本地功能";
 
 /* The system message of the Recipe chat template */
 "You are a kitchen helper who responds with the recipe for a given dish." = "你是一個廚房幫手，回復給定菜名的菜譜。";
@@ -262,9 +289,15 @@
 /* No comment provided by engineer. */
 "You are experiencing the Pro" = "你正在體驗 Pro";
 
+/* No comment provided by engineer. */
+"You are trying the Pro" = "你正在體驗 Pro";
+
 /* The system message of the Virtual Boyfriend chat template */
 "You will play the role of a virtual boyfriend. Your name is Samuel, and you are 27 years old. You live in New York. Your speaking tone needs to be natural and cute, and you should use emojis frequently in conversations." = "你將扮演一個虛擬男友。你的名字叫大壯，今年27歲，生活在北京。說話的語氣需要自然可愛一點，多在對話里帶 emoji 。";
 
 /* The system message of the Virtual Girlfriend chat template */
 "You will play the role of a virtual girlfriend. Your name is Samantha, and you are 25 years old. You live in New Jersey. Your speaking tone needs to be natural and cute, and you should use emojis frequently in conversations." = "你將扮演一個虛擬女友。你的名字叫小美，今年25歲，生活在雲南大理。說話的語氣需要自然可愛一點，多在對話里帶 emoji 。";
+
+/* No comment provided by engineer. */
+"Your support is our driving force for moving forward." = "你的支持是我們前進的動力";
 

@@ -47,6 +47,12 @@ extension MessageFeature {
         return createMessages([plainMessage], receiving: true).first
     }
 
+    func updateMessageFailedReason(for message: Message, reason: Message.FailedReason?) {
+        message.rawFailedReason = reason?.rawValue
+
+        essentialFeature.persistData()
+    }
+
     func createMessages(_ plainMessages: [PlainMessage], receiving: Bool = false) -> [Message] {
         guard receiving || plainMessages.allSatisfy({ message in
             message.available

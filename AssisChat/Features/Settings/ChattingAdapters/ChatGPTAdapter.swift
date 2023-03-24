@@ -30,7 +30,23 @@ extension ChatGPTAdapter: ChattingAdapter {
     func sendMessageWithStream(message: Message, receivingMessage: Message) async throws {
         guard let chat = message.chat else { return }
 
-        try await requestStream(messages: retrieveGPTMessages(chat: chat), for: receivingMessage)
+        do {
+            try await requestStream(messages: retrieveGPTMessages(chat: chat), for: receivingMessage)
+        } catch {
+            if let error = error as? UnsuccessfulResponseError {
+                let reason = convertStatusCodeToFailedReason(statusCode: error.responseCode)
+                receivingMessage.failedReason = reason
+                essentialFeature.persistData()
+            } else {
+                let error = error as NSError
+
+                let reason: Message.FailedReason = error.domain == NSURLErrorDomain ? .network : .unknown
+                receivingMessage.failedReason = reason
+                essentialFeature.persistData()
+
+                essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(error.localizedDescription)))
+            }
+        }
     }
 
     func sendMessage(message: Message) async throws -> [PlainMessage] {
@@ -119,6 +135,16 @@ extension ChatGPTAdapter: ChattingAdapter {
 
         return responseData.choices.map { choice in
             choice.message
+        }
+    }
+
+    private func convertStatusCodeToFailedReason(statusCode: Int) -> Message.FailedReason {
+        switch statusCode {
+        case 401: return .authentication
+        case 429: return .rateLimit
+        case 400...499: return .client
+        case 500...599: return .server
+        default: return .unknown
         }
     }
 
@@ -258,11 +284,7 @@ private struct Handler: EventHandler {
     }
 
     func onError(error: Error) {
-        if let uError = error as? UnsuccessfulResponseError {
-            publisher.send(completion: .failure(ChattingError.sending(message: "Server response with error status: \(uError.responseCode)")))
-        } else {
-            publisher.send(completion: .failure(ChattingError.sending(message: "Unknown error")))
-        }
+        publisher.send(completion: .failure(error))
     }
 
     func onMessage(eventType: String, messageEvent: MessageEvent) {
