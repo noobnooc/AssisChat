@@ -12,13 +12,15 @@ class SettingsFeature: ObservableObject {
     static let colorSchemeKey = "settings:colorScheme"
     static let tintKey = "settings:tint"
     static let symbolVariantKey = "settings:symbolVariant"
+    static let fontSizeKey = "settings:fontSize"
     static let openAIDomainKey = "settings:openAI:domain"
     static let openAIAPIKey = "settings:openAI:apiKey"
     static let iCloudSyncKey = "settings:iCloudSync"
 
-    @AppStorage(colorSchemeKey) private(set) var selectedColorScheme: ColorScheme = .automatic
+    @AppStorage(colorSchemeKey) var selectedColorScheme: ColorScheme = .automatic
     @AppStorage(tintKey) private(set) var selectedTint: Tint?
-    @AppStorage(symbolVariantKey) private(set) var selectedSymbolVariant: SymbolVariant = .fill
+    @AppStorage(symbolVariantKey) var selectedSymbolVariant: SymbolVariant = .fill
+    @AppStorage(fontSizeKey) var selectedFontSize: FontSize = .normal
     @AppStorage(openAIDomainKey) private(set) var configuredOpenAIDomain: String?
     @AppStorage(openAIAPIKey) private(set) var configuredOpenAIAPIKey: String?
     @AppStorage(iCloudSyncKey) var iCloudSync = false {
@@ -95,6 +97,12 @@ extension SettingsFeature {
         .outline,
     ]
 
+    static let fontSizes: [FontSize] = [
+        .large,
+        .normal,
+        .small,
+    ]
+
     enum ColorScheme: String, Hashable {
         case automatic = "automatic", light = "light", dark = "dark"
 
@@ -154,6 +162,28 @@ extension SettingsFeature {
             switch self {
             case .fill: return LocalizedStringKey("SETTINGS_SYMBOL_VARIANT_FILL")
             case .outline: return LocalizedStringKey("SETTINGS_SYMBOL_VARIANT_OUTLINE")
+            }
+        }
+    }
+
+    enum FontSize: String, Hashable {
+        case large = "large"
+        case normal = "normal"
+        case small = "small"
+
+        var size: Int {
+            switch self {
+            case .large: return 20
+            case .normal: return 17
+            case .small: return 14
+            }
+        }
+
+        var localizedLabel: String {
+            switch self {
+            case .large: return String(localized: "Large", comment: "The large size label of font size setting")
+            case .normal: return String(localized: "Normal", comment: "The normal size label of font size setting")
+            case .small: return String(localized: "Small", comment: "The small size label of font size setting")
             }
         }
     }

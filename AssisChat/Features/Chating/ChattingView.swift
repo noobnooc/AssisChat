@@ -11,23 +11,23 @@ import MarkdownUI
 
 struct ChattingView: View {
     @EnvironmentObject private var chattingFeature: ChattingFeature
-    
+
     @ObservedObject var chat: Chat
     @State var activeMessageId: ObjectIdentifier?
-    
+
     var body: some View {
         VStack(spacing: 0) {
             let scrollView = ScrollView {
                 Rectangle()
                     .fill(.clear)
                     .frame(height: 10)
-                
+
                 ForEach(chat.messages.reversed()) { message in
                     MessageItem(message: message, activation: $activeMessageId)
                 }
                 .padding(.horizontal, 10)
                 .scaleEffect(x: 1, y: -1, anchor: .center)
-                
+
                 Rectangle()
                     .fill(.clear)
                     .frame(height: 20)
@@ -37,7 +37,7 @@ struct ChattingView: View {
                     MessageInput(chat: chat)
                 }
                 .animation(.easeOut, value: chat)
-            
+
             if #available(iOS 16, macOS 13, *) {
                 scrollView
                     .scrollDismissesKeyboard(.immediately)
@@ -62,14 +62,14 @@ struct ChattingView: View {
 
 private struct MessageItem: View {
     @EnvironmentObject private var messageFeature: MessageFeature
-    
+
     @ObservedObject var message: Message
     @Binding var activation: ObjectIdentifier?
-    
+
     var active: Bool {
         activation == message.id
     }
-    
+
     var body: some View {
         if message.role == .assistant {
             AssistantMessage(message: message, active: active) {
@@ -81,7 +81,7 @@ private struct MessageItem: View {
             }
         }
     }
-    
+
     func toggleActive() {
         withAnimation {
             if (active) {
@@ -96,11 +96,11 @@ private struct MessageItem: View {
 private struct AssistantMessage: View {
     @EnvironmentObject private var messageFeature: MessageFeature
     @EnvironmentObject private var chattingFeature: ChattingFeature
-    
+
     let message: Message
     let active: Bool
     let toggleActive: () -> Void
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             HStack {
@@ -125,10 +125,10 @@ private struct AssistantMessage: View {
                 .onTapGesture {
                     toggleActive()
                 }
-                
+
                 Spacer(minLength: 50)
             }
-            
+
             if active && !message.receiving {
                 HStack {
                     Button(role: .destructive) {
@@ -143,10 +143,10 @@ private struct AssistantMessage: View {
                     .cornerRadius(.infinity)
                     .buttonStyle(.plain)
                     .foregroundColor(.appRed)
-                    
+
                     Divider()
                         .padding(.vertical)
-                    
+
                     Button {
                         withAnimation {
                             message.copyToPasteboard()
@@ -160,11 +160,11 @@ private struct AssistantMessage: View {
                     .background(Color.tertiaryBackground)
                     .cornerRadius(.infinity)
                     .buttonStyle(.plain)
-                    
+
                     Button {
                         withAnimation {
                             toggleActive()
-                            
+
                             Task {
                                 await chattingFeature.resendWithStream(receivingMessage: message)
                             }
@@ -196,11 +196,11 @@ private struct AssistantMessage: View {
 
 private struct UserMessage: View {
     @EnvironmentObject private var messageFeature: MessageFeature
-    
+
     let message: Message
     let active: Bool
     let toggleActive: () -> Void
-    
+
     var body: some View {
         VStack(alignment: .trailing, spacing: 2) {
             HStack {
@@ -219,7 +219,7 @@ private struct UserMessage: View {
                         toggleActive()
                     }
             }
-            
+
             if (active) {
                 HStack {
                     Button {
@@ -235,10 +235,10 @@ private struct UserMessage: View {
                     .background(Color.tertiaryBackground)
                     .cornerRadius(.infinity)
                     .buttonStyle(.plain)
-                    
+
                     Divider()
                         .padding(.vertical)
-                    
+
                     Button(role: .destructive) {
                         withAnimation {
                             messageFeature.deleteMessages([message])
@@ -269,11 +269,16 @@ private struct UserMessage: View {
 
 private struct MessageContent: View {
     @Environment(\.colorScheme) private var colorScheme
-    
+
+    @EnvironmentObject private var settingsFeature: SettingsFeature
+
     let content: String
-    
+
     var body: some View {
         Markdown(content.trimmingCharacters(in: .whitespacesAndNewlines))
+            .markdownTextStyle(textStyle: {
+                FontSize(CGFloat(settingsFeature.selectedFontSize.size))
+            })
             .markdownTextStyle(\.link, textStyle: {
                 UnderlineStyle(.single)
                 ForegroundColor(.primary.opacity(0.8))
@@ -312,14 +317,14 @@ private struct MessageContent: View {
 
 private struct MessageInput: View {
     @EnvironmentObject private var chattingFeature: ChattingFeature
-    
+
     @ObservedObject var chat: Chat
     @State private var text = ""
-    
+
     var sendButtonAvailable: Bool {
         !text.isEmpty && !chat.receiving
     }
-    
+
     var body: some View {
         VStack(spacing: 0) {
             Divider()
@@ -340,13 +345,13 @@ private struct MessageInput: View {
                         .cornerRadius(8)
                         .textFieldStyle(.plain)
                 }
-                
+
                 Button {
                     guard sendButtonAvailable else { return }
                     Task {
                         let messageContent = text
                         text = ""
-                        
+
                         await chattingFeature.sendWithStream(
                             plainMessage: .init(
                                 chat: chat,
@@ -354,7 +359,7 @@ private struct MessageInput: View {
                                 content: messageContent,
                                 processedContent: (chat.messagePrefix != nil ? "\(chat.messagePrefix!)\n\n" : "") + messageContent))
                     }
-                    
+
                 } label: {
                     if chat.receiving {
                         ProgressView()

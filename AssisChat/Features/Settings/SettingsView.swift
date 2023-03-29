@@ -41,9 +41,11 @@ struct SettingsView: View {
             }
 
             Section("SETTINGS_THEME") {
-                NavigationLink {
-                    ColorSchemeSelector()
-                        .navigationTitle("SETTINGS_COLOR_SCHEME")
+                Picker(selection: $settingsFeature.selectedColorScheme) {
+                    ForEach(SettingsFeature.colorSchemes, id: \.self) { scheme in
+                        Text(scheme.localizedKey)
+                            .tag(scheme)
+                    }
                 } label: {
                     Label {
                         Text("SETTINGS_COLOR_SCHEME")
@@ -69,9 +71,11 @@ struct SettingsView: View {
                     }
                 }
 
-                NavigationLink {
-                    SymbolVariantSelector()
-                        .navigationTitle("SETTINGS_SYMBOL_VARIANT")
+                Picker(selection: $settingsFeature.selectedSymbolVariant) {
+                    ForEach(SettingsFeature.symbolVariants, id: \.self) { variant in
+                        Text(variant.localizedKey)
+                            .tag(variant)
+                    }
                 } label: {
                     Label {
                         Text("SETTINGS_SYMBOL_VARIANT")
@@ -80,6 +84,22 @@ struct SettingsView: View {
                     } icon: {
                         Image(systemName: "star")
                             .foregroundColor(.appYellow)
+                    }
+                }
+
+                Picker(selection: $settingsFeature.selectedFontSize) {
+                    ForEach(SettingsFeature.fontSizes, id: \.self) { fontSize in
+                        Text(verbatim: fontSize.localizedLabel)
+                            .tag(fontSize)
+                    }
+                } label: {
+                    Label {
+                        Text("Message Font Size", comment: "The label of the setting of message font size")
+                            .foregroundColor(.primary)
+                        ProBadge()
+                    } icon: {
+                        Image(systemName: "textformat.size")
+                            .foregroundColor(.appGreen)
                     }
                 }
             }
