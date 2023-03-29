@@ -10,11 +10,17 @@ import SwiftUI
 struct ChatsView: View {
     @EnvironmentObject var chatFeature: ChatFeature
 
+    @FetchRequest(
+        sortDescriptors: [
+            SortDescriptor(\.rawUpdatedAt, order: .reverse)
+        ]
+    ) var chats: FetchedResults<Chat>
+
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            if !chatFeature.orderedChats.isEmpty {
+            if !chats.isEmpty {
                 List {
-                    ForEach(chatFeature.orderedChats) { chat in
+                    ForEach(chats) { chat in
                         NavigationLink {
                             ChattingView(chat: chat)
                         } label: {
@@ -41,9 +47,13 @@ struct ChatsView: View {
                         }
                     }
                     .onDelete(perform: onDelete)
+
+                    CopyrightView()
+                        .padding(.vertical, 30)
+                        .listRowSeparator(.hidden)
                 }
                 .listStyle(.plain)
-                .animation(.easeOut, value: chatFeature.orderedChats)
+                .animation(.easeOut, value: chats.count)
             } else {
                 VStack {
                     Image(systemName: "eyeglasses")
@@ -79,7 +89,7 @@ struct ChatsView: View {
 
     func onDelete(_ indices: IndexSet) {
         chatFeature.deleteChats(indices.map({ index in
-            chatFeature.orderedChats[index]
+            chats[index]
         }))
     }
 }

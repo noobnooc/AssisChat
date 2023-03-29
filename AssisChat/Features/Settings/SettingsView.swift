@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject private var settingsFeature: SettingsFeature
+
     @Environment(\.openURL) private var openURL
 
     var body: some View {
@@ -24,6 +26,17 @@ struct SettingsView: View {
                         .navigationTitle("SETTINGS_CHAT_SOURCE")
                 } label: {
                     Label("SETTINGS_CHAT_SOURCE", systemImage: "globe.asia.australia")
+                }
+
+                Toggle(isOn: $settingsFeature.iCloudSync) {
+                    Label {
+                        Text("iCloud Sync", comment: "iCloud Sync toggle label in settings")
+                            .foregroundColor(.primary)
+                        ProBadge()
+                    } icon: {
+                        Image(systemName: "icloud")
+                            .foregroundColor(.appBlue)
+                    }
                 }
             }
 
@@ -66,7 +79,7 @@ struct SettingsView: View {
                         ProBadge()
                     } icon: {
                         Image(systemName: "star")
-                            .foregroundColor(.appOrange)
+                            .foregroundColor(.appYellow)
                     }
                 }
             }
@@ -127,6 +140,7 @@ struct SettingsView: View {
         #if os(iOS)
         .listStyle(.insetGrouped)
         #endif
+        .inlineNavigationBar()
     }
 }
 

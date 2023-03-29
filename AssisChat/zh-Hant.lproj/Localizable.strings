@@ -7,6 +7,12 @@
 /* The authentication error of message failed reason */
 "Authentication Failed" = "認證失敗";
 
+/* Auto Copy feature title in pro introduction. */
+"Auto Copy" = "自動複製消息";
+
+/* Auto Copy feature summary in pro introduction. */
+"Auto copy the received message." = "自動複製接收到的消息到剪切板。";
+
 /* No comment provided by engineer. */
 "By purchasing Pro, you will:" = "購買 Pro 後，你將：";
 
@@ -133,6 +139,9 @@
 /* The link of the twitter account. */
 "https://twitter.com/AssisChatHQ" = "https://twitter.com/noobnooc";
 
+/* iCloud Sync toggle label in settings */
+"iCloud Sync" = "iCloud 同步";
+
 /* No comment provided by engineer. */
 "Invalid URL" = "不可用的 URL";
 
@@ -253,6 +262,9 @@
 /* No comment provided by engineer. */
 "Support Us" = "支持我們";
 
+/* No comment provided by engineer. */
+"Sync chats and messages across devices using iCloud." = "使用 iCloud 在不同設備之間同步會話和消息。";
+
 /* The message prefix of the Translator chat template */
 "Translate the following content:" = "翻譯以下內容";
 
@@ -272,7 +284,7 @@
 "Unlock All Features" = "解鎖所有功能";
 
 /* No comment provided by engineer. */
-"Unlock all the local features of the app." = "解鎖 App 的所有本地功能";
+"Unlock all the local features of the app." = "解鎖 App 的所有本地功能。";
 
 /* The system message of the Recipe chat template */
 "You are a kitchen helper who responds with the recipe for a given dish." = "你是一個廚房幫手，回復給定菜名的菜譜。";
@@ -299,5 +311,5 @@
 "You will play the role of a virtual girlfriend. Your name is Samantha, and you are 25 years old. You live in New Jersey. Your speaking tone needs to be natural and cute, and you should use emojis frequently in conversations." = "你將扮演一個虛擬女友。你的名字叫小美，今年25歲，生活在雲南大理。說話的語氣需要自然可愛一點，多在對話里帶 emoji 。";
 
 /* No comment provided by engineer. */
-"Your support is our driving force for moving forward." = "你的支持是我們前進的動力";
+"Your support is our driving force for moving forward." = "你的支持是我們前進的動力。";
 

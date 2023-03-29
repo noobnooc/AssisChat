@@ -28,51 +28,10 @@ struct PlainChat {
 class ChatFeature: ObservableObject {
     let essentialFeature: EssentialFeature
 
-    /**
-    Uses to notify `orderedChats` change.
-     */
-    @Published var tick = 0
-
-    @Published var chats: [Chat] = []
-
-    var orderedChats: [Chat] {
-        chats.sorted { c1, c2 in
-            c1.orderTimestamp > c2.orderTimestamp
-        }
-    }
-
     var objectsSavedCancelable: AnyCancellable?
 
     init(essentialFeature: EssentialFeature) {
         self.essentialFeature = essentialFeature
-
-        let fetchRequest = Chat.fetchRequest()
-        let fetchedChats = try? essentialFeature.context.fetch(fetchRequest)
-
-        self.chats = fetchedChats ?? []
-
-        objectsSavedCancelable = NotificationCenter.default.publisher(for: NSManagedObjectContext.didSaveObjectsNotification, object: essentialFeature.context)
-            .sink(receiveValue: { notification in
-                self.checkObjectsDidChangeNotification(notification: notification)
-            })
-    }
-
-    private func checkObjectsDidChangeNotification(notification: Notification) {
-        for insertedObject in notification.insertedObjects ?? [] {
-            if let insertedAccount = insertedObject as? Chat {
-                chats.append(insertedAccount)
-            }
-        }
-
-        if let deletedAccountIds = notification.deletedObjects?.compactMap({ ($0 as? Chat)?.objectID}), deletedAccountIds.count > 0 {
-            let deletedAccountIdSet = Set(deletedAccountIds)
-
-            chats.removeAll { account in
-                deletedAccountIdSet.contains(account.objectID)
-            }
-        }
-
-        tick += 1
     }
 }
 
@@ -110,6 +69,8 @@ extension ChatFeature {
         chat.rawAutoCopy = plainChat.autoCopy
         chat.rawOpenAIModel = plainChat.openAIModel.rawValue
 
+        chat.touch()
+        
         essentialFeature.persistData()
     }
 

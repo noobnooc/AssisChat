@@ -11,15 +11,21 @@ import SwiftUI
 class SettingsFeature: ObservableObject {
     static let colorSchemeKey = "settings:colorScheme"
     static let tintKey = "settings:tint"
-    static let symbolVariant = "settings:symbolVariant"
-    static let openAIDomain = "settings:openAI:domain"
+    static let symbolVariantKey = "settings:symbolVariant"
+    static let openAIDomainKey = "settings:openAI:domain"
     static let openAIAPIKey = "settings:openAI:apiKey"
+    static let iCloudSyncKey = "settings:iCloudSync"
 
     @AppStorage(colorSchemeKey) private(set) var selectedColorScheme: ColorScheme = .automatic
     @AppStorage(tintKey) private(set) var selectedTint: Tint?
-    @AppStorage(symbolVariant) private(set) var selectedSymbolVariant: SymbolVariant = .fill
-    @AppStorage(openAIDomain) private(set) var configuredOpenAIDomain: String?
+    @AppStorage(symbolVariantKey) private(set) var selectedSymbolVariant: SymbolVariant = .fill
+    @AppStorage(openAIDomainKey) private(set) var configuredOpenAIDomain: String?
     @AppStorage(openAIAPIKey) private(set) var configuredOpenAIAPIKey: String?
+    @AppStorage(iCloudSyncKey) var iCloudSync = false {
+        didSet {
+            essentialFeature.setCloudSync(sync: iCloudSync)
+        }
+    }
 
     let essentialFeature: EssentialFeature
 

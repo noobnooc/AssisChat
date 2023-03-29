@@ -49,12 +49,12 @@ public class Message: NSManagedObject {
 
     func markReceiving() {
         tReceiving = true
-        chat?.tick()
+        chat?.touch()
     }
 
     func unmarkReceiving() {
         tReceiving = false
-        chat?.tick()
+        chat?.touch()
     }
 
     func appendReceivingSlice(slice: String) {

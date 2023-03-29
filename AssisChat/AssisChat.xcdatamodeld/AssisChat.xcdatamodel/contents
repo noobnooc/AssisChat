@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22E252" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Chat" representedClassName="Chat" syncable="YES">
-        <attribute name="derivedUpdatedAt" optional="YES" attributeType="Date" derived="YES" derivationExpression="now()" usesScalarValueType="NO"/>
         <attribute name="rawAutoCopy" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="rawColor" optional="YES" attributeType="String"/>
         <attribute name="rawCreatedAt" attributeType="Date" defaultDateTimeInterval="699676500" usesScalarValueType="NO"/>
@@ -12,7 +11,7 @@
         <attribute name="rawOpenAIModel" optional="YES" attributeType="String"/>
         <attribute name="rawSystemMessage" optional="YES" attributeType="String"/>
         <attribute name="rawTemperature" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
-        <attribute name="tTick" transient="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rawUpdatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="rMessages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Message" inverseName="rChat" inverseEntity="Message"/>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">

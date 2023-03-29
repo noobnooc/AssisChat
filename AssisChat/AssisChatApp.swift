@@ -19,12 +19,12 @@ struct AssisChatApp: App {
     let chattingFeature: ChattingFeature
 
     init() {
-        let essentialFeature = EssentialFeature(context: persistenceController.container.viewContext)
+        let essentialFeature = EssentialFeature(persistenceController: persistenceController)
         let proFeature = ProFeature()
         let settingsFeature = SettingsFeature(essentialFeature: essentialFeature)
 
         _essentialFeature = StateObject(wrappedValue: essentialFeature)
-        _proFeature = StateObject(wrappedValue: ProFeature())
+        _proFeature = StateObject(wrappedValue: proFeature)
         _settingsFeature = StateObject(wrappedValue: settingsFeature)
         chatFeature = ChatFeature(essentialFeature: essentialFeature)
         messageFeature = MessageFeature(essentialFeature: essentialFeature)

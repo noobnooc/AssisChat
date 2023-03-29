@@ -55,16 +55,17 @@ public class Chat: NSManagedObject {
     }
 
     var orderTimestamp: Date {
-        return derivedUpdatedAt ?? rawCreatedAt ?? Date()
+        return rawUpdatedAt ?? rawCreatedAt ?? Date()
     }
 
-    /// To notify chat change manually
-    func tick() {
-        tTick += 1
+    /// Update the updatedAt field
+    public func touch() {
+        rawUpdatedAt = Date()
     }
 
     public override func awakeFromInsert() {
         self.rawCreatedAt = Date()
+        self.touch()
     }
 }
 

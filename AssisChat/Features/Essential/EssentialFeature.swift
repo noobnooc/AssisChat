@@ -12,10 +12,18 @@ import SwiftUI
 class EssentialFeature: ObservableObject {
     @Published private var alertQueue: [Alert] = []
 
-    let context: NSManagedObjectContext
+    let persistenceController: PersistenceController
 
-    init(context: NSManagedObjectContext) {
-        self.context = context
+    var context: NSManagedObjectContext {
+        persistenceController.container.viewContext
+    }
+
+    init(persistenceController: PersistenceController) {
+        self.persistenceController = persistenceController
+    }
+
+    func setCloudSync(sync: Bool) {
+        persistenceController.setupCloudSync(sync: sync)
     }
 }
 

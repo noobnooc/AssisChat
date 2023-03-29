@@ -7,7 +7,7 @@
 
 import CoreData
 
-struct PersistenceController {
+class PersistenceController {
     static let shared = PersistenceController()
 
     static var preview: PersistenceController = {
@@ -25,6 +25,7 @@ struct PersistenceController {
         return result
     }()
 
+    private let containerOptions: NSPersistentCloudKitContainerOptions?
     let container: NSPersistentCloudKitContainer
 
     init(inMemory: Bool = false) {
@@ -32,6 +33,19 @@ struct PersistenceController {
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
+
+        container.persistentStoreDescriptions.first?.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+
+        container.persistentStoreDescriptions.first?.setOption(true as NSNumber,
+                                                               forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+
+
+        containerOptions = container.persistentStoreDescriptions.first?.cloudKitContainerOptions
+
+        if(!UserDefaults.standard.bool(forKey: SettingsFeature.iCloudSyncKey)){
+            container.persistentStoreDescriptions.first?.cloudKitContainerOptions = nil
+        }
+
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -48,6 +62,13 @@ struct PersistenceController {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+
         container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        try? container.viewContext.setQueryGenerationFrom(.current)
+    }
+
+    func setupCloudSync(sync: Bool) {
+        // TODO: - Implements
     }
 }
