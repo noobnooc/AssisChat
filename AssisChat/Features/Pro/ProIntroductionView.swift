@@ -16,8 +16,14 @@ struct ProIntroductionView: View {
                     .scaledToFit()
                     .frame(width: 80, height: 80)
                     .cornerRadius(20)
-                Text("You are trying the Pro", comment: "")
-                    .padding(.top)
+                HStack {
+                    Image(systemName: "laurel.leading")
+                    Text("You are trying the Pro", comment: "")
+                    Image(systemName: "laurel.trailing")
+                }
+                .font(.headline)
+                .foregroundColor(.accentColor)
+                .padding(.top)
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 50)
