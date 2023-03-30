@@ -12,7 +12,7 @@ struct ProBadge: View {
 
     var body: some View {
         if proFeature.showBadge {
-            Text("PRO")
+            Text(String("PRO"))
                 .bold()
                 .font(.system(.footnote, design: .rounded))
                 .padding(.vertical, 3)

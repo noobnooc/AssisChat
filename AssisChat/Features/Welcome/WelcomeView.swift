@@ -34,7 +34,7 @@ private struct Content: View {
                         .scaledToFit()
                         .frame(width: 80, height: 80)
                         .cornerRadius(20)
-                    Text("AssisChat")
+                    Text(String("AssisChat"))
                         .padding(.top)
                     Text("APP_SLOGAN")
                         .font(.subheadline)
@@ -55,7 +55,7 @@ private struct Content: View {
 
             Section {
 #if os(iOS)
-                TextField("sk-XXXXXXX", text: $openAIAPIKey)
+                TextField(String("sk-XXXXXXX"), text: $openAIAPIKey)
 #else
                 TextField("", text: $openAIAPIKey)
                     .textFieldStyle(.roundedBorder)
@@ -71,7 +71,7 @@ private struct Content: View {
             }
             Section {
 #if os(iOS)
-                TextField("api.openai.com", text: $openAIDomain)
+                TextField(String("api.openai.com"), text: $openAIDomain)
 #else
                 TextField("", text: $openAIDomain)
                     .textFieldStyle(.roundedBorder)

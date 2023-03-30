@@ -109,7 +109,7 @@ struct SettingsView: View {
                     openURL(URL(string: String(localized: "https://twitter.com/AssisChatHQ", comment: "The link of the twitter account."))!)
                 } label: {
                     Label {
-                        Text("Twitter")
+                        Text(String("Twitter"))
                             .foregroundColor(.primary)
                     } icon: {
                         Image(systemName: "bird")
@@ -121,7 +121,7 @@ struct SettingsView: View {
                     openURL(URL(string: String(localized: "https://t.me/AssisChatHQ", comment: "The link of the Telegram group."))!)
                 } label: {
                     Label {
-                        Text("Telegram")
+                        Text(String("Telegram"))
                             .foregroundColor(.primary)
                     } icon: {
                         Image(systemName: "paperplane")

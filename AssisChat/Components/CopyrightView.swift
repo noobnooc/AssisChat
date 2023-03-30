@@ -19,7 +19,7 @@ struct CopyrightView: View {
             if detailed {
                 Text("Current Version: \(Bundle.main.releaseVersionNumber ?? "")(\(Bundle.main.buildVersionNumber ?? ""))")
                     .font(.system(.footnote))
-                Text("Crafted by Nooc(@noobnooc)")
+                Text(String("Crafted by Nooc(@noobnooc)"))
                     .font(.system(.footnote))
                     .padding(.bottom)
             }

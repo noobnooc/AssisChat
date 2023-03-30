@@ -23,7 +23,7 @@ struct ProBanner: View {
 
                 VStack(alignment: .trailing) {
                     HStack(alignment: .center) {
-                        Text("PRO")
+                        Text(String("PRO"))
                             .bold()
                             .font(.system(.footnote, design: .rounded))
                             .padding(.vertical, 5)

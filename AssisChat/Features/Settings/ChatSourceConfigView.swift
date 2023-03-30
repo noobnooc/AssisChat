@@ -28,7 +28,7 @@ private struct Content: View {
     var body: some View {
         List {
             Section {
-                TextField("sk-XXXXXXX", text: $openAIAPIKey)
+                TextField(String("sk-XXXXXXX"), text: $openAIAPIKey)
             } header: {
                 Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY")
             } footer: {
@@ -36,7 +36,7 @@ private struct Content: View {
             }
 
             Section {
-                TextField("api.openai.com", text: $openAIDomain)
+                TextField(String("api.openai.com"), text: $openAIDomain)
             } header: {
                 Text("SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN")
             } footer: {
