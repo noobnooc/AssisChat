@@ -12,6 +12,7 @@ struct ChatsView: View {
 
     @FetchRequest(
         sortDescriptors: [
+            SortDescriptor(\.rawPinOrder, order: .reverse),
             SortDescriptor(\.rawUpdatedAt, order: .reverse)
         ]
     ) var chats: FetchedResults<Chat>
@@ -26,19 +27,51 @@ struct ChatsView: View {
                         } label: {
                             ChatItem(chat: chat)
                         }
+                        .listRowBackground(chat.pinned ? Color.secondaryBackground : Color.clear)
                         .swipeActions(edge: .leading, content: {
                             Button {
                                 chatFeature.clearMessages(for: chat)
                             } label: {
                                 Label("CHAT_CLEAR_MESSAGE", systemImage: "eraser.line.dashed")
                             }
+
+                            if chat.pinned {
+                                Button {
+                                    chatFeature.unpinChat(chat: chat)
+                                } label: {
+                                    Label("Unpin Chat", systemImage: "pin.slash")
+                                }
+                            } else {
+                                Button {
+                                    chatFeature.pinChat(chat: chat)
+                                } label: {
+                                    Label("Pin Chat", systemImage: "pin")
+                                }
+                            }
                         })
                         .contextMenu {
+                            if chat.pinned {
+                                Button {
+                                    chatFeature.unpinChat(chat: chat)
+                                } label: {
+                                    Label("Unpin Chat", systemImage: "pin.slash")
+                                }
+                            } else {
+                                Button {
+                                    chatFeature.pinChat(chat: chat)
+                                } label: {
+                                    Label("Pin Chat", systemImage: "pin")
+                                }
+                            }
+
                             Button {
                                 chatFeature.clearMessages(for: chat)
                             } label: {
                                 Label("CHAT_CLEAR_MESSAGE", systemImage: "eraser.line.dashed")
                             }
+
+                            Divider()
+
                             Button(role: .destructive) {
                                 chatFeature.deleteChats([chat])
                             } label: {

@@ -12,6 +12,8 @@ import SwiftUI
 
 @objc(Chat)
 public class Chat: NSManagedObject {
+    static let unpinned: Int64 = -1
+
     var name: String {
         return rawName ?? "[UNKNOWN]"
     }
@@ -54,8 +56,8 @@ public class Chat: NSManagedObject {
         rawAutoCopy
     }
 
-    var orderTimestamp: Date {
-        return rawUpdatedAt ?? rawCreatedAt ?? Date()
+    var pinned: Bool {
+        rawPinOrder != Self.unpinned
     }
 
     /// Update the updatedAt field

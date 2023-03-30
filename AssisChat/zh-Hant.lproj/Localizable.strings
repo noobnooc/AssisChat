@@ -121,6 +121,9 @@
 /* The message prefix of the Language Polisher chat template */
 "Corrects and polishes the following content:" = "糾正及潤色以下內容：";
 
+/* No comment provided by engineer. */
+"Current Version: %@(%@)" = "當前版本：%@(%@)";
+
 /* Done */
 "DONE" = "完成";
 
@@ -174,6 +177,9 @@
 
 /* The normal size label of font size setting */
 "Normal" = "普通";
+
+/* No comment provided by engineer. */
+"Pin Chat" = "置頂會話";
 
 /* The name of the Programer Helper chat template */
 "Programer Helper" = "程序幫手";
@@ -297,6 +303,9 @@
 
 /* No comment provided by engineer. */
 "Unlock all the local features of the app." = "解鎖 App 的所有本地功能。";
+
+/* No comment provided by engineer. */
+"Unpin Chat" = "取消置頂會話";
 
 /* The system message of the Recipe chat template */
 "You are a kitchen helper who responds with the recipe for a given dish." = "你是一個廚房幫手，回復給定菜名的菜譜。";

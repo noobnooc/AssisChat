@@ -85,6 +85,18 @@ extension ChatFeature {
 
         essentialFeature.persistData()
     }
+
+    func pinChat(chat: Chat) {
+        chat.rawPinOrder = Int64(Date().timeIntervalSince1970)
+
+        essentialFeature.persistData()
+    }
+
+    func unpinChat(chat: Chat) {
+        chat.rawPinOrder = Chat.unpinned
+
+        essentialFeature.persistData()
+    }
 }
 
 
