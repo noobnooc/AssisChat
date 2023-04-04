@@ -69,7 +69,7 @@
 "CHAT_MESSAGE_PREFIX_HINT" = "Will be added before each message";
 
 // Chat history length to send
-"CHAT_HISTORY_LENGTH_TO_SEND" = "History Length";
+"CHAT_HISTORY_LENGTH_TO_SEND" = "History";
 // Chat history length to send hint
 "CHAT_HISTORY_LENGTH_TO_SEND_HINT" = "The chat will only send the set number of history messages.";
 // Chat history length to send max

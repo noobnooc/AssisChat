@@ -75,8 +75,6 @@ extension MessageFeature {
             }
 
             messages.append(message)
-
-            plainMessage.chat.touch()
         }
 
         essentialFeature.persistData()

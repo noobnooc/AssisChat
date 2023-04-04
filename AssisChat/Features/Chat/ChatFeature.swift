@@ -75,9 +75,19 @@ extension ChatFeature {
     }
 
     func clearMessages(for chat: Chat) {
-        chat.rMessages = []
+        let messagesFetchRequest: NSFetchRequest<Message> = Message.fetchRequest()
+        messagesFetchRequest.predicate = chat.predicate
 
-        essentialFeature.persistData()
+        do {
+            let messages = try essentialFeature.context.fetch(messagesFetchRequest)
+            for message in messages {
+                essentialFeature.context.delete(message)
+            }
+
+            try essentialFeature.context.save()
+        } catch {
+            print("Error fetching or deleting messages: \(error)")
+        }
     }
 
     func deleteChats(_ chats: [Chat]) {

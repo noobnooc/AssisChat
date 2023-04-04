@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import Combine
 
 class PersistenceController {
     static let shared = PersistenceController()
@@ -29,6 +30,7 @@ class PersistenceController {
 
     private let containerOptions: NSPersistentCloudKitContainerOptions?
     let container: NSPersistentCloudKitContainer
+    private var mergeRemoteChangesCancelable: AnyCancellable?
 
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "AssisChat")
@@ -81,6 +83,16 @@ class PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         try? container.viewContext.setQueryGenerationFrom(.current)
+
+        mergeRemoteChangesCancelable = NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange, object: nil)
+            .sink { notification in
+                let context = self.container.viewContext
+
+                // Merge changes from the notification
+                context.perform {
+                    context.mergeChanges(fromContextDidSave: notification)
+                }
+            }
     }
 
     func setupCloudSync(sync: Bool) {

@@ -15,9 +15,7 @@ struct ShareView: View {
     let complete: () -> Void
     let cancel: () -> Void
 
-    @State private var receiving = false
     @State private var receivingMessage: Message?
-
 
     var body: some View {
         GeometryReader { geometry in
@@ -47,15 +45,11 @@ struct ShareView: View {
     }
 
     private func send(for chat: Chat) async {
-        receiving = true
-
         await chattingFeature.sendWithStream(content: sharedText, for: chat) {
             self.receivingMessage = messageFeature.createReceivingMessage(for: chat)
 
             return receivingMessage
         }
-
-        receiving = false
     }
 }
 
@@ -105,9 +99,14 @@ private struct ChatSelector: View {
                                 .colorScheme(.dark)
 
                             Text(chat.name)
-                                .font(.footnote)
+                                .font(.caption)
                                 .lineLimit(1)
                         }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 5)
+                        .background(chat.pinned ? Color.tertiaryBackground : Color.clear)
+                        .cornerRadius(12)
                         .onTapGesture {
                             send(chat)
                         }
@@ -138,8 +137,11 @@ private struct ChatSelector: View {
 }
 
 private struct ReceivingResult: View {
+    @EnvironmentObject private var chattingFeature: ChattingFeature
+
     @State private var scrollViewHeight: CGFloat = 0
     @ObservedObject var receivingMessage: Message
+
     let complete: () -> Void
 
     var body: some View {
@@ -185,27 +187,31 @@ private struct ReceivingResult: View {
 
             HStack {
                 Button(action: {
+                    Task {
+                        await chattingFeature.resendWithStream(receivingMessage: receivingMessage)
+                    }
+                }, label: {
+                    Text("Regenerate")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.background)
+                        .cornerRadius(20)
+                        .padding(.horizontal, 10)
+                })
+                .disabled(receivingMessage.receiving)
+
+                Button(action: {
                     receivingMessage.copyToPasteboard()
                     complete()
                 }, label: {
-                    Text("Copy")
+                    Text("Copy & Close")
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.background)
                         .cornerRadius(20)
                         .padding(.horizontal, 10)
                 })
-
-                Button(action: {
-                    complete()
-                }, label: {
-                    Text("Complete")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.background)
-                        .cornerRadius(20)
-                        .padding(.horizontal, 10)
-                })
+                .disabled(receivingMessage.receiving)
             }
         }
         .padding()

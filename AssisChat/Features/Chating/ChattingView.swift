@@ -13,28 +13,20 @@ struct ChattingView: View {
     @ObservedObject var chat: Chat
     @State var activeMessageId: ObjectIdentifier?
 
+    @FetchRequest
+    private var messages: FetchedResults<Message>
+
+    init(chat: Chat) {
+        _chat = ObservedObject(wrappedValue: chat)
+        _messages = FetchRequest<Message>(
+            sortDescriptors: [NSSortDescriptor(keyPath: \Message.rawTimestamp, ascending: false)],
+            predicate: chat.predicate
+        )
+    }
+
     var body: some View {
         VStack(spacing: 0) {
-            let scrollView = ScrollView {
-                Rectangle()
-                    .fill(.clear)
-                    .frame(height: 10)
-
-                ForEach(chat.messages.reversed()) { message in
-                    MessageItem(message: message, activation: $activeMessageId)
-                }
-                .padding(.horizontal, 10)
-                .scaleEffect(x: 1, y: -1, anchor: .center)
-
-                Rectangle()
-                    .fill(.clear)
-                    .frame(height: 20)
-            }
-                .scaleEffect(x: 1, y: -1, anchor: .center)
-                .safeAreaInset(edge: .bottom, spacing: 0) {
-                    MessageInput(chat: chat)
-                }
-                .animation(.easeOut, value: chat)
+            let scrollView = messagesListView()
 
             if #available(iOS 16, macOS 13, *) {
                 scrollView
@@ -55,6 +47,30 @@ struct ChattingView: View {
                 }
             }
         }
+    }
+
+    @ViewBuilder
+    private func messagesListView() -> some View {
+        ScrollView {
+            Rectangle()
+                .fill(.clear)
+                .frame(height: 10)
+
+            ForEach(messages) { (message: Message) in
+                MessageItem(message: message, activation: $activeMessageId)
+            }
+            .padding(.horizontal, 10)
+            .scaleEffect(x: 1, y: -1, anchor: .center)
+
+            Rectangle()
+                .fill(.clear)
+                .frame(height: 20)
+        }
+        .scaleEffect(x: 1, y: -1, anchor: .center)
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            MessageInput(chat: chat)
+        }
+        .animation(.easeOut, value: messages.count)
     }
 }
 

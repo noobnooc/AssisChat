@@ -32,7 +32,7 @@ public class Chat: NSManagedObject {
 
     /// The actual number of history length to send
     var historyLengthToSend: Int16 {
-        return rawHistoryLengthToSend == .historyLengthToSendMax ? .max : rawHistoryLengthToSend
+        return max(rawHistoryLengthToSend == .historyLengthToSendMax ? .max : rawHistoryLengthToSend, 1)
     }
 
     /// The actual number of history length to send, `-1` for max
@@ -58,6 +58,10 @@ public class Chat: NSManagedObject {
 
     var pinned: Bool {
         rawPinOrder != Self.unpinned
+    }
+
+    var predicate: NSPredicate {
+        NSPredicate(format: "rChat == %@", self)
     }
 
     func preprocessContent(content: String) -> String? {

@@ -5,10 +5,7 @@
 "Cancel" = "取消";
 
 /* No comment provided by engineer. */
-"Complete" = "完成";
-
-/* No comment provided by engineer. */
-"Copy" = "複製";
+"Copy & Close" = "複製並關閉";
 
 /* No comment provided by engineer. */
 "Invalid URL" = "URL 不可用";
@@ -18,6 +15,9 @@
 
 /* The rate limited error of message failed reason */
 "Rate Limited" = "被限制頻率";
+
+/* No comment provided by engineer. */
+"Regenerate" = "重新生成";
 
 /* No comment provided by engineer. */
 "Send to chat" = "發送到會話";

@@ -36,7 +36,9 @@ struct ChatDetailView: View {
 
                         HStack {
                             Text("CHAT_HISTORY_LENGTH_TO_SEND")
+                                .lineLimit(1)
                             Text(chat.storedHistoryLengthToSend.historyLengthToSendDisplay)
+                                .lineLimit(1)
                                 .opacity(0.8)
                         }
                         .padding(.vertical, 5)
@@ -46,6 +48,7 @@ struct ChatDetailView: View {
 
                         if chat.autoCopy {
                             Text("CHAT_AUTO_COPY")
+                                .lineLimit(1)
                                 .padding(.vertical, 5)
                                 .padding(.horizontal, 10)
                                 .background(Color.appBlue)
@@ -54,12 +57,14 @@ struct ChatDetailView: View {
 
                         if chat.openAIModel != .default {
                             Text(chat.openAIModel.rawValue.uppercased())
+                                .lineLimit(1)
                                 .padding(.vertical, 5)
                                 .padding(.horizontal, 10)
                                 .background(Color.appBlue)
                                 .cornerRadius(.infinity)
                         }
                     }
+                    .lineLimit(nil)
                     .font(.subheadline)
                     .colorScheme(.dark)
                     .padding(.top)

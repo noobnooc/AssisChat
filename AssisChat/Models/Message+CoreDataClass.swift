@@ -73,6 +73,7 @@ public class Message: NSManagedObject {
 
     public override func awakeFromInsert() {
         self.rawTimestamp = Date()
+        self.chat?.touch()
     }
 }
 
