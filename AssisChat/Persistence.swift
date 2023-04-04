@@ -10,6 +10,8 @@ import CoreData
 class PersistenceController {
     static let shared = PersistenceController()
 
+    static private let fileName = "AssisChat.sqlite"
+
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
@@ -34,17 +36,30 @@ class PersistenceController {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
 
+        var legacyURL: URL?
+
+        // Configure the persistent store description to use the shared app group container
+        if let storeDescription = container.persistentStoreDescriptions.first {
+            if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: AppGroup.identifier) {
+                let storeURL = url.appendingPathComponent(Self.fileName)
+
+                legacyURL =  storeDescription.url
+                storeDescription.url = storeURL
+            }
+        }
+
         container.persistentStoreDescriptions.first?.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
 
         container.persistentStoreDescriptions.first?.setOption(true as NSNumber,
                                                                forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
 
-
         containerOptions = container.persistentStoreDescriptions.first?.cloudKitContainerOptions
 
-        if(!UserDefaults.standard.bool(forKey: SettingsFeature.iCloudSyncKey)){
+        if(!SharedUserDefaults.shared.bool(forKey: SharedUserDefaults.iCloudSync)){
             container.persistentStoreDescriptions.first?.cloudKitContainerOptions = nil
         }
+
+        migrateStoreIfNeeded(for: container, legacyURL: legacyURL)
 
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -70,5 +85,23 @@ class PersistenceController {
 
     func setupCloudSync(sync: Bool) {
         // TODO: - Implements
+    }
+
+    private func migrateStoreIfNeeded(for container: NSPersistentContainer, legacyURL: URL?) {
+        guard
+            let legacyURL = legacyURL,
+            let currentURL = container.persistentStoreDescriptions.first?.url
+        else { return }
+
+        if FileManager.default.fileExists(atPath: legacyURL.path),
+           !FileManager.default.fileExists(atPath: currentURL.path) {
+            do {
+                let coordinator = NSPersistentStoreCoordinator(managedObjectModel: container.managedObjectModel)
+                let store = try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: legacyURL, options: nil)
+                try coordinator.migratePersistentStore(store, to: currentURL, options: nil, withType: NSSQLiteStoreType)
+            } catch {
+                fatalError("Failed to migrate store: \(error)")
+            }
+        }
     }
 }

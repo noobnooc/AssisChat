@@ -19,6 +19,8 @@ struct AssisChatApp: App {
     let chattingFeature: ChattingFeature
 
     init() {
+        SharedUserDefaults.migrateIfNeeded()
+
         let essentialFeature = EssentialFeature(persistenceController: persistenceController)
         let proFeature = ProFeature()
         let settingsFeature = SettingsFeature(essentialFeature: essentialFeature)

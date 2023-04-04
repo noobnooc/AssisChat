@@ -1,0 +1,36 @@
+/* The authentication error of message failed reason */
+"Authentication Failed" = "认证失败";
+
+/* No comment provided by engineer. */
+"Cancel" = "取消";
+
+/* No comment provided by engineer. */
+"Complete" = "完成";
+
+/* No comment provided by engineer. */
+"Copy" = "复制";
+
+/* No comment provided by engineer. */
+"Invalid URL" = "URL 不可用";
+
+/* The network error of message failed reason */
+"Network Error" = "网络错误";
+
+/* The rate limited error of message failed reason */
+"Rate Limited" = "被限制频率";
+
+/* No comment provided by engineer. */
+"Send to chat" = "发送到会话";
+
+/* The server error of message failed reason */
+"Server Error" = "服务器错误";
+
+/* The unknown client error of message failed reason */
+"Unknown Client Error" = "未知客户端错误";
+
+/* No comment provided by engineer. */
+"Unknown error" = "未知错误";
+
+/* The unknown error of message failed reason */
+"Unknown Error" = "未知错误";
+

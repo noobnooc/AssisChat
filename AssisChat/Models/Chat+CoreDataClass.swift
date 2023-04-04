@@ -60,6 +60,10 @@ public class Chat: NSManagedObject {
         rawPinOrder != Self.unpinned
     }
 
+    func preprocessContent(content: String) -> String? {
+        return messagePrefix != nil ? messagePrefix! + "\n\n" + content : nil
+    }
+
     /// Update the updatedAt field
     public func touch() {
         rawUpdatedAt = Date()

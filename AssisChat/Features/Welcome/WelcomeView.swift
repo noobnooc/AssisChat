@@ -140,7 +140,7 @@ private struct Content: View {
 
                 try await settingsFeature.validateAndConfigOpenAI(apiKey: openAIAPIKey, for: domain)
 
-                chatFeature.createAllPresets()
+                chatFeature.createPresets(presets: ChatPreset.presets)
             } catch ChattingError.validating(message: let message) {
                 errorMessage = message
             } catch {

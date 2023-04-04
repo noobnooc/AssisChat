@@ -42,8 +42,22 @@ class ChattingFeature: ObservableObject {
     }
 
     func sendWithStream(plainMessage: PlainMessage) async {
-        let message = messageFeature.createMessage(plainMessage)
-        let receivingMessage = messageFeature.createReceivingMessage(for: plainMessage.chat)
+        await sendWithStream(plainMessage: plainMessage) {
+            messageFeature.createReceivingMessage(for: plainMessage.chat)
+        }
+    }
+
+    func sendWithStream(content: String, for chat: Chat, createReceivingMessage: () -> Message?) async {
+        let processedContent = chat.preprocessContent(content: content)
+        let plainMessage = PlainMessage(chat: chat, role: .user, content: content, processedContent: processedContent)
+
+        await sendWithStream(plainMessage: plainMessage, createReceivingMessage: createReceivingMessage)
+    }
+
+    func sendWithStream(plainMessage: PlainMessage, createReceivingMessage: () -> Message?) async {
+        _ = messageFeature.createMessage(plainMessage)
+
+        let receivingMessage = createReceivingMessage()
 
         guard let receivingMessage = receivingMessage else { return }
 

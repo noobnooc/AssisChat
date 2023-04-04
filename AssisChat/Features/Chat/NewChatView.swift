@@ -25,7 +25,7 @@ struct NewChatView: View {
             }
 
             Section("CHAT_PRESETS") {
-                ForEach(ChatFeature.presets, id: \.name) { preset in
+                ForEach(ChatPreset.presets, id: \.name) { preset in
                     PresetItem(preset: preset)
                         .onTapGesture {
                             dismiss()

@@ -162,7 +162,7 @@ extension ChatGPTAdapter: ChattingAdapter {
         }
 
         let receivingMessageIndex = chat.messages.lastIndex(of: receivingMessage) ?? chat.messages.count
-        var historyMessagesReadyToSend = Array(chat.messages.prefix(receivingMessageIndex).suffix(Int(chat.historyLengthToSend)))
+        let historyMessagesReadyToSend = Array(chat.messages.prefix(receivingMessageIndex).suffix(Int(chat.historyLengthToSend)))
 
         var historyMessagesToSend: [ChatGPTMessage] = []
 

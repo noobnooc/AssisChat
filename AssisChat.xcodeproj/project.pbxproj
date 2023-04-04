@@ -11,7 +11,32 @@
 		F543A92729C444AC000C61B5 /* AcknowledgmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92629C444AC000C61B5 /* AcknowledgmentView.swift */; };
 		F543A92929C46BE8000C61B5 /* SymbolVariantSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92829C46BE8000C61B5 /* SymbolVariantSelector.swift */; };
 		F543A92D29C53749000C61B5 /* ProFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92C29C53749000C61B5 /* ProFeature.swift */; };
+		F567A31929D6935D00057582 /* HostingShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567A31829D6935D00057582 /* HostingShareViewController.swift */; };
+		F567A32029D6935D00057582 /* Share.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F567A31629D6935D00057582 /* Share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F567A32629D693EC00057582 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567A32529D693EC00057582 /* ShareView.swift */; };
+		F567A33529D6C99900057582 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ECE29B498290083BB31 /* Color+Extensions.swift */; };
+		F567A33629D6C9C900057582 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5E47E9C29B497A60083BB31 /* Assets.xcassets */; };
+		F567A33C29D6CD9000057582 /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EC629B497FB0083BB31 /* Message+CoreDataClass.swift */; };
+		F567A33D29D6CD9000057582 /* Chat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EC929B497FB0083BB31 /* Chat+CoreDataProperties.swift */; };
+		F567A33E29D6CD9000057582 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EC729B497FB0083BB31 /* Message+CoreDataProperties.swift */; };
+		F567A33F29D6CD9000057582 /* Chat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EC829B497FB0083BB31 /* Chat+CoreDataClass.swift */; };
+		F567A34529D6CF5F00057582 /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = F567A34429D6CF5F00057582 /* GPT3 Tokenizer */; };
+		F567A34729D6CF6300057582 /* LDSwiftEventSource in Frameworks */ = {isa = PBXBuildFile; productRef = F567A34629D6CF6300057582 /* LDSwiftEventSource */; };
+		F567A34829D6D4E000057582 /* AssisChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */; };
+		F567A34B29D6DC4C00057582 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EE129B49D0E0083BB31 /* Haptics.swift */; };
 		F5779EE529B8246800CC70B0 /* Splash in Frameworks */ = {isa = PBXBuildFile; productRef = F5779EE429B8246800CC70B0 /* Splash */; };
+		F58E539B29DBF7380022E979 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E539A29DBF7380022E979 /* AppGroup.swift */; };
+		F58E539C29DBF7950022E979 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E539A29DBF7380022E979 /* AppGroup.swift */; };
+		F58E539E29DBF7C50022E979 /* SharedUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E539D29DBF7C50022E979 /* SharedUserDefaults.swift */; };
+		F58E539F29DBF9530022E979 /* SharedUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E539D29DBF7C50022E979 /* SharedUserDefaults.swift */; };
+		F58E53A129DBFC720022E979 /* MessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E53A029DBFC720022E979 /* MessageContent.swift */; };
+		F58E53A229DBFCD50022E979 /* MessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E53A029DBFC720022E979 /* MessageContent.swift */; };
+		F58E53A329DBFDC00022E979 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EFE29B5D8B80083BB31 /* View+Extensions.swift */; };
+		F58E53A529DBFE640022E979 /* Splash in Frameworks */ = {isa = PBXBuildFile; productRef = F58E53A429DBFE640022E979 /* Splash */; };
+		F58E53A729DBFE6B0022E979 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = F58E53A629DBFE6B0022E979 /* MarkdownUI */; };
+		F58E53A829DBFF000022E979 /* SplashCodeSyntaxHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92429C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift */; };
+		F58E53AA29DC155B0022E979 /* ChatPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E53A929DC155B0022E979 /* ChatPreset.swift */; };
+		F58E53AD29DC17040022E979 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F58E53AB29DC17040022E979 /* Localizable.strings */; };
 		F5B2554D29B8A56D0008DAA3 /* SelectChatHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */; };
 		F5C6094529BA366D00862071 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6094429BA366D00862071 /* NewChatView.swift */; };
 		F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9329B497A60083BB31 /* AssisChatApp.swift */; };
@@ -56,6 +81,14 @@
 		F5E47F0F29B708D00083BB31 /* EditChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47F0E29B708D00083BB31 /* EditChatView.swift */; };
 		F5E47F1C29B721AA0083BB31 /* LDSwiftEventSource in Frameworks */ = {isa = PBXBuildFile; productRef = F5E47F1B29B721AA0083BB31 /* LDSwiftEventSource */; };
 		F5E47F1F29B7562B0083BB31 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5E47F2129B7562B0083BB31 /* Localizable.strings */; };
+		F5F290E229D92AF2001F6648 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567A33129D6A09F00057582 /* ShareViewController.swift */; };
+		F5F290E329D92AF9001F6648 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9529B497A60083BB31 /* Persistence.swift */; };
+		F5F290E729DA6A35001F6648 /* ChattingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EE629B4E8FB0083BB31 /* ChattingFeature.swift */; };
+		F5F290E829DA6A38001F6648 /* SettingsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EF129B5A6AB0083BB31 /* SettingsFeature.swift */; };
+		F5F290E929DA6A54001F6648 /* ChatFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ED829B4990A0083BB31 /* ChatFeature.swift */; };
+		F5F290EA29DA6A58001F6648 /* MessageFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EEB29B4EA0A0083BB31 /* MessageFeature.swift */; };
+		F5F290EB29DA6A62001F6648 /* EssentialFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ED529B498E20083BB31 /* EssentialFeature.swift */; };
+		F5F290EC29DA6A74001F6648 /* ChatGPTAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EEE29B4F5A80083BB31 /* ChatGPTAdapter.swift */; };
 		F5F2947B29C74400005D63CB /* ProBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2947A29C74400005D63CB /* ProBanner.swift */; };
 		F5F2947D29C757C8005D63CB /* ProIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2947C29C757C8005D63CB /* ProIntroductionView.swift */; };
 		F5F2947F29C859BC005D63CB /* ProBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2947E29C859BC005D63CB /* ProBadge.swift */; };
@@ -64,6 +97,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F567A31E29D6935D00057582 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5E47E8829B497A60083BB31 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F567A31529D6935D00057582;
+			remoteInfo = Share;
+		};
 		F5E47EA729B497A60083BB31 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F5E47E8829B497A60083BB31 /* Project object */;
@@ -80,11 +120,37 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F567A32129D6935D00057582 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F567A32029D6935D00057582 /* Share.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		F543A92429C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCodeSyntaxHighlighter.swift; sourceTree = "<group>"; };
 		F543A92629C444AC000C61B5 /* AcknowledgmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgmentView.swift; sourceTree = "<group>"; };
 		F543A92829C46BE8000C61B5 /* SymbolVariantSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolVariantSelector.swift; sourceTree = "<group>"; };
 		F543A92C29C53749000C61B5 /* ProFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProFeature.swift; sourceTree = "<group>"; };
+		F567A31629D6935D00057582 /* Share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F567A31829D6935D00057582 /* HostingShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingShareViewController.swift; sourceTree = "<group>"; };
+		F567A31D29D6935D00057582 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F567A32529D693EC00057582 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
+		F567A33129D6A09F00057582 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		F58E539A29DBF7380022E979 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+		F58E539D29DBF7C50022E979 /* SharedUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedUserDefaults.swift; sourceTree = "<group>"; };
+		F58E53A029DBFC720022E979 /* MessageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContent.swift; sourceTree = "<group>"; };
+		F58E53A929DC155B0022E979 /* ChatPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPreset.swift; sourceTree = "<group>"; };
+		F58E53AC29DC17040022E979 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F58E53AE29DC17110022E979 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F58E53AF29DC17130022E979 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChatHintView.swift; sourceTree = "<group>"; };
 		F5C6094429BA366D00862071 /* NewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatView.swift; sourceTree = "<group>"; };
 		F5E47E9029B497A60083BB31 /* AssisChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssisChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +208,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F567A31329D6935D00057582 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F567A34729D6CF6300057582 /* LDSwiftEventSource in Frameworks */,
+				F567A34529D6CF5F00057582 /* GPT3 Tokenizer in Frameworks */,
+				F58E53A529DBFE640022E979 /* Splash in Frameworks */,
+				F58E53A729DBFE6B0022E979 /* MarkdownUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F5E47E8D29B497A60083BB31 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,6 +258,25 @@
 			path = Pro;
 			sourceTree = "<group>";
 		};
+		F567A31729D6935D00057582 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				F567A31D29D6935D00057582 /* Info.plist */,
+				F58E53AB29DC17040022E979 /* Localizable.strings */,
+				F567A31829D6935D00057582 /* HostingShareViewController.swift */,
+				F567A32529D693EC00057582 /* ShareView.swift */,
+				F567A33129D6A09F00057582 /* ShareViewController.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		F567A34329D6CF5F00057582 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F5E47E8729B497A60083BB31 = {
 			isa = PBXGroup;
 			children = (
@@ -189,7 +285,9 @@
 				F5E47E9229B497A60083BB31 /* AssisChat */,
 				F5E47EA929B497A60083BB31 /* AssisChatTests */,
 				F5E47EB329B497A60083BB31 /* AssisChatUITests */,
+				F567A31729D6935D00057582 /* Share */,
 				F5E47E9129B497A60083BB31 /* Products */,
+				F567A34329D6CF5F00057582 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -199,6 +297,7 @@
 				F5E47E9029B497A60083BB31 /* AssisChat.app */,
 				F5E47EA629B497A60083BB31 /* AssisChatTests.xctest */,
 				F5E47EB029B497A60083BB31 /* AssisChatUITests.xctest */,
+				F567A31629D6935D00057582 /* Share.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -213,6 +312,8 @@
 				F5E47EC429B497BF0083BB31 /* Features */,
 				F5E47EC329B497B00083BB31 /* Extensions */,
 				F5E47E9329B497A60083BB31 /* AssisChatApp.swift */,
+				F58E539A29DBF7380022E979 /* AppGroup.swift */,
+				F58E539D29DBF7C50022E979 /* SharedUserDefaults.swift */,
 				F5E47E9529B497A60083BB31 /* Persistence.swift */,
 				F5E47E9A29B497A60083BB31 /* ContentView.swift */,
 				F5E47E9C29B497A60083BB31 /* Assets.xcassets */,
@@ -298,6 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				F5E47ED829B4990A0083BB31 /* ChatFeature.swift */,
+				F58E53A929DC155B0022E979 /* ChatPreset.swift */,
 				F5E47F0C29B706FF0083BB31 /* ChatEditor.swift */,
 				F5E47EDA29B49B880083BB31 /* ChatsView.swift */,
 				F5E47EDC29B49B9C0083BB31 /* CustomNewChatView.swift */,
@@ -324,7 +426,6 @@
 				F5E47EE629B4E8FB0083BB31 /* ChattingFeature.swift */,
 				F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */,
 				F5E47EE829B4E9090083BB31 /* ChattingView.swift */,
-				F543A92429C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift */,
 			);
 			path = Chating;
 			sourceTree = "<group>";
@@ -364,6 +465,8 @@
 			isa = PBXGroup;
 			children = (
 				F5E47F0129B6178F0083BB31 /* CopyrightView.swift */,
+				F58E53A029DBFC720022E979 /* MessageContent.swift */,
+				F543A92429C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -379,6 +482,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F567A31529D6935D00057582 /* Share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F567A32429D6935D00057582 /* Build configuration list for PBXNativeTarget "Share" */;
+			buildPhases = (
+				F567A31229D6935D00057582 /* Sources */,
+				F567A31329D6935D00057582 /* Frameworks */,
+				F567A31429D6935D00057582 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Share;
+			packageProductDependencies = (
+				F567A34429D6CF5F00057582 /* GPT3 Tokenizer */,
+				F567A34629D6CF6300057582 /* LDSwiftEventSource */,
+				F58E53A429DBFE640022E979 /* Splash */,
+				F58E53A629DBFE6B0022E979 /* MarkdownUI */,
+			);
+			productName = Share;
+			productReference = F567A31629D6935D00057582 /* Share.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F5E47E8F29B497A60083BB31 /* AssisChat */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5E47EBA29B497A60083BB31 /* Build configuration list for PBXNativeTarget "AssisChat" */;
@@ -386,10 +512,12 @@
 				F5E47E8C29B497A60083BB31 /* Sources */,
 				F5E47E8D29B497A60083BB31 /* Frameworks */,
 				F5E47E8E29B497A60083BB31 /* Resources */,
+				F567A32129D6935D00057582 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F567A31F29D6935D00057582 /* PBXTargetDependency */,
 			);
 			name = AssisChat;
 			packageProductDependencies = (
@@ -448,6 +576,9 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					F567A31529D6935D00057582 = {
+						CreatedOnToolsVersion = 14.2;
+					};
 					F5E47E8F29B497A60083BB31 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -483,6 +614,7 @@
 			projectRoot = "";
 			targets = (
 				F5E47E8F29B497A60083BB31 /* AssisChat */,
+				F567A31529D6935D00057582 /* Share */,
 				F5E47EA529B497A60083BB31 /* AssisChatTests */,
 				F5E47EAF29B497A60083BB31 /* AssisChatUITests */,
 			);
@@ -490,6 +622,15 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F567A31429D6935D00057582 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F567A33629D6C9C900057582 /* Assets.xcassets in Resources */,
+				F58E53AD29DC17040022E979 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F5E47E8E29B497A60083BB31 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -518,6 +659,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F567A31229D6935D00057582 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5F290EA29DA6A58001F6648 /* MessageFeature.swift in Sources */,
+				F58E539F29DBF9530022E979 /* SharedUserDefaults.swift in Sources */,
+				F5F290E329D92AF9001F6648 /* Persistence.swift in Sources */,
+				F5F290E829DA6A38001F6648 /* SettingsFeature.swift in Sources */,
+				F58E539C29DBF7950022E979 /* AppGroup.swift in Sources */,
+				F5F290EC29DA6A74001F6648 /* ChatGPTAdapter.swift in Sources */,
+				F5F290EB29DA6A62001F6648 /* EssentialFeature.swift in Sources */,
+				F567A33F29D6CD9000057582 /* Chat+CoreDataClass.swift in Sources */,
+				F5F290E229D92AF2001F6648 /* ShareViewController.swift in Sources */,
+				F5F290E929DA6A54001F6648 /* ChatFeature.swift in Sources */,
+				F58E53A329DBFDC00022E979 /* View+Extensions.swift in Sources */,
+				F567A32629D693EC00057582 /* ShareView.swift in Sources */,
+				F58E53A829DBFF000022E979 /* SplashCodeSyntaxHighlighter.swift in Sources */,
+				F58E53A229DBFCD50022E979 /* MessageContent.swift in Sources */,
+				F567A34B29D6DC4C00057582 /* Haptics.swift in Sources */,
+				F567A33E29D6CD9000057582 /* Message+CoreDataProperties.swift in Sources */,
+				F567A31929D6935D00057582 /* HostingShareViewController.swift in Sources */,
+				F567A34829D6D4E000057582 /* AssisChat.xcdatamodeld in Sources */,
+				F567A33D29D6CD9000057582 /* Chat+CoreDataProperties.swift in Sources */,
+				F5F290E729DA6A35001F6648 /* ChattingFeature.swift in Sources */,
+				F567A33529D6C99900057582 /* Color+Extensions.swift in Sources */,
+				F567A33C29D6CD9000057582 /* Message+CoreDataClass.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F5E47E8C29B497A60083BB31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -533,6 +703,7 @@
 				F543A92729C444AC000C61B5 /* AcknowledgmentView.swift in Sources */,
 				F5E47EE729B4E8FB0083BB31 /* ChattingFeature.swift in Sources */,
 				F5E47F0729B62BFD0083BB31 /* WelcomeView.swift in Sources */,
+				F58E53A129DBFC720022E979 /* MessageContent.swift in Sources */,
 				F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */,
 				F5E47F0D29B706FF0083BB31 /* ChatEditor.swift in Sources */,
 				F5E47EE229B49D0E0083BB31 /* Haptics.swift in Sources */,
@@ -560,7 +731,10 @@
 				F5E47E9629B497A60083BB31 /* Persistence.swift in Sources */,
 				F5E47EF829B5B2320083BB31 /* TintSelector.swift in Sources */,
 				F5E47EDD29B49B9C0083BB31 /* CustomNewChatView.swift in Sources */,
+				F58E539E29DBF7C50022E979 /* SharedUserDefaults.swift in Sources */,
 				F5E47EDF29B49CCA0083BB31 /* ColorSelector.swift in Sources */,
+				F58E539B29DBF7380022E979 /* AppGroup.swift in Sources */,
+				F58E53AA29DC155B0022E979 /* ChatPreset.swift in Sources */,
 				F5E47F0B29B7002D0083BB31 /* ChatDetailView.swift in Sources */,
 				F5E47EF629B5B1B10083BB31 /* ColorSchemeSelector.swift in Sources */,
 				F5F2947B29C74400005D63CB /* ProBanner.swift in Sources */,
@@ -588,6 +762,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F567A31F29D6935D00057582 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F567A31529D6935D00057582 /* Share */;
+			targetProxy = F567A31E29D6935D00057582 /* PBXContainerItemProxy */;
+		};
 		F5E47EA829B497A60083BB31 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F5E47E8F29B497A60083BB31 /* AssisChat */;
@@ -601,6 +780,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F58E53AB29DC17040022E979 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F58E53AC29DC17040022E979 /* zh-Hans */,
+				F58E53AE29DC17110022E979 /* en */,
+				F58E53AF29DC17130022E979 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F5E47F2129B7562B0083BB31 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -614,6 +803,63 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F567A32229D6935D00057582 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Share/Share.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WFH889Q789;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Share/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "AssisChat Share Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noobnooc.AssisChat.Share;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F567A32329D6935D00057582 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Share/Share.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WFH889Q789;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Share/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "AssisChat Share Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noobnooc.AssisChat.Share;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		F5E47EB829B497A60083BB31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -728,6 +974,7 @@
 		F5E47EBB29B497A60083BB31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AssisChat/AssisChat.entitlements;
@@ -770,6 +1017,7 @@
 		F5E47EBC29B497A60083BB31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AssisChat/AssisChat.entitlements;
@@ -902,6 +1150,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F567A32429D6935D00057582 /* Build configuration list for PBXNativeTarget "Share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F567A32229D6935D00057582 /* Debug */,
+				F567A32329D6935D00057582 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F5E47E8B29B497A60083BB31 /* Build configuration list for PBXProject "AssisChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -976,10 +1233,30 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F567A34429D6CF5F00057582 /* GPT3 Tokenizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5F2948429CB3D02005D63CB /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */;
+			productName = "GPT3 Tokenizer";
+		};
+		F567A34629D6CF6300057582 /* LDSwiftEventSource */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5E47F1A29B721AA0083BB31 /* XCRemoteSwiftPackageReference "swift-eventsource" */;
+			productName = LDSwiftEventSource;
+		};
 		F5779EE429B8246800CC70B0 /* Splash */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F5779EE329B8246800CC70B0 /* XCRemoteSwiftPackageReference "Splash" */;
 			productName = Splash;
+		};
+		F58E53A429DBFE640022E979 /* Splash */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5779EE329B8246800CC70B0 /* XCRemoteSwiftPackageReference "Splash" */;
+			productName = Splash;
+		};
+		F58E53A629DBFE6B0022E979 /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5F2948129CB3CEC005D63CB /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
 		};
 		F5E47F1B29B721AA0083BB31 /* LDSwiftEventSource */ = {
 			isa = XCSwiftPackageProductDependency;

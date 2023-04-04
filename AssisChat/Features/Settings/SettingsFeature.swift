@@ -9,21 +9,13 @@ import Foundation
 import SwiftUI
 
 class SettingsFeature: ObservableObject {
-    static let colorSchemeKey = "settings:colorScheme"
-    static let tintKey = "settings:tint"
-    static let symbolVariantKey = "settings:symbolVariant"
-    static let fontSizeKey = "settings:fontSize"
-    static let openAIDomainKey = "settings:openAI:domain"
-    static let openAIAPIKey = "settings:openAI:apiKey"
-    static let iCloudSyncKey = "settings:iCloudSync"
-
-    @AppStorage(colorSchemeKey) var selectedColorScheme: ColorScheme = .automatic
-    @AppStorage(tintKey) private(set) var selectedTint: Tint?
-    @AppStorage(symbolVariantKey) var selectedSymbolVariant: SymbolVariant = .fill
-    @AppStorage(fontSizeKey) var selectedFontSize: FontSize = .normal
-    @AppStorage(openAIDomainKey) private(set) var configuredOpenAIDomain: String?
-    @AppStorage(openAIAPIKey) private(set) var configuredOpenAIAPIKey: String?
-    @AppStorage(iCloudSyncKey) var iCloudSync = false {
+    @AppStorage(SharedUserDefaults.colorScheme, store: SharedUserDefaults.shared) var selectedColorScheme: ColorScheme = .automatic
+    @AppStorage(SharedUserDefaults.tint, store: SharedUserDefaults.shared) private(set) var selectedTint: Tint?
+    @AppStorage(SharedUserDefaults.symbolVariant, store: SharedUserDefaults.shared) var selectedSymbolVariant: SymbolVariant = .fill
+    @AppStorage(SharedUserDefaults.fontSize, store: SharedUserDefaults.shared) var selectedFontSize: FontSize = .normal
+    @AppStorage(SharedUserDefaults.openAIDomain, store: SharedUserDefaults.shared) private(set) var configuredOpenAIDomain: String?
+    @AppStorage(SharedUserDefaults.openAIAPIKey, store: SharedUserDefaults.shared) private(set) var configuredOpenAIAPIKey: String?
+    @AppStorage(SharedUserDefaults.iCloudSync, store: SharedUserDefaults.shared) var iCloudSync = false {
         didSet {
             essentialFeature.setCloudSync(sync: iCloudSync)
         }

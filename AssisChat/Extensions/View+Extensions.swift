@@ -35,3 +35,24 @@ extension View {
         #endif
     }
 }
+
+extension View {
+    func overlayGeometryReader() -> some View {
+        self
+            .overlay(
+                GeometryReader { proxy in
+                    Color.clear
+                        .preference(key: ViewHeightKey.self, value: proxy.size.height)
+                }
+            )
+    }
+}
+
+struct ViewHeightKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
+    }
+}
+
