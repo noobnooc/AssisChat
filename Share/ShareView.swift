@@ -146,7 +146,7 @@ private struct ReceivingResult: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
+            HStack(alignment: .center) {
                 if let chat = receivingMessage.chat {
                     chat.icon.image
                         .font(.footnote)
@@ -158,6 +158,19 @@ private struct ReceivingResult: View {
                 }
 
                 Text(receivingMessage.chat?.name ?? "AssisChat")
+
+                Spacer()
+
+                Button {
+                    complete()
+                } label: {
+                    Image(systemName: "multiply")
+                        .padding(10)
+                        .background(Color.secondaryBackground)
+                        .foregroundColor(.secondary)
+                        .cornerRadius(.infinity)
+                }
+
             }
 
             ScrollView {
