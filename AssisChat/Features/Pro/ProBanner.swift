@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct ProBanner: View {
+    @EnvironmentObject private var proFeature: ProFeature
+
     @State private var introductionShowing = false
 
     var body: some View {
         ZStack(alignment: .topLeading) {
-            Image(systemName: "crown.fill")
+            Image(systemName: "cup.and.saucer")
                 .opacity(0.5)
                 .font(.system(size: 120))
                 .offset(x: -45, y: 30)
@@ -23,18 +25,24 @@ struct ProBanner: View {
 
                 VStack(alignment: .trailing) {
                     HStack(alignment: .center) {
-                        Text(String("PRO"))
-                            .bold()
-                            .font(.system(.footnote, design: .rounded))
-                            .padding(.vertical, 5)
-                            .padding(.horizontal, 10)
-                            .foregroundColor(.accentColor)
-                            .background(Color.primary)
-                            .cornerRadius(20)
+                        if proFeature.pro {
+                            Text("Hey, Friend")
+                                .bold()
+                                .font(.system(.body, design: .rounded))
+                        } else {
+                            Text(String("Friends"))
+                                .bold()
+                                .font(.system(.footnote, design: .rounded))
+                                .padding(.vertical, 5)
+                                .padding(.horizontal, 10)
+                                .foregroundColor(.accentColor)
+                                .background(Color.primary)
+                                .cornerRadius(20)
 
-                        Text("You are experiencing the Pro")
-                            .bold()
-                            .font(.system(.body, design: .rounded))
+                            Text("You are trying the friends plan")
+                                .bold()
+                                .font(.system(.body, design: .rounded))
+                        }
                     }
                     Spacer()
                     Text("Learn More")

@@ -1,0 +1,80 @@
+{
+  "identifier" : "A0BF589E",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "14.99",
+      "familyShareable" : true,
+      "internalID" : "6447280557",
+      "localizations" : [
+        {
+          "description" : "給我買一杯大杯咖啡。",
+          "displayName" : "大杯",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "Buy me a large cup of coffee.",
+          "displayName" : "Large Cup",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "assischat_coffee_large",
+      "referenceName" : "Coffee Large",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "8.99",
+      "familyShareable" : true,
+      "internalID" : "6447280608",
+      "localizations" : [
+        {
+          "description" : "給我買一杯中杯咖啡。",
+          "displayName" : "中杯",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "Buy me a medium cup of coffee.",
+          "displayName" : "Medium Cup",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "assischat_coffee_medium",
+      "referenceName" : "Coffee Medium",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : true,
+      "internalID" : "6447280409",
+      "localizations" : [
+        {
+          "description" : "給我買一杯小杯咖啡。",
+          "displayName" : "小杯",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "Buy me a small cup of coffee.",
+          "displayName" : "Small Cup",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "assischat_coffee_small",
+      "referenceName" : "Coffee Small",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6446092669",
+    "_developerTeamID" : "WFH889Q789",
+    "_lastSynchronizedDate" : 702382163.45489502
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}

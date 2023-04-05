@@ -7,14 +7,8 @@
 /* The authentication error of message failed reason */
 "Authentication Failed" = "认证失败";
 
-/* Auto Copy feature title in pro introduction. */
-"Auto Copy" = "自动复制消息";
-
-/* Auto Copy feature summary in pro introduction. */
-"Auto copy the received message." = "自动复制接收到的消息到剪切板。";
-
 /* No comment provided by engineer. */
-"By purchasing Pro, you will:" = "购买 Pro 后，你将：";
+"Buy me any size of coffee, you will" = "给我买一杯咖啡，你将";
 
 /* Chat history length to send none */
 "CAHT_HISTORY_LENGTH_TO_SEND_NONE" = "不发送";
@@ -133,6 +127,12 @@
 /* Error */
 "ERROR" = "错误";
 
+/* The buying button in pro introduction */
+"Good Luck" = "祝你好运";
+
+/* The friends plan summary */
+"Hey, Friend" = "你好，朋友";
+
 /* The message prefix of the Recipe chat template */
 "How to make the following dish: " = "如何烹饪下面这道菜：";
 
@@ -180,6 +180,9 @@
 
 /* No comment provided by engineer. */
 "Pin Chat" = "置顶会话";
+
+/* Share Extension feature summary in pro introduction. */
+"Process text from other apps with Share Extension." = "通过分享扩展，实现在其他应用中处理文本。";
 
 /* The name of the Programer Helper chat template */
 "Programer Helper" = "程序帮手";
@@ -271,6 +274,9 @@
 /* Settings tin */
 "SETTINGS_TINT" = "主题色";
 
+/* Share Extension feature title in pro introduction. */
+"Share Extension" = "分享扩展";
+
 /* The small size label of font size setting */
 "Small" = "小";
 
@@ -320,10 +326,10 @@
 "You are a translator who translates between English and Spanish." = "你是一个翻译助手，在中文和英文之间翻译。";
 
 /* No comment provided by engineer. */
-"You are experiencing the Pro" = "你正在体验 Pro";
+"You are in" = "你正在";
 
-/* No comment provided by engineer. */
-"You are trying the Pro" = "你正在体验 Pro";
+/* The free trying plan summary */
+"You are trying the friends plan" = "你正在体验朋友计划";
 
 /* The system message of the Virtual Boyfriend chat template */
 "You will play the role of a virtual boyfriend. Your name is Samuel, and you are 27 years old. You live in New York. Your speaking tone needs to be natural and cute, and you should use emojis frequently in conversations." = "你将扮演一个虚拟男友。你的名字叫大壮，今年27岁，生活在北京。说话的语气需要自然可爱一点，多在对话里带 emoji 。";

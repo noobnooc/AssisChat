@@ -37,6 +37,7 @@
 		F58E53A829DBFF000022E979 /* SplashCodeSyntaxHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92429C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift */; };
 		F58E53AA29DC155B0022E979 /* ChatPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E53A929DC155B0022E979 /* ChatPreset.swift */; };
 		F58E53AD29DC17040022E979 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F58E53AB29DC17040022E979 /* Localizable.strings */; };
+		F58E53B129DD66CC0022E979 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58E53B029DD66CC0022E979 /* StoreKit.framework */; };
 		F5B2554D29B8A56D0008DAA3 /* SelectChatHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */; };
 		F5C6094529BA366D00862071 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6094429BA366D00862071 /* NewChatView.swift */; };
 		F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9329B497A60083BB31 /* AssisChatApp.swift */; };
@@ -151,6 +152,8 @@
 		F58E53AC29DC17040022E979 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F58E53AE29DC17110022E979 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F58E53AF29DC17130022E979 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F58E53B029DD66CC0022E979 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F58E53B229DD6A670022E979 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
 		F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChatHintView.swift; sourceTree = "<group>"; };
 		F5C6094429BA366D00862071 /* NewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatView.swift; sourceTree = "<group>"; };
 		F5E47E9029B497A60083BB31 /* AssisChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssisChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +228,7 @@
 			files = (
 				F5F2948329CB3CEC005D63CB /* MarkdownUI in Frameworks */,
 				F5E47F1C29B721AA0083BB31 /* LDSwiftEventSource in Frameworks */,
+				F58E53B129DD66CC0022E979 /* StoreKit.framework in Frameworks */,
 				F5779EE529B8246800CC70B0 /* Splash in Frameworks */,
 				F5F2948629CB3D02005D63CB /* GPT3 Tokenizer in Frameworks */,
 			);
@@ -273,6 +277,7 @@
 		F567A34329D6CF5F00057582 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F58E53B029DD66CC0022E979 /* StoreKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 				F5E47E9C29B497A60083BB31 /* Assets.xcassets */,
 				F5E47E9E29B497A60083BB31 /* AssisChat.entitlements */,
 				F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */,
+				F58E53B229DD6A670022E979 /* Products.storekit */,
 				F5E47F2129B7562B0083BB31 /* Localizable.strings */,
 				F5E47E9F29B497A60083BB31 /* Preview Content */,
 			);
