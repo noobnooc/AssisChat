@@ -221,21 +221,31 @@ private struct BuyMeCoffee: View {
                 Task {
                     purchasing = true
                     await purchase()
-                    purchasing = true
+                    purchasing = false
                 }
             } label: {
-                Text("Good Luck", comment: "The buying button in pro introduction")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.accentColor)
-                    .cornerRadius(15)
-                    .foregroundColor(.white)
+                HStack {
+                    if purchasing {
+                        ProgressView()
+                            .padding(.horizontal, 5)
+                    }
+
+                    Text("Good Luck", comment: "The buying button in pro introduction")
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.accentColor)
+                .cornerRadius(15)
+                .foregroundColor(.white)
             }
             .disabled(purchasing)
 
             Button("Restore Purchase") {
                 proFeature.prepareAndRestore()
             }
+        }
+        .task {
+            proFeature.prepareAndRestore()
         }
     }
 

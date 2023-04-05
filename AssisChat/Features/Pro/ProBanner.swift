@@ -45,7 +45,7 @@ struct ProBanner: View {
                         }
                     }
                     Spacer()
-                    Text("Learn More")
+                    Text(proFeature.pro ? proFeature.largestPurchasedProProduct?.displayName ?? "Friends" : String(localized: "Learn More"))
                         .bold()
                         .font(.system(.footnote, design: .rounded))
                         .padding(.horizontal, 20)

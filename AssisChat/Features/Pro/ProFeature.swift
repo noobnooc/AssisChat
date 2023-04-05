@@ -34,6 +34,13 @@ class ProFeature: ObservableObject {
         coffeeProducts.first { product in product.id == "assischat_coffee_medium"}
     }
 
+    var largestPurchasedProProduct: Product? {
+        return purchasedCoffeeProducts.sorted { p1, p2 in
+            p1.price < p2.price
+        }
+        .last
+    }
+
     var showBadge: Bool  {
         false
     }
@@ -43,6 +50,8 @@ class ProFeature: ObservableObject {
     init() {
         //Start a transaction listener as close to app launch as possible so you don't miss any transactions.
         updateListenerTask = listenForTransactions()
+
+        prepareAndRestore()
     }
 
     deinit {
