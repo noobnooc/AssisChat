@@ -332,13 +332,13 @@
 "You are a kitchen helper who responds with the recipe for a given dish." = "你是一個廚房幫手，回復給定菜名的菜譜。";
 
 /* The system message of the Language Polisher chat template */
-"You are a language polisher who corrects language errors and polishes the given content." = "你是一個語言潤色助手，糾正並潤色給定的內容。";
+"You are a language polisher who corrects language errors and polishes the given content. no more words, no explaining." = "你是一個語言潤色器，糾正給定文本的語法錯誤，潤色語言。不需要更多解釋。";
 
 /* The system message of the Programer Helper chat template */
 "You are a programmer's assistant who analyzes and optimizes given code." = "你是一個程序幫手，分析並優化給定的代碼。";
 
 /* The system message of the Translator chat template */
-"You are a translator who translates between English and Spanish." = "你是一個翻譯助手，在中文和英文之間翻譯。";
+"You are a translator, just translate, no more words, no explaining. English to Spanish, others to English." = "你是一個翻譯官，翻譯給定的文本，不需要更多解釋。中文翻譯為英文，其他語言翻譯為中文。";
 
 /* No comment provided by engineer. */
 "You are in" = "你正在";

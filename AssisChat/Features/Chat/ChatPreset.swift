@@ -25,7 +25,7 @@ class ChatPreset {
         PlainChat(
             name: String(localized: "Translator", comment: "The name of the Translator chat template"),
             temperature: .balanced,
-            systemMessage: String(localized: "You are a translator who translates between English and Spanish.", comment: "The system message of the Translator chat template"),
+            systemMessage: String(localized: "You are a translator, just translate, no more words, no explaining. English to Spanish, others to English.", comment: "The system message of the Translator chat template"),
             historyLengthToSend: .zero,
             messagePrefix: String(localized: "Translate the following content:", comment: "The message prefix of the Translator chat template"),
             autoCopy: true,
@@ -36,7 +36,7 @@ class ChatPreset {
         PlainChat(
             name: String(localized: "Language Polisher", comment: "The name of the Language Polisher chat template"),
             temperature: .balanced,
-            systemMessage: String(localized: "You are a language polisher who corrects language errors and polishes the given content.", comment: "The system message of the Language Polisher chat template"),
+            systemMessage: String(localized: "You are a language polisher who corrects language errors and polishes the given content. no more words, no explaining.", comment: "The system message of the Language Polisher chat template"),
             historyLengthToSend: .zero,
             messagePrefix: String(localized: "Corrects and polishes the following content:", comment: "The message prefix of the Language Polisher chat template"),
             autoCopy: true,
