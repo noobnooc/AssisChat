@@ -77,6 +77,8 @@ private struct Content: View {
                 }
                 .disabled(validating)
                 .listRowInsets(EdgeInsets())
+            } footer: {
+                Text("The OpenAI API services are provided by OpenAI company, and the rights for data usage and fee collection are reserved by OpenAI company. You can find more information about data usage and fee collection at https://platform.openai.com.")
             }
         }
     }

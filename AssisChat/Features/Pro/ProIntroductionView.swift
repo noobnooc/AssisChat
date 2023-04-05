@@ -140,6 +140,27 @@ struct ProIntroductionView: View {
             .cornerRadius(12)
             .padding(.horizontal)
 
+            HStack(alignment: .top) {
+                Image(systemName: "lock.slash")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 36, height: 36)
+                    .font(.largeTitle)
+                    .foregroundColor(.appRed)
+
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("NOT Include Services")
+                    Text("The Friends Plan does NOT include OpenAI API services and any online services that AssisChat may offer in the future.")
+                        .foregroundColor(.secondary)
+                        .font(.subheadline)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
+            .background(Color.secondaryGroupedBackground)
+            .cornerRadius(12)
+            .padding(.horizontal)
+
             CopyrightView()
                 .padding(.vertical)
         }

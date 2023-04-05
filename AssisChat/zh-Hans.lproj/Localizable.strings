@@ -127,6 +127,9 @@
 /* Error */
 "ERROR" = "错误";
 
+/* No comment provided by engineer. */
+"Go to set chat source" = "去设置会话源";
+
 /* The buying button in pro introduction */
 "Good Luck" = "祝你好运";
 
@@ -179,6 +182,9 @@
 "Normal" = "普通";
 
 /* No comment provided by engineer. */
+"NOT Include Services" = "不包含在线服务";
+
+/* No comment provided by engineer. */
 "Pin Chat" = "置顶会话";
 
 /* Share Extension feature summary in pro introduction. */
@@ -192,6 +198,9 @@
 
 /* The name of the Language Recipe chat template */
 "Recipe" = "菜谱";
+
+/* No comment provided by engineer. */
+"Restore Purchase" = "恢复购买";
 
 /* The name of the Virtual Girlfriend chat template */
 "Samantha" = "小美";
@@ -289,6 +298,12 @@
 /* No comment provided by engineer. */
 "Sync chats and messages across devices using iCloud." = "使用 iCloud 在不同设备之间同步会话和消息。";
 
+/* No comment provided by engineer. */
+"The Friends Plan does NOT include OpenAI API services and any online services that AssisChat may offer in the future." = "朋友计划不包含 OpenAI API 服务，以及 AssisChat 未来可能将会提供的任何在线服务。";
+
+/* No comment provided by engineer. */
+"The OpenAI API services are provided by OpenAI company, and the rights for data usage and fee collection are reserved by OpenAI company. You can find more information about data usage and fee collection at https://platform.openai.com." = "OpenAI API 相关服务由 OpenAI 公司提供，其数据使用和费用收取均由 OpenAI 公司保留解释权。数据使用和费用收取等更多信息可以在 https://platform.openai.com 获得。";
+
 /* The message prefix of the Translator chat template */
 "Translate the following content:" = "翻译以下内容";
 
@@ -330,6 +345,9 @@
 
 /* The free trying plan summary */
 "You are trying the friends plan" = "你正在体验朋友计划";
+
+/* No comment provided by engineer. */
+"You have not set the chat source correctly. Please set it correctly to continue." = "你没有正确设置会话源，请设置后继续。";
 
 /* The system message of the Virtual Boyfriend chat template */
 "You will play the role of a virtual boyfriend. Your name is Samuel, and you are 27 years old. You live in New York. Your speaking tone needs to be natural and cute, and you should use emojis frequently in conversations." = "你将扮演一个虚拟男友。你的名字叫大壮，今年27岁，生活在北京。说话的语气需要自然可爱一点，多在对话里带 emoji 。";
