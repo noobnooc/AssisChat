@@ -116,7 +116,7 @@ private struct AssistantMessage: View {
     let toggleActive: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        ZStack(alignment: .bottomLeading) {
             HStack {
                 VStack(alignment: .trailing) {
                     if let content = message.content {
@@ -142,66 +142,62 @@ private struct AssistantMessage: View {
 
                 Spacer(minLength: 50)
             }
-
-            if active && !message.receiving {
-                HStack {
-                    Button(role: .destructive) {
-                        withAnimation {
-                            messageFeature.deleteMessages([message])
-                        }
-                    } label: {
-                        Image(systemName: "trash")
-                    }
-                    .padding(5)
-                    .background(Color.tertiaryBackground)
-                    .cornerRadius(.infinity)
-                    .buttonStyle(.plain)
-                    .foregroundColor(.appRed)
-
-                    Divider()
-                        .padding(.vertical)
-
-                    Button {
-                        withAnimation {
-                            message.copyToPasteboard()
-                            toggleActive()
-                        }
-                    } label: {
-                        Image(systemName: "doc.on.doc")
-                    }
-                    .padding(5)
-                    .foregroundColor(.appBlue)
-                    .background(Color.tertiaryBackground)
-                    .cornerRadius(.infinity)
-                    .buttonStyle(.plain)
-
-                    Button {
-                        withAnimation {
-                            toggleActive()
-
-                            Task {
-                                await chattingFeature.resendWithStream(receivingMessage: message)
+            .overlay(alignment: .bottomLeading) {
+                if active && !message.receiving {
+                    HStack {
+                        Button(role: .destructive) {
+                            withAnimation {
+                                messageFeature.deleteMessages([message])
                             }
+                        } label: {
+                            Image(systemName: "trash")
+                                .padding(6)
+                                .foregroundColor(.appRed)
                         }
-                    } label: {
-                        Image(systemName: "arrow.clockwise")
+                        .buttonStyle(.plain)
+
+                        Divider()
+                            .padding(.vertical, 4)
+
+                        Button {
+                            withAnimation {
+                                message.copyToPasteboard()
+                                toggleActive()
+                            }
+                        } label: {
+                            Image(systemName: "doc.on.doc")
+                                .padding(6)
+                                .foregroundColor(.appBlue)
+                        }
+                        .buttonStyle(.plain)
+
+                        Button {
+                            withAnimation {
+                                toggleActive()
+
+                                Task {
+                                    await chattingFeature.resendWithStream(receivingMessage: message)
+                                }
+                            }
+                        } label: {
+                            Image(systemName: "arrow.clockwise")
+                                .padding(6)
+                                .foregroundColor(.appOrange)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .padding(5)
-                    .foregroundColor(.appOrange)
-                    .background(Color.tertiaryBackground)
+                    .padding(.vertical, 2)
+                    .padding(.horizontal, 9)
+                    .frame(height: 30)
+                    .background(Color.secondaryBackground)
                     .cornerRadius(.infinity)
-                    .buttonStyle(.plain)
+                    .transition(.scale(scale: 0, anchor: .bottomLeading).animation(.spring().speed(2)))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: .infinity)
+                            .stroke(Color.accentColor, lineWidth: 1)
+                    )
+                    .padding(3)
                 }
-                .padding(.horizontal, 5)
-                .padding(.vertical, 3)
-                .background(Color.secondaryBackground)
-#if os(iOS)
-                .cornerRadius(15, corners: [.topRight, .bottomRight, .bottomLeft])
-#else
-                .cornerRadius(15)
-#endif
-                .animation(.spring(), value: active)
-                .transition(.scale(scale: 0, anchor: .topLeading))
             }
         }
     }
@@ -216,7 +212,6 @@ private struct UserMessage: View {
     let toggleActive: () -> Void
 
     var body: some View {
-        VStack(alignment: .trailing, spacing: 2) {
             HStack {
                 Spacer(minLength: 50)
                 MessageContent(content: message.content ?? "")
@@ -233,51 +228,49 @@ private struct UserMessage: View {
                         toggleActive()
                     }
             }
-
-            if (active) {
-                HStack {
-                    Button {
-                        withAnimation {
-                            message.copyToPasteboard()
-                            toggleActive()
+            .overlay(alignment: .bottomTrailing) {
+                if (active) {
+                    HStack {
+                        Button {
+                            withAnimation {
+                                message.copyToPasteboard()
+                                toggleActive()
+                            }
+                        } label: {
+                            Image(systemName: "doc.on.doc")
+                                .padding(5)
+                                .foregroundColor(.appBlue)
                         }
-                    } label: {
-                        Image(systemName: "doc.on.doc")
-                    }
-                    .padding(5)
-                    .foregroundColor(.appBlue)
-                    .background(Color.tertiaryBackground)
-                    .cornerRadius(.infinity)
-                    .buttonStyle(.plain)
+                        .buttonStyle(.plain)
 
-                    Divider()
-                        .padding(.vertical)
+                        Divider()
+                            .padding(.vertical, 5)
 
-                    Button(role: .destructive) {
-                        withAnimation {
-                            messageFeature.deleteMessages([message])
+                        Button(role: .destructive) {
+                            withAnimation {
+                                messageFeature.deleteMessages([message])
+                            }
+                        } label: {
+                            Image(systemName: "trash")
+                                .padding(5)
+                                .foregroundColor(.appRed)
+
                         }
-                    } label: {
-                        Image(systemName: "trash")
+                        .buttonStyle(.plain)
                     }
-                    .padding(5)
-                    .background(Color.tertiaryBackground)
+                    .padding(.vertical, 2)
+                    .padding(.horizontal, 9)
+                    .frame(height: 30)
+                    .background(Color.secondaryBackground)
                     .cornerRadius(.infinity)
-                    .buttonStyle(.plain)
-                    .foregroundColor(.appRed)
+                    .transition(.scale(scale: 0, anchor: .topTrailing).animation(.spring().speed(2)))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: .infinity)
+                            .stroke(Color.accentColor, lineWidth: 1)
+                    )
+                    .padding(3)
                 }
-                .padding(.horizontal, 5)
-                .padding(.vertical, 3)
-                .background(Color.secondaryBackground)
-#if os(iOS)
-                .cornerRadius(15, corners: [.topLeft, .bottomLeft, .bottomRight])
-#else
-                .cornerRadius(15)
-#endif
-                .animation(.spring(), value: active)
-                .transition(.scale(scale: 0, anchor: .topTrailing))
             }
-        }
     }
 }
 

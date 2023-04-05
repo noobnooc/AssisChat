@@ -27,6 +27,8 @@ struct NewChatView: View {
             Section("CHAT_PRESETS") {
                 ForEach(ChatPreset.presets, id: \.name) { preset in
                     PresetItem(preset: preset)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             dismiss()
                             chatFeature.createChat(preset)
