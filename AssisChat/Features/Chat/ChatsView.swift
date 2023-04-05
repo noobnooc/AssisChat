@@ -8,104 +8,8 @@
 import SwiftUI
 
 struct ChatsView: View {
-    @EnvironmentObject var chatFeature: ChatFeature
-
-    @FetchRequest(
-        sortDescriptors: [
-            SortDescriptor(\.rawPinOrder, order: .reverse),
-            SortDescriptor(\.rawUpdatedAt, order: .reverse)
-        ]
-    ) var chats: FetchedResults<Chat>
-
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            if !chats.isEmpty {
-                List {
-                    ForEach(chats) { chat in
-                        NavigationLink {
-                            ChattingView(chat: chat)
-                        } label: {
-                            ChatItem(chat: chat)
-                        }
-                        .listRowBackground(chat.pinned ? Color.secondaryBackground : Color.clear)
-                        .swipeActions(edge: .leading, content: {
-                            Button {
-                                chatFeature.clearMessages(for: chat)
-                            } label: {
-                                Label("CHAT_CLEAR_MESSAGE", systemImage: "eraser.line.dashed")
-                            }
-
-                            if chat.pinned {
-                                Button {
-                                    chatFeature.unpinChat(chat: chat)
-                                } label: {
-                                    Label("Unpin Chat", systemImage: "pin.slash")
-                                }
-                            } else {
-                                Button {
-                                    chatFeature.pinChat(chat: chat)
-                                } label: {
-                                    Label("Pin Chat", systemImage: "pin")
-                                }
-                            }
-                        })
-                        .contextMenu {
-                            if chat.pinned {
-                                Button {
-                                    chatFeature.unpinChat(chat: chat)
-                                } label: {
-                                    Label("Unpin Chat", systemImage: "pin.slash")
-                                }
-                            } else {
-                                Button {
-                                    chatFeature.pinChat(chat: chat)
-                                } label: {
-                                    Label("Pin Chat", systemImage: "pin")
-                                }
-                            }
-
-                            Button {
-                                chatFeature.clearMessages(for: chat)
-                            } label: {
-                                Label("CHAT_CLEAR_MESSAGE", systemImage: "eraser.line.dashed")
-                            }
-
-                            Divider()
-
-                            Button(role: .destructive) {
-                                chatFeature.deleteChats([chat])
-                            } label: {
-                                Label("CHAT_DELETE", systemImage: "trash")
-                            }
-                        }
-                    }
-                    .onDelete(perform: onDelete)
-
-                    CopyrightView()
-                        .padding(.vertical, 30)
-                        .listRowSeparator(.hidden)
-                }
-                .listStyle(.plain)
-                .animation(.easeOut, value: chats.count)
-            } else {
-                VStack {
-                    Image(systemName: "eyeglasses")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80)
-                        .symbolVariant(.square)
-                        .foregroundColor(.secondary)
-
-                    Text("CHATS_EMPTY_HINT")
-                        .foregroundColor(.secondary)
-                        .font(.subheadline)
-                        .padding(.top)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            }
-
-            ChatCreatingButton()
-        }
+        ChatList()
         #if os(iOS)
         .toolbar {
             ToolbarItem {
@@ -118,6 +22,161 @@ struct ChatsView: View {
             }
         }
         #endif
+    }
+}
+
+private struct ChatList: View {
+    @EnvironmentObject var settingsFeature: SettingsFeature
+    @EnvironmentObject var chatFeature: ChatFeature
+
+    @FetchRequest(
+        sortDescriptors: [
+            SortDescriptor(\.rawPinOrder, order: .reverse),
+            SortDescriptor(\.rawUpdatedAt, order: .reverse)
+        ]
+    ) var chats: FetchedResults<Chat>
+
+    var body: some View {
+        ZStack(alignment: .bottomTrailing) {
+            if !chats.isEmpty {
+                chatList
+            } else if !settingsFeature.adapterReady {
+                configIncorrect
+            } else {
+                listEmpty
+            }
+
+            ChatCreatingButton()
+        }
+    }
+
+    var configIncorrect: some View {
+        VStack {
+            Image(systemName: "bubble.left.and.exclamationmark.bubble.right")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 80)
+                .symbolVariant(.square)
+                .foregroundColor(.appOrange)
+
+            Text("You have not set the chat source correctly. Please set it correctly to continue.")
+                .foregroundColor(.secondary)
+                .font(.subheadline)
+                .padding()
+
+            NavigationLink {
+                ChatSourceConfigView(backWhenConfigured: true) {
+                    if chats.isEmpty {
+                        chatFeature.createPresets(presets: ChatPreset.presetsAutoCreate)
+                    }
+                }
+            } label: {
+                Text("Go to set chat source")
+            }
+
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    var listEmpty: some View {
+        VStack {
+            Image(systemName: "eyeglasses")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 80)
+                .symbolVariant(.square)
+                .foregroundColor(.secondary)
+
+            Text("CHATS_EMPTY_HINT")
+                .foregroundColor(.secondary)
+                .font(.subheadline)
+                .padding()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    var chatList: some View {
+        List {
+            if !settingsFeature.adapterReady {
+                NavigationLink {
+                    ChatSourceConfigView(backWhenConfigured: true) {
+                        if chats.isEmpty {
+                            chatFeature.createPresets(presets: ChatPreset.presetsAutoCreate)
+                        }
+                    }
+                } label: {
+                    Label("Go to set chat source", systemImage: "exclamationmark.triangle")
+                        .foregroundColor(.white)
+                }
+                .listRowBackground(Color.appOrange)
+            }
+
+            ForEach(chats) { chat in
+                NavigationLink {
+                    ChattingView(chat: chat)
+                } label: {
+                    ChatItem(chat: chat)
+                }
+                .listRowBackground(chat.pinned ? Color.secondaryBackground : Color.clear)
+                .swipeActions(edge: .leading, content: {
+                    Button {
+                        chatFeature.clearMessages(for: chat)
+                    } label: {
+                        Label("CHAT_CLEAR_MESSAGE", systemImage: "eraser.line.dashed")
+                    }
+
+                    if chat.pinned {
+                        Button {
+                            chatFeature.unpinChat(chat: chat)
+                        } label: {
+                            Label("Unpin Chat", systemImage: "pin.slash")
+                        }
+                    } else {
+                        Button {
+                            chatFeature.pinChat(chat: chat)
+                        } label: {
+                            Label("Pin Chat", systemImage: "pin")
+                        }
+                    }
+                })
+                .contextMenu {
+                    if chat.pinned {
+                        Button {
+                            chatFeature.unpinChat(chat: chat)
+                        } label: {
+                            Label("Unpin Chat", systemImage: "pin.slash")
+                        }
+                    } else {
+                        Button {
+                            chatFeature.pinChat(chat: chat)
+                        } label: {
+                            Label("Pin Chat", systemImage: "pin")
+                        }
+                    }
+
+                    Button {
+                        chatFeature.clearMessages(for: chat)
+                    } label: {
+                        Label("CHAT_CLEAR_MESSAGE", systemImage: "eraser.line.dashed")
+                    }
+
+                    Divider()
+
+                    Button(role: .destructive) {
+                        chatFeature.deleteChats([chat])
+                    } label: {
+                        Label("CHAT_DELETE", systemImage: "trash")
+                    }
+                }
+            }
+            .onDelete(perform: onDelete)
+
+            CopyrightView()
+                .padding(.vertical, 30)
+                .listRowSeparator(.hidden)
+        }
+        .listStyle(.plain)
+        .animation(.easeOut, value: chats.count)
     }
 
     func onDelete(_ indices: IndexSet) {

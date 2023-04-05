@@ -8,6 +8,8 @@
 import Foundation
 
 class ChatPreset {
+    static let presetsAutoCreate = Array(presets.prefix(4))
+
     static let presets: [PlainChat] = [
         PlainChat(
             name: String(localized: "Just Chatting", comment: "The name of the Just Chatting chat template"),

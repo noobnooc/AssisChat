@@ -10,13 +10,22 @@ import SwiftUI
 struct ChatSourceConfigView: View {
     @EnvironmentObject private var settingsFeature: SettingsFeature
 
+    let backWhenConfigured: Bool
+    let onConfigured: (() -> Void)?
 
     var body: some View {
-        Content(openAIAPIKey: settingsFeature.configuredOpenAIAPIKey ?? "", openAIDomain: settingsFeature.configuredOpenAIDomain ?? "")
+        Content(
+            openAIAPIKey: settingsFeature.configuredOpenAIAPIKey ?? "",
+            openAIDomain: settingsFeature.configuredOpenAIDomain ?? "",
+            backWhenConfigured: backWhenConfigured,
+            onConfigured: onConfigured
+        )
     }
 }
 
 private struct Content: View {
+    @Environment(\.dismiss) private var dismiss
+
     @EnvironmentObject private var essentialFeature: EssentialFeature
     @EnvironmentObject private var settingsFeature: SettingsFeature
 
@@ -25,10 +34,14 @@ private struct Content: View {
 
     @State private var validating = false
 
+    let backWhenConfigured: Bool
+    let onConfigured: (() -> Void)?
+
     var body: some View {
         List {
             Section {
-                TextField(String("sk-XXXXXXX"), text: $openAIAPIKey)
+                SecureField(String("sk-XXXXXXX"), text: $openAIAPIKey)
+                    .disableAutocorrection(true)
             } header: {
                 Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY")
             } footer: {
@@ -37,6 +50,7 @@ private struct Content: View {
 
             Section {
                 TextField(String("api.openai.com"), text: $openAIDomain)
+                    .disableAutocorrection(true)
             } header: {
                 Text("SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN")
             } footer: {
@@ -89,12 +103,20 @@ private struct Content: View {
             }
 
             validating = false
+
+            onConfigured?()
+
+            if backWhenConfigured {
+                dismiss()
+            }
         }
     }
 }
 
 struct ChatSourceConfigView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatSourceConfigView()
+        ChatSourceConfigView(backWhenConfigured: false) {
+
+        }
     }
 }

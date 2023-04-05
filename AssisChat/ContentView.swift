@@ -19,15 +19,7 @@ struct ContentView: View {
                 .inlineNavigationBar()
             SelectChatHintView()
         }
-
-        // Welcome
-        .sheet(isPresented: Binding(get: {
-            !settingsFeature.adapterReady
-        }, set: { _ in })) {
-            WelcomeView()
-                .interactiveDismissDisabled()
-        }
-        #else
+#else
         NavigationSplitView(sidebar: {
             ChatsView()
                 .frame(width: 280)
@@ -36,19 +28,7 @@ struct ContentView: View {
         }, detail: {
             SelectChatHintView()
         })
-
-        // Welcome
-        .sheet(isPresented: Binding(get: {
-            !settingsFeature.adapterReady
-        }, set: { _ in })) {
-            WelcomeView()
-                .frame(width: 300)
-                .frame(minHeight: 500)
-                .padding()
-                .padding(.vertical, 20)
-                .interactiveDismissDisabled()
-        }
-        #endif
+#endif
     }
 }
 

@@ -22,8 +22,10 @@ struct SettingsView: View {
 
             Section("SETTINGS_CHAT") {
                 NavigationLink {
-                    ChatSourceConfigView()
-                        .navigationTitle("SETTINGS_CHAT_SOURCE")
+                    ChatSourceConfigView(backWhenConfigured: false) {
+
+                    }
+                    .navigationTitle("SETTINGS_CHAT_SOURCE")
                 } label: {
                     Label("SETTINGS_CHAT_SOURCE", systemImage: "globe.asia.australia")
                 }

@@ -275,13 +275,14 @@ private struct UserMessage: View {
 }
 
 private struct MessageInput: View {
+    @EnvironmentObject private var settingsFeature: SettingsFeature
     @EnvironmentObject private var chattingFeature: ChattingFeature
 
     @ObservedObject var chat: Chat
     @State private var text = ""
 
     var sendButtonAvailable: Bool {
-        !text.isEmpty && !chat.receiving
+        !text.isEmpty && !chat.receiving && settingsFeature.adapterReady
     }
 
     var body: some View {
@@ -296,6 +297,7 @@ private struct MessageInput: View {
                         .frame(minHeight: 45)
                         .lineLimit(1...3)
                         .textFieldStyle(.plain)
+                        .disabled(!settingsFeature.adapterReady)
                 } else {
                     TextField("NEW_MESSAGE_HINT", text: $text)
                         .padding(8)
@@ -303,6 +305,7 @@ private struct MessageInput: View {
                         .frame(minHeight: 45)
                         .cornerRadius(8)
                         .textFieldStyle(.plain)
+                        .disabled(!settingsFeature.adapterReady)
                 }
 
                 Button {
@@ -337,6 +340,7 @@ private struct MessageInput: View {
                 .cornerRadius(.infinity)
                 .padding(2)
                 .clipShape(Rectangle())
+                .disabled(!settingsFeature.adapterReady)
             }
             .padding(10)
             .background(.regularMaterial)
