@@ -245,7 +245,7 @@ private struct BuyMeCoffee: View {
         guard let coffeeToPurchase = coffeeToPurchase else { return }
 
         do {
-            try await proFeature.purchase(coffeeToPurchase)
+            _ = try await proFeature.purchase(coffeeToPurchase)
         } catch {
             print("Failed coffee purchase: \(error)")
         }
