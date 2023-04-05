@@ -211,6 +211,10 @@ private struct BuyMeCoffee: View {
                     .foregroundColor(.white)
             }
             .disabled(purchasing)
+
+            Button("Restore Purchase") {
+                proFeature.prepareAndRestore()
+            }
         }
     }
 

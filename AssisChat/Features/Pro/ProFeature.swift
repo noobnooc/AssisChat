@@ -7,6 +7,7 @@
 
 import Foundation
 import StoreKit
+import SwiftUI
 
 class ProFeature: ObservableObject {
     let coffeeIds: Set<String> = [
@@ -16,7 +17,14 @@ class ProFeature: ObservableObject {
     ]
 
     @Published private(set) var coffeeProducts: [Product] = []
-    @Published private(set) var purchasedCoffeeProducts: [Product] = []
+    @Published private(set) var purchasedCoffeeProducts: [Product] = [] {
+        didSet {
+            pro = !purchasedCoffeeProducts.isEmpty
+        }
+    }
+
+    @AppStorage(SharedUserDefaults.proKey, store: SharedUserDefaults.shared)
+    private(set) var pro = false
 
     var priceOrderedProducts: [Product] {
         coffeeProducts.sorted { p1, p2 in p1.price < p2.price }
@@ -24,10 +32,6 @@ class ProFeature: ObservableObject {
 
     var defaultProduct: Product? {
         coffeeProducts.first { product in product.id == "assischat_coffee_medium"}
-    }
-
-    var pro: Bool {
-        !purchasedCoffeeProducts.isEmpty
     }
 
     var showBadge: Bool  {
@@ -39,11 +43,6 @@ class ProFeature: ObservableObject {
     init() {
         //Start a transaction listener as close to app launch as possible so you don't miss any transactions.
         updateListenerTask = listenForTransactions()
-
-        Task {
-            await fetchProducts()
-            await updateCustomerProductStatus()
-        }
     }
 
     deinit {
@@ -67,7 +66,7 @@ class ProFeature: ObservableObject {
         }
     }
 
-    func purchase(_ product: Product) async throws -> Transaction? {
+    func purchase(_ product: Product) async throws -> StoreKit.Transaction? {
         //Begin purchasing the `Product` the user selects.
         let result = try await product.purchase()
 
@@ -88,6 +87,13 @@ class ProFeature: ObservableObject {
             return nil
         default:
             return nil
+        }
+    }
+
+    func prepareAndRestore() {
+        Task {
+            await fetchProducts()
+            await updateCustomerProductStatus()
         }
     }
 

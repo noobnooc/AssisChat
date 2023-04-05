@@ -10,6 +10,8 @@ import Foundation
 class SharedUserDefaults {
     static let shared = UserDefaults(suiteName: AppGroup.identifier)!
 
+    static let proKey = "pro:purchased"
+
     static let colorScheme = "settings:colorScheme"
     static let tint = "settings:tint"
     static let symbolVariant = "settings:symbolVariant"
