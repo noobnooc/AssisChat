@@ -55,6 +55,7 @@ class SettingsFeature: ObservableObject {
         chattingAdapter = ChatGPTAdapter(essentialFeature: essentialFeature, config: .init(domain: configuredOpenAIDomain, apiKey: apiKey))
     }
 
+    @MainActor
     func validateAndConfigOpenAI(apiKey: String, for domain: String?) async throws {
         let adapter = ChatGPTAdapter(essentialFeature: essentialFeature, config: .init(domain: domain, apiKey: apiKey))
 

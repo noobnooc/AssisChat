@@ -10,6 +10,7 @@ import SwiftUI
 struct ChatSourceConfigView: View {
     @EnvironmentObject private var settingsFeature: SettingsFeature
 
+    let successAlert: Bool
     let backWhenConfigured: Bool
     let onConfigured: (() -> Void)?
 
@@ -17,6 +18,7 @@ struct ChatSourceConfigView: View {
         Content(
             openAIAPIKey: settingsFeature.configuredOpenAIAPIKey ?? "",
             openAIDomain: settingsFeature.configuredOpenAIDomain ?? "",
+            successAlert: successAlert,
             backWhenConfigured: backWhenConfigured,
             onConfigured: onConfigured
         )
@@ -34,6 +36,7 @@ private struct Content: View {
 
     @State private var validating = false
 
+    let successAlert: Bool
     let backWhenConfigured: Bool
     let onConfigured: (() -> Void)?
 
@@ -97,7 +100,15 @@ private struct Content: View {
 
                 try await settingsFeature.validateAndConfigOpenAI(apiKey: openAIAPIKey, for: domain)
 
-                essentialFeature.appendAlert(alert: GeneralAlert(title: "SUCCESS", message: "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_SUCCESS"))
+                if successAlert {
+                    essentialFeature.appendAlert(alert: GeneralAlert(title: "SUCCESS", message: "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_SUCCESS"))
+                }
+
+                onConfigured?()
+
+                if backWhenConfigured {
+                    dismiss()
+                }
             } catch ChattingError.validating(message: let message) {
                 essentialFeature.appendAlert(alert: ErrorAlert(message: message))
             } catch {
@@ -105,19 +116,13 @@ private struct Content: View {
             }
 
             validating = false
-
-            onConfigured?()
-
-            if backWhenConfigured {
-                dismiss()
-            }
         }
     }
 }
 
 struct ChatSourceConfigView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatSourceConfigView(backWhenConfigured: false) {
+        ChatSourceConfigView(successAlert: false, backWhenConfigured: false) {
 
         }
     }

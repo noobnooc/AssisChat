@@ -65,7 +65,7 @@ private struct ChatList: View {
                 .padding()
 
             NavigationLink {
-                ChatSourceConfigView(backWhenConfigured: true) {
+                ChatSourceConfigView(successAlert: false, backWhenConfigured: true) {
                     if chats.isEmpty {
                         chatFeature.createPresets(presets: ChatPreset.presetsAutoCreate)
                     }
@@ -99,7 +99,7 @@ private struct ChatList: View {
         List {
             if !settingsFeature.adapterReady {
                 NavigationLink {
-                    ChatSourceConfigView(backWhenConfigured: true) {
+                    ChatSourceConfigView(successAlert: false, backWhenConfigured: true) {
                         if chats.isEmpty {
                             chatFeature.createPresets(presets: ChatPreset.presetsAutoCreate)
                         }

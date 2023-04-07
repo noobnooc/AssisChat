@@ -22,7 +22,7 @@ struct SettingsView: View {
 
             Section("SETTINGS_CHAT") {
                 NavigationLink {
-                    ChatSourceConfigView(backWhenConfigured: false) {
+                    ChatSourceConfigView(successAlert: true, backWhenConfigured: false) {
 
                     }
                     .navigationTitle("SETTINGS_CHAT_SOURCE")

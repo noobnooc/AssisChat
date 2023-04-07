@@ -263,7 +263,7 @@ private struct UserMessage: View {
                     .frame(height: 30)
                     .background(Color.secondaryBackground)
                     .cornerRadius(.infinity)
-                    .transition(.scale(scale: 0, anchor: .topTrailing).animation(.spring().speed(2)))
+                    .transition(.scale(scale: 0, anchor: .bottomTrailing).animation(.spring().speed(2)))
                     .overlay(
                         RoundedRectangle(cornerRadius: .infinity)
                             .stroke(Color.accentColor, lineWidth: 1)
