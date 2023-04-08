@@ -133,7 +133,7 @@
 /* The buying button in pro introduction */
 "Good Luck" = "祝你好运";
 
-/* The friends plan summary */
+/* The coffee plan summary */
 "Hey, Friend" = "你好，朋友";
 
 /* The message prefix of the Recipe chat template */
@@ -299,7 +299,7 @@
 "Sync chats and messages across devices using iCloud." = "使用 iCloud 在不同设备之间同步会话和消息。";
 
 /* No comment provided by engineer. */
-"The Friends Plan does NOT include OpenAI API services and any online services that AssisChat may offer in the future." = "朋友计划不包含 OpenAI API 服务，以及 AssisChat 未来可能将会提供的任何在线服务。";
+"The Coffee Plan does NOT include OpenAI API services and any online services that AssisChat may offer in the future." = "咖啡计划不包含 OpenAI API 服务，以及 AssisChat 未来可能推出的任何线上服务。";
 
 /* No comment provided by engineer. */
 "The OpenAI API services are provided by OpenAI company, and the rights for data usage and fee collection are reserved by OpenAI company. You can find more information about data usage and fee collection at https://platform.openai.com." = "OpenAI API 相关服务由 OpenAI 公司提供，其数据使用和费用收取均由 OpenAI 公司保留解释权。数据使用和费用收取等更多信息可以在 https://platform.openai.com 获得。";
@@ -344,7 +344,7 @@
 "You are in" = "你正在";
 
 /* The free trying plan summary */
-"You are trying the friends plan" = "你正在体验朋友计划";
+"You are trying the Coffee plan" = "你正在体验咖啡计划";
 
 /* No comment provided by engineer. */
 "You have not set the chat source correctly. Please set it correctly to continue." = "你没有正确设置会话源，请设置后继续。";

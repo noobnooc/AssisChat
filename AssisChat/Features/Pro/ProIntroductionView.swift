@@ -22,9 +22,9 @@ struct ProIntroductionView: View {
                 HStack {
                     Image(systemName: "laurel.leading")
                     if proFeature.pro {
-                        Text("Hey, Friend", comment: "The friends plan summary")
+                        Text("Hey, Friend", comment: "The coffee plan summary")
                     } else {
-                        Text("You are trying the friends plan", comment: "The free trying plan summary")
+                        Text("You are trying the Coffee plan", comment: "The free trying plan summary")
                     }
                     Image(systemName: "laurel.trailing")
                 }
@@ -150,7 +150,7 @@ struct ProIntroductionView: View {
 
                 VStack(alignment: .leading, spacing: 5) {
                     Text("NOT Include Services")
-                    Text("The Friends Plan does NOT include OpenAI API services and any online services that AssisChat may offer in the future.")
+                    Text("The Coffee Plan does NOT include OpenAI API services and any online services that AssisChat may offer in the future.")
                         .foregroundColor(.secondary)
                         .font(.subheadline)
                 }

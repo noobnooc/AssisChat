@@ -30,7 +30,7 @@ struct ProBanner: View {
                                 .bold()
                                 .font(.system(.body, design: .rounded))
                         } else {
-                            Text(String("Friends"))
+                            Text(String("Coffee"))
                                 .bold()
                                 .font(.system(.footnote, design: .rounded))
                                 .padding(.vertical, 5)
@@ -39,13 +39,13 @@ struct ProBanner: View {
                                 .background(Color.primary)
                                 .cornerRadius(20)
 
-                            Text("You are trying the friends plan")
+                            Text("You are trying the Coffee plan")
                                 .bold()
                                 .font(.system(.body, design: .rounded))
                         }
                     }
                     Spacer()
-                    Text(proFeature.pro ? proFeature.largestPurchasedProProduct?.displayName ?? "Friends" : String(localized: "Learn More"))
+                    Text(proFeature.pro ? proFeature.largestPurchasedProProduct?.displayName ?? "Coffee" : String(localized: "Learn More"))
                         .bold()
                         .font(.system(.footnote, design: .rounded))
                         .padding(.horizontal, 20)

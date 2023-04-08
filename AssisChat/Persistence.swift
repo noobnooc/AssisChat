@@ -16,7 +16,7 @@ class PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        
+
         do {
             try viewContext.save()
         } catch {
@@ -33,27 +33,41 @@ class PersistenceController {
     private var mergeRemoteChangesCancelable: AnyCancellable?
 
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "AssisChat")
+        var container = NSPersistentCloudKitContainer(name: "AssisChat")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
 
-        var legacyURL: URL?
+        let legacyURL = container.persistentStoreDescriptions.first?.url;
+
+        if let legacyPath = legacyURL?.path, FileManager.default.fileExists(atPath: legacyPath) {
+            container.loadPersistentStores { (storeDescription, error) in
+                if let error = error as NSError? {
+                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                }
+            }
+
+            container = NSPersistentCloudKitContainer(name: "AssisChat")
+        }
 
         // Configure the persistent store description to use the shared app group container
         if let storeDescription = container.persistentStoreDescriptions.first {
             if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: AppGroup.identifier) {
                 let storeURL = url.appendingPathComponent(Self.fileName)
 
-                legacyURL =  storeDescription.url
                 storeDescription.url = storeURL
             }
         }
+
+        self.container = container
 
         container.persistentStoreDescriptions.first?.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
 
         container.persistentStoreDescriptions.first?.setOption(true as NSNumber,
                                                                forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+
+        container.persistentStoreDescriptions.first?.setOption(true as NSNumber, forKey: NSMigratePersistentStoresAutomaticallyOption)
+        container.persistentStoreDescriptions.first?.setOption(true as NSNumber, forKey: NSInferMappingModelAutomaticallyOption)
 
         containerOptions = container.persistentStoreDescriptions.first?.cloudKitContainerOptions
 
@@ -84,6 +98,7 @@ class PersistenceController {
         container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         try? container.viewContext.setQueryGenerationFrom(.current)
 
+
         mergeRemoteChangesCancelable = NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange, object: nil)
             .sink { notification in
                 let context = self.container.viewContext
@@ -93,6 +108,7 @@ class PersistenceController {
                     context.mergeChanges(fromContextDidSave: notification)
                 }
             }
+
     }
 
     func setupCloudSync(sync: Bool) {
