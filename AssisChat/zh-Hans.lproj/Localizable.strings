@@ -347,6 +347,9 @@
 "You are trying the Coffee plan" = "你正在体验咖啡计划";
 
 /* No comment provided by engineer. */
+"You are using the TestFlight version. Please download the app from AppStore and buy me a coffee to support me." = "你正在使用 TestFlight 版本。你可以在 AppStore 下载 AssisChat 并购买一杯咖啡给我以支持我的工作。";
+
+/* No comment provided by engineer. */
 "You have not set the chat source correctly. Please set it correctly to continue." = "你没有正确设置会话源，请设置后继续。";
 
 /* The system message of the Virtual Boyfriend chat template */

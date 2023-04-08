@@ -45,6 +45,14 @@ class ProFeature: ObservableObject {
         false
     }
 
+    var isRunningInTestFlight: Bool {
+        guard let appStoreReceiptURL = Bundle.main.appStoreReceiptURL else {
+            return false
+        }
+
+        return appStoreReceiptURL.lastPathComponent == "sandboxReceipt"
+    }
+
     private var updateListenerTask: Task<Void, Error>? = nil
 
     init() {

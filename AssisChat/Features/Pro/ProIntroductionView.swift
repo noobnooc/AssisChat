@@ -36,8 +36,13 @@ struct ProIntroductionView: View {
             .padding(.vertical, 50)
 
             if !proFeature.pro {
-                BuyMeCoffee()
-                    .padding()
+                if proFeature.isRunningInTestFlight {
+                    TestFlightPrompt()
+                        .padding()
+                } else {
+                    BuyMeCoffee()
+                        .padding()
+                }
             }
 
             if proFeature.pro {
@@ -54,6 +59,7 @@ struct ProIntroductionView: View {
                     .padding(.horizontal)
                     .foregroundColor(.secondary)
                     .font(.subheadline)
+                    .padding(.top, 30)
             }
 
             HStack(alignment: .top) {
@@ -168,6 +174,21 @@ struct ProIntroductionView: View {
     }
 }
 
+private struct TestFlightPrompt: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "heart")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 36, height: 36)
+                .font(.largeTitle)
+                .foregroundColor(.appRed)
+
+            Text("You are using the TestFlight version. Please download the app from AppStore and buy me a coffee to support me.")
+        }
+    }
+}
+
 private struct BuyMeCoffee: View {
     @EnvironmentObject private var proFeature: ProFeature
 
@@ -206,6 +227,7 @@ private struct BuyMeCoffee: View {
                     .cornerRadius(12)
                     .onTapGesture {
                         selectedCoffee = product
+                        Haptics.veryLight()
                     }
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
