@@ -12,7 +12,7 @@
 		F543A92929C46BE8000C61B5 /* SymbolVariantSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92829C46BE8000C61B5 /* SymbolVariantSelector.swift */; };
 		F543A92D29C53749000C61B5 /* ProFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92C29C53749000C61B5 /* ProFeature.swift */; };
 		F567A31929D6935D00057582 /* HostingShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567A31829D6935D00057582 /* HostingShareViewController.swift */; };
-		F567A32029D6935D00057582 /* Share.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F567A31629D6935D00057582 /* Share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F567A32029D6935D00057582 /* Share.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F567A31629D6935D00057582 /* Share.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F567A32629D693EC00057582 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567A32529D693EC00057582 /* ShareView.swift */; };
 		F567A33529D6C99900057582 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ECE29B498290083BB31 /* Color+Extensions.swift */; };
 		F567A33629D6C9C900057582 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5E47E9C29B497A60083BB31 /* Assets.xcassets */; };
@@ -758,6 +758,7 @@
 /* Begin PBXTargetDependency section */
 		F567A31F29D6935D00057582 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = F567A31529D6935D00057582 /* Share */;
 			targetProxy = F567A31E29D6935D00057582 /* PBXContainerItemProxy */;
 		};
@@ -808,7 +809,7 @@
 				INFOPLIST_FILE = Share/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "AssisChat Share Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -836,7 +837,7 @@
 				INFOPLIST_FILE = Share/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "AssisChat Share Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

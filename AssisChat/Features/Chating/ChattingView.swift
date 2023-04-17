@@ -26,14 +26,21 @@ struct ChattingView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            let scrollView = messagesListView()
-
-            if #available(iOS 16, macOS 13, *) {
-                scrollView
-                    .scrollDismissesKeyboard(.immediately)
+            if messages.isEmpty {
+                MessagesEmpty()
             } else {
-                scrollView
+                let scrollView = messagesListView()
+
+                if #available(iOS 16, macOS 13, *) {
+                    scrollView
+                        .scrollDismissesKeyboard(.immediately)
+                } else {
+                    scrollView
+                }
             }
+        }
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            MessageInput(chat: chat)
         }
         .navigationTitle(chat.name)
         .inlineNavigationBar()
@@ -67,10 +74,49 @@ struct ChattingView: View {
                 .frame(height: 20)
         }
         .scaleEffect(x: 1, y: -1, anchor: .center)
-        .safeAreaInset(edge: .bottom, spacing: 0) {
-            MessageInput(chat: chat)
-        }
         .animation(.easeOut, value: messages.count)
+    }
+}
+
+private struct MessagesEmpty: View {
+    var body: some View {
+        VStack {
+            VStack(alignment: .leading) {
+                HStack(alignment: .top) {
+                    Image(systemName: "bubble.right")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+
+                    Text("Send message from the chatting view")
+                }
+
+                HStack(alignment: .top) {
+                    Image(systemName: "square.and.arrow.up")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+
+                    Text("Share text from other apps")
+                }
+
+                HStack(alignment: .top) {
+                    Image(systemName: "keyboard")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+
+                    Text("Switch to the keyboard when input")
+                }
+            }
+            .frame(alignment: .leading)
+            .foregroundColor(.secondary)
+            .padding()
+            .background(Color.secondaryBackground)
+            .cornerRadius(20)
+            .padding()
+        }
+        .frame(maxHeight: .infinity)
     }
 }
 

@@ -10,7 +10,6 @@ import SwiftUI
 struct ChatsView: View {
     var body: some View {
         ChatList()
-        #if os(iOS)
         .toolbar {
             ToolbarItem {
                 NavigationLink {
@@ -21,7 +20,6 @@ struct ChatsView: View {
                 }
             }
         }
-        #endif
     }
 }
 
@@ -175,7 +173,9 @@ private struct ChatList: View {
                 .padding(.vertical, 30)
                 .listRowSeparator(.hidden)
         }
+        #if os(iOS)
         .listStyle(.plain)
+        #endif
         .animation(.easeOut, value: chats.count)
     }
 
