@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22E252" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E261" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Chat" representedClassName="Chat" syncable="YES">
         <attribute name="rawAutoCopy" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="rawColor" optional="YES" attributeType="String"/>
@@ -7,6 +7,7 @@
         <attribute name="rawHistoryLengthToSend" attributeType="Integer 16" defaultValueString="20" usesScalarValueType="YES"/>
         <attribute name="rawIcon" optional="YES" attributeType="String"/>
         <attribute name="rawMessagePrefix" optional="YES" attributeType="String"/>
+        <attribute name="rawModel" optional="YES" attributeType="String"/>
         <attribute name="rawName" attributeType="String" defaultValueString=""/>
         <attribute name="rawOpenAIModel" optional="YES" attributeType="String"/>
         <attribute name="rawPinOrder" optional="YES" attributeType="Integer 64" defaultValueString="-1" usesScalarValueType="YES"/>

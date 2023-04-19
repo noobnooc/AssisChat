@@ -22,7 +22,7 @@ struct CustomNewChatView: View {
         autoCopy: false,
         icon: .default,
         color: .default,
-        openAIModel: .default
+        model: Chat.OpenAIModel.default.rawValue
     )
 
     var body: some View {

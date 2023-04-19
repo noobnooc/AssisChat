@@ -20,7 +20,7 @@ class ChatPreset {
             autoCopy: false,
             icon: .symbol("bubble.left"),
             color: .green,
-            openAIModel: .default
+            model: Chat.OpenAIModel.default.rawValue
         ),
         PlainChat(
             name: String(localized: "Translator", comment: "The name of the Translator chat template"),
@@ -31,7 +31,7 @@ class ChatPreset {
             autoCopy: true,
             icon: .symbol("character.bubble"),
             color: .blue,
-            openAIModel: .default
+            model: Chat.OpenAIModel.default.rawValue
         ),
         PlainChat(
             name: String(localized: "Language Polisher", comment: "The name of the Language Polisher chat template"),
@@ -42,7 +42,7 @@ class ChatPreset {
             autoCopy: true,
             icon: .symbol("text.bubble"),
             color: .orange,
-            openAIModel: .default
+            model: Chat.OpenAIModel.default.rawValue
         ),
         PlainChat(
             name: String(localized: "Recipe", comment: "The name of the Language Recipe chat template"),
@@ -53,7 +53,7 @@ class ChatPreset {
             autoCopy: false,
             icon: .symbol("carrot"),
             color: .red,
-            openAIModel: .default
+            model: Chat.OpenAIModel.default.rawValue
         ),
         PlainChat(
             name: String(localized: "Programer Helper", comment: "The name of the Programer Helper chat template"),
@@ -64,7 +64,7 @@ class ChatPreset {
             autoCopy: true,
             icon: .symbol("laptopcomputer"),
             color: .indigo,
-            openAIModel: .default
+            model: Chat.OpenAIModel.default.rawValue
         ),
         PlainChat(
             name: String(localized: "Samantha", comment: "The name of the Virtual Girlfriend chat template"),
@@ -75,7 +75,7 @@ class ChatPreset {
             autoCopy: false,
             icon: .symbol("heart"),
             color: .pink,
-            openAIModel: .default
+            model: Chat.OpenAIModel.default.rawValue
         ),
         PlainChat(
             name: String(localized: "Samuel", comment: "The name of the Virtual Boyfriend chat template"),
@@ -86,7 +86,7 @@ class ChatPreset {
             autoCopy: false,
             icon: .symbol("sun.min"),
             color: .blue,
-            openAIModel: .default
+            model: Chat.OpenAIModel.default.rawValue
         ),
     ]
 

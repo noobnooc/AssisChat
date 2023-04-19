@@ -18,7 +18,7 @@ struct PlainChat {
     let autoCopy: Bool
     let icon: Chat.Icon
     let color: Chat.Color?
-    let openAIModel: Chat.OpenAIModel
+    let model: String
 
     var available: Bool {
         name.count > 0
@@ -51,7 +51,7 @@ extension ChatFeature {
         chat.rawHistoryLengthToSend = plainChat.historyLengthToSend
         chat.rawMessagePrefix = plainChat.messagePrefix
         chat.rawAutoCopy = plainChat.autoCopy
-        chat.rawOpenAIModel = plainChat.openAIModel.rawValue
+        chat.rawModel = plainChat.model
 
         essentialFeature.persistData()
     }
@@ -67,7 +67,7 @@ extension ChatFeature {
         chat.rawHistoryLengthToSend = plainChat.historyLengthToSend
         chat.rawMessagePrefix = plainChat.messagePrefix
         chat.rawAutoCopy = plainChat.autoCopy
-        chat.rawOpenAIModel = plainChat.openAIModel.rawValue
+        chat.rawModel = plainChat.model
 
         chat.touch()
         

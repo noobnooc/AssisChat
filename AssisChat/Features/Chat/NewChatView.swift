@@ -20,7 +20,7 @@ struct NewChatView: View {
                         dismiss()
                     }
                 } label: {
-                    PresetItem(preset: PlainChat(name: String(localized: "NEW_CHAT_NAME"), temperature: .balanced, systemMessage: String(localized: "NEW_CHAT_NAME"), historyLengthToSend: .defaultHistoryLengthToSend, messagePrefix: nil, autoCopy: false, icon: .default, color: .default, openAIModel: .default))
+                    PresetItem(preset: PlainChat(name: String(localized: "NEW_CHAT_NAME"), temperature: .balanced, systemMessage: String(localized: "NEW_CHAT_NAME"), historyLengthToSend: .defaultHistoryLengthToSend, messagePrefix: nil, autoCopy: false, icon: .default, color: .default, model: Chat.OpenAIModel.default.rawValue))
                 }
             }
 

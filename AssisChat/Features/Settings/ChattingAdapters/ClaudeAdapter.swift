@@ -1,8 +1,8 @@
 //
-//  ChatGPTAdapter.swift
+//  ClaudeAdapter.swift
 //  AssisChat
 //
-//  Created by Nooc on 2023-03-06.
+//  Created by Nooc on 2023-04-17.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import Combine
 import SwiftUI
 import GPT3_Tokenizer
 
-class ChatGPTAdapter {
+class ClaudeAdapter {
     struct Config {
         let domain: String?
         let apiKey: String
@@ -26,24 +26,24 @@ class ChatGPTAdapter {
     }
 }
 
-extension ChatGPTAdapter: ChattingAdapter {
+extension ClaudeAdapter: ChattingAdapter {
     var identifier: String {
-        "openai"
+        "anthropic"
     }
 
     var models: [String] {
-        Chat.OpenAIModel.allCases.map { model in
+        return Chat.ClaudeModel.allCases.map { model in
             model.rawValue
         }
     }
 
     var defaultModel: String {
-        Chat.OpenAIModel.default.rawValue
+        return Chat.ClaudeModel.default.rawValue
     }
 
     func sendMessageWithStream(chat: Chat, receivingMessage: Message) async throws {
         do {
-            try await requestStream(messages: retrieveGPTMessages(chat: chat, receivingMessage: receivingMessage), for: receivingMessage)
+            try await requestStream(prompt: retrievePrompt(chat: chat, receivingMessage: receivingMessage), for: receivingMessage)
         } catch {
             if let error = error as? UnsuccessfulResponseError {
                 let reason = convertStatusCodeToFailedReason(statusCode: error.responseCode)
@@ -65,14 +65,16 @@ extension ChatGPTAdapter: ChattingAdapter {
         guard let chat = message.chat else { return [] }
 
         // TODO: - The `receivingMessage: message` parament is for avoid error, it is not work
-        return try await request(messages: retrieveGPTMessages(chat: chat, receivingMessage: message), model: Chat.OpenAIModel.default.rawValue, temperature: chat.temperature.rawValue).map { gptMessage in
-            gptMessage.toPlainMessage(for: chat)
-        }
+        let content = try await request(prompt: retrievePrompt(chat: chat, receivingMessage: message), model: Chat.ClaudeModel.default, temperature: chat.temperature.rawValue)
+
+        let plainMessage = PlainMessage(chat: chat, role: .assistant, content: content, processedContent: nil)
+
+        return [plainMessage]
     }
 
     func validateConfig() async throws {
         do {
-            let result = try await request(messages: [.init(role: .user, content: "Test")], model: Chat.OpenAIModel.default.rawValue, temperature: 1)
+            let result = try await request(prompt: "\n\nHuman: Hello\n\nAssistant: ", model: Chat.ClaudeModel.default, temperature: 1)
 
             if result.isEmpty {
                 throw ChattingError.validating(message: "Unknown error")
@@ -86,20 +88,21 @@ extension ChatGPTAdapter: ChattingAdapter {
         }
     }
 
-    func requestStream(messages: [ChatGPTMessage], for message: Message) async throws {
+    func requestStream(prompt: String, for message: Message) async throws {
         guard let chat = message.chat else { return }
 
         let handler = Handler()
-        var config = EventSource.Config(handler: handler, url: URL(string: "https://\(config.domain ?? "api.openai.com")/v1/chat/completions")!)
+        var config = EventSource.Config(handler: handler, url: URL(string: "https://\(config.domain ?? "api.anthropic.com")/v1/complete")!)
 
         config.method = "POST"
         config.headers = [
             "Content-Type": "application/json",
-            "Authorization": "Bearer \(self.config.apiKey)"
+            "x-api-key": self.config.apiKey
         ]
         config.body = try? JSONEncoder().encode(RequestBody(
-            model: chat.openAIModel.rawValue,
-            messages: messages,
+            prompt: prompt,
+            model: chat.claudeModel.rawValue,
+            maxTokens: chat.claudeModel.maxTokens,
             temperature: chat.temperature.rawValue,
             stream: true)
         )
@@ -117,7 +120,7 @@ extension ChatGPTAdapter: ChattingAdapter {
                     continuation.resume(with: .failure(error))
                 }
             } receiveValue: { value in
-                message.appendReceivingSlice(slice: value)
+                message.replaceReceivingContent(content: value)
                 self.essentialFeature.persistData()
             }
 
@@ -125,23 +128,24 @@ extension ChatGPTAdapter: ChattingAdapter {
         }
     }
 
-    func request(messages: [ChatGPTMessage], model: String, temperature: Float) async throws -> [ChatGPTMessage] {
+    func request(prompt: String, model: Chat.ClaudeModel, temperature: Float) async throws -> String {
         let response: EssentialFeature.Response<ResponseBody, ResponseError> = try await essentialFeature.requestURL(
-            urlString: "https://\(config.domain ?? "api.openai.com")/v1/chat/completions",
+            urlString: "https://\(config.domain ?? "api.anthropic.com")/v1/complete",
             init: .init(
                 method: .POST,
                 body: .json(data: RequestBody(
-                    model: model,
-                    messages: messages,
+                    prompt: prompt,
+                    model: model.rawValue,
+                    maxTokens: model.maxTokens,
                     temperature: temperature,
                     stream: false)),
                 headers: [
                     "Content-Type": "application/json",
-                    "Authorization": "Bearer \(config.apiKey)"
+                    "x-api-key": self.config.apiKey
                 ]))
 
-        guard let responseData = response.data else {
-            let errorMessage = response.error?.error.message ?? "Unknown error"
+        guard let responseData = response.data, response.response?.statusCode == 200 else {
+            let errorMessage = response.error?.details ?? "Unknown error"
 
             if response.response?.statusCode == 401 {
                 throw ChattingError.validating(message: "Unauthenticated request")
@@ -150,9 +154,7 @@ extension ChatGPTAdapter: ChattingAdapter {
             throw ChattingError.sending(message: LocalizedStringKey(errorMessage))
         }
 
-        return responseData.choices.map { choice in
-            choice.message
-        }
+        return responseData.completion ?? ""
     }
 
     private func convertStatusCodeToFailedReason(statusCode: Int) -> Message.FailedReason {
@@ -165,24 +167,21 @@ extension ChatGPTAdapter: ChattingAdapter {
         }
     }
 
-    private func retrieveGPTMessages(chat: Chat, receivingMessage: Message) -> [ChatGPTMessage] {
+    private func retrievePrompt(chat: Chat, receivingMessage: Message) -> String {
         let maxTokens = chat.openAIModel.maxTokens
 
-        let systemMessages: [ChatGPTMessage]
-        var currentTokens: Int
+        let chatSystemMessage = chat.systemMessage
+        var currentTokens = 0
+        var systemPrompt = ""
+        var prompt = ""
 
-        if let chatSystemMessage = chat.systemMessage {
-            systemMessages = [ChatGPTMessage(role: .system, content: chatSystemMessage)]
+        if let chatSystemMessage = chatSystemMessage {
             currentTokens = calculateTokens(text: chatSystemMessage)
-        } else {
-            systemMessages = []
-            currentTokens = 0
+            systemPrompt = "\n\nHuman: \(chatSystemMessage)\n\nAssistant: OK"
         }
 
         let receivingMessageIndex = chat.messages.lastIndex(of: receivingMessage) ?? chat.messages.count
         let historyMessagesReadyToSend = Array(chat.messages.prefix(receivingMessageIndex).suffix(Int(chat.historyLengthToSend)))
-
-        var historyMessagesToSend: [ChatGPTMessage] = []
 
         for message in historyMessagesReadyToSend.reversed() {
             currentTokens += calculateTokens(text: message.rawProcessedContent ?? message.content ?? "")
@@ -191,99 +190,46 @@ extension ChatGPTAdapter: ChattingAdapter {
                 break
             }
 
-            historyMessagesToSend.append(ChatGPTMessage.fromMessage(message: message))
+            if message.role == .assistant {
+                prompt = "\n\nAssistant: \(message.processedContent ?? message.content ?? "")" + prompt
+            } else {
+                prompt = "\n\nHuman: \(message.processedContent ?? message.content ?? "")" + prompt
+            }
         }
 
-        historyMessagesToSend = historyMessagesToSend.reversed()
+        prompt = systemPrompt + prompt + "\n\nAssistant: "
 
-        return systemMessages + historyMessagesToSend
+        return prompt
     }
 
     struct RequestBody: Encodable {
+        let prompt: String
         let model: String
-        let messages: [ChatGPTMessage]
+        let maxTokens: Int
+        let stopSequences = ["\n\nHuman:"]
         let temperature: Float
         let stream: Bool
+
+        enum CodingKeys: String, CodingKey {
+            case prompt = "prompt"
+            case model = "model"
+            case maxTokens = "max_tokens_to_sample"
+            case stopSequences = "stop_sequences"
+            case temperature = "temperature"
+            case stream = "stream"
+        }
     }
 
     struct ResponseBody: Decodable {
-        let id: String
-        let object: String
-        let created: Int
-        let choices: [Choice]
-        let usage: Usage
-
-        struct Choice: Decodable {
-            let index: Int
-            let message: ChatGPTMessage
-            let finish_reason: String?
-        }
-
-        struct Usage: Decodable {
-            let prompt_tokens: Int
-            let completion_tokens: Int
-            let total_tokens: Int
-        }
+        let completion: String?
     }
 
     struct ResponseError: Decodable {
-        struct Error: Decodable {
-            let message: String?
-            let type: String
-        }
-
-        let error: Error;
-    }
-
-    struct ChatGPTMessage: Codable {
-        let role: Role
-        let content: String
-
-        enum Role: String, Codable {
-            case system = "system"
-            case user = "user"
-            case assistant = "assistant"
-        }
-
-        func toPlainMessage(for chat: Chat) -> PlainMessage {
-            var role: Message.Role
-
-            switch(self.role) {
-            case .system: role = .system
-            case .user: role = .user
-            case .assistant: role = .assistant
-            }
-
-            return PlainMessage(chat: chat, role: role, content: content, processedContent: nil)
-        }
-
-        static func fromMessage(message: Message) -> ChatGPTMessage {
-            var role: Role
-
-            switch(message.role) {
-            case .system: role = .system
-            case .user: role = .user
-            case .assistant: role = .assistant
-            }
-
-            return ChatGPTMessage(role: role, content: message.processedContent ?? message.content ?? "")
-        }
+        let details: String?
     }
 }
 
 private struct Handler: EventHandler {
-    struct MessageData: Decodable {
-        let choices: [Choice]
-
-        struct Choice: Decodable {
-            let delta: Delta
-
-            struct Delta: Decodable {
-                let content: String
-            }
-        }
-    }
-
     let publisher = PassthroughSubject<String, Error>()
 
     func onOpened() {
@@ -308,14 +254,15 @@ private struct Handler: EventHandler {
 
         guard
             let data = messageEvent.data.data(using: .utf8),
-            let decodedData = try? JSONDecoder().decode(MessageData.self, from: data),
-            let content = decodedData.choices.first?.delta.content
+            let decodedData = try? JSONDecoder().decode(ClaudeAdapter.ResponseBody.self, from: data),
+            let content = decodedData.completion
         else {
             return
         }
 
         publisher.send(content)
     }
+
 }
 
 private func calculateTokens(text: String) -> Int {

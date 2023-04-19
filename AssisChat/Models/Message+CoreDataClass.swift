@@ -61,6 +61,10 @@ public class Message: NSManagedObject {
         rawContent = (rawContent ?? "") + slice
     }
 
+    func replaceReceivingContent(content: String) {
+        rawContent = content
+    }
+
     func copyToPasteboard() {
         guard let content = content else { return }
 

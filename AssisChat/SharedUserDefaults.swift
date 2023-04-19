@@ -16,9 +16,15 @@ class SharedUserDefaults {
     static let tint = "settings:tint"
     static let symbolVariant = "settings:symbolVariant"
     static let fontSize = "settings:fontSize"
+    static let iCloudSync = "settings:iCloudSync"
+
+    // Open AI
     static let openAIDomain = "settings:openAI:domain"
     static let openAIAPIKey = "settings:openAI:apiKey"
-    static let iCloudSync = "settings:iCloudSync"
+
+    // Anthropic
+    static let anthropicDomain = "settings:anthropic:domain"
+    static let anthropicAPIKey = "settings:anthropic:apiKey"
 
     static let migrationKey = "dataMigrationComplete"
 

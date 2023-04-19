@@ -105,7 +105,7 @@ extension EssentialFeature {
     }
 
     struct Response<ResponseData: Decodable, ResponseError: Decodable> {
-        let response: URLResponse
+        let response: HTTPURLResponse?
         let data: ResponseData?
         let error: ResponseError?
     }
@@ -136,7 +136,7 @@ extension EssentialFeature {
         let decodedResponseData = try? JSONDecoder().decode(ResponseData.self, from: data)
         let decodedResponseError = try? JSONDecoder().decode(ResponseError.self, from: data)
 
-        return Response(response: response, data: decodedResponseData, error: decodedResponseError)
+        return Response(response: response as? HTTPURLResponse, data: decodedResponseData, error: decodedResponseError)
     }
 }
 

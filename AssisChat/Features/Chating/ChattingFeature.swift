@@ -15,6 +15,10 @@ enum ChattingError: Error {
 }
 
 protocol ChattingAdapter {
+    var identifier: String { get }
+    var defaultModel: String { get }
+    var models: [String] { get }
+
     func sendMessageWithStream(chat: Chat, receivingMessage: Message) async throws
     func sendMessage(message: Message) async throws -> [PlainMessage]
     func validateConfig() async throws
@@ -75,7 +79,7 @@ class ChattingFeature: ObservableObject {
         receivingMessage.markReceiving()
 
         do {
-            guard let chattingAdapter = settingsFeature.chattingAdapter else { return }
+            guard let chattingAdapter = settingsFeature.modelToAdapter[chat.rawModel ?? ""] else { return }
 
             try await chattingAdapter.sendMessageWithStream(chat: chat, receivingMessage: receivingMessage)
 
@@ -97,7 +101,7 @@ class ChattingFeature: ObservableObject {
         guard let chat = message.chat else { return }
 
         do {
-            guard let chattingAdapter = settingsFeature.chattingAdapter else { return }
+            guard let chattingAdapter = settingsFeature.modelToAdapter[chat.rawModel ?? ""] else { return }
 
             let plainMessages = try await chattingAdapter.sendMessage(message: message)
 

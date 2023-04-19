@@ -83,7 +83,7 @@ public class Chat: NSManagedObject {
 
 extension Chat {
     var openAIModel: OpenAIModel {
-        OpenAIModel(rawValue: rawOpenAIModel ?? "") ?? .default
+        OpenAIModel(rawValue: rawModel ?? "") ?? OpenAIModel(rawValue: rawOpenAIModel ?? "") ?? .default
     }
 
     enum OpenAIModel: String, CaseIterable {
@@ -104,6 +104,27 @@ extension Chat {
     }
 }
 
+// MARK: - Claude model
+extension Chat {
+    var claudeModel: ClaudeModel {
+        ClaudeModel(rawValue: rawModel ?? "") ?? .default
+    }
+
+    enum ClaudeModel: String, CaseIterable {
+        case claudeV1 = "claude-v1"
+        case claudeInstantV1 = "claude-instant-v1"
+
+        var maxTokens: Int {
+            switch self {
+            case .claudeV1: return 4096
+            case .claudeInstantV1: return 4096
+            }
+        }
+
+        static let `default` = claudeV1
+    }
+}
+
 // MARK: - Temperature
 
 extension Chat {
@@ -118,6 +139,14 @@ extension Chat {
             case .creative: return LocalizedStringKey("CHAT_TEMPERATURE_CREATIVE")
             case .balanced: return LocalizedStringKey("CHAT_TEMPERATURE_BALANCED")
             case .precise: return LocalizedStringKey("CHAT_TEMPERATURE_PRECISE")
+            }
+        }
+
+        var claude: Float {
+            switch self {
+            case .creative: return 1
+            case .balanced: return 0.5
+            case .precise: return 0
             }
         }
 

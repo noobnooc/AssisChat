@@ -13,26 +13,48 @@ class SettingsFeature: ObservableObject {
     @AppStorage(SharedUserDefaults.tint, store: SharedUserDefaults.shared) private(set) var selectedTint: Tint?
     @AppStorage(SharedUserDefaults.symbolVariant, store: SharedUserDefaults.shared) var selectedSymbolVariant: SymbolVariant = .fill
     @AppStorage(SharedUserDefaults.fontSize, store: SharedUserDefaults.shared) var selectedFontSize: FontSize = .normal
-    @AppStorage(SharedUserDefaults.openAIDomain, store: SharedUserDefaults.shared) private(set) var configuredOpenAIDomain: String?
-    @AppStorage(SharedUserDefaults.openAIAPIKey, store: SharedUserDefaults.shared) private(set) var configuredOpenAIAPIKey: String?
     @AppStorage(SharedUserDefaults.iCloudSync, store: SharedUserDefaults.shared) var iCloudSync = false {
         didSet {
             essentialFeature.setCloudSync(sync: iCloudSync)
         }
     }
 
+    @AppStorage(SharedUserDefaults.openAIDomain, store: SharedUserDefaults.shared) private(set) var configuredOpenAIDomain: String?
+    @AppStorage(SharedUserDefaults.openAIAPIKey, store: SharedUserDefaults.shared) private(set) var configuredOpenAIAPIKey: String?
+
+    @AppStorage(SharedUserDefaults.anthropicDomain, store: SharedUserDefaults.shared) private(set) var configuredAnthropicDomain: String?
+    @AppStorage(SharedUserDefaults.anthropicAPIKey, store: SharedUserDefaults.shared) private(set) var configuredAnthropicAPIKey: String?
+
     let essentialFeature: EssentialFeature
 
-    @Published private(set) var chattingAdapter: ChattingAdapter?
+    @Published private(set) var chattingAdapters: [String: ChattingAdapter] = [:]
+
+    var modelToAdapter: [String: ChattingAdapter] {
+        return chattingAdapters.flatMap { (adapterKey, adapter) -> [(String, ChattingAdapter)] in
+            return adapter.models.map { (model) -> (String, ChattingAdapter) in
+                return (model, adapter)
+            }
+        }.reduce(into: [String: ChattingAdapter]()) { (result, keyValue) in
+            result[keyValue.0] = keyValue.1
+        }
+    }
+
+    var activeModels: [String] {
+        return chattingAdapters.flatMap { (adapterKey, adapter) -> [String] in
+            return adapter.models.map { model in
+                return model
+            }
+        }
+    }
 
     var adapterReady: Bool {
-        return chattingAdapter != nil
+        return !chattingAdapters.isEmpty
     }
 
     init(essentialFeature: EssentialFeature) {
         self.essentialFeature = essentialFeature
 
-        initiateAdapter()
+        initiateAdapters()
     }
 
     func adjustColorScheme(_ colorScheme: ColorScheme) {
@@ -47,12 +69,27 @@ class SettingsFeature: ObservableObject {
         selectedSymbolVariant = variant
     }
 
-    func initiateAdapter() {
+    func initiateAdapters() {
+        initiateChatGPTAdapter()
+        initiateClaudeAdapter()
+    }
+
+    func initiateChatGPTAdapter() {
         guard let apiKey = configuredOpenAIAPIKey, !apiKey.isEmpty else {
             return
         }
 
-        chattingAdapter = ChatGPTAdapter(essentialFeature: essentialFeature, config: .init(domain: configuredOpenAIDomain, apiKey: apiKey))
+        let adapter = ChatGPTAdapter(essentialFeature: essentialFeature, config: .init(domain: configuredOpenAIDomain, apiKey: apiKey))
+        chattingAdapters[adapter.identifier] = adapter
+    }
+
+    func initiateClaudeAdapter() {
+        guard let apiKey = configuredAnthropicAPIKey, !apiKey.isEmpty else {
+            return
+        }
+
+        let adapter = ClaudeAdapter(essentialFeature: essentialFeature, config: .init(domain: configuredAnthropicDomain, apiKey: apiKey))
+        chattingAdapters[adapter.identifier] = adapter
     }
 
     @MainActor
@@ -61,9 +98,20 @@ class SettingsFeature: ObservableObject {
 
         try await adapter.validateConfig()
 
-        chattingAdapter = adapter
+        chattingAdapters[adapter.identifier] = adapter
         configuredOpenAIAPIKey = apiKey
         configuredOpenAIDomain = domain
+    }
+
+    @MainActor
+    func validateAndConfigAnthropic(apiKey: String, for domain: String?) async throws {
+        let adapter = ClaudeAdapter(essentialFeature: essentialFeature, config: .init(domain: domain, apiKey: apiKey))
+
+        try await adapter.validateConfig()
+
+        chattingAdapters[adapter.identifier] = adapter
+        configuredAnthropicAPIKey = apiKey
+        configuredAnthropicDomain = domain
     }
 }
 
