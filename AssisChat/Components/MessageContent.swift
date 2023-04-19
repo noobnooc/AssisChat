@@ -29,6 +29,7 @@ struct MessageContent: View {
                 ScrollView(.horizontal) {
                     configuration.label
                         .padding(10)
+                        .padding(.trailing, 20)
                 }
                 .markdownTextStyle(textStyle: {
                     FontFamilyVariant(.monospaced)
@@ -38,18 +39,14 @@ struct MessageContent: View {
                 .cornerRadius(8)
                 .padding(.bottom)
                 .textSelection(.enabled)
-                //                                TODO: - Get the content
-                //                                .overlay(alignment: .bottomTrailing) {
-                //                                    Button {
-                //
-                //                                    } label: {
-                //                                        Image(systemName: "doc.on.doc")
-                //                                    }
-                //                                    .tint(.secondary)
-                //                                    .frame(height: 25)
-                //                                    .buttonStyle(.borderedProminent)
-                //                                    .padding(10)
-                //                                }
+                .overlay(alignment: .topTrailing) {
+                    Button {
+                        Clipboard.copyToClipboard(text: configuration.content)
+                    } label: {
+                        Image(systemName: "doc.on.doc")
+                    }
+                    .padding(10)
+                }
             }
             .markdownCodeSyntaxHighlighter(
                 .splash(theme: colorScheme == .dark ? .wwdc17(withFont: .init(size: 16)) : .sunset(withFont: .init(size: 16)))

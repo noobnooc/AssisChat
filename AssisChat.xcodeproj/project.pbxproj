@@ -13,6 +13,8 @@
 		F543A92D29C53749000C61B5 /* ProFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92C29C53749000C61B5 /* ProFeature.swift */; };
 		F55B65B229ED0D4900F93F6D /* ClaudeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B65B129ED0D4900F93F6D /* ClaudeAdapter.swift */; };
 		F55B65B429EFC5C900F93F6D /* ClaudeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B65B129ED0D4900F93F6D /* ClaudeAdapter.swift */; };
+		F55B65B629EFD33A00F93F6D /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B65B529EFD33A00F93F6D /* Clipboard.swift */; };
+		F55B65B729EFD33A00F93F6D /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B65B529EFD33A00F93F6D /* Clipboard.swift */; };
 		F567A31929D6935D00057582 /* HostingShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567A31829D6935D00057582 /* HostingShareViewController.swift */; };
 		F567A32029D6935D00057582 /* Share.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F567A31629D6935D00057582 /* Share.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F567A32629D693EC00057582 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567A32529D693EC00057582 /* ShareView.swift */; };
@@ -142,6 +144,7 @@
 		F543A92829C46BE8000C61B5 /* SymbolVariantSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolVariantSelector.swift; sourceTree = "<group>"; };
 		F543A92C29C53749000C61B5 /* ProFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProFeature.swift; sourceTree = "<group>"; };
 		F55B65B129ED0D4900F93F6D /* ClaudeAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeAdapter.swift; sourceTree = "<group>"; };
+		F55B65B529EFD33A00F93F6D /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
 		F567A31629D6935D00057582 /* Share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F567A31829D6935D00057582 /* HostingShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingShareViewController.swift; sourceTree = "<group>"; };
 		F567A31D29D6935D00057582 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -422,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				F5E47EE129B49D0E0083BB31 /* Haptics.swift */,
+				F55B65B529EFD33A00F93F6D /* Clipboard.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -680,6 +684,7 @@
 				F567A33E29D6CD9000057582 /* Message+CoreDataProperties.swift in Sources */,
 				F567A31929D6935D00057582 /* HostingShareViewController.swift in Sources */,
 				F567A34829D6D4E000057582 /* AssisChat.xcdatamodeld in Sources */,
+				F55B65B729EFD33A00F93F6D /* Clipboard.swift in Sources */,
 				F567A33D29D6CD9000057582 /* Chat+CoreDataProperties.swift in Sources */,
 				F55B65B429EFC5C900F93F6D /* ClaudeAdapter.swift in Sources */,
 				F5F290E729DA6A35001F6648 /* ChattingFeature.swift in Sources */,
@@ -734,6 +739,7 @@
 				F5E47EDF29B49CCA0083BB31 /* ColorSelector.swift in Sources */,
 				F58E539B29DBF7380022E979 /* AppGroup.swift in Sources */,
 				F55B65B229ED0D4900F93F6D /* ClaudeAdapter.swift in Sources */,
+				F55B65B629EFD33A00F93F6D /* Clipboard.swift in Sources */,
 				F58E53AA29DC155B0022E979 /* ChatPreset.swift in Sources */,
 				F5E47F0B29B7002D0083BB31 /* ChatDetailView.swift in Sources */,
 				F5E47EF629B5B1B10083BB31 /* ColorSchemeSelector.swift in Sources */,

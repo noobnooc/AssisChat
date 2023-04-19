@@ -68,11 +68,7 @@ public class Message: NSManagedObject {
     func copyToPasteboard() {
         guard let content = content else { return }
 
-        #if os(iOS)
-        UIPasteboard.general.string = content
-        #endif
-
-        Haptics.veryLight()
+        Clipboard.copyToClipboard(text: content)
     }
 
     public override func awakeFromInsert() {
