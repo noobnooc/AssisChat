@@ -50,28 +50,34 @@ private struct ChatList: View {
 
     var configIncorrect: some View {
         VStack {
-            Image(systemName: "bubble.left.and.exclamationmark.bubble.right")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 80)
-                .symbolVariant(.square)
-                .foregroundColor(.appOrange)
+            VStack {
+                Image(systemName: "bubble.left.and.exclamationmark.bubble.right")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 80)
+                    .symbolVariant(.square)
+                    .foregroundColor(.appOrange)
 
-            Text("You have not set the chat source correctly. Please set it correctly to continue.")
-                .foregroundColor(.secondary)
-                .font(.subheadline)
-                .padding()
+                Text("You have not set the chat source correctly. Please set it correctly to continue.")
+                    .foregroundColor(.secondary)
+                    .font(.subheadline)
+                    .padding()
 
-            NavigationLink {
-                ChatSourceConfigView(successAlert: false, backWhenConfigured: true) {
-                    if chats.isEmpty {
-                        chatFeature.createPresets(presets: ChatPreset.presetsAutoCreate)
+                NavigationLink {
+                    ChatSourceConfigView(successAlert: false, backWhenConfigured: true) { adapter in
+                        if chats.isEmpty {
+                            chatFeature.createPresets(presets: ChatPreset.presetsAutoCreate, forModel: adapter.defaultModel)
+                        }
                     }
+                } label: {
+                    Text("Go to set chat source")
                 }
-            } label: {
-                Text("Go to set chat source")
             }
-
+            .padding(10)
+            .padding(.vertical)
+            .background(Color.secondaryBackground)
+            .cornerRadius(20)
+            .padding(15)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
@@ -97,10 +103,7 @@ private struct ChatList: View {
         List {
             if !settingsFeature.adapterReady {
                 NavigationLink {
-                    ChatSourceConfigView(successAlert: false, backWhenConfigured: true) {
-                        if chats.isEmpty {
-                            chatFeature.createPresets(presets: ChatPreset.presetsAutoCreate)
-                        }
+                    ChatSourceConfigView(successAlert: false, backWhenConfigured: true) { _ in
                     }
                 } label: {
                     Label {
@@ -125,7 +128,9 @@ private struct ChatList: View {
                         chatFeature.clearMessages(for: chat)
                     } label: {
                         Label("CHAT_CLEAR_MESSAGE", systemImage: "eraser.line.dashed")
+                            .background(Color.appOrange)
                     }
+                    .tint(.appOrange)
 
                     if chat.pinned {
                         Button {

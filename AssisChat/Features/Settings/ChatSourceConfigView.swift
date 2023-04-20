@@ -17,7 +17,7 @@ struct ChatSourceConfigView: View {
 
     let successAlert: Bool
     let backWhenConfigured: Bool
-    let onConfigured: (() -> Void)?
+    let onConfigured: ((_: ChattingAdapter) -> Void)?
 
     @State private var selectedSource: Source = .chatGPT
 
@@ -52,6 +52,8 @@ struct ChatSourceConfigView: View {
                 )
                 .tag(Source.claude)
             }
+            .tabViewStyle(.page)
+            .ignoresSafeArea()
         }
         .background(Color.groupedBackground)
     }
@@ -70,7 +72,7 @@ private struct OpenAIContent: View {
 
     let successAlert: Bool
     let backWhenConfigured: Bool
-    let onConfigured: (() -> Void)?
+    let onConfigured: ((_: ChattingAdapter) -> Void)?
 
     var body: some View {
         List {
@@ -125,6 +127,9 @@ private struct OpenAIContent: View {
             } footer: {
                 Text("The OpenAI API services are provided by OpenAI company, and the rights for data usage and fee collection are reserved by OpenAI company. You can find more information about data usage and fee collection at https://platform.openai.com.")
             }
+
+            CopyrightView()
+                .listRowBackground(Color.clear)
         }
     }
 
@@ -140,13 +145,13 @@ private struct OpenAIContent: View {
             do {
                 validating = true
 
-                try await settingsFeature.validateAndConfigOpenAI(apiKey: openAIAPIKey, for: domain)
+                let adapter = try await settingsFeature.validateAndConfigOpenAI(apiKey: openAIAPIKey, for: domain)
 
                 if successAlert {
                     essentialFeature.appendAlert(alert: GeneralAlert(title: "SUCCESS", message: "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_SUCCESS"))
                 }
 
-                onConfigured?()
+                onConfigured?(adapter)
 
                 if backWhenConfigured {
                     dismiss()
@@ -175,7 +180,7 @@ private struct AnthropicContent: View {
 
     let successAlert: Bool
     let backWhenConfigured: Bool
-    let onConfigured: (() -> Void)?
+    let onConfigured: ((_: ChattingAdapter) -> Void)?
 
     var body: some View {
         List {
@@ -231,6 +236,9 @@ private struct AnthropicContent: View {
             } footer: {
                 Text("The Anthropic API and Claude services are provided by Anthropic company, and the rights for data usage and fee collection are reserved by Anthropic company. You can find more information about data usage and fee collection at https://www.anthropic.com.")
             }
+
+            CopyrightView()
+                .listRowBackground(Color.clear)
         }
     }
 
@@ -246,13 +254,13 @@ private struct AnthropicContent: View {
             do {
                 validating = true
 
-                try await settingsFeature.validateAndConfigAnthropic(apiKey: apiKey, for: domain)
+                let adapter = try await settingsFeature.validateAndConfigAnthropic(apiKey: apiKey, for: domain)
 
                 if successAlert {
                     essentialFeature.appendAlert(alert: GeneralAlert(title: "SUCCESS", message: "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_SUCCESS"))
                 }
 
-                onConfigured?()
+                onConfigured?(adapter)
 
                 if backWhenConfigured {
                     dismiss()
@@ -270,7 +278,7 @@ private struct AnthropicContent: View {
 
 struct ChatSourceConfigView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatSourceConfigView(successAlert: false, backWhenConfigured: false) {
+        ChatSourceConfigView(successAlert: false, backWhenConfigured: false) { _ in
 
         }
     }

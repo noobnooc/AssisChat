@@ -93,7 +93,7 @@ class SettingsFeature: ObservableObject {
     }
 
     @MainActor
-    func validateAndConfigOpenAI(apiKey: String, for domain: String?) async throws {
+    func validateAndConfigOpenAI(apiKey: String, for domain: String?) async throws -> ChattingAdapter {
         let adapter = ChatGPTAdapter(essentialFeature: essentialFeature, config: .init(domain: domain, apiKey: apiKey))
 
         try await adapter.validateConfig()
@@ -101,10 +101,12 @@ class SettingsFeature: ObservableObject {
         chattingAdapters[adapter.identifier] = adapter
         configuredOpenAIAPIKey = apiKey
         configuredOpenAIDomain = domain
+
+        return adapter
     }
 
     @MainActor
-    func validateAndConfigAnthropic(apiKey: String, for domain: String?) async throws {
+    func validateAndConfigAnthropic(apiKey: String, for domain: String?) async throws -> ChattingAdapter {
         let adapter = ClaudeAdapter(essentialFeature: essentialFeature, config: .init(domain: domain, apiKey: apiKey))
 
         try await adapter.validateConfig()
@@ -112,6 +114,8 @@ class SettingsFeature: ObservableObject {
         chattingAdapters[adapter.identifier] = adapter
         configuredAnthropicAPIKey = apiKey
         configuredAnthropicDomain = domain
+
+        return adapter
     }
 }
 

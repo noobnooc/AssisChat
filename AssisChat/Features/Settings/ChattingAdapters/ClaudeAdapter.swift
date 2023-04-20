@@ -69,7 +69,7 @@ extension ClaudeAdapter: ChattingAdapter {
         guard let chat = message.chat else { return [] }
 
         // TODO: - The `receivingMessage: message` parament is for avoid error, it is not work
-        let content = try await request(prompt: retrievePrompt(chat: chat, receivingMessage: message), model: Chat.ClaudeModel.default, temperature: chat.temperature.rawValue)
+        let content = try await request(prompt: retrievePrompt(chat: chat, receivingMessage: message), model: Chat.ClaudeModel.default, temperature: chat.temperature.claude)
 
         let plainMessage = PlainMessage(chat: chat, role: .assistant, content: content, processedContent: nil)
 
@@ -107,7 +107,7 @@ extension ClaudeAdapter: ChattingAdapter {
             prompt: prompt,
             model: chat.claudeModel.rawValue,
             maxTokens: chat.claudeModel.maxTokens,
-            temperature: chat.temperature.rawValue,
+            temperature: chat.temperature.claude,
             stream: true)
         )
 

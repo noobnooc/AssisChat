@@ -135,10 +135,12 @@ private struct MessageItem: View {
         if message.role == .assistant {
             AssistantMessage(message: message, active: active) {
                 toggleActive()
+                Haptics.veryLight()
             }
         } else {
             UserMessage(message: message, active: active) {
                 toggleActive()
+                Haptics.veryLight()
             }
         }
     }

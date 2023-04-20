@@ -18,7 +18,7 @@ struct PlainChat {
     let autoCopy: Bool
     let icon: Chat.Icon
     let color: Chat.Color?
-    let model: String
+    var model: String
 
     var available: Bool {
         name.count > 0
@@ -112,9 +112,13 @@ extension ChatFeature {
 
 // MARK: - Templates
 extension ChatFeature {
-    func createPresets(presets: [PlainChat]) {
+    func createPresets(presets: [PlainChat], forModel: String? = nil) {
         // Reversed for correct order
-        for template in presets.reversed() {
+        for var template in presets.reversed() {
+            if let model = forModel {
+                template.model = model
+            }
+
             createChat(template)
         }
     }

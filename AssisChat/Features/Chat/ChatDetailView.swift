@@ -28,13 +28,20 @@ struct ChatDetailView: View {
                     Text(chat.name)
 
                     HStack {
+                        Text(chat.model ?? "unknown")
+                            .lineLimit(1)
+                            .padding(.vertical, 5)
+                            .padding(.horizontal, 10)
+                            .background(Color.appBlue)
+                            .cornerRadius(.infinity)
+
                         Text(chat.temperature.display)
                             .padding(.vertical, 5)
                             .padding(.horizontal, 10)
                             .background(chat.temperature.color)
                             .cornerRadius(.infinity)
 
-                        HStack {
+                        HStack(spacing: 2) {
                             Text("CHAT_HISTORY_LENGTH_TO_SEND")
                                 .lineLimit(1)
                             Text(chat.storedHistoryLengthToSend.historyLengthToSendDisplay)
@@ -46,23 +53,6 @@ struct ChatDetailView: View {
                         .background(Color.appOrange)
                         .cornerRadius(.infinity)
 
-                        if chat.autoCopy {
-                            Text("CHAT_AUTO_COPY")
-                                .lineLimit(1)
-                                .padding(.vertical, 5)
-                                .padding(.horizontal, 10)
-                                .background(Color.appBlue)
-                                .cornerRadius(.infinity)
-                        }
-
-                        if chat.openAIModel != .default {
-                            Text(chat.openAIModel.rawValue.uppercased())
-                                .lineLimit(1)
-                                .padding(.vertical, 5)
-                                .padding(.horizontal, 10)
-                                .background(Color.appBlue)
-                                .cornerRadius(.infinity)
-                        }
                     }
                     .lineLimit(nil)
                     .font(.subheadline)
