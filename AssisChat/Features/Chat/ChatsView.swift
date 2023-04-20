@@ -103,10 +103,14 @@ private struct ChatList: View {
                         }
                     }
                 } label: {
-                    Label("Go to set chat source", systemImage: "exclamationmark.triangle")
-                        .foregroundColor(.white)
+                    Label {
+                        Text("Go to set chat source")
+                    } icon: {
+                        Image(systemName: "exclamationmark.triangle")
+                            .foregroundColor(.appOrange)
+                    }
                 }
-                .listRowBackground(Color.appOrange)
+                .listRowBackground(Color.secondaryBackground)
             }
 
             ForEach(chats) { chat in

@@ -27,6 +27,10 @@ class ClaudeAdapter {
 }
 
 extension ClaudeAdapter: ChattingAdapter {
+    var priority: Int {
+        2
+    }
+
     var identifier: String {
         "anthropic"
     }

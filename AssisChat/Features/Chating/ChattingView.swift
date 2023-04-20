@@ -88,7 +88,7 @@ private struct MessagesEmpty: View {
                         .scaledToFit()
                         .frame(width: 20, height: 20)
 
-                    Text("Send message from the chatting view")
+                    Text("Send message directly")
                 }
 
                 HStack(alignment: .top) {
@@ -100,14 +100,15 @@ private struct MessagesEmpty: View {
                     Text("Share text from other apps")
                 }
 
-                HStack(alignment: .top) {
-                    Image(systemName: "keyboard")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
-
-                    Text("Switch to the keyboard when input")
-                }
+//              TODO: - Waiting to implement keyboard extension
+//                HStack(alignment: .top) {
+//                    Image(systemName: "keyboard")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 20, height: 20)
+//
+//                    Text("Switch to the keyboard when input")
+//                }
             }
             .frame(alignment: .leading)
             .foregroundColor(.secondary)
@@ -327,8 +328,12 @@ private struct MessageInput: View {
     @ObservedObject var chat: Chat
     @State private var text = ""
 
+    var adapterReady: Bool {
+        chat.model != nil && settingsFeature.modelToAdapter[chat.model!] != nil
+    }
+
     var sendButtonAvailable: Bool {
-        !text.isEmpty && !chat.receiving && settingsFeature.adapterReady
+        !text.isEmpty && !chat.receiving && adapterReady
     }
 
     var body: some View {
@@ -336,22 +341,22 @@ private struct MessageInput: View {
             Divider()
             HStack(alignment: .bottom) {
                 if #available(iOS 16.0, macOS 13.0, *) {
-                    TextField("NEW_MESSAGE_HINT", text: $text, axis: .vertical)
+                    TextField(adapterReady ? String(localized: "NEW_MESSAGE_HINT") : String(localized: "The model \"\(chat.model ?? "unknown")\" is not available"), text: $text, axis: .vertical)
                         .padding(8)
                         .background(Color.primary.opacity(0.05))
                         .cornerRadius(8)
                         .frame(minHeight: 45)
                         .lineLimit(1...3)
                         .textFieldStyle(.plain)
-                        .disabled(!settingsFeature.adapterReady)
+                        .disabled(!adapterReady)
                 } else {
-                    TextField("NEW_MESSAGE_HINT", text: $text)
+                    TextField(adapterReady ? String(localized: "NEW_MESSAGE_HINT") : String(localized: "The model \"\(chat.model ?? "unknown")\" is not available"), text: $text)
                         .padding(8)
                         .background(Color.primary.opacity(0.05))
                         .frame(minHeight: 45)
                         .cornerRadius(8)
                         .textFieldStyle(.plain)
-                        .disabled(!settingsFeature.adapterReady)
+                        .disabled(!adapterReady)
                 }
 
                 Button {
@@ -386,7 +391,7 @@ private struct MessageInput: View {
                 .cornerRadius(.infinity)
                 .padding(2)
                 .clipShape(Rectangle())
-                .disabled(!settingsFeature.adapterReady)
+                .disabled(!sendButtonAvailable)
             }
             .padding(10)
             .background(.regularMaterial)

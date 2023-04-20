@@ -60,6 +60,10 @@ public class Chat: NSManagedObject {
         rawPinOrder != Self.unpinned
     }
 
+    var model: String? {
+        rawOpenAIModel ?? rawModel
+    }
+
     var predicate: NSPredicate {
         NSPredicate(format: "rChat == %@", self)
     }

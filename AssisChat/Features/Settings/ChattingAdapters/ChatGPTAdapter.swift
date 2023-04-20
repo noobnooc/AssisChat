@@ -27,6 +27,10 @@ class ChatGPTAdapter {
 }
 
 extension ChatGPTAdapter: ChattingAdapter {
+    var priority: Int {
+        1
+    }
+
     var identifier: String {
         "openai"
     }

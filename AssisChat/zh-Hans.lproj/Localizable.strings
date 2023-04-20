@@ -113,10 +113,13 @@
 "CHATTING_SELECT_CHAT_HINT" = "选择一个会话以开始";
 
 /* No comment provided by engineer. */
-"Claude API domain (optional)" = "Claude 自定义域名";
+"Claude API domain (optional)" = "Claude 自定义域名（可选）";
 
 /* No comment provided by engineer. */
 "Claude API Key" = "";
+
+/* No comment provided by engineer. */
+"Config the API Key for ChatGPT or Claude." = "配置 ChatGPT 或 Claude 的 API Key";
 
 /* The message prefix of the Language Polisher chat template */
 "Corrects and polishes the following content:" = "纠正及润色以下内容：";
@@ -221,7 +224,7 @@
 "Samuel" = "大壮";
 
 /* No comment provided by engineer. */
-"Send message from the chatting view" = "从对话界面发送消息";
+"Send message directly" = "从对话界面发送消息";
 
 /* The server error of message failed reason */
 "Server Error" = "服务器开小差了";
@@ -314,7 +317,7 @@
 "Support Us" = "支持我们";
 
 /* No comment provided by engineer. */
-"Switch to the keyboard when input" = "输入文本时切换到 AssisChat 键盘";
+"Switching iCloud sync will take effect after restarting the app." = "切换 iCloud 同步将在重启 App 后生效。";
 
 /* No comment provided by engineer. */
 "Sync chats and messages across devices using iCloud." = "使用 iCloud 在不同设备之间同步会话和消息。";
@@ -324,6 +327,9 @@
 
 /* No comment provided by engineer. */
 "The Coffee Plan does NOT include OpenAI API services and any online services that AssisChat may offer in the future." = "咖啡计划不包含 OpenAI API 服务，以及 AssisChat 未来可能推出的任何线上服务。";
+
+/* No comment provided by engineer. */
+"The model \"%@\" is not available" = "模型 \"%@\" 不可用";
 
 /* No comment provided by engineer. */
 "The OpenAI API services are provided by OpenAI company, and the rights for data usage and fee collection are reserved by OpenAI company. You can find more information about data usage and fee collection at https://platform.openai.com." = "OpenAI API 相关服务由 OpenAI 公司提供，其数据使用和费用收取均由 OpenAI 公司保留解释权。数据使用和费用收取等更多信息可以在 https://platform.openai.com 获得。";

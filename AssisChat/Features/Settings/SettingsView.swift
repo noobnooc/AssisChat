@@ -27,13 +27,31 @@ struct SettingsView: View {
                     }
                     .navigationTitle("SETTINGS_CHAT_SOURCE")
                 } label: {
-                    Label("SETTINGS_CHAT_SOURCE", systemImage: "globe.asia.australia")
+                    Label {
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text("SETTINGS_CHAT_SOURCE")
+
+                            Text("Config the API Key for ChatGPT or Claude.")
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
+                                .padding(.top, 5)
+                        }
+                    } icon: {
+                        Image(systemName: "globe.asia.australia")
+                    }
                 }
 
                 Toggle(isOn: $settingsFeature.iCloudSync) {
                     Label {
-                        Text("iCloud Sync", comment: "iCloud Sync toggle label in settings")
-                            .foregroundColor(.primary)
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text("iCloud Sync", comment: "iCloud Sync toggle label in settings")
+                                .foregroundColor(.primary)
+
+                            Text("Switching iCloud sync will take effect after restarting the app.")
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
+                                .padding(.top, 5)
+                        }
                         ProBadge()
                     } icon: {
                         Image(systemName: "icloud")

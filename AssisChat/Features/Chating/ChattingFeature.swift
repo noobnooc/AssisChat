@@ -15,6 +15,7 @@ enum ChattingError: Error {
 }
 
 protocol ChattingAdapter {
+    var priority: Int { get }
     var identifier: String { get }
     var defaultModel: String { get }
     var models: [String] { get }
@@ -79,9 +80,9 @@ class ChattingFeature: ObservableObject {
         receivingMessage.markReceiving()
 
         do {
-            guard let chattingAdapter = settingsFeature.modelToAdapter[chat.rawModel ?? ""] else { return }
+            guard let model = chat.model, let adapter = settingsFeature.modelToAdapter[model] else { return }
 
-            try await chattingAdapter.sendMessageWithStream(chat: chat, receivingMessage: receivingMessage)
+            try await adapter.sendMessageWithStream(chat: chat, receivingMessage: receivingMessage)
 
             if chat.autoCopy {
                 receivingMessage.copyToPasteboard()
