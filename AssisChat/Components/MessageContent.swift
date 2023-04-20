@@ -35,7 +35,7 @@ struct MessageContent: View {
                     FontFamilyVariant(.monospaced)
                     FontSize(.em(0.85))
                 })
-                .background(Color.primary.opacity(0.05))
+                .background(Color.tertiaryBackground)
                 .cornerRadius(8)
                 .padding(.bottom)
                 .textSelection(.enabled)

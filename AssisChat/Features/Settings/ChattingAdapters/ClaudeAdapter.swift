@@ -160,6 +160,7 @@ extension ClaudeAdapter: ChattingAdapter {
     private func convertStatusCodeToFailedReason(statusCode: Int) -> Message.FailedReason {
         switch statusCode {
         case 401: return .authentication
+        case 403: return .network
         case 429: return .rateLimit
         case 400...499: return .client
         case 500...599: return .server

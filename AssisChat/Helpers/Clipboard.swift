@@ -6,7 +6,10 @@
 //
 
 import Foundation
+
+#if os(iOS)
 import UIKit
+#endif
 
 struct Clipboard {
     static func copyToClipboard(text: String) {

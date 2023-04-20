@@ -23,7 +23,7 @@ struct ChatSourceConfigView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            Picker("Selected Tab", selection: $selectedSource) {
+            Picker(String("Selected Tab"), selection: $selectedSource) {
                 Text("ChatGPT")
                     .tag(Source.chatGPT)
 
@@ -229,7 +229,7 @@ private struct AnthropicContent: View {
                 .disabled(validating)
                 .listRowInsets(EdgeInsets())
             } footer: {
-                Text("The OpenAI API services are provided by OpenAI company, and the rights for data usage and fee collection are reserved by OpenAI company. You can find more information about data usage and fee collection at https://platform.openai.com.")
+                Text("The Anthropic API and Claude services are provided by Anthropic company, and the rights for data usage and fee collection are reserved by Anthropic company. You can find more information about data usage and fee collection at https://www.anthropic.com.")
             }
         }
     }

@@ -112,8 +112,17 @@
 /* The hint that select a chat to start */
 "CHATTING_SELECT_CHAT_HINT" = "选择一个会话以开始";
 
+/* No comment provided by engineer. */
+"Claude API domain (optional)" = "Claude 自定义域名";
+
+/* No comment provided by engineer. */
+"Claude API Key" = "";
+
 /* The message prefix of the Language Polisher chat template */
 "Corrects and polishes the following content:" = "纠正及润色以下内容：";
+
+/* No comment provided by engineer. */
+"Create a Claude API Key from https://console.anthropic.com/account/keys" = "从 https://console.anthropic.com/account/keys 获取 Claude API Key";
 
 /* No comment provided by engineer. */
 "Current Version: %@(%@)" = "当前版本：%@(%@)";
@@ -126,6 +135,9 @@
 
 /* Error */
 "ERROR" = "错误";
+
+/* No comment provided by engineer. */
+"Failed to validate the API Key." = "API Key 验证失败";
 
 /* No comment provided by engineer. */
 "Go to set chat source" = "去设置会话源";
@@ -208,6 +220,9 @@
 /* The name of the Virtual Boyfriend chat template */
 "Samuel" = "大壮";
 
+/* No comment provided by engineer. */
+"Send message from the chatting view" = "从对话界面发送消息";
+
 /* The server error of message failed reason */
 "Server Error" = "服务器开小差了";
 
@@ -286,6 +301,9 @@
 /* Share Extension feature title in pro introduction. */
 "Share Extension" = "分享扩展";
 
+/* No comment provided by engineer. */
+"Share text from other apps" = "从其他应用分享文本";
+
 /* The small size label of font size setting */
 "Small" = "小";
 
@@ -296,7 +314,13 @@
 "Support Us" = "支持我们";
 
 /* No comment provided by engineer. */
+"Switch to the keyboard when input" = "输入文本时切换到 AssisChat 键盘";
+
+/* No comment provided by engineer. */
 "Sync chats and messages across devices using iCloud." = "使用 iCloud 在不同设备之间同步会话和消息。";
+
+/* No comment provided by engineer. */
+"The Anthropic API and Claude services are provided by Anthropic company, and the rights for data usage and fee collection are reserved by Anthropic company. You can find more information about data usage and fee collection at https://www.anthropic.com." = "Anthropic 和 Claude 的 API 及相关服务由 Anthropic 公司提供，其数据使用和费用收取均由 Anthropic 公司保留解释权。数据使用和费用收取等更多信息可以在 https://www.anthropic.com 获得。";
 
 /* No comment provided by engineer. */
 "The Coffee Plan does NOT include OpenAI API services and any online services that AssisChat may offer in the future." = "咖啡计划不包含 OpenAI API 服务，以及 AssisChat 未来可能推出的任何线上服务。";
@@ -309,6 +333,9 @@
 
 /* The name of the Translator chat template */
 "Translator" = "翻译小助手";
+
+/* No comment provided by engineer. */
+"Unauthenticated request" = "身份验证失败";
 
 /* The unknown client error of message failed reason */
 "Unknown Client Error" = "未知客户端错误";
@@ -327,6 +354,9 @@
 
 /* No comment provided by engineer. */
 "Unpin Chat" = "取消置顶会话";
+
+/* No comment provided by engineer. */
+"Use proxy domain. We recommend leaving it blank to use the default value. Please use a domain that you completely trust, otherwise your API key will be leaked." = "使用代理域名。我们推荐留空以使用默认值。请使用完全信任的域名，否则你的 API Key 和使用数据将会泄露。";
 
 /* The system message of the Recipe chat template */
 "You are a kitchen helper who responds with the recipe for a given dish." = "你是一个厨房帮手，回复给定菜名的菜谱。";
