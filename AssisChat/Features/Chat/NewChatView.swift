@@ -10,6 +10,7 @@ import SwiftUI
 struct NewChatView: View {
     @Environment(\.dismiss) private var dismiss
 
+    @EnvironmentObject private var settingsFeature: SettingsFeature
     @EnvironmentObject private var chatFeature: ChatFeature
 
     var body: some View {
@@ -31,7 +32,7 @@ struct NewChatView: View {
                         .contentShape(Rectangle())
                         .onTapGesture {
                             dismiss()
-                            chatFeature.createChat(preset)
+                            chatFeature.createChat(preset, forModel: settingsFeature.orderedAdapters.first?.defaultModel)
                         }
                 }
             }

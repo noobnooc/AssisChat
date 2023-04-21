@@ -29,6 +29,14 @@ class SettingsFeature: ObservableObject {
 
     @Published private(set) var chattingAdapters: [String: ChattingAdapter] = [:]
 
+    var orderedAdapters: [ChattingAdapter] {
+        chattingAdapters.map { (key: String, value: ChattingAdapter) in
+            value
+        }.sorted { a1, a2 in
+            a1.priority < a2.priority
+        }
+    }
+
     var modelToAdapter: [String: ChattingAdapter] {
         return chattingAdapters.flatMap { (adapterKey, adapter) -> [(String, ChattingAdapter)] in
             return adapter.models.map { (model) -> (String, ChattingAdapter) in

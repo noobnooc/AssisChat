@@ -38,7 +38,7 @@ class ChatFeature: ObservableObject {
 
 // MARK: - Data
 extension ChatFeature {
-    func createChat(_ plainChat: PlainChat) {
+    func createChat(_ plainChat: PlainChat, forModel: String? = nil) {
         guard plainChat.available else { return }
 
         let chat = Chat(context: essentialFeature.context)
@@ -51,7 +51,12 @@ extension ChatFeature {
         chat.rawHistoryLengthToSend = plainChat.historyLengthToSend
         chat.rawMessagePrefix = plainChat.messagePrefix
         chat.rawAutoCopy = plainChat.autoCopy
-        chat.rawModel = plainChat.model
+
+        if let model = forModel {
+            chat.rawModel = forModel
+        } else {
+            chat.rawModel = plainChat.model
+        }
 
         essentialFeature.persistData()
     }
