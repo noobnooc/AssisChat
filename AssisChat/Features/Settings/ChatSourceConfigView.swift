@@ -58,18 +58,18 @@ struct ChatSourceConfigView: View {
                 .tag(Source.claude)
             }
         }
-        #if os(iOS)
+#if os(iOS)
         .background(Color.groupedBackground)
-        #endif
+#endif
     }
 }
 
 private struct OpenAIContent: View {
     @Environment(\.dismiss) private var dismiss
 
-    @EnvironmentObject private var essentialFeature: EssentialFeature
     @EnvironmentObject private var settingsFeature: SettingsFeature
 
+    @State var alertText: String? = nil
     @State var openAIAPIKey: String
     @State var openAIDomain: String
 
@@ -80,82 +80,101 @@ private struct OpenAIContent: View {
     let onConfigured: ((_: ChattingAdapter) -> Void)?
 
     var body: some View {
-        List {
-            #if os(iOS)
-            Section {
-                VStack {
-                    Image("chatgpt")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
-                }
-                .frame(maxWidth: .infinity, alignment: .center)
-            }
-            #endif
-
-            Section {
-                SecureField(String("sk-XXXXXXX"), text: $openAIAPIKey)
-                    .disableAutocorrection(true)
-                #if os(macOS)
-                    .textFieldStyle(.roundedBorder)
-                #endif
-            } header: {
-                Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY")
-            } footer: {
-                Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY_HINT")
-            }
-
-            Section {
-                TextField(String("api.openai.com"), text: $openAIDomain)
-                    .disableAutocorrection(true)
-#if os(macOS)
-                    .textFieldStyle(.roundedBorder)
-#endif
-            } header: {
-                Text("SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN")
-            } footer: {
-                Text("SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN_HINT")
-            }
-
-            Section {
-                Button {
-                    validateAndSave()
-                } label: {
-                    HStack {
-                        if validating {
-                            UniformProgressView()
-                        }
-
-                        Text("SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE")
-                            .bold()
+            Form {
+#if os(iOS)
+                Section {
+                    VStack {
+                        Image("chatgpt")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
                     }
-                    .frame(maxWidth: .infinity)
-                    #if os(iOS)
-                    .padding()
-                    #else
-                    .padding(5)
-                    #endif
-                    .background(Color.accentColor)
-                    .foregroundColor(.primary)
-                    .colorScheme(.dark)
-                    .cornerRadius(10)
+                    .frame(maxWidth: .infinity, alignment: .center)
                 }
-                .disabled(validating)
-                .listRowInsets(EdgeInsets())
-                .buttonStyle(.plain)
-            } footer: {
-                Text("The OpenAI API services are provided by OpenAI company, and the rights for data usage and fee collection are reserved by OpenAI company. You can find more information about data usage and fee collection at https://platform.openai.com.")
-            }
+#endif
 
-            CopyrightView()
-                .listRowBackground(Color.clear)
-        }
+                Section {
+#if os(iOS)
+                    SecureField(String("sk-XXXXXXX"), text: $openAIAPIKey)
+                        .disableAutocorrection(true)
+#else
+                    SecureField("", text: $openAIAPIKey)
+                        .disableAutocorrection(true)
+                        .textFieldStyle(.roundedBorder)
+#endif
+                } header: {
+                    Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY")
+                } footer: {
+                    Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY_HINT")
+                }
+
+                Section {
+#if os(iOS)
+                    TextField(String("api.openai.com"), text: $openAIDomain)
+                        .disableAutocorrection(true)
+#else
+                    TextField("", text: $openAIDomain)
+                        .disableAutocorrection(true)
+                        .textFieldStyle(.roundedBorder)
+#endif
+                } header: {
+                    Text("SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN")
+#if os(macOS)
+                        .padding(.top, 20)
+#endif
+                } footer: {
+                    Text("SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN_HINT")
+                }
+
+                Section {
+                    Button {
+                        validateAndSave()
+                    } label: {
+                        HStack {
+                            if validating {
+                                UniformProgressView()
+                            }
+
+                            Text("SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE")
+                                .bold()
+                        }
+                        .frame(maxWidth: .infinity)
+#if os(iOS)
+                        .padding()
+#else
+                        .padding(5)
+#endif
+                        .background(Color.accentColor)
+                        .foregroundColor(.primary)
+                        .colorScheme(.dark)
+                        .cornerRadius(10)
+                    }
+                    .disabled(validating)
+                    .listRowInsets(EdgeInsets())
+                    .buttonStyle(.plain)
+                } footer: {
+                    Text("The OpenAI API services are provided by OpenAI company, and the rights for data usage and fee collection are reserved by OpenAI company. You can find more information about data usage and fee collection at https://platform.openai.com.")
+                }
+
+                CopyrightView()
+                    .listRowBackground(Color.clear)
+            }
+        #if os(macOS)
+            .padding()
+        #endif
+            .alert(alertText ?? "", isPresented: Binding(get: {
+                alertText != nil
+            }, set: { _ in
+                alertText = nil
+            })) {
+
+            }
     }
 
     func validateAndSave() -> Void {
         Task {
             if openAIAPIKey.isEmpty {
-                essentialFeature.appendAlert(alert: ErrorAlert(message: "SETTINGS_CHAT_SOURCE_NO_API_KEY"))
+                alertText = String(localized: "SETTINGS_CHAT_SOURCE_NO_API_KEY")
                 return
             }
 
@@ -167,7 +186,7 @@ private struct OpenAIContent: View {
                 let adapter = try await settingsFeature.validateAndConfigOpenAI(apiKey: openAIAPIKey, for: domain)
 
                 if successAlert {
-                    essentialFeature.appendAlert(alert: GeneralAlert(title: "SUCCESS", message: "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_SUCCESS"))
+                    alertText = String(localized: "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_SUCCESS")
                 }
 
                 onConfigured?(adapter)
@@ -176,9 +195,9 @@ private struct OpenAIContent: View {
                     dismiss()
                 }
             } catch ChattingError.validating {
-                essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey("Failed to validate the API Key.")))
+                alertText = String(localized: "Failed to validate the API Key.")
             } catch {
-                essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(error.localizedDescription)))
+                alertText = error.localizedDescription
             }
 
             validating = false
@@ -202,8 +221,8 @@ private struct AnthropicContent: View {
     let onConfigured: ((_: ChattingAdapter) -> Void)?
 
     var body: some View {
-        List {
-            #if os(iOS)
+        Form {
+#if os(iOS)
             Section {
                 VStack {
                     Image("anthropic")
@@ -214,12 +233,15 @@ private struct AnthropicContent: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
             }
-            #endif
+#endif
 
             Section {
+#if os(iOS)
                 SecureField(String("sk-ant-XXXXXXX"), text: $apiKey)
                     .disableAutocorrection(true)
-#if os(macOS)
+#else
+                SecureField("", text: $apiKey)
+                    .disableAutocorrection(true)
                     .textFieldStyle(.roundedBorder)
 #endif
             } header: {
@@ -229,13 +251,19 @@ private struct AnthropicContent: View {
             }
 
             Section {
+#if os(iOS)
                 TextField(String("api.anthropic.com"), text: $domain)
                     .disableAutocorrection(true)
-#if os(macOS)
+#else
+                TextField("", text: $domain)
+                    .disableAutocorrection(true)
                     .textFieldStyle(.roundedBorder)
 #endif
             } header: {
                 Text("Claude API domain (optional)")
+#if os(macOS)
+                    .padding(.top, 20)
+#endif
             } footer: {
                 Text("Use proxy domain. We recommend leaving it blank to use the default value. Please use a domain that you completely trust, otherwise your API key will be leaked.")
             }
@@ -273,6 +301,9 @@ private struct AnthropicContent: View {
             CopyrightView()
                 .listRowBackground(Color.clear)
         }
+        #if os(macOS)
+        .padding()
+        #endif
     }
 
     func validateAndSave() -> Void {

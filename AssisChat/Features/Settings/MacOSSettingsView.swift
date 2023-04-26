@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MacOSSettingsView: View {
     @Environment(\.openURL) private var openURL
-
+    
 #if os(macOS)
     static func open() {
         if #available(macOS 13, *) {
@@ -19,14 +19,17 @@ struct MacOSSettingsView: View {
         }
     }
 #endif
-
+    
     var body: some View {
         TabView {
-            ChatSourceConfigView(successAlert: false, backWhenConfigured: false, onConfigured: nil)
-                .tabItem {
-                    Label("Chat Source", systemImage: "bubble.left")
-                }
-
+            VStack {
+                ChatSourceConfigView(successAlert: true, backWhenConfigured: false, onConfigured: nil)
+                Spacer()
+            }
+            .tabItem {
+                Label("Chat Source", systemImage: "bubble.left")
+            }
+            
             VStack {
                 Form {
                     SettingsThemeContent()
@@ -38,18 +41,18 @@ struct MacOSSettingsView: View {
             .tabItem {
                 Label("Appearance", systemImage: "paintpalette")
             }
-
+            
             VStack {
                 ProBanner()
                     .frame(height: 100)
                     .padding()
-
+                
                 Spacer()
             }
             .tabItem {
                 Label("Coffee Plan", systemImage: "cup.and.saucer")
             }
-
+            
             VStack {
                 VStack {
                     SettingsAboutContent()
@@ -58,11 +61,11 @@ struct MacOSSettingsView: View {
                 
                 Spacer()
             }
-                .tabItem {
-                    Label("About", systemImage: "info.circle")
-                }
+            .tabItem {
+                Label("About", systemImage: "info.circle")
+            }
         }
-        .frame(minWidth: 500, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
+        .frame(minWidth: 500, maxWidth: .infinity, minHeight: 500, maxHeight: .infinity)
     }
 }
 
