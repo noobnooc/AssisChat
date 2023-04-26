@@ -23,17 +23,20 @@ struct ChatSourceConfigView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            Picker(String("Selected Tab"), selection: $selectedSource) {
+            Picker(selection: $selectedSource) {
                 Text("ChatGPT")
                     .tag(Source.chatGPT)
 
                 Text("Claude")
                     .tag(Source.claude)
+            } label: {
+                EmptyView()
             }
             .pickerStyle(.segmented)
-            .padding()
+            .padding(.horizontal)
+            .padding(.vertical, 5)
 
-            TabView(selection: $selectedSource) {
+            if selectedSource == .chatGPT {
                 OpenAIContent(
                     openAIAPIKey: settingsFeature.configuredOpenAIAPIKey ?? "",
                     openAIDomain: settingsFeature.configuredOpenAIDomain ?? "",
@@ -41,8 +44,9 @@ struct ChatSourceConfigView: View {
                     backWhenConfigured: backWhenConfigured,
                     onConfigured: onConfigured
                 )
+                .ignoresSafeArea()
                 .tag(Source.chatGPT)
-                
+            } else if selectedSource == .claude {
                 AnthropicContent(
                     apiKey: settingsFeature.configuredAnthropicAPIKey ?? "",
                     domain: settingsFeature.configuredAnthropicDomain ?? "",
@@ -50,12 +54,13 @@ struct ChatSourceConfigView: View {
                     backWhenConfigured: backWhenConfigured,
                     onConfigured: onConfigured
                 )
+                .ignoresSafeArea()
                 .tag(Source.claude)
             }
-            .tabViewStyle(.page)
-            .ignoresSafeArea()
         }
+        #if os(iOS)
         .background(Color.groupedBackground)
+        #endif
     }
 }
 
@@ -76,6 +81,7 @@ private struct OpenAIContent: View {
 
     var body: some View {
         List {
+            #if os(iOS)
             Section {
                 VStack {
                     Image("chatgpt")
@@ -85,10 +91,14 @@ private struct OpenAIContent: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
             }
+            #endif
 
             Section {
                 SecureField(String("sk-XXXXXXX"), text: $openAIAPIKey)
                     .disableAutocorrection(true)
+                #if os(macOS)
+                    .textFieldStyle(.roundedBorder)
+                #endif
             } header: {
                 Text("SETTINGS_CHAT_SOURCE_OPENAI_KEY")
             } footer: {
@@ -98,6 +108,9 @@ private struct OpenAIContent: View {
             Section {
                 TextField(String("api.openai.com"), text: $openAIDomain)
                     .disableAutocorrection(true)
+#if os(macOS)
+                    .textFieldStyle(.roundedBorder)
+#endif
             } header: {
                 Text("SETTINGS_CHAT_SOURCE_OPENAI_DOMAIN")
             } footer: {
@@ -110,20 +123,26 @@ private struct OpenAIContent: View {
                 } label: {
                     HStack {
                         if validating {
-                            ProgressView()
+                            UniformProgressView()
                         }
 
                         Text("SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE")
                             .bold()
                     }
                     .frame(maxWidth: .infinity)
+                    #if os(iOS)
                     .padding()
+                    #else
+                    .padding(5)
+                    #endif
                     .background(Color.accentColor)
                     .foregroundColor(.primary)
                     .colorScheme(.dark)
+                    .cornerRadius(10)
                 }
                 .disabled(validating)
                 .listRowInsets(EdgeInsets())
+                .buttonStyle(.plain)
             } footer: {
                 Text("The OpenAI API services are provided by OpenAI company, and the rights for data usage and fee collection are reserved by OpenAI company. You can find more information about data usage and fee collection at https://platform.openai.com.")
             }
@@ -184,6 +203,7 @@ private struct AnthropicContent: View {
 
     var body: some View {
         List {
+            #if os(iOS)
             Section {
                 VStack {
                     Image("anthropic")
@@ -194,10 +214,14 @@ private struct AnthropicContent: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
             }
+            #endif
 
             Section {
                 SecureField(String("sk-ant-XXXXXXX"), text: $apiKey)
                     .disableAutocorrection(true)
+#if os(macOS)
+                    .textFieldStyle(.roundedBorder)
+#endif
             } header: {
                 Text("Claude API Key")
             } footer: {
@@ -207,6 +231,9 @@ private struct AnthropicContent: View {
             Section {
                 TextField(String("api.anthropic.com"), text: $domain)
                     .disableAutocorrection(true)
+#if os(macOS)
+                    .textFieldStyle(.roundedBorder)
+#endif
             } header: {
                 Text("Claude API domain (optional)")
             } footer: {
@@ -219,20 +246,26 @@ private struct AnthropicContent: View {
                 } label: {
                     HStack {
                         if validating {
-                            ProgressView()
+                            UniformProgressView()
                         }
 
                         Text("SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE")
                             .bold()
                     }
                     .frame(maxWidth: .infinity)
+#if os(iOS)
                     .padding()
+#else
+                    .padding(5)
+#endif
                     .background(Color.accentColor)
                     .foregroundColor(.primary)
                     .colorScheme(.dark)
+                    .cornerRadius(10)
                 }
                 .disabled(validating)
                 .listRowInsets(EdgeInsets())
+                .buttonStyle(.plain)
             } footer: {
                 Text("The Anthropic API and Claude services are provided by Anthropic company, and the rights for data usage and fee collection are reserved by Anthropic company. You can find more information about data usage and fee collection at https://www.anthropic.com.")
             }

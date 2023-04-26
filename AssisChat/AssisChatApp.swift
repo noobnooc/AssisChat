@@ -77,5 +77,19 @@ struct AssisChatApp: App {
                         Text(essentialFeature.currentAlert?.message ?? "")
                     })
         }
+
+        #if os(macOS)
+        Settings {
+            MacOSSettingsView()
+                .environmentObject(essentialFeature)
+                .environmentObject(settingsFeature)
+                .environmentObject(proFeature)
+
+                // Initiations
+                .preferredColorScheme(settingsFeature.selectedColorScheme.systemColorScheme)
+                .tint(settingsFeature.selectedTint?.color)
+                .symbolVariant(settingsFeature.selectedSymbolVariant.system)
+        }
+        #endif
     }
 }

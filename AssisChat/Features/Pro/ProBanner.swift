@@ -68,8 +68,12 @@ struct ProBanner: View {
         .onTapGesture {
             introductionShowing.toggle()
         }
+        .cornerRadius(12)
         .sheet(isPresented: $introductionShowing) {
             ProIntroductionView()
+            #if os(macOS)
+                .frame(width: 400, height: 500)
+            #endif
         }
     }
 }

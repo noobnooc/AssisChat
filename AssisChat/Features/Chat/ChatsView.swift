@@ -10,16 +10,24 @@ import SwiftUI
 struct ChatsView: View {
     var body: some View {
         ChatList()
-        .toolbar {
-            ToolbarItem {
-                NavigationLink {
-                    SettingsView()
-                        .navigationTitle("SETTINGS")
-                } label: {
-                    Label("SETTINGS", systemImage: "gearshape")
+            .toolbar {
+                ToolbarItem {
+                    #if os(iOS)
+                    NavigationLink {
+                        SettingsView()
+                            .navigationTitle("SETTINGS")
+                    } label: {
+                        Label("SETTINGS", systemImage: "gearshape")
+                    }
+                    #else
+                    Button {
+                        MacOSSettingsView.open()
+                    } label: {
+                        Label("SETTINGS", systemImage: "gearshape")
+                    }
+                    #endif
                 }
             }
-        }
     }
 }
 
@@ -63,6 +71,7 @@ private struct ChatList: View {
                     .font(.subheadline)
                     .padding()
 
+                #if os(iOS)
                 NavigationLink {
                     ChatSourceConfigView(successAlert: false, backWhenConfigured: true) { adapter in
                         if chats.isEmpty {
@@ -72,10 +81,21 @@ private struct ChatList: View {
                 } label: {
                     Text("Go to set chat source")
                 }
+                #else
+                Button {
+                    MacOSSettingsView.open()
+                } label: {
+                    Text("Go to set chat source")
+                }
+                #endif
             }
             .padding(10)
             .padding(.vertical)
+            #if os(iOS)
             .background(Color.secondaryBackground)
+            #else
+            .background(Color.primary.opacity(0.1))
+            #endif
             .cornerRadius(20)
             .padding(15)
         }
@@ -102,18 +122,30 @@ private struct ChatList: View {
     var chatList: some View {
         List {
             if !settingsFeature.adapterReady {
+                let label = Label {
+                    Text("Go to set chat source")
+                } icon: {
+                    Image(systemName: "exclamationmark.triangle")
+                        .foregroundColor(.appOrange)
+                }
+
+                #if os(iOS)
                 NavigationLink {
                     ChatSourceConfigView(successAlert: false, backWhenConfigured: true) { _ in
                     }
                 } label: {
-                    Label {
-                        Text("Go to set chat source")
-                    } icon: {
-                        Image(systemName: "exclamationmark.triangle")
-                            .foregroundColor(.appOrange)
-                    }
+                    label
                 }
                 .listRowBackground(Color.secondaryBackground)
+                #else
+                Button {
+                    MacOSSettingsView.open()
+                } label: {
+                    label
+                        .frame(maxWidth: .infinity)
+                }
+                .frame(maxWidth: .infinity)
+                #endif
             }
 
             ForEach(chats) { chat in
@@ -122,7 +154,9 @@ private struct ChatList: View {
                 } label: {
                     ChatItem(chat: chat)
                 }
+#if os(iOS)
                 .listRowBackground(chat.pinned ? Color.secondaryBackground : Color.clear)
+#endif
                 .swipeActions(edge: .leading, content: {
                     Button {
                         chatFeature.clearMessages(for: chat)
@@ -182,9 +216,9 @@ private struct ChatList: View {
                 .padding(.vertical, 30)
                 .listRowSeparator(.hidden)
         }
-        #if os(iOS)
+#if os(iOS)
         .listStyle(.plain)
-        #endif
+#endif
         .animation(.easeOut, value: chats.count)
     }
 
@@ -203,11 +237,11 @@ private struct ChatItem: View {
             chat.icon.image
                 .font(.title2)
                 .frame(width: 24, height: 24)
-            #if os(iOS)
+#if os(iOS)
                 .padding(13)
-            #else
-                .padding(10)
-            #endif
+#else
+                .padding(8)
+#endif
                 .background(chat.uiColor)
                 .cornerRadius(8)
                 .colorScheme(.dark)
@@ -219,7 +253,18 @@ private struct ChatItem: View {
                     .foregroundColor(.secondary)
                     .lineLimit(1)
             }
+
+#if os(macOS)
+            if chat.pinned {
+                Spacer()
+                Image(systemName: "pin")
+                    .foregroundColor(.secondary)
+            }
+#endif
         }
+        #if os(macOS)
+        .padding(.vertical, 2)
+        #endif
     }
 }
 
@@ -239,20 +284,45 @@ private struct ChatCreatingButton: View {
                 .cornerRadius(.infinity)
                 .colorScheme(.dark)
                 .padding()
+                .shadow(color: .black.opacity(0.2), radius: 5)
         }
         .buttonStyle(.plain)
         .sheet(isPresented: $creating) {
-#if os(iOS)
             NavigationView {
                 NewChatView()
                     .navigationTitle("NEW_CHAT_NAME")
                     .inlineNavigationBar()
+                #if os(macOS)
+                    .frame(width: 250)
+                #endif
+
+                ZStack(alignment: .topTrailing) {
+                    Button {
+                        creating = false
+                    } label: {
+                        Image(systemName: "multiply")
+                    }
+                    .buttonBorderShape(.roundedRectangle)
+                    .padding()
+
+                    VStack {
+                        Image(systemName: "quote.bubble")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80)
+                            .symbolVariant(.square)
+                            .foregroundColor(.secondary)
+
+                        Text("Select a preset or custom a chat")
+                            .foregroundColor(.secondary)
+                            .font(.subheadline)
+                            .padding()
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
             }
-#else
-            NewChatView()
-                .navigationTitle("NEW_CHAT_NAME")
-                .inlineNavigationBar()
-                .frame(width: 300, height: 500)
+#if os(macOS)
+            .frame(minHeight: 300, idealHeight: 500)
 #endif
         }
     }

@@ -440,7 +440,11 @@ extension Chat {
             switch self {
             case .blue: return .appBlue
             case .brown: return .appBrown
+                #if os(iOS)
             case .green: return .appGreen
+                #else
+            case .green: return .originAccent
+                #endif
             case .indigo: return .appIndigo
             case .orange: return .appOrange
             case .pink: return .appPink

@@ -91,6 +91,7 @@ private struct MessagesEmpty: View {
                     Text("Send message directly")
                 }
 
+#if os(iOS)
                 HStack(alignment: .top) {
                     Image(systemName: "square.and.arrow.up")
                         .resizable()
@@ -99,22 +100,23 @@ private struct MessagesEmpty: View {
 
                     Text("Share text from other apps")
                 }
+#endif
 
-//              TODO: - Waiting to implement keyboard extension
-//                HStack(alignment: .top) {
-//                    Image(systemName: "keyboard")
-//                        .resizable()
-//                        .scaledToFit()
-//                        .frame(width: 20, height: 20)
-//
-//                    Text("Switch to the keyboard when input")
-//                }
+                //              TODO: - Waiting to implement keyboard extension
+                //                HStack(alignment: .top) {
+                //                    Image(systemName: "keyboard")
+                //                        .resizable()
+                //                        .scaledToFit()
+                //                        .frame(width: 20, height: 20)
+                //
+                //                    Text("Switch to the keyboard when input")
+                //                }
             }
             .frame(alignment: .leading)
             .foregroundColor(.secondary)
             .padding()
-            .background(Color.secondaryBackground)
-            .cornerRadius(20)
+            .background(Color.primary.opacity(0.1))
+            .cornerRadius(15)
             .padding()
         }
         .frame(maxHeight: .infinity)
@@ -171,20 +173,21 @@ private struct AssistantMessage: View {
                     if let content = message.content {
                         MessageContent(content: content)
                     } else if message.receiving {
-                        ProgressView()
+                        UniformProgressView()
                     } else if let reason = message.failedReason {
                         Label(reason.localized, systemImage: "info.circle")
                     }
                 }
                 .padding(.vertical, 8)
                 .padding(.horizontal, 15)
-                .background(message.failed ? Color.appRed : Color.secondaryBackground)
                 .foregroundColor(message.failed ? Color.white : Color.primary)
-#if os(iOS)
+                #if os(iOS)
+                .background(message.failed ? Color.appRed : Color.secondaryBackground)
                 .cornerRadius(15, corners: [.bottomRight, .topRight, .topLeft])
-#else
-                .cornerRadius(15)
-#endif
+                #else
+                .background(message.failed ? Color.appRed : Color.primary.opacity(0.1))
+                .cornerRadius(10)
+                #endif
                 .onTapGesture {
                     toggleActive()
                 }
@@ -261,65 +264,65 @@ private struct UserMessage: View {
     let toggleActive: () -> Void
 
     var body: some View {
-            HStack {
-                Spacer(minLength: 50)
-                MessageContent(content: message.content ?? "")
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 15)
-                    .background(Color.accentColor)
+        HStack {
+            Spacer(minLength: 50)
+            MessageContent(content: message.content ?? "")
+                .padding(.vertical, 8)
+                .padding(.horizontal, 15)
+                .background(Color.accentColor)
 #if os(iOS)
-                    .cornerRadius(15, corners: [.bottomLeft, .topLeft, .topRight])
+                .cornerRadius(15, corners: [.bottomLeft, .topLeft, .topRight])
 #else
-                    .cornerRadius(15)
+                .cornerRadius(10)
 #endif
-                    .colorScheme(.dark)
-                    .onTapGesture {
-                        toggleActive()
-                    }
-            }
-            .overlay(alignment: .bottomTrailing) {
-                if (active) {
-                    HStack {
-                        Button {
-                            withAnimation {
-                                message.copyToPasteboard()
-                                toggleActive()
-                            }
-                        } label: {
-                            Image(systemName: "doc.on.doc")
-                                .padding(5)
-                                .foregroundColor(.appBlue)
-                        }
-                        .buttonStyle(.plain)
-
-                        Divider()
-                            .padding(.vertical, 5)
-
-                        Button(role: .destructive) {
-                            withAnimation {
-                                messageFeature.deleteMessages([message])
-                            }
-                        } label: {
-                            Image(systemName: "trash")
-                                .padding(5)
-                                .foregroundColor(.appRed)
-
-                        }
-                        .buttonStyle(.plain)
-                    }
-                    .padding(.vertical, 2)
-                    .padding(.horizontal, 9)
-                    .frame(height: 30)
-                    .background(Color.secondaryBackground)
-                    .cornerRadius(.infinity)
-                    .transition(.scale(scale: 0, anchor: .bottomTrailing).animation(.spring().speed(2)))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: .infinity)
-                            .stroke(Color.accentColor, lineWidth: 1)
-                    )
-                    .padding(3)
+                .colorScheme(.dark)
+                .onTapGesture {
+                    toggleActive()
                 }
+        }
+        .overlay(alignment: .bottomTrailing) {
+            if (active) {
+                HStack {
+                    Button {
+                        withAnimation {
+                            message.copyToPasteboard()
+                            toggleActive()
+                        }
+                    } label: {
+                        Image(systemName: "doc.on.doc")
+                            .padding(5)
+                            .foregroundColor(.appBlue)
+                    }
+                    .buttonStyle(.plain)
+
+                    Divider()
+                        .padding(.vertical, 5)
+
+                    Button(role: .destructive) {
+                        withAnimation {
+                            messageFeature.deleteMessages([message])
+                        }
+                    } label: {
+                        Image(systemName: "trash")
+                            .padding(5)
+                            .foregroundColor(.appRed)
+
+                    }
+                    .buttonStyle(.plain)
+                }
+                .padding(.vertical, 2)
+                .padding(.horizontal, 9)
+                .frame(height: 30)
+                .background(Color.secondaryBackground)
+                .cornerRadius(.infinity)
+                .transition(.scale(scale: 0, anchor: .bottomTrailing).animation(.spring().speed(2)))
+                .overlay(
+                    RoundedRectangle(cornerRadius: .infinity)
+                        .stroke(Color.accentColor, lineWidth: 1)
+                )
+                .padding(3)
             }
+        }
     }
 }
 
@@ -351,6 +354,11 @@ private struct MessageInput: View {
                         .lineLimit(1...3)
                         .textFieldStyle(.plain)
                         .disabled(!adapterReady)
+#if os(macOS)
+                        .onSubmit {
+                            submit()
+                        }
+#endif
                 } else {
                     TextField(adapterReady ? String(localized: "NEW_MESSAGE_HINT") : String(localized: "The model \"\(chat.model ?? "unknown")\" is not available"), text: $text)
                         .padding(8)
@@ -359,44 +367,60 @@ private struct MessageInput: View {
                         .cornerRadius(8)
                         .textFieldStyle(.plain)
                         .disabled(!adapterReady)
+#if os(macOS)
+                        .onSubmit {
+                            submit()
+                        }
+#endif
                 }
 
                 Button {
-                    guard sendButtonAvailable else { return }
-                    Task {
-                        let messageContent = text
-                        text = ""
-
-                        await chattingFeature.sendWithStream(
-                            plainMessage: .init(
-                                chat: chat,
-                                role: .user,
-                                content: messageContent,
-                                processedContent: (chat.messagePrefix != nil ? "\(chat.messagePrefix!)\n\n" : "") + messageContent))
-                    }
-
+                    submit()
                 } label: {
                     if chat.receiving {
-                        ProgressView()
+                        UniformProgressView()
                             .tint(.accentColor)
-#if os(macOS)
-                            .frame(width: 20, height: 20)
-#endif
                     } else {
                         Image(systemName: "paperplane")
                             .foregroundColor(sendButtonAvailable ? Color.white : Color.primary.opacity(0.2))
                     }
                 }
                 .buttonStyle(.plain)
+                #if os(iOS)
                 .frame(width: 41, height: 41)
+                #else
+                .frame(width: 31, height: 31)
+                #endif
                 .background(sendButtonAvailable ? Color.accentColor : Color.primary.opacity(0.05))
                 .cornerRadius(.infinity)
                 .padding(2)
+#if os(macOS)
+                .padding(.vertical, 5)
+#endif
                 .clipShape(Rectangle())
                 .disabled(!sendButtonAvailable)
             }
+#if os(iOS)
             .padding(10)
+#else
+            .padding(5)
+#endif
             .background(.regularMaterial)
+        }
+    }
+
+    func submit() {
+        guard sendButtonAvailable else { return }
+        Task {
+            let messageContent = text
+            text = ""
+
+            await chattingFeature.sendWithStream(
+                plainMessage: .init(
+                    chat: chat,
+                    role: .user,
+                    content: messageContent,
+                    processedContent: (chat.messagePrefix != nil ? "\(chat.messagePrefix!)\n\n" : "") + messageContent))
         }
     }
 }

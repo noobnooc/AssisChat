@@ -230,7 +230,7 @@ private struct BuyMeCoffee: View {
                         Haptics.veryLight()
                     }
                     .overlay(
-                        RoundedRectangle(cornerRadius: 16)
+                        RoundedRectangle(cornerRadius: 12)
                             .stroke(coffeeToPurchase == product ? Color.accentColor : Color.clear, lineWidth: 1)
                     )
                 }
@@ -248,18 +248,21 @@ private struct BuyMeCoffee: View {
             } label: {
                 HStack {
                     if purchasing {
-                        ProgressView()
+                        UniformProgressView()
                             .padding(.horizontal, 5)
                     }
 
                     Text("Good Luck", comment: "The buying button in pro introduction")
                 }
                 .frame(maxWidth: .infinity)
+#if os(iOS)
                 .padding()
                 .background(Color.accentColor)
                 .cornerRadius(15)
                 .foregroundColor(.white)
+                #endif
             }
+            .buttonStyle(.borderedProminent)
             .disabled(purchasing)
 
             Button("Restore Purchase") {

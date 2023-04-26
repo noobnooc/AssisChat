@@ -98,6 +98,8 @@
 		F5F2947F29C859BC005D63CB /* ProBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2947E29C859BC005D63CB /* ProBadge.swift */; };
 		F5F2948329CB3CEC005D63CB /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = F5F2948229CB3CEC005D63CB /* MarkdownUI */; };
 		F5F2948629CB3D02005D63CB /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = F5F2948529CB3D02005D63CB /* GPT3 Tokenizer */; };
+		F5FFE96F29F64F9000AD4C91 /* UniformProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FFE96E29F64F9000AD4C91 /* UniformProgressView.swift */; };
+		F5FFE97129F658F200AD4C91 /* MacOSSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FFE97029F658F200AD4C91 /* MacOSSettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +214,8 @@
 		F5F2947A29C74400005D63CB /* ProBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProBanner.swift; sourceTree = "<group>"; };
 		F5F2947C29C757C8005D63CB /* ProIntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProIntroductionView.swift; sourceTree = "<group>"; };
 		F5F2947E29C859BC005D63CB /* ProBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProBadge.swift; sourceTree = "<group>"; };
+		F5FFE96E29F64F9000AD4C91 /* UniformProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniformProgressView.swift; sourceTree = "<group>"; };
+		F5FFE97029F658F200AD4C91 /* MacOSSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSSettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -468,6 +472,7 @@
 				F5E47EF729B5B2320083BB31 /* TintSelector.swift */,
 				F5E47EF329B5AC380083BB31 /* SettingsView.swift */,
 				F543A92629C444AC000C61B5 /* AcknowledgmentView.swift */,
+				F5FFE97029F658F200AD4C91 /* MacOSSettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 				F5E47F0129B6178F0083BB31 /* CopyrightView.swift */,
 				F58E53A029DBFC720022E979 /* MessageContent.swift */,
 				F543A92429C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift */,
+				F5FFE96E29F64F9000AD4C91 /* UniformProgressView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -713,6 +719,7 @@
 				F5E47EE229B49D0E0083BB31 /* Haptics.swift in Sources */,
 				F5E47E9929B497A60083BB31 /* AssisChat.xcdatamodeld in Sources */,
 				F5E47ECF29B498290083BB31 /* Color+Extensions.swift in Sources */,
+				F5FFE96F29F64F9000AD4C91 /* UniformProgressView.swift in Sources */,
 				F5E47EEF29B4F5A80083BB31 /* ChatGPTAdapter.swift in Sources */,
 				F5B2554D29B8A56D0008DAA3 /* SelectChatHintView.swift in Sources */,
 				F5E47EE929B4E9090083BB31 /* ChattingView.swift in Sources */,
@@ -739,6 +746,7 @@
 				F5E47EDF29B49CCA0083BB31 /* ColorSelector.swift in Sources */,
 				F58E539B29DBF7380022E979 /* AppGroup.swift in Sources */,
 				F55B65B229ED0D4900F93F6D /* ClaudeAdapter.swift in Sources */,
+				F5FFE97129F658F200AD4C91 /* MacOSSettingsView.swift in Sources */,
 				F55B65B629EFD33A00F93F6D /* Clipboard.swift in Sources */,
 				F58E53AA29DC155B0022E979 /* ChatPreset.swift in Sources */,
 				F5E47F0B29B7002D0083BB31 /* ChatDetailView.swift in Sources */,

@@ -224,11 +224,11 @@ extension SettingsFeature {
         case normal = "normal"
         case small = "small"
 
-        var size: Int {
+        var em: CGFloat {
             switch self {
-            case .large: return 20
-            case .normal: return 17
-            case .small: return 14
+            case .large: return 1.2
+            case .normal: return 1
+            case .small: return 0.8
             }
         }
 

@@ -20,14 +20,14 @@ struct ContentView: View {
             SelectChatHintView()
         }
 #else
-        NavigationSplitView(sidebar: {
+        NavigationSplitView(columnVisibility: .constant(.all)) {
             ChatsView()
                 .frame(width: 280)
                 .navigationTitle("AssisChat")
                 .navigationSplitViewColumnWidth(280)
-        }, detail: {
+        } detail: {
             SelectChatHintView()
-        })
+        }
 #endif
     }
 }

@@ -27,6 +27,7 @@ struct CustomNewChatView: View {
 
     var body: some View {
         ChatEditor(model: model) {
+            #if os(iOS)
             Section {
                 Button {
                     create()
@@ -42,10 +43,6 @@ struct CustomNewChatView: View {
                 }
                 .disabled(!model.available)
                 .listRowInsets(EdgeInsets())
-                #if os(macOS)
-                .buttonStyle(.plain)
-                .cornerRadius(15)
-                #endif
             }
 
             Section {
@@ -58,6 +55,7 @@ struct CustomNewChatView: View {
                 }
                 .listRowInsets(EdgeInsets())
             }
+            #endif
         }
         .toolbar {
             #if os(iOS)

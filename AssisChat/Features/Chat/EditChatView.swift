@@ -22,6 +22,7 @@ struct EditChatView: View {
 
     var body: some View {
         ChatEditor(model: model) {
+            #if os(iOS)
             Section {
                 Button {
                     update()
@@ -37,10 +38,6 @@ struct EditChatView: View {
                 }
                 .disabled(!model.available)
                 .listRowInsets(EdgeInsets())
-#if os(macOS)
-                .buttonStyle(.plain)
-                .cornerRadius(15)
-#endif
             }
 
             Section {
@@ -53,6 +50,7 @@ struct EditChatView: View {
                 }
                 .listRowInsets(EdgeInsets())
             }
+            #endif
         }
         .toolbar {
 #if os(iOS)
