@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "codescanner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/twostraws/CodeScanner.git",
+      "state" : {
+        "revision" : "d8f10d992ef32a4187b78a6df320facf75d631d8",
+        "version" : "2.3.1"
+      }
+    },
+    {
       "identity" : "gpt3-tokenizer",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/aespinilla/GPT3-Tokenizer.git",
