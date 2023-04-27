@@ -5,6 +5,7 @@
 //  Created by Nooc on 2023-04-27.
 //
 
+#if os(iOS)
 import SwiftUI
 import CodeScanner
 
@@ -31,3 +32,4 @@ struct QRCodeScannerButton_Previews: PreviewProvider {
         QRCodeScannerButton()
     }
 }
+#endif

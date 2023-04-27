@@ -102,7 +102,7 @@
 		F5FFE97129F658F200AD4C91 /* MacOSSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FFE97029F658F200AD4C91 /* MacOSSettingsView.swift */; };
 		F5FFE97829FA577500AD4C91 /* QRCodeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FFE97729FA577500AD4C91 /* QRCodeFeature.swift */; };
 		F5FFE97A29FA57AD00AD4C91 /* QRCodeScannerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FFE97929FA57AD00AD4C91 /* QRCodeScannerButton.swift */; };
-		F5FFE97D29FA601300AD4C91 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = F5FFE97C29FA601300AD4C91 /* CodeScanner */; };
+		F5FFE97D29FA601300AD4C91 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = F5FFE97C29FA601300AD4C91 /* CodeScanner */; };
 		F5FFE97F29FA6C6200AD4C91 /* QRCodeScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FFE97E29FA6C6200AD4C91 /* QRCodeScanningView.swift */; };
 /* End PBXBuildFile section */
 

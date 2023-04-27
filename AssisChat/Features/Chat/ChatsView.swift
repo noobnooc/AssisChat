@@ -11,9 +11,11 @@ struct ChatsView: View {
     var body: some View {
         ChatList()
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarLeading) {
                     QRCodeScannerButton()
                 }
+                #endif
 
                 ToolbarItem {
                     #if os(iOS)
