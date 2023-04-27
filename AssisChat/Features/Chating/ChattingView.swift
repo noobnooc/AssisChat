@@ -181,13 +181,13 @@ private struct AssistantMessage: View {
                 .padding(.vertical, 8)
                 .padding(.horizontal, 15)
                 .foregroundColor(message.failed ? Color.white : Color.primary)
-                #if os(iOS)
+#if os(iOS)
                 .background(message.failed ? Color.appRed : Color.secondaryBackground)
                 .cornerRadius(15, corners: [.bottomRight, .topRight, .topLeft])
-                #else
+#else
                 .background(message.failed ? Color.appRed : Color.primary.opacity(0.1))
                 .cornerRadius(10)
-                #endif
+#endif
                 .onTapGesture {
                     toggleActive()
                 }
@@ -386,11 +386,11 @@ private struct MessageInput: View {
                     }
                 }
                 .buttonStyle(.plain)
-                #if os(iOS)
+#if os(iOS)
                 .frame(width: 41, height: 41)
-                #else
+#else
                 .frame(width: 31, height: 31)
-                #endif
+#endif
                 .background(sendButtonAvailable ? Color.accentColor : Color.primary.opacity(0.05))
                 .cornerRadius(.infinity)
                 .padding(2)

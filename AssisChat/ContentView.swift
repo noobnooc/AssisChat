@@ -9,8 +9,6 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @EnvironmentObject private var settingsFeature: SettingsFeature
-
     var body: some View {
 #if os(iOS)
         NavigationView {
@@ -20,13 +18,14 @@ struct ContentView: View {
             SelectChatHintView()
         }
 #else
-        NavigationSplitView(columnVisibility: .constant(.all)) {
+        NavigationSplitView {
             ChatsView()
                 .frame(width: 280)
                 .navigationTitle("AssisChat")
                 .navigationSplitViewColumnWidth(280)
         } detail: {
             SelectChatHintView()
+                .frame(minWidth: 600, minHeight: 500)
         }
 #endif
     }

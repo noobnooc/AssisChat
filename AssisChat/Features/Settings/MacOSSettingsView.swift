@@ -9,7 +9,9 @@ import SwiftUI
 
 struct MacOSSettingsView: View {
     @Environment(\.openURL) private var openURL
-    
+
+    @EnvironmentObject private var settingsFeature: SettingsFeature
+
 #if os(macOS)
     static func open() {
         if #available(macOS 13, *) {
@@ -19,9 +21,35 @@ struct MacOSSettingsView: View {
         }
     }
 #endif
-    
+
     var body: some View {
         TabView {
+            VStack(alignment: .leading) {
+                Toggle(isOn: $settingsFeature.iCloudSync) {
+                    Label {
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text("iCloud Sync", comment: "iCloud Sync toggle label in settings")
+                                .foregroundColor(.primary)
+
+                            Text("Switching iCloud sync will take effect after restarting the app.")
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
+                                .padding(.top, 5)
+                        }
+                        ProBadge()
+                    } icon: {
+                        Image(systemName: "icloud")
+                            .foregroundColor(.appBlue)
+                    }
+                }
+                .padding()
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .tabItem {
+                Label("General", systemImage: "gearshape")
+            }
+
             VStack {
                 ChatSourceConfigView(successAlert: true, backWhenConfigured: false, onConfigured: nil)
                 Spacer()
@@ -29,7 +57,7 @@ struct MacOSSettingsView: View {
             .tabItem {
                 Label("Chat Source", systemImage: "bubble.left")
             }
-            
+
             VStack {
                 Form {
                     SettingsThemeContent()
@@ -41,24 +69,31 @@ struct MacOSSettingsView: View {
             .tabItem {
                 Label("Appearance", systemImage: "paintpalette")
             }
-            
+
+
             VStack {
-                ProBanner()
-                    .frame(height: 100)
-                    .padding()
-                
-                Spacer()
+                ScrollView {
+                    ProBanner()
+                        .frame(height: 100)
+                        .padding()
+
+                    VStack {
+                        ProFeatureList()
+                    }
+
+                    Spacer()
+                }
             }
             .tabItem {
                 Label("Coffee Plan", systemImage: "cup.and.saucer")
             }
-            
+
             VStack {
                 VStack {
                     SettingsAboutContent()
                 }
                 .padding()
-                
+
                 Spacer()
             }
             .tabItem {

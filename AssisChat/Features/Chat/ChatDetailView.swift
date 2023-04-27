@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ChatDetailView: View {
+    @Environment(\.dismiss) private var dismiss
+
     @EnvironmentObject private var chatFeature: ChatFeature
 
     @ObservedObject var chat: Chat
@@ -114,6 +116,18 @@ struct ChatDetailView: View {
                 .frame(width: 300, height: 500)
 #endif
         }
+#if os(macOS)
+        .toolbar {
+            ToolbarItem(placement: .navigation) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward")
+                }
+
+            }
+        }
+#endif
     }
 }
 

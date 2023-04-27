@@ -62,115 +62,121 @@ struct ProIntroductionView: View {
                     .padding(.top, 30)
             }
 
-            HStack(alignment: .top) {
-                Image(systemName: "heart")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 36, height: 36)
-                    .font(.largeTitle)
-                    .foregroundColor(.appRed)
-
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Support Us")
-                    Text("Your support is our driving force for moving forward.")
-                        .foregroundColor(.secondary)
-                        .font(.subheadline)
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding()
-            .background(Color.secondaryGroupedBackground)
-            .cornerRadius(12)
-            .padding(.horizontal)
-
-            HStack(alignment: .top) {
-                Image(systemName: "square.and.arrow.up")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 36, height: 36)
-                    .font(.largeTitle)
-                    .foregroundColor(.yellow)
-
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Share Extension", comment: "Share Extension feature title in pro introduction.")
-                    Text("Process text from other apps with Share Extension.", comment: "Share Extension feature summary in pro introduction.")
-                        .foregroundColor(.secondary)
-                        .font(.subheadline)
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding()
-            .background(Color.secondaryGroupedBackground)
-            .cornerRadius(12)
-            .padding(.horizontal)
-
-            HStack(alignment: .top) {
-                Image(systemName: "icloud")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 36, height: 36)
-                    .font(.largeTitle)
-                    .foregroundColor(.appBlue)
-
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("iCloud Sync")
-                    Text("Sync chats and messages across devices using iCloud.")
-                        .foregroundColor(.secondary)
-                        .font(.subheadline)
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding()
-            .background(Color.secondaryGroupedBackground)
-            .cornerRadius(12)
-            .padding(.horizontal)
-
-            HStack(alignment: .top) {
-                Image(systemName: "lock.open")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 36, height: 36)
-                    .font(.largeTitle)
-                    .foregroundColor(.appGreen)
-
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Unlock All Features")
-                    Text("Unlock all the local features of the app.")
-                        .foregroundColor(.secondary)
-                        .font(.subheadline)
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding()
-            .background(Color.secondaryGroupedBackground)
-            .cornerRadius(12)
-            .padding(.horizontal)
-
-            HStack(alignment: .top) {
-                Image(systemName: "lock.slash")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 36, height: 36)
-                    .font(.largeTitle)
-                    .foregroundColor(.appRed)
-
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("NOT Include Services")
-                    Text("The Coffee Plan does NOT include OpenAI API services and any online services that AssisChat may offer in the future.")
-                        .foregroundColor(.secondary)
-                        .font(.subheadline)
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding()
-            .background(Color.secondaryGroupedBackground)
-            .cornerRadius(12)
-            .padding(.horizontal)
+            ProFeatureList()
 
             CopyrightView()
                 .padding(.vertical)
         }
         .background(Color.groupedBackground)
+    }
+}
+
+struct ProFeatureList: View {
+    var body: some View {
+        HStack(alignment: .top) {
+            Image(systemName: "heart")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 36, height: 36)
+                .font(.largeTitle)
+                .foregroundColor(.appRed)
+
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Support Us")
+                Text("Your support is our driving force for moving forward.")
+                    .foregroundColor(.secondary)
+                    .font(.subheadline)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(Color.secondaryGroupedBackground)
+        .cornerRadius(12)
+        .padding(.horizontal)
+
+        HStack(alignment: .top) {
+            Image(systemName: "square.and.arrow.up")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 36, height: 36)
+                .font(.largeTitle)
+                .foregroundColor(.yellow)
+
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Share Extension", comment: "Share Extension feature title in pro introduction.")
+                Text("Process text from other apps with Share Extension.", comment: "Share Extension feature summary in pro introduction.")
+                    .foregroundColor(.secondary)
+                    .font(.subheadline)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(Color.secondaryGroupedBackground)
+        .cornerRadius(12)
+        .padding(.horizontal)
+
+        HStack(alignment: .top) {
+            Image(systemName: "icloud")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 36, height: 36)
+                .font(.largeTitle)
+                .foregroundColor(.appBlue)
+
+            VStack(alignment: .leading, spacing: 5) {
+                Text("iCloud Sync")
+                Text("Sync chats and messages across devices using iCloud.")
+                    .foregroundColor(.secondary)
+                    .font(.subheadline)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(Color.secondaryGroupedBackground)
+        .cornerRadius(12)
+        .padding(.horizontal)
+
+        HStack(alignment: .top) {
+            Image(systemName: "lock.open")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 36, height: 36)
+                .font(.largeTitle)
+                .foregroundColor(.appGreen)
+
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Unlock All Features")
+                Text("Unlock all the local features of the app.")
+                    .foregroundColor(.secondary)
+                    .font(.subheadline)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(Color.secondaryGroupedBackground)
+        .cornerRadius(12)
+        .padding(.horizontal)
+
+        HStack(alignment: .top) {
+            Image(systemName: "lock.slash")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 36, height: 36)
+                .font(.largeTitle)
+                .foregroundColor(.appRed)
+
+            VStack(alignment: .leading, spacing: 5) {
+                Text("NOT Include Services")
+                Text("The Coffee Plan does NOT include OpenAI API services and any online services that AssisChat may offer in the future.")
+                    .foregroundColor(.secondary)
+                    .font(.subheadline)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(Color.secondaryGroupedBackground)
+        .cornerRadius(12)
+        .padding(.horizontal)
     }
 }
 
@@ -209,13 +215,23 @@ private struct BuyMeCoffee: View {
         VStack {
             LazyVGrid(columns: gridColumns) {
                 ForEach(proFeature.priceOrderedProducts) { product in
-                    VStack {
+                    VStack(spacing: 0) {
                         Text(product.displayName)
                             .font(.footnote)
                             .lineLimit(2)
                             .foregroundColor(product == coffeeToPurchase ? .primary : .secondary)
-                        Spacer()
-                            .frame(minHeight: 10)
+                        if proFeature.limitedTimeCoffeeIds.contains(product.id) {
+                            Text("Limited-time", comment: "The limited-time label text for coffee products")
+                                .padding(2)
+                                .background(Color.appRed)
+                                .colorScheme(.dark)
+                                .cornerRadius(2)
+                                .font(.footnote)
+                            Spacer()
+                        } else {
+                            Spacer()
+                                .frame(minHeight: 10)
+                        }
                         Text(product.displayPrice)
                             .bold()
                             .foregroundColor(product == coffeeToPurchase ? .accentColor : .primary)
@@ -260,7 +276,7 @@ private struct BuyMeCoffee: View {
                 .background(Color.accentColor)
                 .cornerRadius(15)
                 .foregroundColor(.white)
-                #endif
+#endif
             }
             .buttonStyle(.borderedProminent)
             .disabled(purchasing)

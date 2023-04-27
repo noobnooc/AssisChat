@@ -8,6 +8,12 @@
 import Foundation
 import SwiftUI
 
+#if os(macOS)
+import AppKit
+#else
+import UIKit
+#endif
+
 class SettingsFeature: ObservableObject {
     @AppStorage(SharedUserDefaults.colorScheme, store: SharedUserDefaults.shared) var selectedColorScheme: ColorScheme = .automatic
     @AppStorage(SharedUserDefaults.tint, store: SharedUserDefaults.shared) private(set) var selectedTint: Tint?
@@ -224,12 +230,20 @@ extension SettingsFeature {
         case normal = "normal"
         case small = "small"
 
-        var em: CGFloat {
+        var value: CGFloat {
+            #if os(macOS)
             switch self {
-            case .large: return 1.2
-            case .normal: return 1
-            case .small: return 0.8
+            case .large: return NSFont.systemFontSize + 2
+            case .normal: return NSFont.systemFontSize
+            case .small: return NSFont.systemFontSize - 2
             }
+            #else
+            switch self {
+            case .large: return UIFont.preferredFont(forTextStyle: .body).pointSize + 2
+            case .normal: return UIFont.preferredFont(forTextStyle: .body).pointSize
+            case .small: return UIFont.preferredFont(forTextStyle: .body).pointSize - 2
+            }
+            #endif
         }
 
         var localizedLabel: String {

@@ -16,6 +16,10 @@ class ProFeature: ObservableObject {
         "assischat_coffee_large"
     ]
 
+    let limitedTimeCoffeeIds: Set<String> = [
+        "assischat_coffee_small"
+    ]
+
     @Published private(set) var coffeeProducts: [Product] = []
     @Published private(set) var purchasedCoffeeProducts: [Product] = [] {
         didSet {

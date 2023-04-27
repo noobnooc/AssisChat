@@ -44,9 +44,9 @@ struct AssisChatApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-            #if os(macOS)
-                .frame(minWidth: 800, minHeight: 500)
-            #endif
+//            #if os(macOS)
+//                .frame(minWidth: 800, minHeight: 500)
+//            #endif
 
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
 

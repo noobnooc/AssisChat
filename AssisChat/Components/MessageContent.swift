@@ -19,7 +19,7 @@ struct MessageContent: View {
     var body: some View {
         Markdown(content.trimmingCharacters(in: .whitespacesAndNewlines))
             .markdownTextStyle(textStyle: {
-                FontSize(.em(settingsFeature.selectedFontSize.em))
+                FontSize(settingsFeature.selectedFontSize.value)
             })
             .markdownTextStyle(\.link, textStyle: {
                 UnderlineStyle(.single)
@@ -38,11 +38,10 @@ struct MessageContent: View {
                 #if os(iOS)
                 .background(Color.tertiaryBackground)
                 #else
-                .background(Color.secondaryBackground)
+                .background(Color.background.opacity(0.4))
                 #endif
                 .cornerRadius(8)
                 .padding(.bottom)
-                .textSelection(.enabled)
                 .overlay(alignment: .topTrailing) {
                     Button {
                         Clipboard.copyToClipboard(text: configuration.content)
@@ -55,6 +54,7 @@ struct MessageContent: View {
             .markdownCodeSyntaxHighlighter(
                 .splash(theme: colorScheme == .dark ? .wwdc17(withFont: .init(size: 16)) : .sunset(withFont: .init(size: 16)))
             )
+            .textSelection(.enabled)
     }
 }
 struct MessageContent_Previews: PreviewProvider {
