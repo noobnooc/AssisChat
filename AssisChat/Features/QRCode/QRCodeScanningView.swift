@@ -5,9 +5,10 @@
 //  Created by Nooc on 2023-04-27.
 //
 
-#if os(iOS)
 import SwiftUI
+#if os(iOS)
 import CodeScanner
+#endif
 
 struct QRCodeScanningView: View {
     @EnvironmentObject private var qrCodeFeature: QRCodeFeature
@@ -41,15 +42,19 @@ struct QRCodeScanningView: View {
                 let edgeLength = min(maxHeight, maxWidth)
 
                 VStack {
-                    CodeScannerView(codeTypes: [.qr], scanMode: .once, manualSelect: true, showViewfinder: true) { response in
-                        switch response {
-                        case .success(let result):
-                            Task {
-                                await handContent(content: result.string)
+                    ZStack {
+#if os(iOS)
+                        CodeScannerView(codeTypes: [.qr], scanMode: .once, manualSelect: true, showViewfinder: true) { response in
+                            switch response {
+                            case .success(let result):
+                                Task {
+                                    await handContent(content: result.string)
+                                }
+                            case .failure(let error):
+                                print("####### \(error.localizedDescription)")
                             }
-                        case .failure(let error):
-                            print("####### \(error.localizedDescription)")
                         }
+#endif
                     }
                     .frame(width: edgeLength, height: edgeLength)
                     .cornerRadius(25)
@@ -135,4 +140,3 @@ struct QRCodeScanningView_Previews: PreviewProvider {
         QRCodeScanningView()
     }
 }
-#endif

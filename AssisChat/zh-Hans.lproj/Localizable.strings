@@ -1,8 +1,14 @@
+/* No comment provided by engineer. */
+"About" = "关于";
+
 /* The message prefix of the Programer Helper chat template */
 "Analyzes and optimizes the following code: " = "分析并优化以下代码：";
 
 /* App slogan */
 "APP_SLOGAN" = "一个聊天助理";
+
+/* No comment provided by engineer. */
+"Appearance" = "外观";
 
 /* The authentication error of message failed reason */
 "Authentication Failed" = "认证失败";
@@ -15,6 +21,9 @@
 
 /* Cancel */
 "CANCEL" = "取消";
+
+/* No comment provided by engineer. */
+"Chat Source" = "会话源";
 
 /* Chat actions */
 "CHAT_ACTIONS" = "操作";
@@ -116,7 +125,10 @@
 "Claude API domain (optional)" = "Claude 自定义域名（可选）";
 
 /* No comment provided by engineer. */
-"Claude API Key" = "";
+"Coffee Plan" = "咖啡计划";
+
+/* Config success with QRCode */
+"Config success" = "配置成功";
 
 /* No comment provided by engineer. */
 "Config the API Key for ChatGPT or Claude." = "配置 ChatGPT 或 Claude 的 API Key";
@@ -139,8 +151,14 @@
 /* Error */
 "ERROR" = "错误";
 
+/* Failed to config with QRCode */
+"Failed to config" = "配置失败";
+
 /* No comment provided by engineer. */
 "Failed to validate the API Key." = "API Key 验证失败";
+
+/* No comment provided by engineer. */
+"General" = "通用";
 
 /* No comment provided by engineer. */
 "Go to set chat source" = "去设置会话源";
@@ -164,6 +182,15 @@
 "iCloud Sync" = "iCloud 同步";
 
 /* No comment provided by engineer. */
+"Import chat prompts" = "导入会话配置";
+
+/* No comment provided by engineer. */
+"Import configuration" = "导入配置";
+
+/* QRCode params are invalid */
+"Invalid params" = "参数不可用";
+
+/* No comment provided by engineer. */
 "Invalid URL" = "不可用的 URL";
 
 /* The name of the Just Chatting chat template */
@@ -180,6 +207,9 @@
 
 /* No comment provided by engineer. */
 "Learn More" = "了解更多";
+
+/* The limited-time label text for coffee products */
+"Limited-time" = "限时";
 
 /* The label of the setting of message font size */
 "Message Font Size" = "消息字体大小";
@@ -222,6 +252,9 @@
 
 /* The name of the Virtual Boyfriend chat template */
 "Samuel" = "大壮";
+
+/* No comment provided by engineer. */
+"Select a preset or custom a chat" = "选择一个预设或者自定义会话";
 
 /* No comment provided by engineer. */
 "Send message directly" = "从对话界面发送消息";
@@ -304,9 +337,6 @@
 /* Share Extension feature title in pro introduction. */
 "Share Extension" = "分享扩展";
 
-/* No comment provided by engineer. */
-"Share text from other apps" = "从其他应用分享文本";
-
 /* The small size label of font size setting */
 "Small" = "小";
 
@@ -343,6 +373,9 @@
 /* No comment provided by engineer. */
 "Unauthenticated request" = "身份验证失败";
 
+/* Unidentified QRCode hint */
+"Unidentified QRCode" = "未识别的二维码";
+
 /* The unknown client error of message failed reason */
 "Unknown Client Error" = "未知客户端错误";
 
@@ -360,6 +393,9 @@
 
 /* No comment provided by engineer. */
 "Unpin Chat" = "取消置顶会话";
+
+/* Unrecognized QRCode hint */
+"Unrecognized QRCode" = "当前应用版本不支持该二维码";
 
 /* No comment provided by engineer. */
 "Use proxy domain. We recommend leaving it blank to use the default value. Please use a domain that you completely trust, otherwise your API key will be leaked." = "使用代理域名。我们推荐留空以使用默认值。请使用完全信任的域名，否则你的 API Key 和使用数据将会泄露。";

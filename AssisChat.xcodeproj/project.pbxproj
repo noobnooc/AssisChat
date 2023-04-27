@@ -104,6 +104,7 @@
 		F5FFE97A29FA57AD00AD4C91 /* QRCodeScannerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FFE97929FA57AD00AD4C91 /* QRCodeScannerButton.swift */; };
 		F5FFE97D29FA601300AD4C91 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = F5FFE97C29FA601300AD4C91 /* CodeScanner */; };
 		F5FFE97F29FA6C6200AD4C91 /* QRCodeScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FFE97E29FA6C6200AD4C91 /* QRCodeScanningView.swift */; };
+		F5FFE98229FAAD9400AD4C91 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5FFE98029FAAD9400AD4C91 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,6 +224,8 @@
 		F5FFE97729FA577500AD4C91 /* QRCodeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeFeature.swift; sourceTree = "<group>"; };
 		F5FFE97929FA57AD00AD4C91 /* QRCodeScannerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerButton.swift; sourceTree = "<group>"; };
 		F5FFE97E29FA6C6200AD4C91 /* QRCodeScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanningView.swift; sourceTree = "<group>"; };
+		F5FFE98129FAAD9400AD4C91 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F5FFE98329FAAF3F00AD4C91 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,6 +344,7 @@
 				F5E47E9E29B497A60083BB31 /* AssisChat.entitlements */,
 				F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */,
 				F58E53B229DD6A670022E979 /* Products.storekit */,
+				F5FFE98029FAAD9400AD4C91 /* InfoPlist.strings */,
 				F5E47F2129B7562B0083BB31 /* Localizable.strings */,
 				F5E47E9F29B497A60083BB31 /* Preview Content */,
 			);
@@ -669,6 +673,7 @@
 				F5E47F1F29B7562B0083BB31 /* Localizable.strings in Resources */,
 				F5E47EFC29B5D2870083BB31 /* .gitignore in Resources */,
 				F5E47E9D29B497A60083BB31 /* Assets.xcassets in Resources */,
+				F5FFE98229FAAD9400AD4C91 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -837,6 +842,15 @@
 				F5E47F2329B756310083BB31 /* zh-Hant */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		F5FFE98029FAAD9400AD4C91 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5FFE98129FAAD9400AD4C91 /* zh-Hans */,
+				F5FFE98329FAAF3F00AD4C91 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
