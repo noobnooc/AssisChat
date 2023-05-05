@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F53D790C2A00B5CB00CBFAD1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F53D790B2A00B5CB00CBFAD1 /* CloudKit.framework */; };
+		F53D790F2A03FA8200CBFAD1 /* LottieSwiftUI in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = F53D790E2A03FA8200CBFAD1 /* LottieSwiftUI */; };
 		F543A92529C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92429C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift */; };
 		F543A92729C444AC000C61B5 /* AcknowledgmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92629C444AC000C61B5 /* AcknowledgmentView.swift */; };
 		F543A92929C46BE8000C61B5 /* SymbolVariantSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92829C46BE8000C61B5 /* SymbolVariantSelector.swift */; };
@@ -146,6 +148,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F53D790B2A00B5CB00CBFAD1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		F543A92429C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCodeSyntaxHighlighter.swift; sourceTree = "<group>"; };
 		F543A92629C444AC000C61B5 /* AcknowledgmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgmentView.swift; sourceTree = "<group>"; };
 		F543A92829C46BE8000C61B5 /* SymbolVariantSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolVariantSelector.swift; sourceTree = "<group>"; };
@@ -244,6 +247,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F53D790C2A00B5CB00CBFAD1 /* CloudKit.framework in Frameworks */,
+				F53D790F2A03FA8200CBFAD1 /* LottieSwiftUI in Frameworks */,
 				F5F2948329CB3CEC005D63CB /* MarkdownUI in Frameworks */,
 				F5E47F1C29B721AA0083BB31 /* LDSwiftEventSource in Frameworks */,
 				F5FFE97D29FA601300AD4C91 /* CodeScanner in Frameworks */,
@@ -296,6 +301,7 @@
 		F567A34329D6CF5F00057582 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F53D790B2A00B5CB00CBFAD1 /* CloudKit.framework */,
 				F58E53B029DD66CC0022E979 /* StoreKit.framework */,
 			);
 			name = Frameworks;
@@ -558,6 +564,7 @@
 				F5F2948229CB3CEC005D63CB /* MarkdownUI */,
 				F5F2948529CB3D02005D63CB /* GPT3 Tokenizer */,
 				F5FFE97C29FA601300AD4C91 /* CodeScanner */,
+				F53D790E2A03FA8200CBFAD1 /* LottieSwiftUI */,
 			);
 			productName = AssisChat;
 			productReference = F5E47E9029B497A60083BB31 /* AssisChat.app */;
@@ -642,6 +649,7 @@
 				F5F2948129CB3CEC005D63CB /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				F5F2948429CB3D02005D63CB /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */,
 				F5FFE97B29FA601300AD4C91 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				F53D790D2A03FA8200CBFAD1 /* XCRemoteSwiftPackageReference "Lottie-SwiftUI" */,
 			);
 			productRefGroup = F5E47E9129B497A60083BB31 /* Products */;
 			projectDirPath = "";
@@ -873,7 +881,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobnooc.AssisChat.Share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -901,7 +909,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobnooc.AssisChat.Share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1060,7 +1068,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobnooc.AssisChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -1105,7 +1113,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobnooc.AssisChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -1263,6 +1271,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F53D790D2A03FA8200CBFAD1 /* XCRemoteSwiftPackageReference "Lottie-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LukasHromadnik/Lottie-SwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		F5779EE329B8246800CC70B0 /* XCRemoteSwiftPackageReference "Splash" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JohnSundell/Splash";
@@ -1306,6 +1322,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F53D790E2A03FA8200CBFAD1 /* LottieSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F53D790D2A03FA8200CBFAD1 /* XCRemoteSwiftPackageReference "Lottie-SwiftUI" */;
+			productName = LottieSwiftUI;
+		};
 		F567A34429D6CF5F00057582 /* GPT3 Tokenizer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F5F2948429CB3D02005D63CB /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */;

@@ -9,63 +9,77 @@ import SwiftUI
 import StoreKit
 
 struct ProIntroductionView: View {
+    @Environment(\.dismiss) private var dismiss
+
     @EnvironmentObject private var proFeature: ProFeature
 
     var body: some View {
-        ScrollView {
-            VStack {
-                Image("Icon")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 80, height: 80)
-                    .cornerRadius(20)
-                HStack {
-                    Image(systemName: "laurel.leading")
-                    if proFeature.pro {
-                        Text("Hey, Friend", comment: "The coffee plan summary")
-                    } else {
-                        Text("You are trying the Coffee plan", comment: "The free trying plan summary")
+        ZStack(alignment: .topTrailing) {
+            ScrollView {
+                VStack {
+                    Image("Icon")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80, height: 80)
+                        .cornerRadius(20)
+                    HStack {
+                        Image(systemName: "laurel.leading")
+                        if proFeature.pro {
+                            Text("Hey, Friend", comment: "The coffee plan summary")
+                        } else {
+                            Text("You are trying the Coffee plan", comment: "The free trying plan summary")
+                        }
+                        Image(systemName: "laurel.trailing")
                     }
-                    Image(systemName: "laurel.trailing")
+                    .font(proFeature.pro ? .title2 : .headline)
+                    .foregroundColor(proFeature.pro ? .accentColor : .primary)
+                    .padding(.top)
                 }
-                .font(proFeature.pro ? .title2 : .headline)
-                .foregroundColor(proFeature.pro ? .accentColor : .primary)
-                .padding(.top)
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 50)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 50)
 
-            if !proFeature.pro {
-                if proFeature.isRunningInTestFlight {
-                    TestFlightPrompt()
-                        .padding()
+                if !proFeature.pro {
+                    if proFeature.isRunningInTestFlight {
+                        TestFlightPrompt()
+                            .padding()
+                    } else {
+                        BuyMeCoffee()
+                            .padding()
+                    }
+                }
+
+                if proFeature.pro {
+                    Text("You are in")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+                        .padding(.horizontal)
+                        .foregroundColor(.secondary)
+                        .font(.subheadline)
                 } else {
-                    BuyMeCoffee()
-                        .padding()
+                    Text("Buy me any size of coffee, you will")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+                        .padding(.horizontal)
+                        .foregroundColor(.secondary)
+                        .font(.subheadline)
+                        .padding(.top, 30)
                 }
+
+                ProFeatureList()
+
+                CopyrightView()
+                    .padding(.vertical)
             }
 
-            if proFeature.pro {
-                Text("You are in")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal)
-                    .padding(.horizontal)
-                    .foregroundColor(.secondary)
-                    .font(.subheadline)
-            } else {
-                Text("Buy me any size of coffee, you will")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal)
-                    .padding(.horizontal)
-                    .foregroundColor(.secondary)
-                    .font(.subheadline)
-                    .padding(.top, 30)
+            #if os(macOS)
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "multiply")
             }
-
-            ProFeatureList()
-
-            CopyrightView()
-                .padding(.vertical)
+            .buttonBorderShape(.roundedRectangle)
+            .padding()
+            #endif
         }
         .background(Color.groupedBackground)
     }

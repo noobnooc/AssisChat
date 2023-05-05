@@ -7,13 +7,31 @@
 
 import SwiftUI
 
+#if os(iOS)
+import LottieSwiftUI
+#endif
+
 struct ChatsView: View {
+    @State private var logoPlaying = false
+
     var body: some View {
         ChatList()
             .toolbar {
                 #if os(iOS)
                 ToolbarItem(placement: .navigationBarLeading) {
                     QRCodeScannerButton()
+                }
+
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        LottieView(name: "logo-lottie", play: $logoPlaying)
+                            .lottieLoopMode(.playOnce)
+                            .frame(width: 20, height: 20)
+                        Text("AssisChat")
+                    }
+                    .onTapGesture {
+                        logoPlaying = true
+                    }
                 }
                 #endif
 
@@ -33,6 +51,9 @@ struct ChatsView: View {
                     }
                     #endif
                 }
+            }
+            .onAppear {
+                logoPlaying = true
             }
     }
 }
