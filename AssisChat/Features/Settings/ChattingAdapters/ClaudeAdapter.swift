@@ -80,14 +80,19 @@ extension ClaudeAdapter: ChattingAdapter {
         do {
             let result = try await request(prompt: "\n\nHuman: Hello\n\nAssistant: ", model: Chat.ClaudeModel.default, temperature: 1)
 
+            print("#### \(result)")
+
             if result.isEmpty {
                 throw ChattingError.validating(message: "Unknown error")
             }
         } catch ChattingError.sending(message: let message) {
+            print("#### \(message)")
             throw ChattingError.validating(message: message)
         } catch GeneralError.badURL {
+            print("#### badURL")
             throw ChattingError.validating(message: "Invalid URL")
         } catch {
+            print("#### \(error)")
             throw error
         }
     }

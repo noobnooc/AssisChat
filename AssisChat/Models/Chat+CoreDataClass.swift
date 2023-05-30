@@ -116,12 +116,16 @@ extension Chat {
 
     enum ClaudeModel: String, CaseIterable {
         case claudeV1 = "claude-v1"
+        case claudeV1_100K = "claude-v1-100k"
         case claudeInstantV1 = "claude-instant-v1"
+        case claudeInstantV1_100K = "claude-instant-v1-100k"
 
         var maxTokens: Int {
             switch self {
-            case .claudeV1: return 4096
-            case .claudeInstantV1: return 4096
+            case .claudeV1: return 9_000
+            case .claudeV1_100K: return 100_000
+            case .claudeInstantV1: return 9_000
+            case .claudeInstantV1_100K: return 100_000
             }
         }
 
