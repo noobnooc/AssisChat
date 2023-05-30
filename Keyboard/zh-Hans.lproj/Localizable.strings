@@ -1,0 +1,45 @@
+/* The authentication error of message failed reason */
+"Authentication Failed" = "身份验证失败";
+
+/* No comment provided by engineer. */
+"ERROR" = "错误";
+
+/* No comment provided by engineer. */
+"Go to Settings" = "进入设置";
+
+/* No comment provided by engineer. */
+"Insert" = "插入";
+
+/* No comment provided by engineer. */
+"Invalid URL" = "不可用的 URL";
+
+/* The network error of message failed reason */
+"Network Error" = "网络错误";
+
+/* Title for 'Next Keyboard' button */
+"Next Keyboard" = "切换键盘";
+
+/* The rate limited error of message failed reason */
+"Rate Limited" = "超出频率限制";
+
+/* No comment provided by engineer. */
+"Replace" = "替换";
+
+/* The server error of message failed reason */
+"Server Error" = "服务器错误";
+
+/* No comment provided by engineer. */
+"The keyboard need **Full Access** to access the internet." = "键盘功能需要 **允许完全访问** 以访问互联网。";
+
+/* No comment provided by engineer. */
+"Unauthenticated request" = "为认证的请求";
+
+/* The unknown client error of message failed reason */
+"Unknown Client Error" = "未知客户端错误";
+
+/* No comment provided by engineer. */
+"Unknown error" = "未知错误";
+
+/* The unknown error of message failed reason */
+"Unknown Error" = "未知错误";
+
