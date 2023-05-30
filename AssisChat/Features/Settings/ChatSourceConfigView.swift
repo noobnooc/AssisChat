@@ -37,7 +37,7 @@ struct ChatSourceConfigView: View {
             .padding(.vertical, 5)
 
             if selectedSource == .chatGPT {
-                OpenAIContent(
+                let view = OpenAIContent(
                     openAIAPIKey: settingsFeature.configuredOpenAIAPIKey ?? "",
                     openAIDomain: settingsFeature.configuredOpenAIDomain ?? "",
                     successAlert: successAlert,
@@ -46,8 +46,14 @@ struct ChatSourceConfigView: View {
                 )
                 .ignoresSafeArea()
                 .tag(Source.chatGPT)
+
+                if #available(iOS 16, macOS 13, *) {
+                    view.scrollDismissesKeyboard(.immediately)
+                } else {
+                    view
+                }
             } else if selectedSource == .claude {
-                AnthropicContent(
+                let view = AnthropicContent(
                     apiKey: settingsFeature.configuredAnthropicAPIKey ?? "",
                     domain: settingsFeature.configuredAnthropicDomain ?? "",
                     successAlert: successAlert,
@@ -56,6 +62,12 @@ struct ChatSourceConfigView: View {
                 )
                 .ignoresSafeArea()
                 .tag(Source.claude)
+
+                if #available(iOS 16, macOS 13, *) {
+                    view.scrollDismissesKeyboard(.immediately)
+                } else {
+                    view
+                }
             }
         }
 #if os(iOS)

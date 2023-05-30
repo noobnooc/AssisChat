@@ -337,6 +337,9 @@
 /* Share Extension feature title in pro introduction. */
 "Share Extension" = "分享擴展";
 
+/* No comment provided by engineer. */
+"Share text from other apps" = "從其他應用分享文本到 AssisChat";
+
 /* The small size label of font size setting */
 "Small" = "小";
 
@@ -345,6 +348,9 @@
 
 /* No comment provided by engineer. */
 "Support Us" = "支持我們";
+
+/* No comment provided by engineer. */
+"Switch to the keyboard when input" = "在輸入文本時切換到 AssisChat 鍵盤";
 
 /* No comment provided by engineer. */
 "Switching iCloud sync will take effect after restarting the app." = "切換 iCloud 同步將在重啓 App 後生效。";

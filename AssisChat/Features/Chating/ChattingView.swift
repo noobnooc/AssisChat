@@ -91,7 +91,6 @@ private struct MessagesEmpty: View {
                     Text("Send message directly")
                 }
 
-#if os(iOS)
                 HStack(alignment: .top) {
                     Image(systemName: "square.and.arrow.up")
                         .resizable()
@@ -100,22 +99,24 @@ private struct MessagesEmpty: View {
 
                     Text("Share text from other apps")
                 }
-#endif
 
-                //              TODO: - Waiting to implement keyboard extension
-                //                HStack(alignment: .top) {
-                //                    Image(systemName: "keyboard")
-                //                        .resizable()
-                //                        .scaledToFit()
-                //                        .frame(width: 20, height: 20)
-                //
-                //                    Text("Switch to the keyboard when input")
-                //                }
+                HStack(alignment: .top) {
+                    Image(systemName: "keyboard")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+
+                    Text("Switch to the keyboard when input")
+                }
             }
             .frame(alignment: .leading)
             .foregroundColor(.secondary)
             .padding()
+            #if os(macOS)
             .background(Color.primary.opacity(0.1))
+            #else
+            .background(Color.secondaryBackground)
+            #endif
             .cornerRadius(15)
             .padding()
         }
