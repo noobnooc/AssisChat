@@ -11,7 +11,7 @@ import CoreData
 
 
 extension Chat {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Chat> {
         return NSFetchRequest<Chat>(entityName: "Chat")
     }

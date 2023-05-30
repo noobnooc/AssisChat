@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		F53D790C2A00B5CB00CBFAD1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F53D790B2A00B5CB00CBFAD1 /* CloudKit.framework */; };
 		F53D790F2A03FA8200CBFAD1 /* LottieSwiftUI in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = F53D790E2A03FA8200CBFAD1 /* LottieSwiftUI */; };
+		F53D79172A062AE500CBFAD1 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53D79162A062AE500CBFAD1 /* KeyboardViewController.swift */; };
+		F53D791B2A062AE500CBFAD1 /* Keyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F53D79142A062AE500CBFAD1 /* Keyboard.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F53D79202A0BCA1F00CBFAD1 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53D791F2A0BCA1F00CBFAD1 /* KeyboardView.swift */; };
 		F543A92529C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92429C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift */; };
 		F543A92729C444AC000C61B5 /* AcknowledgmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92629C444AC000C61B5 /* AcknowledgmentView.swift */; };
 		F543A92929C46BE8000C61B5 /* SymbolVariantSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92829C46BE8000C61B5 /* SymbolVariantSelector.swift */; };
@@ -46,6 +49,33 @@
 		F58E53B129DD66CC0022E979 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58E53B029DD66CC0022E979 /* StoreKit.framework */; };
 		F5B2554D29B8A56D0008DAA3 /* SelectChatHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */; };
 		F5C6094529BA366D00862071 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6094429BA366D00862071 /* NewChatView.swift */; };
+		F5E3D9832A2483140004736E /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3D9822A2483140004736E /* KeyboardViewModel.swift */; };
+		F5E3D9842A2485690004736E /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ECE29B498290083BB31 /* Color+Extensions.swift */; };
+		F5E3D9852A24B2050004736E /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EC629B497FB0083BB31 /* Message+CoreDataClass.swift */; };
+		F5E3D9862A24B2080004736E /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EC729B497FB0083BB31 /* Message+CoreDataProperties.swift */; };
+		F5E3D9872A24B20A0004736E /* Chat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EC829B497FB0083BB31 /* Chat+CoreDataClass.swift */; };
+		F5E3D9882A24B20D0004736E /* Chat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EC929B497FB0083BB31 /* Chat+CoreDataProperties.swift */; };
+		F5E3D9892A24BE130004736E /* ChattingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EE629B4E8FB0083BB31 /* ChattingFeature.swift */; };
+		F5E3D98A2A24BE170004736E /* EssentialFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ED529B498E20083BB31 /* EssentialFeature.swift */; };
+		F5E3D98B2A24BE1C0004736E /* ChatFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ED829B4990A0083BB31 /* ChatFeature.swift */; };
+		F5E3D98C2A24BE200004736E /* MessageFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EEB29B4EA0A0083BB31 /* MessageFeature.swift */; };
+		F5E3D98D2A24BE250004736E /* SettingsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EF129B5A6AB0083BB31 /* SettingsFeature.swift */; };
+		F5E3D98F2A24BE5A0004736E /* SplashCodeSyntaxHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543A92429C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift */; };
+		F5E3D9902A2597400004736E /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EFE29B5D8B80083BB31 /* View+Extensions.swift */; };
+		F5E3D9912A25978F0004736E /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EE129B49D0E0083BB31 /* Haptics.swift */; };
+		F5E3D9922A2597910004736E /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B65B529EFD33A00F93F6D /* Clipboard.swift */; };
+		F5E3D9932A2597A30004736E /* SharedUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E539D29DBF7C50022E979 /* SharedUserDefaults.swift */; };
+		F5E3D9942A2597A60004736E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9529B497A60083BB31 /* Persistence.swift */; };
+		F5E3D9952A2597AC0004736E /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E539A29DBF7380022E979 /* AppGroup.swift */; };
+		F5E3D9972A2597E60004736E /* ChatGPTAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EEE29B4F5A80083BB31 /* ChatGPTAdapter.swift */; };
+		F5E3D9982A2597E90004736E /* ClaudeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B65B129ED0D4900F93F6D /* ClaudeAdapter.swift */; };
+		F5E3D9992A25982C0004736E /* MessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E53A029DBFC720022E979 /* MessageContent.swift */; };
+		F5E3D99B2A2598450004736E /* LDSwiftEventSource in Frameworks */ = {isa = PBXBuildFile; productRef = F5E3D99A2A2598450004736E /* LDSwiftEventSource */; };
+		F5E3D99D2A2598450004736E /* Splash in Frameworks */ = {isa = PBXBuildFile; productRef = F5E3D99C2A2598450004736E /* Splash */; };
+		F5E3D99F2A2598450004736E /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = F5E3D99E2A2598450004736E /* MarkdownUI */; };
+		F5E3D9A12A2598450004736E /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = F5E3D9A02A2598450004736E /* GPT3 Tokenizer */; };
+		F5E3D9A22A25A5170004736E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5E47E9C29B497A60083BB31 /* Assets.xcassets */; };
+		F5E3D9A32A25A51E0004736E /* AssisChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */; };
 		F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9329B497A60083BB31 /* AssisChatApp.swift */; };
 		F5E47E9629B497A60083BB31 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9529B497A60083BB31 /* Persistence.swift */; };
 		F5E47E9929B497A60083BB31 /* AssisChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */; };
@@ -110,6 +140,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F53D79192A062AE500CBFAD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5E47E8829B497A60083BB31 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F53D79132A062AE500CBFAD1;
+			remoteInfo = Keyboard;
+		};
 		F567A31E29D6935D00057582 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F5E47E8829B497A60083BB31 /* Project object */;
@@ -141,6 +178,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				F567A32029D6935D00057582 /* Share.appex in Embed Foundation Extensions */,
+				F53D791B2A062AE500CBFAD1 /* Keyboard.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +187,10 @@
 
 /* Begin PBXFileReference section */
 		F53D790B2A00B5CB00CBFAD1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		F53D79142A062AE500CBFAD1 /* Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F53D79162A062AE500CBFAD1 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		F53D79182A062AE500CBFAD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F53D791F2A0BCA1F00CBFAD1 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		F543A92429C44131000C61B5 /* SplashCodeSyntaxHighlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCodeSyntaxHighlighter.swift; sourceTree = "<group>"; };
 		F543A92629C444AC000C61B5 /* AcknowledgmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgmentView.swift; sourceTree = "<group>"; };
 		F543A92829C46BE8000C61B5 /* SymbolVariantSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolVariantSelector.swift; sourceTree = "<group>"; };
@@ -171,6 +213,8 @@
 		F58E53B229DD6A670022E979 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
 		F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChatHintView.swift; sourceTree = "<group>"; };
 		F5C6094429BA366D00862071 /* NewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatView.swift; sourceTree = "<group>"; };
+		F5E3D9822A2483140004736E /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
+		F5E3D9962A2597C80004736E /* Keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Keyboard.entitlements; sourceTree = "<group>"; };
 		F5E47E9029B497A60083BB31 /* AssisChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssisChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E47E9329B497A60083BB31 /* AssisChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssisChatApp.swift; sourceTree = "<group>"; };
 		F5E47E9529B497A60083BB31 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -232,6 +276,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F53D79112A062AE500CBFAD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5E3D99F2A2598450004736E /* MarkdownUI in Frameworks */,
+				F5E3D99B2A2598450004736E /* LDSwiftEventSource in Frameworks */,
+				F5E3D99D2A2598450004736E /* Splash in Frameworks */,
+				F5E3D9A12A2598450004736E /* GPT3 Tokenizer in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F567A31329D6935D00057582 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -275,6 +330,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F53D79152A062AE500CBFAD1 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				F5E3D9962A2597C80004736E /* Keyboard.entitlements */,
+				F53D79182A062AE500CBFAD1 /* Info.plist */,
+				F53D79162A062AE500CBFAD1 /* KeyboardViewController.swift */,
+				F53D791F2A0BCA1F00CBFAD1 /* KeyboardView.swift */,
+				F5E3D9822A2483140004736E /* KeyboardViewModel.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
 		F543A92B29C5372F000C61B5 /* Pro */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +383,7 @@
 				F5E47EA929B497A60083BB31 /* AssisChatTests */,
 				F5E47EB329B497A60083BB31 /* AssisChatUITests */,
 				F567A31729D6935D00057582 /* Share */,
+				F53D79152A062AE500CBFAD1 /* Keyboard */,
 				F5E47E9129B497A60083BB31 /* Products */,
 				F567A34329D6CF5F00057582 /* Frameworks */,
 			);
@@ -328,6 +396,7 @@
 				F5E47EA629B497A60083BB31 /* AssisChatTests.xctest */,
 				F5E47EB029B497A60083BB31 /* AssisChatUITests.xctest */,
 				F567A31629D6935D00057582 /* Share.appex */,
+				F53D79142A062AE500CBFAD1 /* Keyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -520,6 +589,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F53D79132A062AE500CBFAD1 /* Keyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F53D791C2A062AE500CBFAD1 /* Build configuration list for PBXNativeTarget "Keyboard" */;
+			buildPhases = (
+				F53D79102A062AE500CBFAD1 /* Sources */,
+				F53D79112A062AE500CBFAD1 /* Frameworks */,
+				F53D79122A062AE500CBFAD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Keyboard;
+			packageProductDependencies = (
+				F5E3D99A2A2598450004736E /* LDSwiftEventSource */,
+				F5E3D99C2A2598450004736E /* Splash */,
+				F5E3D99E2A2598450004736E /* MarkdownUI */,
+				F5E3D9A02A2598450004736E /* GPT3 Tokenizer */,
+			);
+			productName = Keyboard;
+			productReference = F53D79142A062AE500CBFAD1 /* Keyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F567A31529D6935D00057582 /* Share */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F567A32429D6935D00057582 /* Build configuration list for PBXNativeTarget "Share" */;
@@ -556,6 +648,7 @@
 			);
 			dependencies = (
 				F567A31F29D6935D00057582 /* PBXTargetDependency */,
+				F53D791A2A062AE500CBFAD1 /* PBXTargetDependency */,
 			);
 			name = AssisChat;
 			packageProductDependencies = (
@@ -613,9 +706,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					F53D79132A062AE500CBFAD1 = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					F567A31529D6935D00057582 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -657,6 +753,7 @@
 			targets = (
 				F5E47E8F29B497A60083BB31 /* AssisChat */,
 				F567A31529D6935D00057582 /* Share */,
+				F53D79132A062AE500CBFAD1 /* Keyboard */,
 				F5E47EA529B497A60083BB31 /* AssisChatTests */,
 				F5E47EAF29B497A60083BB31 /* AssisChatUITests */,
 			);
@@ -664,6 +761,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F53D79122A062AE500CBFAD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5E3D9A22A25A5170004736E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F567A31429D6935D00057582 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -702,6 +807,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F53D79102A062AE500CBFAD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5E3D9922A2597910004736E /* Clipboard.swift in Sources */,
+				F5E3D9A32A25A51E0004736E /* AssisChat.xcdatamodeld in Sources */,
+				F5E3D9932A2597A30004736E /* SharedUserDefaults.swift in Sources */,
+				F53D79172A062AE500CBFAD1 /* KeyboardViewController.swift in Sources */,
+				F53D79202A0BCA1F00CBFAD1 /* KeyboardView.swift in Sources */,
+				F5E3D9912A25978F0004736E /* Haptics.swift in Sources */,
+				F5E3D9862A24B2080004736E /* Message+CoreDataProperties.swift in Sources */,
+				F5E3D9882A24B20D0004736E /* Chat+CoreDataProperties.swift in Sources */,
+				F5E3D9972A2597E60004736E /* ChatGPTAdapter.swift in Sources */,
+				F5E3D98C2A24BE200004736E /* MessageFeature.swift in Sources */,
+				F5E3D98D2A24BE250004736E /* SettingsFeature.swift in Sources */,
+				F5E3D9942A2597A60004736E /* Persistence.swift in Sources */,
+				F5E3D9992A25982C0004736E /* MessageContent.swift in Sources */,
+				F5E3D9952A2597AC0004736E /* AppGroup.swift in Sources */,
+				F5E3D9902A2597400004736E /* View+Extensions.swift in Sources */,
+				F5E3D98B2A24BE1C0004736E /* ChatFeature.swift in Sources */,
+				F5E3D9832A2483140004736E /* KeyboardViewModel.swift in Sources */,
+				F5E3D98A2A24BE170004736E /* EssentialFeature.swift in Sources */,
+				F5E3D9872A24B20A0004736E /* Chat+CoreDataClass.swift in Sources */,
+				F5E3D9842A2485690004736E /* Color+Extensions.swift in Sources */,
+				F5E3D9982A2597E90004736E /* ClaudeAdapter.swift in Sources */,
+				F5E3D9892A24BE130004736E /* ChattingFeature.swift in Sources */,
+				F5E3D98F2A24BE5A0004736E /* SplashCodeSyntaxHighlighter.swift in Sources */,
+				F5E3D9852A24B2050004736E /* Message+CoreDataClass.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F567A31229D6935D00057582 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -813,6 +949,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F53D791A2A062AE500CBFAD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = F53D79132A062AE500CBFAD1 /* Keyboard */;
+			targetProxy = F53D79192A062AE500CBFAD1 /* PBXContainerItemProxy */;
+		};
 		F567A31F29D6935D00057582 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
@@ -864,6 +1006,63 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F53D791D2A062AE500CBFAD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WFH889Q789;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Keyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AssisChat;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noobnooc.AssisChat.Keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F53D791E2A062AE500CBFAD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WFH889Q789;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Keyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AssisChat;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noobnooc.AssisChat.Keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		F567A32229D6935D00057582 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1223,6 +1422,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F53D791C2A062AE500CBFAD1 /* Build configuration list for PBXNativeTarget "Keyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F53D791D2A062AE500CBFAD1 /* Debug */,
+				F53D791E2A062AE500CBFAD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F567A32429D6935D00057582 /* Build configuration list for PBXNativeTarget "Share" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1351,6 +1559,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F5F2948129CB3CEC005D63CB /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
 			productName = MarkdownUI;
+		};
+		F5E3D99A2A2598450004736E /* LDSwiftEventSource */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5E47F1A29B721AA0083BB31 /* XCRemoteSwiftPackageReference "swift-eventsource" */;
+			productName = LDSwiftEventSource;
+		};
+		F5E3D99C2A2598450004736E /* Splash */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5779EE329B8246800CC70B0 /* XCRemoteSwiftPackageReference "Splash" */;
+			productName = Splash;
+		};
+		F5E3D99E2A2598450004736E /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5F2948129CB3CEC005D63CB /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
+		};
+		F5E3D9A02A2598450004736E /* GPT3 Tokenizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5F2948429CB3D02005D63CB /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */;
+			productName = "GPT3 Tokenizer";
 		};
 		F5E47F1B29B721AA0083BB31 /* LDSwiftEventSource */ = {
 			isa = XCSwiftPackageProductDependency;

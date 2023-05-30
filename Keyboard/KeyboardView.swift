@@ -1,64 +1,112 @@
 //
-//  ShareView.swift
-//  Share
+//  KeyboardView.swift
+//  Keyboard
 //
-//  Created by Nooc on 2023-03-31.
+//  Created by Nooc on 2023-05-10.
 //
 
 import SwiftUI
 
-struct ShareView: View {
+struct KeyboardView: View {
+    @Environment(\.openURL) private var openURL
+
     @EnvironmentObject private var messageFeature: MessageFeature
     @EnvironmentObject private var chattingFeature: ChattingFeature
 
-    let sharedText: String
-    let complete: () -> Void
-    let cancel: () -> Void
-
     @State private var receivingMessage: Message?
 
-    var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                Spacer()
+    var viewController: KeyboardViewController
 
-                VStack {
-                    if let receivingMessage = receivingMessage {
-                        ReceivingResult(receivingMessage: receivingMessage) {
-                            complete()
+    @ObservedObject
+    var model: KeyboardViewModel
+
+    var body: some View {
+        if !viewController.hasFullAccess {
+            VStack {
+                Text("The keyboard need **Full Access** to access the internet.")
+
+                Button() {
+                    openURL(URL(string: UIApplication.openSettingsURLString)!)
+                } label: {
+                    Text("Go to Settings")
+                }
+                .padding()
+            }
+            .padding()
+            .background(Color.secondaryBackground)
+            .cornerRadius(11)
+            .padding()
+        } else if let receivingMessage = receivingMessage {
+            ReceivingResult(receivingMessage: receivingMessage, insert: insert, replace: replace) {
+                self.receivingMessage = nil
+            }
+            .padding(.top)
+        } else {
+            VStack {
+                HStack {
+                    Text(model.usingText)
+                        .lineLimit(1)
+
+                    Spacer()
+
+                    if let _ = model.preferredText {
+                        Button {
+                            model.preferredText = nil
+                            Haptics.veryLight()
+                        } label: {
+                            Image(systemName: "rectangle.and.pencil.and.ellipsis")
+                                .frame(width: 24, height: 24)
                         }
                     } else {
-                        ChatSelector(sharedText: sharedText, cancel: cancel) { chat in
-                            Task {
-                                await send(for: chat)
-                            }
+                        Button {
+                            model.preferredText = UIPasteboard.general.string
+                            Haptics.veryLight()
+                        } label: {
+                            Image(systemName: "list.clipboard")
+                                .frame(width: 24, height: 24)
                         }
                     }
                 }
-                .frame(maxWidth: .infinity)
-                .background(Color.background)
-                .cornerRadius(20)
                 .padding(.horizontal, 10)
+                .padding(.vertical, 8)
+                .background(Color.secondaryBackground)
+                .cornerRadius(11)
+                .padding(.horizontal)
+                .padding(.top)
+                .padding(.bottom, 5)
+
+                ChatSelector(text: model.usingText) { chat in
+                    Task {
+                        await send(for: chat)
+                    }
+                }
             }
-            .frame(width: geometry.size.width, height: geometry.size.height)
         }
     }
 
     private func send(for chat: Chat) async {
-        await chattingFeature.sendWithStream(content: sharedText, for: chat) {
+        await chattingFeature.sendWithStream(content: model.selectedText, for: chat) {
             self.receivingMessage = messageFeature.createReceivingMessage(for: chat)
 
             return receivingMessage
         }
     }
+
+    private func insert() {
+        model.insert(receivingMessage?.content ?? "")
+        Haptics.veryLight()
+    }
+
+    private func replace() {
+        model.replace(receivingMessage?.content ?? "")
+        Haptics.veryLight()
+    }
 }
 
 private struct ChatSelector: View {
-    let sharedText: String
-    let cancel: () -> Void
-    let send: (Chat) -> Void
+    let text: String
 
-    @State private var scrollViewHeight: CGFloat = 0
+    let send: (Chat) -> Void
 
     @FetchRequest(
         sortDescriptors: [
@@ -76,12 +124,6 @@ private struct ChatSelector: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Send to chat")
-            Text(sharedText)
-                .foregroundColor(.secondary)
-                .font(.footnote)
-                .lineLimit(2)
-
             ScrollView {
                 LazyVGrid(columns: gridLayout) {
                     ForEach(chats) { chat in
@@ -89,11 +131,7 @@ private struct ChatSelector: View {
                             chat.icon.image
                                 .font(.title2)
                                 .frame(width: 24, height: 24)
-#if os(iOS)
                                 .padding(13)
-#else
-                                .padding(10)
-#endif
                                 .background(chat.uiColor)
                                 .cornerRadius(8)
                                 .colorScheme(.dark)
@@ -103,9 +141,6 @@ private struct ChatSelector: View {
                                 .lineLimit(1)
                         }
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 10)
-                        .padding(.horizontal, 5)
-                        .background(chat.pinned ? Color.tertiaryBackground : Color.clear)
                         .cornerRadius(12)
                         .onTapGesture {
                             send(chat)
@@ -113,36 +148,23 @@ private struct ChatSelector: View {
                     }
                 }
                 .padding()
-                .overlayGeometryReader()
             }
-            .onPreferenceChange(ViewHeightKey.self) { height in
-                scrollViewHeight = height
-            }
-            .frame(maxHeight: scrollViewHeight)
+            .frame(maxHeight: 200)
             .background(Color.secondaryBackground)
             .cornerRadius(12)
-
-            Button(action: {
-                cancel()
-            }, label: {
-                Text("Cancel")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.secondaryBackground)
-                    .cornerRadius(12)
-            })
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 
 private struct ReceivingResult: View {
     @EnvironmentObject private var chattingFeature: ChattingFeature
 
-    @State private var scrollViewHeight: CGFloat = 0
     @ObservedObject var receivingMessage: Message
 
-    let complete: () -> Void
+    let insert: () -> Void
+    let replace: () -> Void
+    let onClose: () -> Void
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -162,7 +184,7 @@ private struct ReceivingResult: View {
                 Spacer()
 
                 Button {
-                    complete()
+                    onClose()
                 } label: {
                     Image(systemName: "multiply")
                         .padding(10)
@@ -170,7 +192,6 @@ private struct ReceivingResult: View {
                         .foregroundColor(.secondary)
                         .cornerRadius(.infinity)
                 }
-
             }
 
             ScrollView {
@@ -183,59 +204,58 @@ private struct ReceivingResult: View {
                         Label(reason.localized, systemImage: "info.circle")
                     }
                 }
-                .overlayGeometryReader()
             }
-            .onPreferenceChange(ViewHeightKey.self) { height in
-                scrollViewHeight = height
-            }
-            .frame(maxWidth: .infinity, maxHeight: scrollViewHeight, alignment: .leading)
+            .frame(maxWidth: .infinity, maxHeight: 300, alignment: .leading)
             .padding(.vertical, 8)
             .padding(.horizontal, 15)
             .background(receivingMessage.failed ? Color.appRed : Color.secondaryBackground)
             .foregroundColor(receivingMessage.failed ? Color.white : Color.primary)
-            #if os(iOS)
             .cornerRadius(15, corners: [.bottomRight, .topRight, .topLeft])
-            #endif
 
             HStack {
-                Button(action: {
+                Button() {
                     Task {
                         await chattingFeature.resendWithStream(receivingMessage: receivingMessage)
                     }
+                } label: {
+                    Image(systemName: "arrow.clockwise")
+                        .aspectRatio(1, contentMode: .fit)
+                        .padding(10)
+                        .background(Color.secondaryBackground)
+                        .foregroundColor(.secondary)
+                        .cornerRadius(.infinity)
+                }
+
+                Button(action: {
+                    replace()
                 }, label: {
-                    Text("Regenerate")
+                    Text("Replace")
                         .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.background)
-                        .cornerRadius(20)
-                        .padding(.horizontal, 10)
+                        .padding(10)
+                        .background(Color.secondaryBackground)
+                        .cornerRadius(.infinity)
                 })
                 .disabled(receivingMessage.receiving)
 
                 Button(action: {
-                    receivingMessage.copyToPasteboard()
-                    complete()
+                    insert()
                 }, label: {
-                    Text("Copy & Close")
+                    Text("Insert")
                         .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.background)
-                        .cornerRadius(20)
-                        .padding(.horizontal, 10)
+                        .padding(10)
+                        .background(Color.secondaryBackground)
+                        .cornerRadius(.infinity)
                 })
                 .disabled(receivingMessage.receiving)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 
-struct ShareView_Previews: PreviewProvider {
+
+struct KeyboardView_Previews: PreviewProvider {
     static var previews: some View {
-        ShareView(sharedText: "Example text") {
-
-        } cancel: {
-
-        }
+        KeyboardView(viewController: .init(), model: KeyboardViewModel(insert: { _ in }, replace: { _ in }))
     }
 }
