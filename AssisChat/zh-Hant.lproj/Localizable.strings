@@ -202,6 +202,9 @@
 /* No comment provided by engineer. */
 "Input text in text field and select the text want to be handled." = "在文本輸入框中輸入文字，然後選擇想要處理的文本。";
 
+/* No comment provided by engineer. */
+"Integrate with input field through **Keyboard Extension**" = "使用 **鍵盤擴展** 與文本輸入框集成";
+
 /* QRCode params are invalid */
 "Invalid params" = "參數不可用";
 
@@ -374,7 +377,7 @@
 "Share Extension" = "分享擴展";
 
 /* No comment provided by engineer. */
-"Share text from other apps" = "從其他應用分享文本到 AssisChat";
+"Share text from other apps with **Share Extension**" = "通過 **分享擴展** 在其他應用中分享文本到會話";
 
 /* The small size label of font size setting */
 "Small" = "小";
@@ -384,9 +387,6 @@
 
 /* No comment provided by engineer. */
 "Support Us" = "支持我們";
-
-/* No comment provided by engineer. */
-"Switch to the keyboard when input" = "在輸入文本時切換到 AssisChat 鍵盤";
 
 /* No comment provided by engineer. */
 "Switching iCloud sync will take effect after restarting the app." = "切換 iCloud 同步將在重啓 App 後生效。";

@@ -87,30 +87,43 @@ private struct MessagesEmpty: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 20, height: 20)
+                        .foregroundColor(Color.appGreen)
 
                     Text("Send message directly")
                 }
 
-                HStack(alignment: .top) {
-                    Image(systemName: "square.and.arrow.up")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
+                NavigationLink {
+                    ShareExtensionIntroduction()
+                } label: {
+                    HStack(alignment: .top) {
+                        Image(systemName: "square.and.arrow.up")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(Color.appOrange)
 
-                    Text("Share text from other apps")
+                        Text("Share text from other apps with **Share Extension**")
+                            .multilineTextAlignment(.leading)
+                    }
                 }
 
-                HStack(alignment: .top) {
-                    Image(systemName: "keyboard")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
+                NavigationLink {
+                    KeyboardExtensionIntroduction()
+                } label: {
+                    HStack(alignment: .top) {
+                        Image(systemName: "keyboard")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(Color.appBlue)
 
-                    Text("Switch to the keyboard when input")
+                        Text("Integrate with input field through **Keyboard Extension**")
+                            .multilineTextAlignment(.leading)
+                    }
                 }
             }
-            .frame(alignment: .leading)
             .foregroundColor(.secondary)
+            .frame(alignment: .leading)
             .padding()
             #if os(macOS)
             .background(Color.primary.opacity(0.1))

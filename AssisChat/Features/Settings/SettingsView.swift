@@ -91,7 +91,7 @@ struct SettingsFeatures: View {
                 Text("Share Extension")
             } icon: {
                 Image(systemName: "square.and.arrow.up")
-                    .foregroundColor(.appGreen)
+                    .foregroundColor(.appOrange)
             }
         }
 
