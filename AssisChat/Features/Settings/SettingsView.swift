@@ -60,6 +60,10 @@ struct SettingsView: View {
                 }
             }
 
+            Section("Features") {
+                SettingsFeatures()
+            }
+
             Section("SETTINGS_THEME") {
                 SettingsThemeContent()
             }
@@ -75,6 +79,32 @@ struct SettingsView: View {
         .listStyle(.insetGrouped)
         #endif
         .inlineNavigationBar()
+    }
+}
+
+struct SettingsFeatures: View {
+    var body: some View {
+        NavigationLink {
+            ShareExtensionIntroduction()
+        } label: {
+            Label {
+                Text("Share Extension")
+            } icon: {
+                Image(systemName: "square.and.arrow.up")
+                    .foregroundColor(.appGreen)
+            }
+        }
+
+        NavigationLink {
+            KeyboardExtensionIntroduction()
+        } label: {
+            Label {
+                Text("Keyboard Extension")
+            } icon: {
+                Image(systemName: "keyboard")
+                    .foregroundColor(.appBlue)
+            }
+        }
     }
 }
 

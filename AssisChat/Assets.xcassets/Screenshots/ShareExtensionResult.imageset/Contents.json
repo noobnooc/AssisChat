@@ -1,0 +1,25 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "IMG_2099.jpg"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "IMG_2110.jpg",
+      "locale" : "zh-Hans"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "IMG_2110 1.jpg",
+      "locale" : "zh-Hant"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}

@@ -78,6 +78,9 @@
 		F5E3D9A32A25A51E0004736E /* AssisChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */; };
 		F5E3D9A62A25C9470004736E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5E3D9A42A25C9470004736E /* InfoPlist.strings */; };
 		F5E3D9A92A25C9470004736E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5E3D9A72A25C9470004736E /* Localizable.strings */; };
+		F5E3D9AD2A271DFD0004736E /* ShareExtensionIntroduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3D9AC2A271DFD0004736E /* ShareExtensionIntroduction.swift */; };
+		F5E3D9AF2A271E2F0004736E /* KeyboardExtensionIntroduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3D9AE2A271E2F0004736E /* KeyboardExtensionIntroduction.swift */; };
+		F5E3D9B12A27434E0004736E /* KeyboardExtensionConfigIntroduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3D9B02A27434E0004736E /* KeyboardExtensionConfigIntroduction.swift */; };
 		F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9329B497A60083BB31 /* AssisChatApp.swift */; };
 		F5E47E9629B497A60083BB31 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9529B497A60083BB31 /* Persistence.swift */; };
 		F5E47E9929B497A60083BB31 /* AssisChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */; };
@@ -221,6 +224,9 @@
 		F5E3D9A82A25C9470004736E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F5E3D9AA2A25C94F0004736E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F5E3D9AB2A25C9690004736E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F5E3D9AC2A271DFD0004736E /* ShareExtensionIntroduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareExtensionIntroduction.swift; sourceTree = "<group>"; };
+		F5E3D9AE2A271E2F0004736E /* KeyboardExtensionIntroduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtensionIntroduction.swift; sourceTree = "<group>"; };
+		F5E3D9B02A27434E0004736E /* KeyboardExtensionConfigIntroduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtensionConfigIntroduction.swift; sourceTree = "<group>"; };
 		F5E47E9029B497A60083BB31 /* AssisChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssisChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E47E9329B497A60083BB31 /* AssisChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssisChatApp.swift; sourceTree = "<group>"; };
 		F5E47E9529B497A60083BB31 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -567,6 +573,9 @@
 				F543A92829C46BE8000C61B5 /* SymbolVariantSelector.swift */,
 				F5E47EF729B5B2320083BB31 /* TintSelector.swift */,
 				F5E47EF329B5AC380083BB31 /* SettingsView.swift */,
+				F5E3D9AC2A271DFD0004736E /* ShareExtensionIntroduction.swift */,
+				F5E3D9AE2A271E2F0004736E /* KeyboardExtensionIntroduction.swift */,
+				F5E3D9B02A27434E0004736E /* KeyboardExtensionConfigIntroduction.swift */,
 				F543A92629C444AC000C61B5 /* AcknowledgmentView.swift */,
 				F5FFE97029F658F200AD4C91 /* MacOSSettingsView.swift */,
 			);
@@ -898,6 +907,7 @@
 				F5E47E9429B497A60083BB31 /* AssisChatApp.swift in Sources */,
 				F5E47F0D29B706FF0083BB31 /* ChatEditor.swift in Sources */,
 				F5E47EE229B49D0E0083BB31 /* Haptics.swift in Sources */,
+				F5E3D9AF2A271E2F0004736E /* KeyboardExtensionIntroduction.swift in Sources */,
 				F5E47E9929B497A60083BB31 /* AssisChat.xcdatamodeld in Sources */,
 				F5E47ECF29B498290083BB31 /* Color+Extensions.swift in Sources */,
 				F5FFE96F29F64F9000AD4C91 /* UniformProgressView.swift in Sources */,
@@ -924,6 +934,8 @@
 				F5E47E9629B497A60083BB31 /* Persistence.swift in Sources */,
 				F5E47EF829B5B2320083BB31 /* TintSelector.swift in Sources */,
 				F5E47EDD29B49B9C0083BB31 /* CustomNewChatView.swift in Sources */,
+				F5E3D9B12A27434E0004736E /* KeyboardExtensionConfigIntroduction.swift in Sources */,
+				F5E3D9AD2A271DFD0004736E /* ShareExtensionIntroduction.swift in Sources */,
 				F5FFE97A29FA57AD00AD4C91 /* QRCodeScannerButton.swift in Sources */,
 				F58E539E29DBF7C50022E979 /* SharedUserDefaults.swift in Sources */,
 				F5E47EDF29B49CCA0083BB31 /* ColorSelector.swift in Sources */,

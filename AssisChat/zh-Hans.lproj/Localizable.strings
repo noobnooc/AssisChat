@@ -122,7 +122,13 @@
 "CHATTING_SELECT_CHAT_HINT" = "选择一个会话以开始";
 
 /* No comment provided by engineer. */
+"Checked both **AssisChat** and **Allow Full Access**." = "打开键盘中的 **AssisChat** 和 **允许完全访问** 两个选项。";
+
+/* No comment provided by engineer. */
 "Claude API domain (optional)" = "Claude 自定义域名（可选）";
+
+/* No comment provided by engineer. */
+"Click the **Globe** icon to switch the keyboard to **AssisChat**." = "点击 **地球** 图标，将键盘切换为 **AssisChat** 。";
 
 /* No comment provided by engineer. */
 "Coffee Plan" = "咖啡计划";
@@ -155,10 +161,13 @@
 "Failed to config" = "配置失败";
 
 /* No comment provided by engineer. */
-"Failed to validate the API Key." = "API Key 验证失败";
+"Features" = "特性";
 
 /* No comment provided by engineer. */
 "General" = "通用";
+
+/* No comment provided by engineer. */
+"Go To **Settings**" = "转到 **设置**";
 
 /* No comment provided by engineer. */
 "Go to set chat source" = "去设置会话源";
@@ -187,6 +196,12 @@
 /* No comment provided by engineer. */
 "Import configuration" = "导入配置";
 
+/* No comment provided by engineer. */
+"In **PREFERRED LANGUAGE** section, select **Keyboards**." = "在 **首选语言** 中，选择 **键盘** 。";
+
+/* No comment provided by engineer. */
+"Input text in text field and select the text want to be handled." = "在文本输入框中输入文字，然后选择想要处理的文本。";
+
 /* QRCode params are invalid */
 "Invalid params" = "参数不可用";
 
@@ -198,6 +213,9 @@
 
 /* The system message of the Just Chatting chat template */
 "Just chatting." = "随便聊聊";
+
+/* No comment provided by engineer. */
+"Keyboard Extension" = "键盘扩展";
 
 /* The name of the Language Polisher chat template */
 "Language Polisher" = "语言润色";
@@ -230,7 +248,13 @@
 "NOT Include Services" = "不包含在线服务";
 
 /* No comment provided by engineer. */
+"Open **Settings** for **AssisChat**." = "在系统的 **设置** 中打开 **AssisChat** 的设置。";
+
+/* No comment provided by engineer. */
 "Pin Chat" = "置顶会话";
+
+/* No comment provided by engineer. */
+"Please config in **Settings** before using **Keyboard Extension**" = "在使用 **键盘扩展** 之前请先到 **设置** 中设置键盘选项。";
 
 /* Share Extension feature summary in pro introduction. */
 "Process text from other apps with Share Extension." = "通过分享扩展，实现在其他应用中处理文本。";
@@ -254,7 +278,16 @@
 "Samuel" = "大壮";
 
 /* No comment provided by engineer. */
+"Select **AssisChat** in share menu." = "在分享菜单中选中 **AssisChat** 。";
+
+/* No comment provided by engineer. */
+"Select a chat to handle the text." = "选择一个用来处理文本的会话。";
+
+/* No comment provided by engineer. */
 "Select a preset or custom a chat" = "选择一个预设或者自定义会话";
+
+/* No comment provided by engineer. */
+"Select text from other apps, select **Share** item in context menu." = "在其他应用中选中文本，然后在上下文菜单中选择 **共享...** 。";
 
 /* No comment provided by engineer. */
 "Send message directly" = "从对话界面发送消息";
@@ -334,6 +367,9 @@
 /* Settings tin */
 "SETTINGS_TINT" = "主题色";
 
+/* No comment provided by engineer. */
+"Setup Keyboard Extension" = "设置键盘扩展";
+
 /* Share Extension feature title in pro introduction. */
 "Share Extension" = "分享扩展";
 
@@ -370,6 +406,12 @@
 /* No comment provided by engineer. */
 "The OpenAI API services are provided by OpenAI company, and the rights for data usage and fee collection are reserved by OpenAI company. You can find more information about data usage and fee collection at https://platform.openai.com." = "OpenAI API 相关服务由 OpenAI 公司提供，其数据使用和费用收取均由 OpenAI 公司保留解释权。数据使用和费用收取等更多信息可以在 https://platform.openai.com 获得。";
 
+/* No comment provided by engineer. */
+"Then the text field has replaced with handled text." = "然后文本输入框中选中的文本，将会被处理后的文本替换。";
+
+/* No comment provided by engineer. */
+"Then you can see the result, regenerate the result, or copy the result text." = "然后你可以查看处理完的文本、重新生成，或者复制结果。";
+
 /* The message prefix of the Translator chat template */
 "Translate the following content:" = "翻译以下内容";
 
@@ -405,6 +447,15 @@
 
 /* No comment provided by engineer. */
 "Use proxy domain. We recommend leaving it blank to use the default value. Please use a domain that you completely trust, otherwise your API key will be leaked." = "使用代理域名。我们推荐留空以使用默认值。请使用完全信任的域名，否则你的 API Key 和使用数据将会泄露。";
+
+/* No comment provided by engineer. */
+"Using Keyboard Extension" = "使用键盘扩展";
+
+/* No comment provided by engineer. */
+"Using Share Extension" = "使用分享扩展";
+
+/* No comment provided by engineer. */
+"When the result has completed, click the **Replace** button to replace the selected text in the text field with the chat result." = "当结果处理完成后，点击 **替换** 按钮，可以将选中的文本替换为处理过后的结果。";
 
 /* The system message of the Recipe chat template */
 "You are a kitchen helper who responds with the recipe for a given dish." = "你是一个厨房帮手，回复给定菜名的菜谱。";

@@ -89,11 +89,7 @@ private struct ChatSelector: View {
                             chat.icon.image
                                 .font(.title2)
                                 .frame(width: 24, height: 24)
-#if os(iOS)
                                 .padding(13)
-#else
-                                .padding(10)
-#endif
                                 .background(chat.uiColor)
                                 .cornerRadius(8)
                                 .colorScheme(.dark)
@@ -103,10 +99,6 @@ private struct ChatSelector: View {
                                 .lineLimit(1)
                         }
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 10)
-                        .padding(.horizontal, 5)
-                        .background(chat.pinned ? Color.tertiaryBackground : Color.clear)
-                        .cornerRadius(12)
                         .onTapGesture {
                             send(chat)
                         }

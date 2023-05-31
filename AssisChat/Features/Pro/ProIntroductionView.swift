@@ -292,7 +292,9 @@ private struct BuyMeCoffee: View {
                 .foregroundColor(.white)
 #endif
             }
+            #if os(macOS)
             .buttonStyle(.borderedProminent)
+            #endif
             .disabled(purchasing)
 
             Button("Restore Purchase") {

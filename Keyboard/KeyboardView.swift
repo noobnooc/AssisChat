@@ -141,7 +141,6 @@ private struct ChatSelector: View {
                                 .lineLimit(1)
                         }
                         .frame(maxWidth: .infinity)
-                        .cornerRadius(12)
                         .onTapGesture {
                             send(chat)
                         }

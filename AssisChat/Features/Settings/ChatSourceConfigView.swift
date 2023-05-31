@@ -81,7 +81,7 @@ private struct OpenAIContent: View {
 
     @EnvironmentObject private var settingsFeature: SettingsFeature
 
-    @State var alertText: String? = nil
+    @State var alertText: LocalizedStringKey? = nil
     @State var openAIAPIKey: String
     @State var openAIDomain: String
 
@@ -186,7 +186,7 @@ private struct OpenAIContent: View {
     func validateAndSave() -> Void {
         Task {
             if openAIAPIKey.isEmpty {
-                alertText = String(localized: "SETTINGS_CHAT_SOURCE_NO_API_KEY")
+                alertText = "SETTINGS_CHAT_SOURCE_NO_API_KEY"
                 return
             }
 
@@ -198,7 +198,7 @@ private struct OpenAIContent: View {
                 let adapter = try await settingsFeature.validateAndConfigOpenAI(apiKey: openAIAPIKey, for: domain)
 
                 if successAlert {
-                    alertText = String(localized: "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_SUCCESS")
+                    alertText = "SETTINGS_CHAT_SOURCE_VALIDATE_AND_SAVE_SUCCESS"
                 }
 
                 onConfigured?(adapter)
@@ -206,10 +206,10 @@ private struct OpenAIContent: View {
                 if backWhenConfigured {
                     dismiss()
                 }
-            } catch ChattingError.validating {
-                alertText = String(localized: "Failed to validate the API Key.")
+            } catch ChattingError.validating(let message) {
+                alertText = message
             } catch {
-                alertText = error.localizedDescription
+                alertText = LocalizedStringKey(error.localizedDescription)
             }
 
             validating = false
@@ -341,8 +341,8 @@ private struct AnthropicContent: View {
                 if backWhenConfigured {
                     dismiss()
                 }
-            } catch ChattingError.validating {
-                essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey("Failed to validate the API Key.")))
+            } catch ChattingError.validating(let message) {
+                essentialFeature.appendAlert(alert: ErrorAlert(message: message))
             } catch {
                 essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(error.localizedDescription)))
             }
