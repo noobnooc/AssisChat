@@ -45,6 +45,17 @@ class ChatPreset {
             model: Chat.OpenAIModel.default.rawValue
         ),
         PlainChat(
+            name: String(localized: "Explainer", comment: "The name of the Explainer chat template"),
+            temperature: .balanced,
+            systemMessage: String(localized: "You are an intelligent assistant, explain the given content in simple language."),
+            historyLengthToSend: .zero,
+            messagePrefix: String(localized: "Explain following content: ", comment: "The message prefix of the Explainer chat template"),
+            autoCopy: false,
+            icon: .symbol("captions.bubble"),
+            color: .green,
+            model: Chat.OpenAIModel.default.rawValue
+        ),
+        PlainChat(
             name: String(localized: "Recipe", comment: "The name of the Language Recipe chat template"),
             temperature: .balanced,
             systemMessage: String(localized: "You are a kitchen helper who responds with the recipe for a given dish.", comment: "The system message of the Recipe chat template"),

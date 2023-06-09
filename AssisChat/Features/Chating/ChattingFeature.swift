@@ -144,7 +144,7 @@ class ChattingFeature: ObservableObject {
         }
 
         if let prefix = chat.messagePrefix {
-            processingContent = prefix + processingContent
+            processingContent = prefix + "\n\n" + processingContent
         }
 
         return processingContent

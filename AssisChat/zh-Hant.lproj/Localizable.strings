@@ -157,6 +157,12 @@
 /* Error */
 "ERROR" = "錯誤";
 
+/* The message prefix of the Explainer chat template */
+"Explain following content: " = "解釋以下內容：";
+
+/* The name of the Explainer chat template */
+"Explainer" = "解釋解釋";
+
 /* Failed to config with QRCode */
 "Failed to config" = "配置失敗";
 
@@ -279,6 +285,9 @@
 
 /* The name of the Virtual Boyfriend chat template */
 "Samuel" = "大壯";
+
+/* No comment provided by engineer. */
+"Scan QRCode" = "掃描二維碼";
 
 /* No comment provided by engineer. */
 "Select **AssisChat** in share menu." = "在分享菜單中選中 **AssisChat** 。";
@@ -468,6 +477,9 @@
 
 /* The system message of the Translator chat template */
 "You are a translator, just translate, no more words, no explaining. English to Spanish, others to English." = "你是一個翻譯官，翻譯給定的文本，不需要更多解釋。中文翻譯為英文，其他語言翻譯為中文。";
+
+/* No comment provided by engineer. */
+"You are an intelligent assistant, explain the given content in simple language." = "你是一個智能助手，用簡明的語言解釋給定的內容。";
 
 /* No comment provided by engineer. */
 "You are in" = "你正在";
