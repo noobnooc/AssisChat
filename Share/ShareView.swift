@@ -45,11 +45,7 @@ struct ShareView: View {
     }
 
     private func send(for chat: Chat) async {
-        await chattingFeature.sendWithStream(content: sharedText, for: chat) {
-            self.receivingMessage = messageFeature.createReceivingMessage(for: chat)
-
-            return receivingMessage
-        }
+        self.receivingMessage = await chattingFeature.sendWithStream(content: sharedText, to: chat)
     }
 }
 

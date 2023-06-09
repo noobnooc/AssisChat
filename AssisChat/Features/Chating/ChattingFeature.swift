@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftSoup
 
 enum ChattingError: Error {
     case invalidConfig
@@ -46,27 +47,30 @@ class ChattingFeature: ObservableObject {
         await send(message: message)
     }
 
-    func sendWithStream(plainMessage: PlainMessage) async {
-        await sendWithStream(plainMessage: plainMessage) {
-            messageFeature.createReceivingMessage(for: plainMessage.chat)
-        }
-    }
+    func sendWithStream(content: String, to chat: Chat) async -> Message? {
+        let processedContent = await preprocessMessage(content: content, for: chat)
 
-    func sendWithStream(content: String, for chat: Chat, createReceivingMessage: () -> Message?) async {
-        let processedContent = chat.preprocessContent(content: content)
         let plainMessage = PlainMessage(chat: chat, role: .user, content: content, processedContent: processedContent)
 
-        await sendWithStream(plainMessage: plainMessage, createReceivingMessage: createReceivingMessage)
+        return await sendWithStream(plainMessage: plainMessage)
     }
 
-    func sendWithStream(plainMessage: PlainMessage, createReceivingMessage: () -> Message?) async {
+    func sendWithStream(plainMessage: PlainMessage, waitingToComplete: Bool = false) async -> Message? {
         _ = messageFeature.createMessage(plainMessage)
 
-        let receivingMessage = createReceivingMessage()
+        guard let receivingMessage = messageFeature.createReceivingMessage(for: plainMessage.chat) else {
+            return nil
+        }
 
-        guard let receivingMessage = receivingMessage else { return }
+        if waitingToComplete {
+            await sendWithStream(chat: plainMessage.chat, receivingMessage: receivingMessage)
+        } else {
+            Task.detached {
+                await self.sendWithStream(chat: plainMessage.chat, receivingMessage: receivingMessage)
+            }
+        }
 
-        await sendWithStream(chat: plainMessage.chat, receivingMessage: receivingMessage)
+        return receivingMessage
     }
 
     func resendWithStream(receivingMessage: Message) async {
@@ -118,5 +122,31 @@ class ChattingFeature: ObservableObject {
         } catch {
             essentialFeature.appendAlert(alert: ErrorAlert(message: LocalizedStringKey(error.localizedDescription)))
         }
+    }
+
+    private func preprocessMessage(content: String, for chat: Chat) async -> String {
+        var processingContent = content
+
+        if
+            let url = URL(string: content),
+            url.scheme?.lowercased() == "http" || url.scheme?.lowercased() == "https",
+            url.host != nil {
+
+            if let urlContent = await essentialFeature.getURLContent(url: url) {
+                if
+                    let doc = try? SwiftSoup.parse(urlContent),
+                        let text = try? doc.text(trimAndNormaliseWhitespace: true) {
+                    processingContent = text
+                } else {
+                    processingContent = urlContent
+                }
+            }
+        }
+
+        if let prefix = chat.messagePrefix {
+            processingContent = prefix + processingContent
+        }
+
+        return processingContent
     }
 }

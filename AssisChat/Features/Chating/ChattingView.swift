@@ -346,13 +346,14 @@ private struct MessageInput: View {
 
     @ObservedObject var chat: Chat
     @State private var text = ""
+    @State private var handling = false
 
     var adapterReady: Bool {
         chat.model != nil && settingsFeature.modelToAdapter[chat.model!] != nil
     }
 
     var sendButtonAvailable: Bool {
-        !text.isEmpty && !chat.receiving && adapterReady
+        !text.isEmpty && !chat.receiving && adapterReady && !handling
     }
 
     var body: some View {
@@ -368,6 +369,7 @@ private struct MessageInput: View {
                         .lineLimit(1...3)
                         .textFieldStyle(.plain)
                         .disabled(!adapterReady)
+                        .foregroundColor(handling ? .secondary : .primary)
 #if os(macOS)
                         .onSubmit {
                             submit()
@@ -381,6 +383,7 @@ private struct MessageInput: View {
                         .cornerRadius(8)
                         .textFieldStyle(.plain)
                         .disabled(!adapterReady)
+                        .foregroundColor(handling ? .secondary : .primary)
 #if os(macOS)
                         .onSubmit {
                             submit()
@@ -426,15 +429,12 @@ private struct MessageInput: View {
     func submit() {
         guard sendButtonAvailable else { return }
         Task {
-            let messageContent = text
-            text = ""
+            handling = true
 
-            await chattingFeature.sendWithStream(
-                plainMessage: .init(
-                    chat: chat,
-                    role: .user,
-                    content: messageContent,
-                    processedContent: (chat.messagePrefix != nil ? "\(chat.messagePrefix!)\n\n" : "") + messageContent))
+            _ = await chattingFeature.sendWithStream(content: text, to: chat)
+
+            text = ""
+            handling = false
         }
     }
 }

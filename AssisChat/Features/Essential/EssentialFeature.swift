@@ -138,6 +138,17 @@ extension EssentialFeature {
 
         return Response(response: response as? HTTPURLResponse, data: decodedResponseData, error: decodedResponseError)
     }
+
+    func getURLContent(url: URL) async -> String? {
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+
+        guard let (data, response) = try? await URLSession.shared.data(for: request), (response as? HTTPURLResponse)?.statusCode == 200 else {
+            return nil
+        }
+
+        return String(data: data, encoding: .utf8)
+    }
 }
 
 enum GeneralError: Error {

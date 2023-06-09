@@ -85,11 +85,7 @@ struct KeyboardView: View {
     }
 
     private func send(for chat: Chat) async {
-        await chattingFeature.sendWithStream(content: model.selectedText, for: chat) {
-            self.receivingMessage = messageFeature.createReceivingMessage(for: chat)
-
-            return receivingMessage
-        }
+        self.receivingMessage = await chattingFeature.sendWithStream(content: model.selectedText, to: chat)
     }
 
     private func insert() {

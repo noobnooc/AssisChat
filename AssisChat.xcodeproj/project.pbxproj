@@ -33,6 +33,7 @@
 		F567A34729D6CF6300057582 /* LDSwiftEventSource in Frameworks */ = {isa = PBXBuildFile; productRef = F567A34629D6CF6300057582 /* LDSwiftEventSource */; };
 		F567A34829D6D4E000057582 /* AssisChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5E47E9729B497A60083BB31 /* AssisChat.xcdatamodeld */; };
 		F567A34B29D6DC4C00057582 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47EE129B49D0E0083BB31 /* Haptics.swift */; };
+		F574CB002A3321AE002AA67C /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = F574CAFF2A3321AE002AA67C /* SwiftSoup */; };
 		F5779EE529B8246800CC70B0 /* Splash in Frameworks */ = {isa = PBXBuildFile; productRef = F5779EE429B8246800CC70B0 /* Splash */; };
 		F58E539B29DBF7380022E979 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E539A29DBF7380022E979 /* AppGroup.swift */; };
 		F58E539C29DBF7950022E979 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E539A29DBF7380022E979 /* AppGroup.swift */; };
@@ -47,6 +48,8 @@
 		F58E53AA29DC155B0022E979 /* ChatPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E53A929DC155B0022E979 /* ChatPreset.swift */; };
 		F58E53AD29DC17040022E979 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F58E53AB29DC17040022E979 /* Localizable.strings */; };
 		F58E53B129DD66CC0022E979 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58E53B029DD66CC0022E979 /* StoreKit.framework */; };
+		F5B04E7C2A334FAC00B10644 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = F5B04E7B2A334FAC00B10644 /* SwiftSoup */; };
+		F5B04E7E2A334FB500B10644 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = F5B04E7D2A334FB500B10644 /* SwiftSoup */; };
 		F5B2554D29B8A56D0008DAA3 /* SelectChatHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */; };
 		F5C6094529BA366D00862071 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6094429BA366D00862071 /* NewChatView.swift */; };
 		F5E3D9832A2483140004736E /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3D9822A2483140004736E /* KeyboardViewModel.swift */; };
@@ -296,6 +299,7 @@
 				F5E3D99B2A2598450004736E /* LDSwiftEventSource in Frameworks */,
 				F5E3D99D2A2598450004736E /* Splash in Frameworks */,
 				F5E3D9A12A2598450004736E /* GPT3 Tokenizer in Frameworks */,
+				F5B04E7E2A334FB500B10644 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +311,7 @@
 				F567A34529D6CF5F00057582 /* GPT3 Tokenizer in Frameworks */,
 				F58E53A529DBFE640022E979 /* Splash in Frameworks */,
 				F58E53A729DBFE6B0022E979 /* MarkdownUI in Frameworks */,
+				F5B04E7C2A334FAC00B10644 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +327,7 @@
 				F58E53B129DD66CC0022E979 /* StoreKit.framework in Frameworks */,
 				F5779EE529B8246800CC70B0 /* Splash in Frameworks */,
 				F5F2948629CB3D02005D63CB /* GPT3 Tokenizer in Frameworks */,
+				F574CB002A3321AE002AA67C /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +630,7 @@
 				F5E3D99C2A2598450004736E /* Splash */,
 				F5E3D99E2A2598450004736E /* MarkdownUI */,
 				F5E3D9A02A2598450004736E /* GPT3 Tokenizer */,
+				F5B04E7D2A334FB500B10644 /* SwiftSoup */,
 			);
 			productName = Keyboard;
 			productReference = F53D79142A062AE500CBFAD1 /* Keyboard.appex */;
@@ -647,6 +654,7 @@
 				F567A34629D6CF6300057582 /* LDSwiftEventSource */,
 				F58E53A429DBFE640022E979 /* Splash */,
 				F58E53A629DBFE6B0022E979 /* MarkdownUI */,
+				F5B04E7B2A334FAC00B10644 /* SwiftSoup */,
 			);
 			productName = Share;
 			productReference = F567A31629D6935D00057582 /* Share.appex */;
@@ -675,6 +683,7 @@
 				F5F2948529CB3D02005D63CB /* GPT3 Tokenizer */,
 				F5FFE97C29FA601300AD4C91 /* CodeScanner */,
 				F53D790E2A03FA8200CBFAD1 /* LottieSwiftUI */,
+				F574CAFF2A3321AE002AA67C /* SwiftSoup */,
 			);
 			productName = AssisChat;
 			productReference = F5E47E9029B497A60083BB31 /* AssisChat.app */;
@@ -763,6 +772,7 @@
 				F5F2948429CB3D02005D63CB /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */,
 				F5FFE97B29FA601300AD4C91 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				F53D790D2A03FA8200CBFAD1 /* XCRemoteSwiftPackageReference "Lottie-SwiftUI" */,
+				F574CAFE2A3321AE002AA67C /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = F5E47E9129B497A60083BB31 /* Products */;
 			projectDirPath = "";
@@ -1527,6 +1537,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		F574CAFE2A3321AE002AA67C /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.0;
+			};
+		};
 		F5779EE329B8246800CC70B0 /* XCRemoteSwiftPackageReference "Splash" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JohnSundell/Splash";
@@ -1585,6 +1603,11 @@
 			package = F5E47F1A29B721AA0083BB31 /* XCRemoteSwiftPackageReference "swift-eventsource" */;
 			productName = LDSwiftEventSource;
 		};
+		F574CAFF2A3321AE002AA67C /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F574CAFE2A3321AE002AA67C /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
 		F5779EE429B8246800CC70B0 /* Splash */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F5779EE329B8246800CC70B0 /* XCRemoteSwiftPackageReference "Splash" */;
@@ -1599,6 +1622,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F5F2948129CB3CEC005D63CB /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
 			productName = MarkdownUI;
+		};
+		F5B04E7B2A334FAC00B10644 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F574CAFE2A3321AE002AA67C /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		F5B04E7D2A334FB500B10644 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F574CAFE2A3321AE002AA67C /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
 		};
 		F5E3D99A2A2598450004736E /* LDSwiftEventSource */ = {
 			isa = XCSwiftPackageProductDependency;

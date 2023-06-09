@@ -44,16 +44,29 @@ class HostingShareViewController: SLComposeServiceViewController {
 
         if let extensionItem = extensionContext?.inputItems.first as? NSExtensionItem,
            let itemProvider = extensionItem.attachments?.first as? NSItemProvider,
-           itemProvider.hasItemConformingToTypeIdentifier("public.text") {
+           itemProvider.hasItemConformingToTypeIdentifier("public.text")
+            || itemProvider.hasItemConformingToTypeIdentifier("public.url") {
 
-            itemProvider.loadItem(forTypeIdentifier: "public.text", options: nil) { [weak self] (text, error) in
-                if let sharedText = text as? String {
-                    DispatchQueue.main.async {
-                        self?.sharedText = sharedText
-                        self?.presentShareView()
+            if itemProvider.hasItemConformingToTypeIdentifier("public.text") {
+                itemProvider.loadItem(forTypeIdentifier: "public.text", options: nil) { [weak self] (text, error) in
+                    if let sharedText = text as? String {
+                        DispatchQueue.main.async {
+                            self?.sharedText = sharedText
+                            self?.presentShareView()
+                        }
+                    }
+                }
+            } else if itemProvider.hasItemConformingToTypeIdentifier("public.url") {
+                itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { [weak self] (url, error) in
+                    if let sharedText = (url as? URL)?.absoluteString {
+                        DispatchQueue.main.async {
+                            self?.sharedText = sharedText
+                            self?.presentShareView()
+                        }
                     }
                 }
             }
+
         }
     }
 
