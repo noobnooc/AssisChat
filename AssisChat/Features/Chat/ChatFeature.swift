@@ -53,7 +53,7 @@ extension ChatFeature {
         chat.rawAutoCopy = plainChat.autoCopy
 
         if let model = forModel {
-            chat.rawModel = forModel
+            chat.rawModel = model
         } else {
             chat.rawModel = plainChat.model
         }
