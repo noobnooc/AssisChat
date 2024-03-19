@@ -14,14 +14,12 @@
 
 ## 截图
 
-| 灵活的自定义 | 丰富的预设 |
-| ![Image 1](./images/ios.zh.1.png) | ![Image 2](./images/ios.zh.2.png) |
-| 从其它应用分享 | 丰富的设置 |
-| ![Image 3](./images/ios.zh.3.png) | ![Image 4](./images/ios.zh.4.png) |
+![Image 1](./images/ios.zh.1.png) ![Image 2](./images/ios.zh.2.png)
+![Image 3](./images/ios.zh.3.png) ![Image 4](./images/ios.zh.4.png)
 
 ## 使用
 
-你可以直接在 [App Store](https://apps.apple.com/us/app/assischat-ai-assistant-chat/id6446092669) 中下载该应用。
+你可以直接在 [App Store](https://apps.apple.com/us/app/assischat-ai-assistant-chat/id6446092669) 中下载该应用。
 
 或者是自己使用 Xcode [在本地构建](#构建)该应用。
 

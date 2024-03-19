@@ -14,14 +14,12 @@ Features:
 
 ## Screenshots
 
-| Flexible Customization | Presets |
-| ![Image 1](./images/ios.en.1.png) | ![Image 2](./images/ios.en.2.png) |
-| Share Extension | Rich Settings |
-| ![Image 3](./images/ios.en.3.png) | ![Image 4](./images/ios.en.4.png) |
+![Image 1](./images/ios.en.1.png) ![Image 2](./images/ios.en.2.png)
+![Image 3](./images/ios.en.3.png) ![Image 4](./images/ios.en.4.png)
 
 ## Usage
 
-You can directly download the application from the [App Store](https://apps.apple.com/us/app/assischat-ai-assistant-chat/id6446092669).
+You can directly download the application from the [App Store](https://apps.apple.com/us/app/assischat-ai-assistant-chat/id6446092669).
 
 Alternatively, you can build the application locally using Xcode by following the steps below.
 
