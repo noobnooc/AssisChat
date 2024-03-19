@@ -2,7 +2,7 @@
 
 [中文](./README.zh.md)
 
-An AI assistant chat app built using Swift and SwiftUI, supporting iOS/iPadOS/macOS, and allowing you to use your own OpenAI/Claude API Key.
+An AI assistant chat app built using Swift and SwiftUI, supporting iOS/iPadOS/macOS, and allowing you to use your own OpenAI/Claude API Key. [The blog](https://nooc.me/en/posts/i-open-sourced-an-ai-chat-app-assischat) about the open source of this app.
 
 Features:
 
