@@ -51,6 +51,8 @@
 		F5B04E7C2A334FAC00B10644 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = F5B04E7B2A334FAC00B10644 /* SwiftSoup */; };
 		F5B04E7E2A334FB500B10644 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = F5B04E7D2A334FB500B10644 /* SwiftSoup */; };
 		F5B2554D29B8A56D0008DAA3 /* SelectChatHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */; };
+		F5BB8DD42BA9564800234039 /* README.zh.md in Resources */ = {isa = PBXBuildFile; fileRef = F5BB8DD32BA9564800234039 /* README.zh.md */; };
+		F5BB8DD62BA9568700234039 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F5BB8DD52BA9568700234039 /* LICENSE */; };
 		F5C6094529BA366D00862071 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6094429BA366D00862071 /* NewChatView.swift */; };
 		F5E3D9832A2483140004736E /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3D9822A2483140004736E /* KeyboardViewModel.swift */; };
 		F5E3D9842A2485690004736E /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47ECE29B498290083BB31 /* Color+Extensions.swift */; };
@@ -220,6 +222,8 @@
 		F58E53B029DD66CC0022E979 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F58E53B229DD6A670022E979 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
 		F5B2554C29B8A56D0008DAA3 /* SelectChatHintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChatHintView.swift; sourceTree = "<group>"; };
+		F5BB8DD32BA9564800234039 /* README.zh.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.zh.md; sourceTree = "<group>"; };
+		F5BB8DD52BA9568700234039 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		F5C6094429BA366D00862071 /* NewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatView.swift; sourceTree = "<group>"; };
 		F5E3D9822A2483140004736E /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
 		F5E3D9962A2597C80004736E /* Keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Keyboard.entitlements; sourceTree = "<group>"; };
@@ -397,6 +401,8 @@
 		F5E47E8729B497A60083BB31 = {
 			isa = PBXGroup;
 			children = (
+				F5BB8DD32BA9564800234039 /* README.zh.md */,
+				F5BB8DD52BA9568700234039 /* LICENSE */,
 				F5E47EFD29B5D29A0083BB31 /* README.md */,
 				F5E47EFB29B5D2870083BB31 /* .gitignore */,
 				F5E47E9229B497A60083BB31 /* AssisChat */,
@@ -814,6 +820,8 @@
 				F5E47EA129B497A60083BB31 /* Preview Assets.xcassets in Resources */,
 				F5E47F1F29B7562B0083BB31 /* Localizable.strings in Resources */,
 				F5E47EFC29B5D2870083BB31 /* .gitignore in Resources */,
+				F5BB8DD62BA9568700234039 /* LICENSE in Resources */,
+				F5BB8DD42BA9564800234039 /* README.zh.md in Resources */,
 				F5E47E9D29B497A60083BB31 /* Assets.xcassets in Resources */,
 				F5FFE98229FAAD9400AD4C91 /* InfoPlist.strings in Resources */,
 			);
