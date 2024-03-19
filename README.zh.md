@@ -14,8 +14,12 @@
 
 ## 截图
 
-![Image 1](./images/ios.zh.1.png) ![Image 2](./images/ios.zh.2.png)
-![Image 3](./images/ios.zh.3.png) ![Image 4](./images/ios.zh.4.png)
+<p float="left">
+  <img src="./images/ios.zh.1.png" width="200" />
+  <img src="./images/ios.zh.2.png" width="200" />
+  <img src="./images/ios.zh.3.png" width="200" />
+  <img src="./images/ios.zh.4.png" width="200" />
+</p>
 
 ## 使用
 

@@ -14,8 +14,12 @@ Features:
 
 ## Screenshots
 
-![Image 1](./images/ios.en.1.png) ![Image 2](./images/ios.en.2.png)
-![Image 3](./images/ios.en.3.png) ![Image 4](./images/ios.en.4.png)
+<p float="left">
+  <img src="./images/ios.en.1.png" width="200" />
+  <img src="./images/ios.en.2.png" width="200" />
+  <img src="./images/ios.en.3.png" width="200" />
+  <img src="./images/ios.en.4.png" width="200" />
+</p>
 
 ## Usage
 
