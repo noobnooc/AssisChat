@@ -2,7 +2,7 @@
 
 [English](./README.md)
 
-一个使用 Swift 和 SwiftUI 构建的 AI 助手对话 app，支持 iOS/iPadOS/macOS，可以使用你自己的 OpenAI/Claude API Key 。关于这个 app 开源的博客。
+一个使用 Swift 和 SwiftUI 构建的 AI 助手对话 app，支持 iOS/iPadOS/macOS，可以使用你自己的 OpenAI/Claude API Key 。关于这个 app 开源的[博客](https://nooc.me/zh/posts/i-open-sourced-an-ai-chat-app-assischat)。
 
 特性:
 
