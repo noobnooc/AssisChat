@@ -115,10 +115,16 @@ private struct ChatList: View {
                     Text("Go to set chat source")
                 }
                 #else
-                Button {
-                    MacOSSettingsView.open()
-                } label: {
-                    Text("Go to set chat source")
+                if #available(macOS 14, *) {
+                    SettingsLink(label: {
+                        Text("Go to set chat source")
+                    })
+                } else {
+                    Button {
+                        MacOSSettingsView.open()
+                    } label: {
+                        Text("Go to set chat source")
+                    }
                 }
                 #endif
             }
