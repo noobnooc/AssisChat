@@ -44,10 +44,16 @@ struct ChatsView: View {
                         Label("SETTINGS", systemImage: "gearshape")
                     }
                     #else
-                    Button {
-                        MacOSSettingsView.open()
-                    } label: {
-                        Label("SETTINGS", systemImage: "gearshape")
+                    if #available(macOS 14, *) {
+                        SettingsLink(label: {
+                            Label("SETTINGS", systemImage: "gearshape")
+                        })
+                    } else {
+                        Button {
+                            MacOSSettingsView.open()
+                        } label: {
+                            Label("SETTINGS", systemImage: "gearshape")
+                        }
                     }
                     #endif
                 }
