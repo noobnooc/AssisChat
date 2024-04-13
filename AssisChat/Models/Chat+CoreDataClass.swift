@@ -94,6 +94,7 @@ extension Chat {
         case gpt35turbo = "gpt-3.5-turbo"
         case gpt4 = "gpt-4"
         case gpt432k = "gpt-4-32k"
+        case gpt4turbo = "gpt-4-turbo"
 
         // Copied from https://platform.openai.com/docs/models/gpt-4
         var maxTokens: Int {
@@ -101,6 +102,7 @@ extension Chat {
             case .gpt35turbo: return 4096
             case .gpt4: return 8192
             case .gpt432k: return 32768
+            case .gpt4turbo: return 128000
             }
         }
 
